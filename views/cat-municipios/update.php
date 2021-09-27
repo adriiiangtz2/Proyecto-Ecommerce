@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CatMunicipios */
 
-$this->title = 'Update Cat Municipios: ' . $model->mun_id;
-$this->params['breadcrumbs'][] = ['label' => 'Cat Municipios', 'url' => ['index']];
+$this->title = 'Modificar Municipios: ' . $model->mun_id;
+$this->params['breadcrumbs'][] = ['label' => 'Municipios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->mun_id, 'url' => ['view', 'mun_id' => $model->mun_id, 'mun_fkestado' => $model->mun_fkestado]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
