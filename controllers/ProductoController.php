@@ -3,8 +3,10 @@
 namespace app\controllers;
 
 
+use app\models\Tienda;
 use app\models\CatTipo;
 use yii\web\Controller;
+use app\models\CatMarca;
 use app\models\Producto;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;

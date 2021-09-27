@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "cat_marca".
@@ -52,5 +53,10 @@ class CatMarca extends \yii\db\ActiveRecord
     public function getProductos()
     {
         return $this->hasMany(Producto::className(), ['pro_fkmarca' => 'mar_id']);
+    }
+
+    public static function getMap()
+    {
+        return ArrayHelper::map(CatMarca::find()->all(), 'mar_id', 'mar_nombre');
     }
 }

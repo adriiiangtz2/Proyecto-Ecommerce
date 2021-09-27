@@ -153,6 +153,4 @@ class Producto extends \yii\db\ActiveRecord
     {
         return ArrayHelper::map(Producto::find()->all(), 'pro_id', 'pro_nombre');
     }
-
-    
 }
