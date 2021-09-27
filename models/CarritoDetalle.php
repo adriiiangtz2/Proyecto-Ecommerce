@@ -102,4 +102,3 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     }
 }
 
-}
