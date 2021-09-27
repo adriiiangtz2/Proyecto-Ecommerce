@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CatEstados */
 
-$this->title = 'Modificar Estados: ' . $model->idestado;
-$this->params['breadcrumbs'][] = ['label' => ' Estados', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->idestado, 'url' => ['view', 'id' => $model->idestado]];
+$this->title = 'Modificar  Estados: ' . $model->est_id;
+$this->params['breadcrumbs'][] = ['label' => 'Cat Estados', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->est_id, 'url' => ['view', 'id' => $model->est_id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="cat-estados-update">

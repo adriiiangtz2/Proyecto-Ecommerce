@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\CatEstados */
 
-$this->title = $model->idestado;
-$this->params['breadcrumbs'][] = ['label' => ' Estados', 'url' => ['index']];
+$this->title = $model->est_id;
+$this->params['breadcrumbs'][] = ['label' => 'Estados', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Actualizar', ['update', 'id' => $model->idestado], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Eliminar', ['delete', 'id' => $model->idestado], [
+        <?= Html::a('Modificar', ['update', 'id' => $model->est_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $model->est_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => '¿Estas seguro que quiere eliminar este estado?',
+                'confirm' => '¿Estas seguro que quieres eliminar este estado?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,8 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'idestado',
-            'estado',
+            'est_id',
+            'est_estado',
         ],
     ]) ?>
 
