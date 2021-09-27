@@ -19,7 +19,7 @@ class CatMunicipiosSearch extends CatMunicipios
     {
         return [
             [['mun_id', 'mun_fkestado'], 'integer'],
-            [['mun_municipio', 'estadoNombre'], 'safe'],
+            [['mun_municipio','estadoNombre'], 'safe'],
         ];
     }
 
@@ -42,10 +42,11 @@ class CatMunicipiosSearch extends CatMunicipios
     public function search($params)
     {
         $query = CatMunicipios::find();
+          $query->joinWith('munFkestado');
         
 
         // add conditions that should always apply here
-         $query->joinWith('munFkestado');
+       
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
