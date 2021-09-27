@@ -42,7 +42,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'dom_fkcp')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\CatMunicipios */
 
 $this->title = $model->mun_id;
-$this->params['breadcrumbs'][] = ['label' => 'Cat Municipios', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => ' Municipios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
