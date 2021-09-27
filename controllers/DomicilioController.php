@@ -16,20 +16,14 @@ class DomicilioController extends Controller
     /**
      * @inheritDoc
      */
-    public function behaviors()
-    {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
-    }
+       public function behaviors()
+{
+	return [
+		'ghost-access'=> [
+			'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+		],
+	];
+}
 
     /**
      * Lists all Domicilio models.

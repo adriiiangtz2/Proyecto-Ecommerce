@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Domicilio */
 
-$this->title = 'Create Domicilio';
+$this->title = 'Agregar Domicilio';
 $this->params['breadcrumbs'][] = ['label' => 'Domicilios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

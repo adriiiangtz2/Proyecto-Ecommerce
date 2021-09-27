@@ -11,6 +11,9 @@ use app\models\Domicilio;
  */
 class DomicilioSearch extends Domicilio
 {
+
+    public $coloniaNombre;
+    public $usuarioNombre;
     /**
      * {@inheritdoc}
      */
@@ -18,7 +21,7 @@ class DomicilioSearch extends Domicilio
     {
         return [
             [['dom_id', 'dom_fkusuario', 'dom_fkcp'], 'integer'],
-            [['dom_ciudad', 'dom_colonia', 'dom_calle', 'dom_numExt', 'dom_numInt', 'dom_telefono'], 'safe'],
+            [['dom_ciudad', 'dom_colonia', 'dom_calle', 'dom_numExt', 'dom_numInt', 'dom_telefono','coloniaNombre','usuarioNombre'], 'safe'],
         ];
     }
 
@@ -42,10 +45,36 @@ class DomicilioSearch extends Domicilio
     {
         $query = Domicilio::find();
 
+         $query->joinWith('domFkcp');
+         $query->joinWith('domFkusuario');
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+        ]);
+
+         $dataProvider->setSort([
+            'attributes' => [
+                'dom_id',
+                'dom_cuidad',
+                'dom_colonia',
+                'dom_calle',
+                'dom_numExt',
+                'dom_numInt',
+                'dom_telefono',
+                'coloniaNombre' =>[
+                    'asc' => ['cp_colonia' => SORT_ASC],
+                     'desc' => ['cp_colonia' => SORT_DESC],
+                     'default' => SORT_ASC,
+                ],
+                'usuarioNombre' =>[
+                    'asc' => ['usu_nombre' => SORT_ASC],
+                     'desc' => ['usu_nombre' => SORT_DESC],
+                     'default' => SORT_ASC,]
+
+            ]
+
         ]);
 
         $this->load($params);
@@ -65,9 +94,11 @@ class DomicilioSearch extends Domicilio
 
         $query->andFilterWhere(['like', 'dom_ciudad', $this->dom_ciudad])
             ->andFilterWhere(['like', 'dom_colonia', $this->dom_colonia])
+             ->andFilterWhere(['like', 'cp_colonia', $this->coloniaNombre])
             ->andFilterWhere(['like', 'dom_calle', $this->dom_calle])
             ->andFilterWhere(['like', 'dom_numExt', $this->dom_numExt])
             ->andFilterWhere(['like', 'dom_numInt', $this->dom_numInt])
+            ->andFilterWhere(['like', 'usu_nombre', $this->usuarioNombre])
             ->andFilterWhere(['like', 'dom_telefono', $this->dom_telefono]);
 
         return $dataProvider;

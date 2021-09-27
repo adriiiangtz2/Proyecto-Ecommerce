@@ -43,7 +43,7 @@ class Domicilio extends \yii\db\ActiveRecord
             [['dom_numExt', 'dom_numInt'], 'string', 'max' => 10],
             [['dom_telefono'], 'string', 'max' => 12],
             [['dom_fkusuario'], 'exist', 'skipOnError' => true, 'targetClass' => Usuario::className(), 'targetAttribute' => ['dom_fkusuario' => 'usu_id']],
-            [['dom_fkcp'], 'exist', 'skipOnError' => true, 'targetClass' => CatCp::className(), 'targetAttribute' => ['dom_fkcp' => 'cp']],
+            [['dom_fkcp'], 'exist', 'skipOnError' => true, 'targetClass' => CatCp::className(), 'targetAttribute' => ['dom_fkcp' => 'cp_id']],
         ];
     }
 
@@ -53,7 +53,7 @@ class Domicilio extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'dom_id' => 'Id',
+             'dom_id' => 'Id',
             'dom_ciudad' => 'Ciudad',
             'dom_colonia' => 'Colonia',
             'dom_calle' => 'Calle',
@@ -65,6 +65,7 @@ class Domicilio extends \yii\db\ActiveRecord
             'coloniaNombre'=> 'colonia',
         
             'usuarioNombre'=> 'usuario',
+
 
 
         ];
@@ -87,7 +88,7 @@ class Domicilio extends \yii\db\ActiveRecord
      */
     public function getDomFkcp()
     {
-        return $this->hasOne(CatCp::className(), ['cp' => 'dom_fkcp']);
+        return $this->hasOne(CatCp::className(), ['cp_cp' => 'dom_fkcp']);
     }
 
     /**
@@ -102,7 +103,7 @@ class Domicilio extends \yii\db\ActiveRecord
 
     public function getColoniaNombre(){
 
-           return $this->domFkcp->colonia;
+           return $this->domFkcp->cp_colonia;
     }
     public function getUsuarioNombre(){
 

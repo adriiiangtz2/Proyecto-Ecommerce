@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Domicilio', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Agregar Domicilio', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -28,13 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'dom_id',
             'dom_ciudad:ntext',
-            'dom_colonia:ntext',
+           //'dom_colonia:ntext',
             'dom_calle:ntext',
             'dom_numExt',
-            //'dom_numInt',
-            //'dom_telefono',
+            'dom_numInt',
+            'dom_telefono',
             //'dom_fkusuario',
-            //'dom_fkcp',
+            'dom_fkcp',
+            'coloniaNombre',
+            'usuarioNombre',
+
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
