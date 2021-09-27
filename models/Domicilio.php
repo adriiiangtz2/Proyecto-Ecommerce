@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "domicilio".
@@ -108,6 +109,10 @@ class Domicilio extends \yii\db\ActiveRecord
     public function getUsuarioNombre(){
 
            return $this -> domFkusuario -> usu_nombre;
+    }
+    public static function map()
+    {
+        return ArrayHelper::map(Domicilio::find()->all(), 'dom_id', 'dom_id');
     }
  
 }
