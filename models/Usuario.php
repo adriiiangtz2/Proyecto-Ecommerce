@@ -113,7 +113,7 @@ class Usuario extends \yii\db\ActiveRecord
     public static function getMap3(){
         return ArrayHelper::map(Usuario::find()->all(),'usu_id','usu_id'); 
     }
-    public static function getMap(){
-        return ArrayHelper::map(Producto::find()->all(),'pro_id','pro_nombre'); 
+    public static function map(){
+        return ArrayHelper::map(Usuario::find()->all(),'usu_id','usu_nombre');
     }
 }
