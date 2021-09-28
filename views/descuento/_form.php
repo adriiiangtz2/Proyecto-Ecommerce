@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Descuento */
@@ -18,7 +19,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'des_descuento')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'des_fkproducto')->textInput() ?>
+    <?php /* $form->field($model, 'des_fkproducto')->textInput() */ ?>
+
+    <?= $form->field($model, 'des_fkproducto')->widget(Select2::classname(), [
+    'data' => $producto,
+    'language' => 'es',
+    'options' => ['placeholder' => 'Selecciona un producto ...'],
+    'pluginOptions' => [
+        'allowClear' => true
+    ],
+]); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

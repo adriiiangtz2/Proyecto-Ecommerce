@@ -53,4 +53,10 @@ class Tienda extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Producto::className(), ['pro_fktienda' => 'tie_id']);
     }
+
+    public static function getMap()
+    {
+        return ArrayHelper::map(Tienda::find()->all(), 'tie_id', 'tie_nombre');
+    }
+
 }

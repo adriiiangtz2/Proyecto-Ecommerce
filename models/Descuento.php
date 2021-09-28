@@ -62,4 +62,12 @@ class Descuento extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Producto::className(), ['pro_id' => 'des_fkproducto']);
     }
+
+    public static function getMap() 
+    {
+        return ArrayHelper::map(Producto::find()->all(), 'pro_id', 'pro_nombre');
+    }
+
+    
+
 }

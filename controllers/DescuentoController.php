@@ -3,10 +3,12 @@
 namespace app\controllers;
 
 use app\models\Descuento;
+use app\models\Producto;
 use app\models\DescuentoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * DescuentoController implements the CRUD actions for Descuento model.
@@ -76,8 +78,11 @@ class DescuentoController extends Controller
             $model->loadDefaultValues();
         }
 
+        $producto = Producto::getMap();
+
         return $this->render('create', [
             'model' => $model,
+            'producto' => $producto
         ]);
     }
 
@@ -114,6 +119,8 @@ class DescuentoController extends Controller
 
         return $this->redirect(['index']);
     }
+
+    
 
     /**
      * Finds the Descuento model based on its primary key value.
