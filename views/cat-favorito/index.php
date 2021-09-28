@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CatFavoritoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+/* hola */
 $this->title = 'Cat Favoritos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

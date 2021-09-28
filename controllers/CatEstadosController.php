@@ -9,27 +9,22 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DomicilioController implements the CRUD actions for CatEstados model.
+ * CatEstadosController implements the CRUD actions for CatEstados model.
  */
-class DomicilioController extends Controller
+class CatEstadosController extends Controller
 {
     /**
      * @inheritDoc
      */
-    public function behaviors()
-    {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
-    }
+  
+        public function behaviors()
+{
+	return [
+		'ghost-access'=> [
+			'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+		],
+	];
+}
 
     /**
      * Lists all CatEstados models.

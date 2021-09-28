@@ -2,36 +2,44 @@
 
 namespace app\controllers;
 
-use app\models\Domicilio;
-use app\models\DomicilioSearch;
+use app\models\CatCp;
+use app\models\CatCpSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DomicilioController implements the CRUD actions for Domicilio model.
+ * CatCpController implements the CRUD actions for CatCp model.
  */
-class DomicilioController extends Controller
+class CatCpController extends Controller
 {
     /**
      * @inheritDoc
      */
-       public function behaviors()
-{
-	return [
-		'ghost-access'=> [
-			'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
-		],
-	];
-}
+//hola 
+     // Codigo para el log in P1
+     public function behaviors()
+     {
+         return array_merge(
+             parent::behaviors(),
+             [
+                 'verbs' => [
+                     'class' => VerbFilter::className(),
+                     'actions' => [
+                         'delete' => ['POST'],
+                     ],
+                 ],
+             ]
+         );
+     }
 
     /**
-     * Lists all Domicilio models.
+     * Lists all CatCp models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new DomicilioSearch();
+        $searchModel = new CatCpSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -41,7 +49,7 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Displays a single Domicilio model.
+     * Displays a single CatCp model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -54,17 +62,17 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Creates a new Domicilio model.
+     * Creates a new CatCp model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Domicilio();
+        $model = new CatCp();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->dom_id]);
+                return $this->redirect(['view', 'id' => $model->cp_id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -76,7 +84,7 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Updates an existing Domicilio model.
+     * Updates an existing CatCp model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -87,7 +95,7 @@ class DomicilioController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->dom_id]);
+            return $this->redirect(['view', 'id' => $model->cp_id]);
         }
 
         return $this->render('update', [
@@ -96,7 +104,7 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Deletes an existing Domicilio model.
+     * Deletes an existing CatCp model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,18 +118,18 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Finds the Domicilio model based on its primary key value.
+     * Finds the CatCp model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Domicilio the loaded model
+     * @return CatCp the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Domicilio::findOne($id)) !== null) {
+        if (($model = CatCp::findOne($id)) !== null) {
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException('La página solicitada no existe');
     }
 }

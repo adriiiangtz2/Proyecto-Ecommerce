@@ -7,15 +7,16 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CatMunicipiosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cat Municipios';
+$this->title = ' Municipios';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cat-municipios-index">
+<div class="cat-municipios-index"> 
+    
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Cat Municipios', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Agregar Municipios', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'mun_id',
             'mun_fkestado',
             'mun_municipio',
+            'EstadoNombre',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

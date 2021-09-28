@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "carrito_detalle".
@@ -95,4 +96,9 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     {
         return $this->cardetFkproducto->pro_nombre;
     }
+    public static function map()
+    {
+        return ArrayHelper::map(CarritoDetalle::find()->all(), 'cardet_id', 'cardet_id');
+    }
 }
+

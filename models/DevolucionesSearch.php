@@ -4,22 +4,21 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\CatMunicipios;
+use app\models\Devoluciones;
 
 /**
- * CatMunicipiosSearch represents the model behind the search form of `app\models\CatMunicipios`.
+ * DevolucionesSearch represents the model behind the search form of `app\models\Devoluciones`.
  */
-class CatMunicipiosSearch extends CatMunicipios
+class DevolucionesSearch extends Devoluciones
 {
-     public $estadoNombre;
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['mun_id', 'mun_fkestado'], 'integer'],
-            [['mun_municipio','estadoNombre'], 'safe'],
+            [['dev_id', 'dev_fkcarritodetalle'], 'integer'],
+            [['dev_comentario', 'dev_estatus'], 'safe'],
         ];
     }
 
@@ -41,30 +40,12 @@ class CatMunicipiosSearch extends CatMunicipios
      */
     public function search($params)
     {
-        $query = CatMunicipios::find();
-          $query->joinWith('munFkestado');
-        
+        $query = Devoluciones::find();
 
         // add conditions that should always apply here
-       
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-        ]);
-
-         $dataProvider->setSort([
-              'attributes' => [
-             'mun_id',
-                'mun_fkestado',
-                'mun_municipio',
-                
-                'estadoNombre' =>[
-                    'asc' => ['est_estado' => SORT_ASC],
-                     'desc' => ['est_estado' => SORT_DESC],
-                     'default' => SORT_ASC
-                ]
-            ]
-
         ]);
 
         $this->load($params);
@@ -77,14 +58,12 @@ class CatMunicipiosSearch extends CatMunicipios
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'mun_id' => $this->mun_id,
-            'mun_fkestado' => $this->mun_fkestado,
+            'dev_id' => $this->dev_id,
+            'dev_fkcarritodetalle' => $this->dev_fkcarritodetalle,
         ]);
 
-        $query-> andFilterWhere(['like', 'est_estado', $this->estadoNombre])
-      ->  andFilterWhere(['like', 'mun_municipio', $this->mun_municipio]);
-        
-        
+        $query->andFilterWhere(['like', 'dev_comentario', $this->dev_comentario])
+            ->andFilterWhere(['like', 'dev_estatus', $this->dev_estatus]);
 
         return $dataProvider;
     }

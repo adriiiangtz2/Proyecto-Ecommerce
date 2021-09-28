@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CatEstadosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = ' Estados';
+$this->title = 'Estados';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cat-estados-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Agregar Estado', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Agregar Estados', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,8 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idestado',
-            'estado',
+            'est_id',
+            'est_estado',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

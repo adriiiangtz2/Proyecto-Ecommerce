@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CatMunicipios */
 
-$this->title = 'Create Cat Municipios';
-$this->params['breadcrumbs'][] = ['label' => 'Cat Municipios', 'url' => ['index']];
+$this->title = 'Agregar Municipios';
+$this->params['breadcrumbs'][] = ['label' => ' Municipios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cat-municipios-create">

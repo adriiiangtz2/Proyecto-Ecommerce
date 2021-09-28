@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\CatEstados */
+/* @var $model app\models\Envio */
 
-$this->title = 'agregar Estados';
-$this->params['breadcrumbs'][] = ['label' => ' Estados', 'url' => ['index']];
+$this->title = 'Envio';
+$this->params['breadcrumbs'][] = ['label' => 'Crear envio', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cat-estados-create">
+<div class="envio-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

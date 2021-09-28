@@ -2,36 +2,36 @@
 
 namespace app\controllers;
 
-use app\models\Domicilio;
-use app\models\DomicilioSearch;
+use app\models\Envio;
+use app\models\EnvioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DomicilioController implements the CRUD actions for Domicilio model.
+ * EnvioController implements the CRUD actions for Envio model.
  */
-class DomicilioController extends Controller
+class EnvioController extends Controller
 {
     /**
      * @inheritDoc
      */
-       public function behaviors()
-{
-	return [
-		'ghost-access'=> [
-			'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
-		],
-	];
-}
+    public function behaviors()
+    {
+        return [
+            'ghost-access'=> [
+                'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+            ],
+        ];
+    }
 
     /**
-     * Lists all Domicilio models.
+     * Lists all Envio models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new DomicilioSearch();
+        $searchModel = new EnvioSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -41,7 +41,7 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Displays a single Domicilio model.
+     * Displays a single Envio model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -54,17 +54,17 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Creates a new Domicilio model.
+     * Creates a new Envio model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Domicilio();
+        $model = new Envio();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->dom_id]);
+                return $this->redirect(['view', 'id' => $model->env_id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -76,7 +76,7 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Updates an existing Domicilio model.
+     * Updates an existing Envio model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -87,7 +87,7 @@ class DomicilioController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->dom_id]);
+            return $this->redirect(['view', 'id' => $model->env_id]);
         }
 
         return $this->render('update', [
@@ -96,7 +96,7 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Deletes an existing Domicilio model.
+     * Deletes an existing Envio model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,18 +110,18 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Finds the Domicilio model based on its primary key value.
+     * Finds the Envio model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Domicilio the loaded model
+     * @return Envio the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Domicilio::findOne($id)) !== null) {
+        if (($model = Envio::findOne($id)) !== null) {
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException('La página solicitada no existe');
     }
 }

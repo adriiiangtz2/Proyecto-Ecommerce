@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+/* hola */
 /**
  * This is the model class for table "cat_favorito".
  *

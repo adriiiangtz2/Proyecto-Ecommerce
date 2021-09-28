@@ -16,6 +16,7 @@ use Yii;
  */
 class CatMunicipios extends \yii\db\ActiveRecord
 {
+    
     /**
      * {@inheritdoc}
      */
@@ -47,6 +48,8 @@ class CatMunicipios extends \yii\db\ActiveRecord
             'mun_id' => 'Id',
             'mun_fkestado' => 'Estado',
             'mun_municipio' => 'Municipio',
+            
+            'estadoNombre'=> 'Estados',
         ];
     }
 
@@ -69,4 +72,10 @@ class CatMunicipios extends \yii\db\ActiveRecord
     {
         return $this->hasOne(CatEstados::className(), ['est_id' => 'mun_fkestado']);
     }
+
+    public function getEstadoNombre(){
+
+        return $this -> munFkestado -> est_estado;
+    }
+    
 }

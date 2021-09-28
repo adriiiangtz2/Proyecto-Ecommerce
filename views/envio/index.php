@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\DomicilioSearch */
+/* @var $searchModel app\models\EnvioSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Domicilios';
+$this->title = 'Envios';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="domicilio-index">
+<div class="envio-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Agregar Domicilio', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear envio', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,18 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'dom_id',
-            'dom_ciudad:ntext',
-           //'dom_colonia:ntext',
-            'dom_calle:ntext',
-            'dom_numExt',
-            'dom_numInt',
-            'dom_telefono',
-            //'dom_fkusuario',
-            'dom_fkcp',
-            'coloniaNombre',
-            'usuarioNombre',
-
+            'env_id',
+            'env_metodo',
+            'env_tiempo',
+            'env_costo',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

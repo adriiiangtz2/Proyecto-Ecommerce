@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\DomicilioSearch */
+/* @var $searchModel app\models\CatCpSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Domicilios';
+$this->title = 'Código postales';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="domicilio-index">
+<div class="cat-cp-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Agregar Domicilio', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear código postal', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,18 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'dom_id',
-            'dom_ciudad:ntext',
-           //'dom_colonia:ntext',
-            'dom_calle:ntext',
-            'dom_numExt',
-            'dom_numInt',
-            'dom_telefono',
-            //'dom_fkusuario',
-            'dom_fkcp',
-            'coloniaNombre',
-            'usuarioNombre',
-
+            'cp_id',
+            //'cp_fkmunicipio',
+            //'cp_fkestado',
+            'cp_cp',
+            'cp_colonia',
+            'municipioNombre', //p3
+            'estadoNombre',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

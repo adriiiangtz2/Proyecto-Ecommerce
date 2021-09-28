@@ -2,36 +2,42 @@
 
 namespace app\controllers;
 
-use app\models\Domicilio;
-use app\models\DomicilioSearch;
+use app\models\Devoluciones;
+use app\models\DevolucionesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DomicilioController implements the CRUD actions for Domicilio model.
+ * DevolucionesController implements the CRUD actions for Devoluciones model.
  */
-class DomicilioController extends Controller
+class DevolucionesController extends Controller
 {
     /**
      * @inheritDoc
      */
-       public function behaviors()
-{
-	return [
-		'ghost-access'=> [
-			'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
-		],
-	];
-}
+    public function behaviors()
+    {
+        return array_merge(
+            parent::behaviors(),
+            [
+                'verbs' => [
+                    'class' => VerbFilter::className(),
+                    'actions' => [
+                        'delete' => ['POST'],
+                    ],
+                ],
+            ]
+        );
+    }
 
     /**
-     * Lists all Domicilio models.
+     * Lists all Devoluciones models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new DomicilioSearch();
+        $searchModel = new DevolucionesSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -41,7 +47,7 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Displays a single Domicilio model.
+     * Displays a single Devoluciones model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -54,17 +60,17 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Creates a new Domicilio model.
+     * Creates a new Devoluciones model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Domicilio();
+        $model = new Devoluciones();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->dom_id]);
+                return $this->redirect(['view', 'id' => $model->dev_id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -76,7 +82,7 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Updates an existing Domicilio model.
+     * Updates an existing Devoluciones model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -87,7 +93,7 @@ class DomicilioController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->dom_id]);
+            return $this->redirect(['view', 'id' => $model->dev_id]);
         }
 
         return $this->render('update', [
@@ -96,7 +102,7 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Deletes an existing Domicilio model.
+     * Deletes an existing Devoluciones model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,18 +116,18 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Finds the Domicilio model based on its primary key value.
+     * Finds the Devoluciones model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Domicilio the loaded model
+     * @return Devoluciones the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Domicilio::findOne($id)) !== null) {
+        if (($model = Devoluciones::findOne($id)) !== null) {
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException('La página solicitada no existe');
     }
 }
