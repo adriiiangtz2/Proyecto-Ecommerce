@@ -152,5 +152,5 @@ class Producto extends \yii\db\ActiveRecord
     public static function getMap()
     {
         return ArrayHelper::map(Producto::find()->all(), 'pro_id', 'pro_nombre');
-    }
+    } 
 }
