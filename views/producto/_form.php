@@ -46,6 +46,7 @@ use yii\widgets\ActiveForm;
     ]); ?>
 
     <?php /*$form->field($model, 'pro_fktienda')->textInput()*/ ?>
+    <?php /*Nueva modificación*/ ?>
 
     <?= $form->field($model, 'pro_fktienda')->widget(Select2::classname(), [
         'data' => Tienda::map(),
