@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "envio".
@@ -57,5 +58,9 @@ class Envio extends \yii\db\ActiveRecord
     public function getCarros()
     {
         return $this->hasMany(Carro::className(), ['car_fkenvio' => 'env_id']);
+       
+    }
+    public static function map(){
+        return ArrayHelper::map(Envio::find()->all(),'env_id','env_metodo');
     }
 }
