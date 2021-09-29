@@ -22,7 +22,7 @@ $botones =[
     (object)['nombre'=>'Municipios'     ,'url'=>'/cat-municipios'   ,'img'=>'Municipios'],
     (object)['nombre'=>'Estados'        ,'url'=>'/cat-estados'      ,'img'=>'Estados'],
 ];
-$this->title = 'My Yii Application';
+$this->title = 'E-commerce';
 ?>
 <div class="site-index" >
 <div class="body-content" >        
