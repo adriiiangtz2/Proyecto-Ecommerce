@@ -18,14 +18,14 @@ class CatCpController extends Controller
      */
 //hola 
      // Codigo para el log in P1
-     public function behaviors()
-{
-	return [
-		'ghost-access'=> [
-			'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
-		],
-	];
-}
+    public function behaviors()
+    {
+	    return [
+		    'ghost-access'=> [
+			    'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+		    ],
+	    ];
+    }
     /**
      * Lists all CatCp models.
      * @return mixed
