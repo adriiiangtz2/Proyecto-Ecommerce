@@ -60,3 +60,4 @@ class CatMarca extends \yii\db\ActiveRecord
         return ArrayHelper::map(CatMarca::find()->all(), 'mar_id', 'mar_nombre');
     }
 }
+

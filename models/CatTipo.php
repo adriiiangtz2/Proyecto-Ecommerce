@@ -55,7 +55,7 @@ class CatTipo extends \yii\db\ActiveRecord
         return $this->hasMany(Producto::className(), ['pro_fktipo' => 'tip_id']);
     }
 
-    public static function map()
+    public static function getmap()
     {
        return ArrayHelper::map(CatTipo::find()->all(), 'tip_id', 'tip_nombre');
     }
