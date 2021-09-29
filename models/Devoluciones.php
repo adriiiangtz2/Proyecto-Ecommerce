@@ -46,7 +46,7 @@ class Devoluciones extends \yii\db\ActiveRecord
             'dev_id' => 'Id',
             'dev_comentario' => 'Comentario',
             'dev_estatus' => 'Estatus',
-            'dev_fkcarritodetalle' => 'Carrito detalle',
+            'dev_fkcarritodetalle' => 'id Producto',
         ];
     }
 

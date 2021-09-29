@@ -1,7 +1,7 @@
 <?php
 
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\Html;
+use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Envio */
@@ -9,14 +9,22 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="envio-form">
-
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'env_metodo')->textInput(['maxlength' => true]) ?>
+    <div class= "row">
+        <div class= col-md-4>
+            <?= $form->field($model, 'env_metodo')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?= $form->field($model, 'env_tiempo')->textInput(['maxlength' => true]) ?>
+        <div class= col-md-3>
+            <?= $form->field($model, 'env_tiempo')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?= $form->field($model, 'env_costo')->textInput(['maxlength' => true]) ?>
+        <div class= col-md-2>
+            <?= $form->field($model, 'env_costo')->textInput(['maxlength' => true]) ?>
+        </div>
+
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

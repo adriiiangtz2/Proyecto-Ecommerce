@@ -45,7 +45,7 @@ class Envio extends \yii\db\ActiveRecord
         return [
             'env_id' => 'Id',
             'env_metodo' => 'Paquetería de envio',
-            'env_tiempo' => 'Tiempo estimado',
+            'env_tiempo' => 'Tiempo estimado de llegada',
             'env_costo' => 'Costo de envío',
         ];
     }

@@ -1,7 +1,7 @@
 <?php
 
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\Html;
+use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\CatCp */
@@ -9,18 +9,29 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="cat-cp-form">
-
     <?php $form = ActiveForm::begin(); ?>
+    <div class="row">
+        <div class="col-md-1">
+            <?= $form->field($model, 'cp_id')->textInput() ?>
+        </div>
 
-    <?= $form->field($model, 'cp_id')->textInput() ?>
+        <div class="col-md-3">
+            <?= $form->field($model, 'cp_fkestado')->textInput() ?>
+        </div>
 
-    <?= $form->field($model, 'cp_fkmunicipio')->textInput() ?>
+        <div class="col-md-3">
+            <?= $form->field($model, 'cp_fkmunicipio')->textInput() ?>
+        </div>
 
-    <?= $form->field($model, 'cp_fkestado')->textInput() ?>
+        <div class="col-md-3">
+            <?= $form->field($model, 'cp_colonia')->textInput(['maxlength' => true]) ?> 
+        </div>
 
-    <?= $form->field($model, 'cp_cp')->textInput() ?>
+        <div class="col-md-2">
+            <?= $form->field($model, 'cp_cp')->textInput() ?>
+        </div>
 
-    <?= $form->field($model, 'cp_colonia')->textInput(['maxlength' => true]) ?>
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
