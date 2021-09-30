@@ -2,11 +2,12 @@
 
 namespace app\controllers;
 
-use app\models\Domicilio;
-use app\models\DomicilioSearch;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
+use app\models\Domicilio;
 use yii\filters\VerbFilter;
+use app\models\DomicilioSearch;
+use yii\web\NotFoundHttpException;
+use webvimark\modules\UserManagement\models\User;
 
 /**
  * DomicilioController implements the CRUD actions for Domicilio model.
@@ -123,5 +124,11 @@ class DomicilioController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    public function actionRegistrarDomicilio(){
+
+        $domicilio = new Domicilio();
+        $user = new User();
+        return $this-> render('registrar', compact('domicilio', 'user'));
     }
 }
