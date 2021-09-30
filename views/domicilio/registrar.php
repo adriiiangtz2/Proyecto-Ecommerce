@@ -5,7 +5,7 @@ use yii\bootstrap4\Html;
 use kartik\select2\Select2;
 use yii\bootstrap4\ActiveForm;
 
-xxx
+
 ?>
 <div>
     <h1> Registrar Domicilio</h1>
