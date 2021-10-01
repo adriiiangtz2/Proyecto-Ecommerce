@@ -2,7 +2,7 @@
 
 use app\models\Usuario;
 use yii\bootstrap4\Html;
-use kartik\select2\Select2;
+//use kartik\select2\Select2;
 use yii\bootstrap4\ActiveForm;
 
 
@@ -67,7 +67,7 @@ use yii\bootstrap4\ActiveForm;
 
     </div>
 
-    <div class="form-group">
+    <div class="form-group" >
         <?= Html::submitButton('guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
@@ -75,7 +75,7 @@ use yii\bootstrap4\ActiveForm;
 
 </div>
 
-</div>
+</div >
 
 
 
