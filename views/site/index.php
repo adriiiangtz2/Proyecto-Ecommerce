@@ -1,163 +1,49 @@
 <?php
 
+use yii\bootstrap4\Html;
+
 /* @var $this yii\web\View */
-
-$this->title = 'My Yii Application';
+$botones =[
+    (object)['nombre'=>'Usuario'        ,'url'=>'/usuario'          ,'img'=>'Usuario'],
+    (object)['nombre'=>'Tarjetas'       ,'url'=>'/cat-tarjeta'      ,'img'=>'Tarjetas'],
+    (object)['nombre'=>'Favoritos'      ,'url'=>'/cat-favorito'     ,'img'=>'Favoritos'],
+    (object)['nombre'=>'Productos'      ,'url'=>'/producto'         ,'img'=>'Productos'],
+    (object)['nombre'=>'Tienda'         ,'url'=>'/tienda'           ,'img'=>'Tienda'],
+    (object)['nombre'=>'Marcas'         ,'url'=>'/cat-marca'        ,'img'=>'Marcas'],
+    (object)['nombre'=>'Tipos'          ,'url'=>'/cat-tipo'         ,'img'=>'Tipos'],
+    (object)['nombre'=>'Descuentos'     ,'url'=>'/descuento'        ,'img'=>'Descuentos'],
+    (object)['nombre'=>'Carrito Detalle','url'=>'/carrito-detalle'  ,'img'=>'Carrito Detalle'],
+    (object)['nombre'=>'Devoluciones'   ,'url'=>'/devoluciones'     ,'img'=>'Devoluciones'],
+    (object)['nombre'=>'Carro'          ,'url'=>'/carro'            ,'img'=>'Carro'],
+    (object)['nombre'=>'Envio'          ,'url'=>'/envio'            ,'img'=>'Envio'],
+    (object)['nombre'=>'Metodo de Pago' ,'url'=>'/cat-metodopago'   ,'img'=>'Metodo de Pago'],
+    (object)['nombre'=>'Domicilio'      ,'url'=>'/domicilio'        ,'img'=>'Domicilio'],
+    (object)['nombre'=>'Codigo Postal'  ,'url'=>'/cat-cp'           ,'img'=>'Codigo Postal'],
+    (object)['nombre'=>'Municipios'     ,'url'=>'/cat-municipios'   ,'img'=>'Municipios'],
+    (object)['nombre'=>'Estados'        ,'url'=>'/cat-estados'      ,'img'=>'Estados'],
+];
+$this->title = 'E-commerce';
 ?>
-<div class="site-index">
-
-    
-
-    <div class="body-content">
-
-        <div class="row">
+<div class="site-index" >
+<div class="body-content" >        
 <!-- INNICA EL CONTENEDOR PRICIPAL -->
+<section class="text-center bg-light features-icons ">
+<div class="container">
+<div class="row justify-content-md-center">
 
-                <!-- ___ -->
-           <div class="col-lg-4">
-                <h2>Usuario</h2>
-                <i class="fas fa-users  iconos "></i>
-                <p><a class="btn btn-outline-secondary" href="/usuario">View &raquo;</a></p>
-            </div>
-            <!-- ___ -->
-            
-            <div class="col-lg-4">
-                <h2>Cat-tarjeta</h2>
-
-                <i class="fab fa-cc-diners-club"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/cat-tarjeta">View &raquo;</a></p>
-            </div>
-              <!-- ___ -->
-            <div class="col-lg-4">
-                <h2>Cat-Favorito</h2>
-
-                <i class="fas fa-heart"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/cat-favorito">View &raquo;</a></p>
-            </div>
-      
-          <!-- ___ -->
-          <div class="col-lg-4">
-                <h2>Producto</h2>
-
-                <i class="fas fa-tshirt"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/producto">View &raquo;</a></p>
-            </div>
-            <!-- ___ -->
-            <div class="col-lg-4">
-                <h2>Tienda</h2>
-
-                <i class="fas fa-store"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/tienda">View &raquo;</a></p>
-            </div>
-              <!-- ___ -->
-            <div class="col-lg-4">
-                <h2>Cat-marca</h2>
-
-                <i class="fas fa-copyright"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/cat-marca">View &raquo;</a></p>
-            </div>
-          <!-- ___ -->
-
-            <!-- ___ -->
-            <div class="col-lg-4">
-                <h2>Cat-tipo</h2>
-
-                <i class="fas fa-boxes"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/cat-tipo">View &raquo;</a></p>
-            </div>
-            <!-- ___ -->
-            <div class="col-lg-4">
-                <h2>Descuento</h2>
-
-                <i class="fas fa-tags"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/descuento">View &raquo;</a></p>
-            </div>
-              <!-- ___ -->
-            <div class="col-lg-4">
-                <h2>carrito-detalle</h2>
-
-                <i class="fas fa-cart-arrow-down"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/carrito-detalle">View &raquo;</a></p>
-            </div>
-            <!-- ___ -->
-              <!-- ___ -->
-              <div class="col-lg-4">
-                <h2>Devoluciones</h2>
-
-                <i class="fas fa-undo"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/devoluciones">View &raquo;</a></p>
-            </div>
-              <!-- ___ -->
-              <div class="col-lg-4">
-                <h2>carro</h2>
-
-                <i class="fas fa-shopping-cart"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/carro">View &raquo;</a></p>
-            </div>
-              <!-- ___ -->
-              <div class="col-lg-4">
-                <h2>envio</h2>
-
-                <i class="fas fa-shipping-fast"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/envio">View &raquo;</a></p>
-            </div>
-            <!-- ___ -->
-            <div class="col-lg-4">
-                <h2>Cat-metodopago</h2>
-
-                <i class="fas fa-money-check-alt"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/cat-metodopago">View &raquo;</a></p>
-            </div>
-            
-            <!-- ___ -->
-            <div class="col-lg-4">
-                <h2>Domicilio</h2>
-
-                <i class="fas fa-home"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/domicilio">View &raquo;</a></p>
-            </div>
-            <!-- ___ -->
-            <div class="col-lg-4">
-                <h2>Cat-cp</h2>
-
-                <i class="fas fa-map-marker-alt"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/cat-cp">View &raquo;</a></p>
-            </div>
-            <!-- ___ -->
-            <div class="col-lg-4">
-                <h2>Cat-municipios</h2>
-
-                <i class="fas fa-map-marked"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/cat-municipios">View &raquo;</a></p>
-            </div>
-            <!-- ___ -->
-            <div class="col-lg-4">
-                <h2>Cat-estados</h2>
-
-                <i class="fas fa-map"></i>
-
-                <p><a class="btn btn-outline-secondary" href="/cat-estados">View &raquo;</a></p>
-            </div>
-
-
-            <!-- Termina el row -->
-        </div>
-        <!-- Termina el body-content -->
+   <?php foreach($botones as $boton){ ?>
+   
+    <div class="col-md-2">
+      <?= Html::img("/img/{$boton->img}.jpg", ['style'=>'width:100px; margin:20px;'])?>
+      <?= Html::a("<h5>{$boton->nombre}</h5>",["{$boton->url}"],['class'=>'btn btn-default']) ?>
     </div>
+  <?php } ?>
+
+</div>
+</div>
+</section>                
+<!-- Termina el row -->
+        <!-- Termina el body-content -->
+</div>
 <!-- Termina el site-index -->
 </div>

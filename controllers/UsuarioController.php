@@ -2,12 +2,13 @@
 
 namespace app\controllers;
 
-use yii\web\Controller;
 use app\models\Usuario;
+use yii\web\Controller;
 use app\models\UsuarioSearch;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use yii\helpers\ArrayHelper;
+use webvimark\modules\UserManagement\models\User;
+// use yii\filters\VerbFilter;
+// use yii\helpers\ArrayHelper;
 
 
 /**
@@ -94,11 +95,10 @@ class UsuarioController extends Controller
         }
 
         
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return $this->render('update',compact('model'));
+        // 'model' => $model,
     }
-
+    
     /**
      * Deletes an existing Usuario model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -127,5 +127,28 @@ class UsuarioController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionRegistrarUsuario(){
+         //todo lo del modelo se guarda (datos)en esas variables
+        $usuario = new Usuario();
+        $user    = new User();
+        //para guardar, cargar usuario y user al modelo, esto se toma de la funcion update
+        if ($this->request->isPost && $usuario->load($this->request->post()) && $user->load($this->request->post())) {
+
+        //copia codigo de wevimark/migrations/insert
+		$user->status = User::STATUS_ACTIVE;;
+		$user->save(false);
+        //me hacen falta llenar datos en tabla  usuario la id de user
+        $usuario->usu_fkuser = $user->id;   
+        $usuario->save();
+            echo('<pre>');
+            var_dump($this->request->post());
+            echo('</pre>');
+            die;
+        return $this->redirect(['view', 'id' => $egresado->usu_id]);
+        }
+        // direcciona a esta vista con render
+        return $this->render('registrar', compact('usuario','user'));
     }
 }

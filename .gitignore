@@ -20,7 +20,14 @@ Thumbs.db
 /mail
 /runtime
 /tests
-/web
+/web/assets
+/web/css
+/web/.htaccess
+/web/favicon.ico
+/web/index.php
+/web/index-test.php
+/web/robots.txt
+/.vscode
 /widgets
 /.bowerrc
 /codeception.yml
