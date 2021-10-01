@@ -16,7 +16,7 @@ p {
 }
 
 /* ---INICIO DEL HEADER--- */
-.navbar {
+.barra {
   display: flex;
   align-items: center;
   padding: 20px;

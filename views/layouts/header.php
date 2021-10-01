@@ -9,7 +9,7 @@ use yii\bootstrap4\Html;
         <div class="contenedor">
 
             <!-- contenedor logo y menu -->
-            <div class="navbar">
+            <div class="barra">
                 <div class="logo">
                    <a href="index.html"><?= Html::img('plantilla/images/logo.png', ['class' => 'logo', 'style'=>'width:125px;']) ?></a> 
                 </div>
