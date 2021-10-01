@@ -3,6 +3,7 @@
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\NavBar;
+use webvimark\modules\UserManagement\UserManagementModule;
 
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
@@ -13,14 +14,13 @@ use yii\bootstrap4\NavBar;
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
+        'encodeLabels' => false,
         'items' => [
-            ['label' => 'User', 'url' => ['/user-management/user/index']],
-            ['label' => 'Roles', 'url' => ['/user-management/role/index']],
-            ['label' => 'Grupos', 'url' => ['/user-management/auth-item-group/index']],
-            ['label' => 'Visitas', 'url' => ['/user-management/user-visit-log/index']],
-            ['label' => 'Permisos', 'url' => ['/user-management/permission/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            [
+                'label' => 'Administrador',
+                'items'=>UserManagementModule::menuItems(),
+                'visible' => Yii::$app->user->isSuperAdmin
+            ],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
