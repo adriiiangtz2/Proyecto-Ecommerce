@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use app\models\Tienda;
 use app\models\CatTipo;
 use app\models\CatMarca;
+use kartik\date\DatePicker;
 use kartik\select2\Select2;
 use yii\widgets\ActiveForm;
 
@@ -20,7 +21,20 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'pro_precio')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'pro_fecha')->textInput() ?>
+    <?php /*$form->field($model, 'pro_fecha')->textInput()*/ ?>
+
+    <?= $form->field($model, 'pro_fecha')->widget(
+        DatePicker::className(),
+        [
+            //'name' => 'dp_1',
+            'type' => DatePicker::TYPE_INPUT,
+            'value' => '23-Feb-1982',
+            'pluginOptions' => [
+                'autoclose' => true,
+                'format' => 'yyyy-M-dd'
+            ]
+        ]
+    ); ?>
 
     <?= $form->field($model, 'pro_descripcion')->textarea(['rows' => 6]) ?>
 
