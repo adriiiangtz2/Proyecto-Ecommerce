@@ -9,6 +9,7 @@ use yii\widgets\DetailView;
 $this->title = $model->pro_id;
 $this->params['breadcrumbs'][] = ['label' => 'Productos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="producto-view">
@@ -35,7 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'pro_fecha',
             'pro_descripcion:ntext',
             'pro_dimensiones',
-            'pro_imagen',
+            [
+            'attribute' => 'imagen',
+            'format' => 'raw' ,
+            ],
             'pro_estatus',
             'pro_color',
             'pro_fktipo',

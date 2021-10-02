@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use app\models\Tienda;
 use app\models\CatTipo;
 use app\models\CatMarca;
+use kartik\file\FileInput;
 use kartik\date\DatePicker;
 use kartik\select2\Select2;
 use yii\widgets\ActiveForm;
@@ -15,7 +16,7 @@ use yii\widgets\ActiveForm;
 
 <div class="producto-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin( ['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'pro_nombre')->textInput(['maxlength' => true]) ?>
 
@@ -28,10 +29,10 @@ use yii\widgets\ActiveForm;
         [
             //'name' => 'dp_1',
             'type' => DatePicker::TYPE_INPUT,
-            'value' => '23-Feb-1982',
+            'value' => date('Y-m-d'),
             'pluginOptions' => [
                 'autoclose' => true,
-                'format' => 'yyyy-M-dd'
+                'format' => 'yyyy-mm-dd'
             ]
         ]
     ); ?>
@@ -40,7 +41,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'pro_dimensiones')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'pro_imagen')->textInput(['maxlength' => true]) ?>
+    <?php /*$form->field($model, 'pro_imagen')->textInput(['maxlength' => true])*/ ?>
+
+    <?= $form->field($model, 'img')->widget(FileInput::classname(), [
+        'options' => ['accept' => 'image/*'],
+        'pluginOptions' => ['allowedFileExtensions' => ['jpg', 'gif', 'png']]
+    ]); ?>
 
     <?= $form->field($model, 'pro_estatus')->dropDownList(['Agotado' => 'Agotado', 'Disponible' => 'Disponible',], ['prompt' => '']) ?>
 

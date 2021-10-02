@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use Yii;
+use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -30,6 +30,8 @@ use yii\helpers\ArrayHelper;
  */
 class Producto extends \yii\db\ActiveRecord
 {
+
+    public $img;
     /**
      * {@inheritdoc}
      */
@@ -53,6 +55,9 @@ class Producto extends \yii\db\ActiveRecord
             [['pro_dimensiones'], 'string', 'max' => 50],
             [['pro_imagen'], 'string', 'max' => 150],
             [['pro_color'], 'string', 'max' => 10],
+            [['img'], 'safe'],
+            [['img'], 'file', 'extensions' => 'jpg, gif, png'],
+            [['img'], 'file', 'maxSize' => '100000'],
             [['pro_fktienda'], 'exist', 'skipOnError' => true, 'targetClass' => Tienda::className(), 'targetAttribute' => ['pro_fktienda' => 'tie_id']],
             [['pro_fktipo'], 'exist', 'skipOnError' => true, 'targetClass' => CatTipo::className(), 'targetAttribute' => ['pro_fktipo' => 'tip_id']],
             [['pro_fkmarca'], 'exist', 'skipOnError' => true, 'targetClass' => CatMarca::className(), 'targetAttribute' => ['pro_fkmarca' => 'mar_id']],
@@ -65,18 +70,20 @@ class Producto extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'pro_id' => 'Id',
-            'pro_nombre' => 'Nombre',
-            'pro_precio' => 'Precio',
-            'pro_fecha' => 'Fecha',
+            'pro_id'          => 'Id',
+            'pro_nombre'      => 'Nombre',
+            'pro_precio'      => 'Precio',
+            'pro_fecha'       => 'Fecha',
             'pro_descripcion' => 'Descripción',
             'pro_dimensiones' => 'Dimensiones',
-            'pro_imagen' => 'Imagen',
-            'pro_estatus' => 'Estatus',
-            'pro_color' => 'Color',
-            'pro_fktipo' => 'Tipo de producto',
-            'pro_fkmarca' => 'Características',
-            'pro_fktienda' => 'Tienda',
+            'pro_imagen'      => 'Imagen',
+            'pro_estatus'     => 'Estatus',
+            'pro_color'       => 'Color',
+            'pro_fktipo'      => 'Tipo de producto',
+            'pro_fkmarca'     => 'Características',
+            'pro_fktienda'    => 'Tienda',
+            'img'             => 'Imagen',
+            'imagen'          => 'Imagen',
         ];
     }
 
@@ -153,4 +160,9 @@ class Producto extends \yii\db\ActiveRecord
     {
         return ArrayHelper::map(Producto::find()->all(), 'pro_id', 'pro_nombre');
     } 
+
+    public function getImagen()
+    {
+        return Html::img("/img/".(empty($this->pro_imagen) ? 'Productos.jpg' : "producto/{$this->pro_imagen}"));
+    }
 }

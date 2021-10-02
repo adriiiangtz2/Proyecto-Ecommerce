@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'pro_id',
+            //'pro_id',
             'pro_nombre',
             'pro_precio',
             'pro_fecha',
@@ -34,6 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'pro_dimensiones',
             //'pro_imagen',
             //'pro_estatus',
+            [
+                'attribute' => 'imagen',
+                'format' => 'raw',
+            ],
             //'pro_color',
             //'pro_fktipo',
             //'pro_fkmarca',
