@@ -11,14 +11,14 @@ use app\models\CatMunicipios;
  */
 class CatMunicipiosSearch extends CatMunicipios
 {
-     public $estadoNombre;
+    public $estadoNombre;
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['mun_id', 'mun_fkestado'], 'integer'],
+            [['mun_id', 'mun_fkestado'],'integer'],
             [['mun_municipio','estadoNombre'], 'safe'],
         ];
     }
@@ -42,7 +42,8 @@ class CatMunicipiosSearch extends CatMunicipios
     public function search($params)
     {
         $query = CatMunicipios::find();
-          $query->joinWith('munFkestado');
+
+        $query->joinWith('munFkestado');
         
 
         // add conditions that should always apply here
@@ -52,17 +53,16 @@ class CatMunicipiosSearch extends CatMunicipios
             'query' => $query,
         ]);
 
-         $dataProvider->setSort([
-              'attributes' => [
-             'mun_id',
+        $dataProvider->setSort([
+                'attributes' => [
+                'mun_id',
                 'mun_fkestado',
                 'mun_municipio',
                 
                 'estadoNombre' =>[
                     'asc' => ['est_estado' => SORT_ASC],
                      'desc' => ['est_estado' => SORT_DESC],
-                     'default' => SORT_ASC
-                ]
+                     'default' => SORT_ASC,]
             ]
 
         ]);

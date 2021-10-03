@@ -129,6 +129,6 @@ class DomicilioController extends Controller
 
         $domicilio = new Domicilio();
         $user = new User();
-        return $this-> render('registrar', compact('domicilio', 'user'));
+        return $this-> render('registro', compact('domicilio', 'user'));
     }
 }

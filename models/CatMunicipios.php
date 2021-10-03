@@ -46,10 +46,10 @@ class CatMunicipios extends \yii\db\ActiveRecord
     {
         return [
             'mun_id' => 'Id',
-            'mun_fkestado' => 'Estado',
+           // 'mun_fkestado' => 'Estado',
             'mun_municipio' => 'Municipio',
             
-            'estadoNombre'=> 'Estados',
+            'estadoNombre'=> 'Estado',
         ];
     }
 

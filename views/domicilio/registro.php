@@ -33,7 +33,7 @@ use yii\bootstrap4\ActiveForm;
         </div>
 
          <div class="col-md-3">
-                <?= $form->field($domicilio, 'dom_ciudad')->textarea(['rows' => 6]) ?>
+                <?= $form ->field($domicilio, 'dom_ciudad')->textarea(['rows' => 6]) ?>
         </div>
 
          <div class="col-md-3">
