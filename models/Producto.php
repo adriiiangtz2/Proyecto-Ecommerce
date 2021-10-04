@@ -7,6 +7,7 @@ use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "producto".
+ * archivo modificado
  *
  * @property int $pro_id Id
  * @property string $pro_nombre Nombre
