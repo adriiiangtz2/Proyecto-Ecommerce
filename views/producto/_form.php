@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use app\models\Tienda;
 use app\models\CatTipo;
 use app\models\CatMarca;
+use kartik\file\FileInput;
+use kartik\date\DatePicker;
 use kartik\select2\Select2;
 use yii\widgets\ActiveForm;
 
@@ -14,19 +16,37 @@ use yii\widgets\ActiveForm;
 
 <div class="producto-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin( ['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'pro_nombre')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'pro_precio')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'pro_fecha')->textInput() ?>
+    <?php /*$form->field($model, 'pro_fecha')->textInput()*/ ?>
+
+    <?= $form->field($model, 'pro_fecha')->widget(
+        DatePicker::className(),
+        [
+            //'name' => 'dp_1',
+            'type' => DatePicker::TYPE_INPUT,
+            'value' => date('Y-m-d'),
+            'pluginOptions' => [
+                'autoclose' => true,
+                'format' => 'yyyy-mm-dd'
+            ]
+        ]
+    ); ?>
 
     <?= $form->field($model, 'pro_descripcion')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'pro_dimensiones')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'pro_imagen')->textInput(['maxlength' => true]) ?>
+    <?php /*$form->field($model, 'pro_imagen')->textInput(['maxlength' => true])*/ ?>
+
+    <?= $form->field($model, 'img')->widget(FileInput::classname(), [
+        'options' => ['accept' => 'image/*'],
+        'pluginOptions' => ['allowedFileExtensions' => ['jpg', 'gif', 'png']]
+    ]); ?>
 
     <?= $form->field($model, 'pro_estatus')->dropDownList(['Agotado' => 'Agotado', 'Disponible' => 'Disponible',], ['prompt' => '']) ?>
 

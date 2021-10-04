@@ -4,6 +4,7 @@ use app\models\Envio;
 use yii\helpers\Html;
 use app\models\Usuario;
 use app\models\Domicilio;
+use kartik\date\DatePicker;
 use kartik\select2\Select2;
 use yii\widgets\ActiveForm;
 use app\models\CatMetodopago;
@@ -19,7 +20,19 @@ use app\models\CatMetodopago;
 
     <?= $form->field($model, 'car_iva')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'car_fecha')->textInput() ?>
+    <? /* $form->field($model, 'car_fecha')->textInput()*/ ?>
+
+    <?= $form->field($model, 'car_fecha')->widget(
+        DatePicker::className(),
+        [
+            'type' => DatePicker::TYPE_INPUT,
+            'value' => date('Y-m-d'),
+            'pluginOptions' => [
+                'autoclose' => true,
+                'format' => 'yyyy-mm-dd'
+            ]
+        ]
+     );  ?>
 
     <?= $form->field($model, 'car_estatus')->dropDownList([ 'Apartado' => 'Apartado', 'Pagado' => 'Pagado', ], ['prompt' => '']) ?>
 

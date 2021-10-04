@@ -2,14 +2,10 @@
 
 namespace app\controllers;
 
-
-use app\models\Tienda;
-use app\models\CatTipo;
+use Yii;
 use yii\web\Controller;
-use app\models\CatMarca;
 use app\models\Producto;
-use yii\filters\VerbFilter;
-use yii\helpers\ArrayHelper;
+use yii\web\UploadedFile;
 use app\models\ProductoSearch;
 use yii\web\NotFoundHttpException;
 
@@ -68,8 +64,20 @@ class ProductoController extends Controller
         $model = new Producto();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->pro_id]);
+            if ($model->load($this->request->post())) {
+                $image = UploadedFile::getInstance($model, 'img');
+                if (!is_null($image)) {
+                    $ext = end((explode(".", $image->name)));
+                    // generate a unique file name to prevent duplicate filenames
+                    $model->pro_imagen = $model->pro_fktienda.'_'. Yii::$app->security->generateRandomString() . ".{$ext}";
+                    // the path to save file, you can set an uploadPath
+                    // in Yii::$app->params (as used in example below)                       
+                    //Yii::$app->params['uploadPath'] = Yii::$app->basePath . '/web/uploads/status/';
+                    $path = Yii::$app->basePath.'/web/img/producto/' . $model->pro_imagen;
+                    if($image->saveAs($path) && $model->save()){
+                        return $this->redirect(['view', 'id' => $model->pro_id]);
+                    }
+                }
             }
         } else {
             $model->loadDefaultValues();
