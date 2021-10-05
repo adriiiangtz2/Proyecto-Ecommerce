@@ -14,11 +14,11 @@ use yii\widgets\ActiveForm;
 <div class="cat-favorito-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
+    <div class="row offer justify-content-center ">
     <?php /* $form->field($model, 'fav_fkproducto')->textInput() */ ?>
 
     <?php /* $form->field($model, 'fav_fkusuario')->textInput() */ ?>
-    
+    <div class="col-md-4">
     <?= $form->field($model, 'fav_fkusuario')->widget(Select2::classname(), [
     'data' => Usuario::getMap2(),
     'language' => 'es',
@@ -27,8 +27,8 @@ use yii\widgets\ActiveForm;
         'allowClear' => true
     ],
 ]);?>
-    
-    
+    </div>
+    <div class="col-md-4">
     <?= $form->field($model, 'fav_fkproducto')->widget(Select2::classname(), [
     'data' => Producto::getMap(),
     'language' => 'es',
@@ -37,7 +37,11 @@ use yii\widgets\ActiveForm;
         'allowClear' => true
     ],
 ]);?>
-    
+
+</div>
+
+
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

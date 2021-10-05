@@ -13,17 +13,22 @@ use kartik\select2\Select2;
 <div class="cat-tarjeta-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <div class="row offer justify-content-center">
 
+    <div class="col-md-4">
     <?= $form->field($model, 'tar_numtarjeta')->textInput(['maxlength' => true]) ?>
-
+    </div>
+    <div class="col-md-4">
     <?= $form->field($model, 'tar_expiracion')->textInput(['maxlength' => true]) ?>
-
+    </div>  
+    <div class="col-md-4">
     <?= $form->field($model, 'tar_financiera')->dropDownList([ 'Mastercard' => 'Mastercard', 'Visa' => 'Visa', 'American Express' => 'American Express', ], ['prompt' => '']) ?>
-
+    </div>
+    <div class="col-md-4">
     <?= $form->field($model, 'tar_tipo')->dropDownList([ 'Debito' => 'Debito', 'Credito' => 'Credito', 'Monedero' => 'Monedero', ], ['prompt' => '']) ?>
-
+    </div>
     <?php /* $form->field($model, 'tar_fkusuario')->textInput() */ ?>
-  
+    <div class="col-md-4">
   <?= $form->field($model, 'tar_fkusuario')->widget(Select2::classname(), [
     'data' => Usuario::getMap3(),
     'language' => 'es',
@@ -33,11 +38,16 @@ use kartik\select2\Select2;
     ],
 ]);?>
 
+</div>
 
-
+</div>
+<div class="row justify-content-center">
     <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btnn btn-success']) ?>
     </div>
+
+</div>
+    
 
     <?php ActiveForm::end(); ?>
 
