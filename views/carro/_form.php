@@ -18,67 +18,78 @@ use app\models\CatMetodopago;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'car_iva')->textInput(['maxlength' => true]) ?>
-
-    <? /* $form->field($model, 'car_fecha')->textInput()*/ ?>
-
-    <?= $form->field($model, 'car_fecha')->widget(
-        DatePicker::className(),
-        [
-            'type' => DatePicker::TYPE_INPUT,
-            'value' => date('Y-m-d'),
+    <div class="row">
+        <div class="col-md-4">
+            <?= $form->field($model, 'car_iva')->textInput(['maxlength' => true]) ?>
+        </div>
+        <? /* $form->field($model, 'car_fecha')->textInput()*/ ?>
+        <div class="col-md-4">
+            <?= $form->field($model, 'car_fecha')->widget(
+                DatePicker::className(),
+                [
+                    'type' => DatePicker::TYPE_INPUT,
+                    'value' => date('Y-m-d'),
+                    'pluginOptions' => [
+                        'autoclose' => true,
+                        'format' => 'yyyy-mm-dd'
+                    ]
+                ]
+            );  ?>
+        </div>
+        
+        <?php /*$form->field($model, 'car_fkusuario')->textInput()*/ ?>
+        <div class="col-md-4">
+            <?= $form->field($model, 'car_fkusuario')->widget(Select2::classname(), [
+            'data' => Usuario::map(),
+            'language' => 'es',
+            'options' => ['placeholder' => 'Selecciona un usuario...'],
             'pluginOptions' => [
-                'autoclose' => true,
-                'format' => 'yyyy-mm-dd'
-            ]
-        ]
-     );  ?>
-
-    <?= $form->field($model, 'car_estatus')->dropDownList([ 'Apartado' => 'Apartado', 'Pagado' => 'Pagado', ], ['prompt' => '']) ?>
-
-    <?php /*$form->field($model, 'car_fkusuario')->textInput()*/ ?>
-
-    <?= $form->field($model, 'car_fkusuario')->widget(Select2::classname(), [
-    'data' => Usuario::map(),
-    'language' => 'es',
-    'options' => ['placeholder' => 'Selecciona un usuario...'],
-    'pluginOptions' => [
-        'allowClear' => true
-    ],
-]); ?>
+                'allowClear' => true
+            ],
+        ]); ?>
+        </div>
 
 
-    <? /* $form->field($model, 'car_fkmetodo')->textInput() */?>
+        <? /* $form->field($model, 'car_fkmetodo')->textInput() */?>
+        
+        <div class="col-md-4">
+            <?= $form->field($model, 'car_fkmetodo')->widget(Select2::classname(), [
+            'data' => CatMetodopago::map(),
+            'language' => 'es',
+            'options' => ['placeholder' => 'Selecciona un metodo de pago...'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ]); ?>
+        </div>
 
-    <?= $form->field($model, 'car_fkmetodo')->widget(Select2::classname(), [
-    'data' => CatMetodopago::map(),
-    'language' => 'es',
-    'options' => ['placeholder' => 'Selecciona un metodo de pago...'],
-    'pluginOptions' => [
-        'allowClear' => true
-    ],
-]); ?>
+        <? /* $form->field($model, 'car_fkdomicilio')->textInput() */ ?>
+        <div class="col-md-4">
+            <?= $form->field($model, 'car_fkdomicilio')->widget(Select2::classname(), [
+            'data' => Domicilio::map(),
+            'language' => 'es',
+            'options' => ['placeholder' => 'Selecciona un domicilio...'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ]); ?>
+        </div>
+        <? /* $form->field($model, 'car_fkenvio')->textInput() */ ?>
 
-    <? /* $form->field($model, 'car_fkdomicilio')->textInput() */ ?>
-
-    <?= $form->field($model, 'car_fkdomicilio')->widget(Select2::classname(), [
-    'data' => Domicilio::map(),
-    'language' => 'es',
-    'options' => ['placeholder' => 'Selecciona un domicilio...'],
-    'pluginOptions' => [
-        'allowClear' => true
-    ],
-]); ?>
-    <? /* $form->field($model, 'car_fkenvio')->textInput() */ ?>
-
-    <?= $form->field($model, 'car_fkenvio')->widget(Select2::classname(), [
-    'data' => Envio::map(),
-    'language' => 'es',
-    'options' => ['placeholder' => 'Selecciona un método de envio...'],
-    'pluginOptions' => [
-        'allowClear' => true
-    ],
-]); ?>
+        <div class="col-md-4">
+            <?= $form->field($model, 'car_fkenvio')->widget(Select2::classname(), [
+            'data' => Envio::map(),
+            'language' => 'es',
+            'options' => ['placeholder' => 'Selecciona un método de envio...'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ]); ?>
+        </div>
+        <div class="col-md-12">
+            <?= $form->field($model, 'car_estatus')->dropDownList([ 'Apartado' => 'Apartado', 'Pagado' => 'Pagado', ], ['prompt' => '']) ?>
+        </div>
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
