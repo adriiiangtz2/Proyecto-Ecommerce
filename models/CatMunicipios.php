@@ -53,7 +53,6 @@ class CatMunicipios extends \yii\db\ActiveRecord
             'estadoNombre'=> 'Estado',
         ];
     }
-
     /**
      * Gets query for [[CatCps]].
      *

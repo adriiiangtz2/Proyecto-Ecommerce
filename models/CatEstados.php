@@ -23,7 +23,6 @@ class CatEstados extends \yii\db\ActiveRecord
     {
         return 'cat_estados';
     }
-
     /**
      * {@inheritdoc}
      */
@@ -73,7 +72,5 @@ class CatEstados extends \yii\db\ActiveRecord
     }
     public static function getEstados(){
         return self::find()->select(['est_estado','est_id'])->indexBy('est_id')->column();
-    }
-
-    
+    }   
 }

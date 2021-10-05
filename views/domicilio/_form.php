@@ -76,7 +76,6 @@ use app\models\CatMunicipios;
     <div class="form-group">
         <?= Html::submitButton('guardar', ['class' => 'btn btn-success']) ?>
     </div>
-
     <?php ActiveForm::end(); ?>
 
 </div>

@@ -31,7 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'mun_fkestado',
             'mun_municipio',
             'estadoNombre',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
