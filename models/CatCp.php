@@ -84,5 +84,5 @@ class CatCp extends \yii\db\ActiveRecord
     public function getDomicilios()
     {
         return $this->hasMany(Domicilio::className(), ['dom_fkcp' => 'cp_id']);
-    }
+    }   
 }

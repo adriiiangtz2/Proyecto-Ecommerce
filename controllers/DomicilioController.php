@@ -2,9 +2,11 @@
 
 namespace app\controllers;
 
+use Yii;
 use yii\web\Controller;
 use app\models\Domicilio;
 use yii\filters\VerbFilter;
+use app\models\CatMunicipios;
 use app\models\DomicilioSearch;
 use yii\web\NotFoundHttpException;
 use webvimark\modules\UserManagement\models\User;
@@ -24,6 +26,26 @@ class DomicilioController extends Controller
 			'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
 		],
 	];
+}
+
+public function actionSubcat() {
+    Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+    $out = [];
+    if (isset($_POST['depdrop_parents'])) {
+        $parents = $_POST['depdrop_parents'];
+        if ($parents != null) {
+            $est_id = $parents[0];
+            $out = CatMunicipios::getMunicipiosList($est_id); 
+            // the getSubCatList function will query the database based on the
+            // cat_id and return an array like below:
+            // [
+            //    ['id'=>'<sub-cat-id-1>', 'name'=>'<sub-cat-name1>'],
+            //    ['id'=>'<sub-cat_id_2>', 'name'=>'<sub-cat-name2>']
+            // ]
+            return ['output'=>$out, 'selected'=>''];
+        }
+    }
+    return ['output'=>'', 'selected'=>''];
 }
 
     /**
@@ -129,6 +151,6 @@ class DomicilioController extends Controller
 
         $domicilio = new Domicilio();
         $user = new User();
-        return $this-> render('registrar', compact('domicilio', 'user'));
+        return $this-> render('registro', compact('domicilio', 'user'));
     }
 }

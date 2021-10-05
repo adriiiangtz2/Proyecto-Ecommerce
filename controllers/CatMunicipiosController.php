@@ -7,6 +7,7 @@ use app\models\CatMunicipiosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use webvimark\modules\UserManagement\models\User;
 
 /**
  * CatMunicipiosController implements the CRUD actions for CatMunicipios model.

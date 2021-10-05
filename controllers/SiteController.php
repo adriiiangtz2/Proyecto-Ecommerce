@@ -64,6 +64,11 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+    public function actionMenu()
+    {
+        return $this->render('botonera');
+    }
+
     /**
      * Login action.
      *
