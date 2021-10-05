@@ -21,21 +21,26 @@ use webvimark\modules\UserManagement\UserManagementModule;
                 'items'=>UserManagementModule::menuItems(),
                 'visible' => Yii::$app->user->isSuperAdmin
             ],
+            [
+                'label' => 'Menu',
+                'url'=>['/site/menu'],
+                'visible' => Yii::$app->user->isSuperAdmin
+            ],
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+                ['label' => 'Login', 'url' => ['/user-management/auth/login']]
             ) : (
-                '<li>'
+
+                ['label' => 'Logout', 'url' => ['/user-management/auth/logout']]
+                /* '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
                 . Html::submitButton(
                     'Logout (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
-                . '</li>'
+                . '</li>' */
             )
         ],
     ]);
     
     NavBar::end();
-    
-    ?>
