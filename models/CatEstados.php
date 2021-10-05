@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "cat_estados".
@@ -66,4 +67,14 @@ class CatEstados extends \yii\db\ActiveRecord
     {
         return $this->hasMany(CatMunicipios::className(), ['mun_fkestado' => 'est_id']);
     }
+
+     public static function getMap4(){
+        return ArrayHelper::map(CatEstados::find()->all(),'est_id','est_estado'); 
+    }
+    public static function getEstados(){
+        return self::find()->select(['est_estado','est_id'])->indexBy('est_id')->column();
+    }
+
+ 
+
 }

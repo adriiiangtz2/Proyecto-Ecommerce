@@ -24,6 +24,7 @@ use yii\helpers\ArrayHelper;
  */
 class Domicilio extends \yii\db\ActiveRecord
 {
+    public $mun_fkestado;
     /**
      * {@inheritdoc}
      */
