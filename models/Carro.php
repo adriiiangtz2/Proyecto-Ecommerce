@@ -120,10 +120,24 @@ class Carro extends \yii\db\ActiveRecord
     {
         return $this->hasMany(CarritoDetalle::className(), ['cardet_fkcarro' => 'car_id']);
     }
+    /*Valores concatenados*/
     public function getUsuarioNombre()
     {
         return $this->carFkusuario->usu_nombre;
     }
+    public function getUsuarioPaterno()
+    {
+        return $this->carFkusuario->usu_paterno;
+    }
+    public function getUsuarioMaterno()
+    {
+        return $this->carFkusuario->usu_materno;
+    }
+    /*Concatenacion*/
+    public function getNombreCompleto(){ 
+        return $this->usuarioNombre . ' ' . $this->usuarioPaterno . ' ' . $this->usuarioMaterno;
+    }
+
     public function getMetodoNombre()
     {
         return $this->carFkmetodo->met_nombre;

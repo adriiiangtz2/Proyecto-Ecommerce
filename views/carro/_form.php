@@ -40,7 +40,7 @@ use app\models\CatMetodopago;
         <?php /*$form->field($model, 'car_fkusuario')->textInput()*/ ?>
         <div class="col-md-4">
             <?= $form->field($model, 'car_fkusuario')->widget(Select2::classname(), [
-            'data' => Usuario::map(),
+            'data' => Usuario::getMap2(),
             'language' => 'es',
             'options' => ['placeholder' => 'Selecciona un usuario...'],
             'pluginOptions' => [
