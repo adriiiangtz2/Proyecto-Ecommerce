@@ -31,7 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'tar_expiracion',
             'tar_financiera',
             'tar_tipo',
-            'usuarioNombre',
+            // 'usuarioNombre',
+            // Nombre de get function de CatTarjeta
+            'nombreCompleto',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

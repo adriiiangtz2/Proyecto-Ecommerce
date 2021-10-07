@@ -27,6 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'usu_id',
+            // tabla wevimar
+            'userUsername',
+            // tabla wevimar
+            'userEmail',
             'usu_nombre',
             'usu_paterno',
             'usu_materno',

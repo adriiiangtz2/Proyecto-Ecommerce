@@ -32,6 +32,7 @@ class CatFavorito extends \yii\db\ActiveRecord
         return [
             [['fav_fkproducto', 'fav_fkusuario'], 'required'],
             [['fav_fkproducto', 'fav_fkusuario'], 'integer'],
+            [['fav_estado'], 'safe'],
             [['fav_fkproducto'], 'exist', 'skipOnError' => true, 'targetClass' => Producto::className(), 'targetAttribute' => ['fav_fkproducto' => 'pro_id']],
             [['fav_fkusuario'], 'exist', 'skipOnError' => true, 'targetClass' => Usuario::className(), 'targetAttribute' => ['fav_fkusuario' => 'usu_id']],
         ];
@@ -45,9 +46,11 @@ class CatFavorito extends \yii\db\ActiveRecord
         return [
             'fav_id' => 'Id',
             'fav_fkproducto' => 'Producto',
-            'fav_fkusuario' => 'Usuario',
             'productoNombre' => 'Nombre Producto',
-            'usuarioNombre' => ' Nombre usuario',
+            'fav_fkusuario' => 'Usuario',
+            // 'usuarioNombre' => ' Nombre usuario',
+            'nombreCompleto' => ' Nombre Usuario',
+            'fav_estado' => 'Estatus',
         ];
     }
 
@@ -70,11 +73,24 @@ class CatFavorito extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Usuario::className(), ['usu_id' => 'fav_fkusuario']);
     }
-
+    //funcion que trae el nombre de la tabla PRODUCTOS y se muestra en el form FAVORITOS
     public function getProductoNombre(){
         return $this->favFkproducto->pro_nombre;
     }
+
+    // Estas 3 funciones traen el nombre y apellido de un usuario y se guardan VISTA
+    // Esta funcion guarda el nombre de la tabla USUARIO y se muestra en el form FAVORITOS
     public function getUsuarioNombre(){
         return $this->favFkusuario->usu_nombre;
+    }
+    public function getUsuarioPaterno(){
+        return $this->favFkusuario->usu_paterno;
+    }
+    public function getUsuarioMaterno(){
+        return $this->favFkusuario->usu_materno;
+    }
+    // Se hace una concatenacion de las funciones de la linea 73, se muestra en la vista VISTA
+    public function getNombreCompleto(){ 
+        return $this->usuarioNombre . ' ' . $this->usuarioPaterno . ' ' . $this->usuarioMaterno;
     }
 }

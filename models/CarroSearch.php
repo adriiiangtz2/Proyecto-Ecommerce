@@ -11,7 +11,7 @@ use app\models\Carro;
  */
 class CarroSearch extends Carro
 {
-    public $usuarioNombre;
+    public $nombreCompleto;
     public $metodoNombre;
     public $envioMetodo;
 
@@ -23,7 +23,7 @@ class CarroSearch extends Carro
         return [
             [['car_id', 'car_fkusuario', 'car_fkmetodo', 'car_fkdomicilio', 'car_fkenvio'], 'integer'],
             [['car_iva'], 'number'],
-            [['car_fecha', 'car_estatus', 'usuarioNombre', 'metodoNombre', 'envioMetodo'], 'safe'],
+            [['car_fecha', 'car_estatus', 'nombreCompleto', 'metodoNombre', 'envioMetodo'], 'safe'],
         ];
     }
 
@@ -63,7 +63,7 @@ class CarroSearch extends Carro
                 'car_iva',
                 'car_fecha',
                 'car_estatus',
-                'usuarioNombre' => [
+                'nombreCompleto' => [
                     'asc' => ['usu_nombre' => SORT_ASC], 
                     'desc' => ['usu_nombre' => SORT_DESC], 
                     'default' => SORT_ASC,
@@ -103,7 +103,7 @@ class CarroSearch extends Carro
         ]);
 
         $query->andFilterWhere(['like', 'car_estatus', $this->car_estatus])
-              ->andFilterWhere(['like', 'usu_nombre', $this->usuarioNombre])
+              ->andFilterWhere(['like', 'usu_nombre', $this->nombreCompleto])
               ->andFilterWhere(['like', 'met_nombre', $this->metodoNombre])
               ->andFilterWhere(['like', 'env_metodo', $this->envioMetodo]);
 
