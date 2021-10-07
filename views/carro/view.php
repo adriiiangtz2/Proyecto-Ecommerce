@@ -33,7 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'car_iva',
             'car_fecha',
             'car_estatus',
-            'car_fkusuario',
+            /* 'car_fkusuario', */
+            'nombreCompleto',
             'car_fkmetodo',
             'car_fkdomicilio',
             'car_fkenvio',
