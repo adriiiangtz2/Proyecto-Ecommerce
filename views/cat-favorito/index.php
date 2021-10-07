@@ -28,9 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'fav_id',
             'fav_fkproducto',
-            'fav_fkusuario',
             'productoNombre',
-            'usuarioNombre',
+            'fav_fkusuario',
+            // Nombre de get function de favorito
+            'nombreCompleto',
+            'fav_estado',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

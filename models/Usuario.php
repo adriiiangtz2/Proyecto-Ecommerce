@@ -39,8 +39,18 @@ class Usuario extends \yii\db\ActiveRecord
         return [
             [['usu_nombre', 'usu_paterno', 'usu_fkuser'], 'required'],
             [['usu_fkuser'], 'integer'],
-            [['usu_nombre', 'usu_paterno', 'usu_materno'], 'string', 'max' => 50],
-            [['usu_fkuser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['usu_fkuser' => 'id']],
+            [
+                ['usu_nombre', 'usu_paterno', 'usu_materno'],
+                'string',
+                'max' => 50,
+            ],
+            [
+                ['usu_fkuser'],
+                'exist',
+                'skipOnError' => true,
+                'targetClass' => User::className(),
+                'targetAttribute' => ['usu_fkuser' => 'id'],
+            ],
         ];
     }
 
@@ -55,6 +65,8 @@ class Usuario extends \yii\db\ActiveRecord
             'usu_paterno' => 'Apellido paterno',
             'usu_materno' => 'Apellido materno',
             'usu_fkuser' => 'Usuario Webvimark',
+            'userUsername' => 'User Username',
+            'userEmail' => 'User Email',
         ];
     }
 
@@ -65,7 +77,9 @@ class Usuario extends \yii\db\ActiveRecord
      */
     public function getCarros()
     {
-        return $this->hasMany(Carro::className(), ['car_fkusuario' => 'usu_id']);
+        return $this->hasMany(Carro::className(), [
+            'car_fkusuario' => 'usu_id',
+        ]);
     }
 
     /**
@@ -75,7 +89,9 @@ class Usuario extends \yii\db\ActiveRecord
      */
     public function getCatFavoritos()
     {
-        return $this->hasMany(CatFavorito::className(), ['fav_fkusuario' => 'usu_id']);
+        return $this->hasMany(CatFavorito::className(), [
+            'fav_fkusuario' => 'usu_id',
+        ]);
     }
 
     /**
@@ -85,7 +101,9 @@ class Usuario extends \yii\db\ActiveRecord
      */
     public function getCatTarjetas()
     {
-        return $this->hasMany(CatTarjeta::className(), ['tar_fkusuario' => 'usu_id']);
+        return $this->hasMany(CatTarjeta::className(), [
+            'tar_fkusuario' => 'usu_id',
+        ]);
     }
 
     /**
@@ -95,7 +113,9 @@ class Usuario extends \yii\db\ActiveRecord
      */
     public function getDomicilios()
     {
-        return $this->hasMany(Domicilio::className(), ['dom_fkusuario' => 'usu_id']);
+        return $this->hasMany(Domicilio::className(), [
+            'dom_fkusuario' => 'usu_id',
+        ]);
     }
 
     /**
@@ -107,13 +127,29 @@ class Usuario extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'usu_fkuser']);
     }
-    public static function getMap2(){
-        return ArrayHelper::map(Usuario::find()->all(),'usu_id','usu_id'); 
+
+    //Esta funcion trae los 3 campos de  usuario y se guarda en en la funcion SELECT
+    public function getNombreCompleto()
+    {
+        return $this->usu_nombre . ' ' .  $this->usu_paterno . ' ' . $this->usu_materno;
     }
-    public static function getMap3(){
-        return ArrayHelper::map(Usuario::find()->all(),'usu_id','usu_id'); 
+    //Se le asigna la funcion get y se llama en tarjeta para traer los nombres, SELECT
+    public static function getMap2()
+    {
+        return ArrayHelper::map(Usuario::find()->all(), 'usu_id','nombreCompleto');
     }
-    public static function map(){
-        return ArrayHelper::map(Usuario::find()->all(),'usu_id','usu_nombre');
+    public static function map()
+    {
+        return ArrayHelper::map(Usuario::find()->all(), 'usu_id', 'usu_nombre');
     }
+
+    // Traer Datos de wevimark
+    public function getUserUsername(){
+        return $this->usuFkuser->username;
+    }
+    public function getUserEmail(){
+        return $this->usuFkuser->email;
+    }
+
+
 }

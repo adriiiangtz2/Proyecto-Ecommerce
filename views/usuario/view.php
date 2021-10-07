@@ -34,6 +34,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'usu_paterno',
             'usu_materno',
             'usu_fkuser',
+            // user wevimar
+            'userUsername',
+            'userEmail',
         ],
     ]) ?>
 

@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use app\models\Usuario;
+use app\models\CatTarjeta;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "cat_tarjeta".
@@ -67,8 +70,18 @@ class CatTarjeta extends \yii\db\ActiveRecord
         return $this->hasOne(Usuario::className(), ['usu_id' => 'tar_fkusuario']);
     }
 
+    // Estas 3 funciones traen el nombre y apellido de un usuario y se guardan VISTA
     public function getUsuarioNombre(){
         return $this->tarFkusuario->usu_nombre;
     }
-   
+    public function getUsuarioPaterno(){
+        return $this->tarFkusuario->usu_paterno;
+    }
+    public function getUsuarioMaterno(){
+        return $this->tarFkusuario->usu_materno;
+    }
+    // Se hace una concatenacion de las funciones de la linea 73, se muestra en la vista VISTA
+    public function getNombreCompleto(){ 
+        return $this->usuarioNombre . ' ' . $this->usuarioPaterno . ' ' . $this->usuarioMaterno;
+    }
 }
