@@ -68,8 +68,8 @@ class CatFavoritoSearch extends CatFavorito
                 //     'default'=>SORT_ASC,
                 // ],
                 'nombreCompleto'=> [
-                    'asc'=>['usu_nombre' => SORT_ASC],
-                    'desc'=>['usu_nombre' => SORT_DESC],
+                    'asc'=>['CONCAT(usu_nombre," ",usu_paterno," ",usu_materno)' => SORT_ASC],
+                    'desc'=>['CONCAT(usu_nombre," ",usu_paterno," ",usu_materno)' => SORT_DESC],
                     'default'=>SORT_ASC,
                 ],
                 'fav_estado',
@@ -93,7 +93,7 @@ class CatFavoritoSearch extends CatFavorito
         ]);
         $query->andFilterWhere(['like', 'pro_nombre', $this->productoNombre])
         ->andFilterWhere(['like','usu_nombre', $this->usuarioNombre])
-        ->andFilterWhere(['like','usu_nombre', $this->nombreCompleto]);
+        ->andFilterWhere(['like','CONCAT(usu_nombre," ",usu_paterno," ",usu_materno)', $this->nombreCompleto]);
        
         return $dataProvider;
     }
