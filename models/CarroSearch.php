@@ -64,8 +64,8 @@ class CarroSearch extends Carro
                 'car_fecha',
                 'car_estatus',
                 'nombreCompleto' => [
-                    'asc' => ['usu_nombre' => SORT_ASC], 
-                    'desc' => ['usu_nombre' => SORT_DESC], 
+                    'asc' => ['CONCAT(usu_nombre, " ", usu_paterno, " ", usu_materno)' => SORT_ASC], 
+                    'desc' => ['CONCAT(usu_nombre, " ", usu_paterno, " ", usu_materno)' => SORT_DESC], 
                     'default' => SORT_ASC,
                 ],
                 'metodoNombre' => [
@@ -103,7 +103,7 @@ class CarroSearch extends Carro
         ]);
 
         $query->andFilterWhere(['like', 'car_estatus', $this->car_estatus])
-              ->andFilterWhere(['like', 'usu_nombre', $this->nombreCompleto])
+              ->andFilterWhere(['like', 'CONCAT(usu_nombre, " ", usu_paterno, " ", usu_materno)', $this->nombreCompleto])
               ->andFilterWhere(['like', 'met_nombre', $this->metodoNombre])
               ->andFilterWhere(['like', 'env_metodo', $this->envioMetodo]);
 
