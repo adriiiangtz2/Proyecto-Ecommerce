@@ -7,7 +7,7 @@ use app\models\CatMarca;
 use kartik\file\FileInput;
 use kartik\date\DatePicker;
 use kartik\select2\Select2;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Producto */
@@ -94,8 +94,12 @@ use yii\widgets\ActiveForm;
 
         <div class="col-md-12">
             <?= $form->field($model, 'img')->widget(FileInput::classname(), [
-                'options' => ['accept' => 'image/*'],
-                'pluginOptions' => ['allowedFileExtensions' => ['jpg', 'gif', 'png']]
+                'options'       => ['accept' => 'image/*'],
+                'pluginOptions' => [
+                    'allowedFileExtensions'  => ['jpg', 'gif', 'png'],
+                    'initialPreview'         => [$model->url],
+                    'initialPreviewAsData'   => true,
+                ],
             ]); ?>
         </div>
     </div>
