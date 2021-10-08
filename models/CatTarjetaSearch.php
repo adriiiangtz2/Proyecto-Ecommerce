@@ -65,8 +65,9 @@ class CatTarjetaSearch extends CatTarjeta
                     'default'=>SORT_ASC,
                 ],
                 'nombreCompleto'=> [
-                    'asc'=>['usu_nombre' => SORT_ASC],
-                    'desc'=>['usu_nombre' => SORT_DESC],
+                     // Concatenamos con CONCAT y ponemos los campos para buscar y el orden afecta la busqueda
+                    'asc'=>['CONCAT(usu_nombre," ",usu_paterno," ",usu_materno)' => SORT_ASC],
+                    'desc'=>['CONCAT(usu_nombre," ",usu_paterno," ",usu_materno)' => SORT_DESC],
                     'default'=>SORT_ASC,
                 ],
             ]
@@ -92,7 +93,8 @@ class CatTarjetaSearch extends CatTarjeta
             ->andFilterWhere(['like', 'tar_financiera', $this->tar_financiera])
             ->andFilterWhere(['like', 'tar_tipo', $this->tar_tipo])
             ->andFilterWhere(['like', 'usu_nombre', $this->usuarioNombre])
-            ->andFilterWhere(['like', 'usu_nombre', $this->nombreCompleto]);
+            // Concatenamos con CONCAT y ponemos los campos para buscar y el orden afecta la busqueda
+            ->andFilterWhere(['like', 'CONCAT(usu_nombre," ",usu_paterno," ",usu_materno)', $this->nombreCompleto]);
             
         return $dataProvider;
     }

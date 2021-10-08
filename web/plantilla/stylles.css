@@ -79,11 +79,12 @@ colum-2 h1 {
 .btn:hover {
   background: #563434;
 }
-.header {
+.headerr {
   background: radial-gradient(rgb(255, 255, 255), #ffddda);
 }
-.header .filas {
+.headerr .filas {
   margin-top: 70px;
+  margin-left: 103px;
 }
 /* FIN DEL HEADER */
 
