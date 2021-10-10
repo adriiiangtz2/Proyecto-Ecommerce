@@ -20,6 +20,7 @@ $botones = [
     (object)['nombre' => 'Codigo Postal', 'url' => '/cat-cp', 'img' => 'Codigo Postal'],
     (object)['nombre' => 'Municipios', 'url' => '/cat-municipios', 'img' => 'Municipios'],
     (object)['nombre' => 'Estados', 'url' => '/cat-estados', 'img' => 'Estados'],
+    (object)['nombre' => 'Imagen', 'url' => '/cat-imagen', 'img' => 'Imagen'],
 ];
 
 ?>
