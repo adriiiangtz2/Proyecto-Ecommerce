@@ -146,7 +146,7 @@ class UsuarioController extends Controller
             // var_dump($this->request->post());
             // echo('</pre>');
             // die;
-        return $this->redirect(['view', 'id' => $egresado->usu_id]);
+        return $this->redirect(['view', 'id' => $usuario->usu_id]);
         }
         // direcciona a esta vista con render
         return $this->render('registrar', compact('usuario','user'));

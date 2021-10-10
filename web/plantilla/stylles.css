@@ -9,7 +9,10 @@ body {
 }
 a {
   text-decoration: none;
-  color: #555;
+  color: rgb(71, 71, 71);
+}
+a:hover{
+  color: #000;
 }
 p {
   color: #555;
@@ -36,6 +39,9 @@ nav ul li {
   display: inline-block;
   margin-right: 20px;
   /* border: 1px solid black; */
+}
+nav ul li a:hover{
+  border-bottom:2px solid black;
 }
 .contenedor {
   max-width: 1300px;
@@ -76,14 +82,13 @@ colum-2 h1 {
   transition: background 0.5s;
   /* transition: all 300ms; */
 }
-.btn:hover {
+.btnn:hover {
   background: #563434;
 }
 .headerr {
-  background: radial-gradient(rgb(255, 255, 255), #ffddda);
+  background: radial-gradient(rgb(255, 255, 255), #f8f6f6);
 }
 .headerr .filas {
-  margin-top: 70px;
   margin-left: 103px;
 }
 /* FIN DEL HEADER */

@@ -5,35 +5,10 @@ use yii\bootstrap4\Html;
 /* @var $this yii\web\View */
 $this->title = 'E-commerce';
 ?>
-
-
  <!-- INICIO DE LA CABECERA  -->
  <div class="headerr">
         <!-- contenedor general -->
         <div class="contenedor">
-
-              <!-- contenedor logo y menu -->
-              <div class="barra">
-                  <div class="logo">
-                      <a href="index.html"><?= Html::img('plantilla/images/logo.png', ['class' => 'logo', 'style'=>'width:125px;']) ?></a> 
-                      
-                </div>
-                <nav>
-                    <!-- se le coloca una id-->
-                    <ul id="menuItems">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="productos.html">Products</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="account.html">Account</a></li>
-                    </ul>
-                </nav>
-                <a href="card.html"><?= Html::img('plantilla/images/cart.png', ['style'=>'width:30px; height:30px'])?></a> 
-                <!-- se le coloca una accion al menu un evento -->
-                <?= Html::img('plantilla/images/menu.png', ['class' => 'menu-icon','onclick'=>'menutoggle()','style'=>'width:30px; height:30px'])?>
-            </div>
-            </div>
-            <!-- termina contenedor logo y menu -->
             <div class="filas">
                 <div class="colum-2">
                     <h1>Lorem ipsuonsectetur<br> adipisicing elit.</h1>
@@ -52,11 +27,6 @@ $this->title = 'E-commerce';
         <!-- ----TERMINA EL CONTENEDOR CENTRAL ----- -->
     </div>
     <!------- FIN DE LA CABECERA ------>
-
-
-
-
-
 <!-- INICIA FEATURED CATEGORY -->
 <div class="categories">
     <div class="small-container">

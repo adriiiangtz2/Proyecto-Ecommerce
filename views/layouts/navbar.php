@@ -9,11 +9,14 @@ use webvimark\modules\UserManagement\UserManagementModule;
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
+            'class' => 'headerr navbar navbar-expand-md  fixed-top a',
         ],
     ]);
+
+
+    
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
+        'options' => ['class' => ''],
         'encodeLabels' => false,
         'items' => [
             [
@@ -26,6 +29,26 @@ use webvimark\modules\UserManagement\UserManagementModule;
                 'url'=>['/site/menu'],
                 'visible' => Yii::$app->user->isSuperAdmin
             ],
+
+            [
+                'label' => 'Principal',
+                'url'=>['/site/menu'],
+            ],
+            [
+                'label' => 'Productos',
+                'url'=>['/site/productos'],
+            ],
+            [
+                'label' => 'Contactanos',
+                'url'=>['/site/menu'],
+            ],
+            [
+                'label' => 'Carrito',
+                'url'=>['/site/menu'],
+            ],
+
+
+
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/user-management/auth/login']]
             ) : (
@@ -39,8 +62,16 @@ use webvimark\modules\UserManagement\UserManagementModule;
                 )
                 . Html::endForm()
                 . '</li>' */
-            )
+                ),
+
+
         ],
     ]);
     
+
+
+
+
+
     NavBar::end();
+?>
