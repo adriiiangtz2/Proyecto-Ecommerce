@@ -7,8 +7,8 @@ use app\models\Usuario;
 use app\models\CatEstados;
 use kartik\depdrop\DepDrop;
 use kartik\select2\Select2;
-use yii\widgets\ActiveForm;
 use app\models\CatMunicipios;
+use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Domicilio */
