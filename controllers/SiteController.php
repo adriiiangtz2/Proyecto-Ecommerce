@@ -3,12 +3,13 @@
 namespace app\controllers;
 
 use Yii;
-use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\web\Response;
-use yii\filters\VerbFilter;
+use yii\web\Controller;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use webvimark\modules\UserManagement\models\User;
 
 class SiteController extends Controller
 {
@@ -59,15 +60,34 @@ class SiteController extends Controller
      *
      * @return string
      */
+
+     //funcion para asignar vista de usuario y superadmin
     public function actionIndex()
     {
-        return $this->render('index');
+
+        $vista = 'index';
+        // echo('<pre>');
+        // var_dump($vista );
+        // echo('</pre>');
+        // die;
+        if (User::hasRole('Admin')) {
+            $vista = 'superadmin/index';
+            return $this->render($vista);
+        }
+        else if(User::hasRole('Usuario')){
+            $vista = 'usuario/index';
+            return $this->render($vista);
+        }
+        return $this->render($vista);
     }
+
+
 
     public function actionMenu()
     {
         return $this->render('botonera');
     }
+
 
     /**
      * Login action.

@@ -30,27 +30,27 @@ use webvimark\modules\UserManagement\UserManagementModule;
                 'visible' => Yii::$app->user->isSuperAdmin
             ],
 
-            [
-                'label' => 'Principal',
-                'url'=>['/site/menu'],
-            ],
-            [
-                'label' => 'Productos',
-                'url'=>['/site/productos'],
-            ],
-            [
-                'label' => 'Contactanos',
-                'url'=>['/site/menu'],
-            ],
-            [
-                'label' => 'Carrito',
-                'url'=>['/site/menu'],
-            ],
+            // [
+            //     'label' => 'Principal',
+            //     'url'=>['/site/menu'],
+            // ],
+            // [
+            //     'label' => 'Productos',
+            //     'url'=>['/site/productos'],
+            // ],
+            // [
+            //     'label' => 'Contactanos',
+            //     'url'=>['/site/menu'],
+            // ],
+            // [
+            //     'label' => 'Carrito',
+            //     'url'=>['/site/menu'],
+            // ],
 
 
 
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/user-management/auth/login']]
+                ['label' => 'Iniciar Sesion', 'url' => ['/user-management/auth/login']]
             ) : (
 
                 ['label' => 'Logout', 'url' => ['/user-management/auth/logout']]

@@ -32,7 +32,7 @@ AppAsset::register($this);
 <?php $this->beginBody(); ?>
 
 <header>
-    <?= $this->render('navbar') ?>
+
 </header>
 
 <main role="main" class="flex-shrink-0">
@@ -49,7 +49,7 @@ AppAsset::register($this);
 
 
 <footer class="footer mt-auto py-3 text-muted">
-    <?= $this->render('footer') ?>
+    
 </footer>
 
 <?php $this->endBody(); ?>
