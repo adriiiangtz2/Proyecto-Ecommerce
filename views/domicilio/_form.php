@@ -19,7 +19,7 @@ use yii\bootstrap4\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <div class="row">
+    <div class="row offer">
 
     <div class="col-md-3">
         <?= $form->field($model, 'dom_ciudad')->textarea(['rows' => 6]) ?>
@@ -73,8 +73,10 @@ use yii\bootstrap4\ActiveForm;
     ]
 ]);*/?>
     <?php /*$form->field($model, 'dom_fkusuario')->textInput()*/ ?>
+    <div class="row justify-content-center">
     <div class="form-group">
-        <?= Html::submitButton('guardar', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('guardar', ['class' => 'btnn']) ?>
+    </div>
     </div>
     <?php ActiveForm::end(); ?>
 
