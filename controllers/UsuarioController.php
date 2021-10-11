@@ -142,11 +142,11 @@ class UsuarioController extends Controller
         //me hacen falta llenar datos en tabla  usuario la id de user
         $usuario->usu_fkuser = $user->id;   
         $usuario->save();
-            echo('<pre>');
-            var_dump($this->request->post());
-            echo('</pre>');
-            die;
-        return $this->redirect(['view', 'id' => $egresado->usu_id]);
+            // echo('<pre>');
+            // var_dump($this->request->post());
+            // echo('</pre>');
+            // die;
+        return $this->redirect(['view', 'id' => $usuario->usu_id]);
         }
         // direcciona a esta vista con render
         return $this->render('registrar', compact('usuario','user'));

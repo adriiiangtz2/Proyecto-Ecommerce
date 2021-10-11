@@ -32,6 +32,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'fav_id',
             'fav_fkproducto',
             'fav_fkusuario',
+            'fav_estado',
+            // Nombre de get function de favorito
+            'nombreCompleto',
+            
         ],
     ]) ?>
 

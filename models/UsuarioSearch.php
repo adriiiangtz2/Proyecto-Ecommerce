@@ -11,6 +11,9 @@ use app\models\Usuario;
  */
 class UsuarioSearch extends Usuario
 {
+
+    public $userUsername;
+    public $userEmail;
     /**
      * {@inheritdoc}
      */
@@ -18,7 +21,7 @@ class UsuarioSearch extends Usuario
     {
         return [
             [['usu_id', 'usu_fkuser'], 'integer'],
-            [['usu_nombre', 'usu_paterno', 'usu_materno'], 'safe'],
+            [['usu_nombre', 'usu_paterno', 'usu_materno','userUsername','userEmail',], 'safe'],
         ];
     }
 
@@ -44,10 +47,32 @@ class UsuarioSearch extends Usuario
 
         // add conditions that should always apply here
 
+        $query->joinWith('usuFkuser');
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
+
+        $dataProvider->setSort([
+            'attributes' => [
+                'usu_id',
+                'usu_nombre',
+                'usu_paterno',
+                'usu_materno',
+                'usu_fkuser',
+                'userUsername'=> [
+                    'asc'=>['username' => SORT_ASC],
+                    'desc'=>['username' => SORT_DESC],
+                    'default'=>SORT_ASC,
+                ],
+                'userEmail'=> [
+                    'asc'=>['email' => SORT_ASC],
+                    'desc'=>['email' => SORT_DESC],
+                    'default'=>SORT_ASC,
+                ],
+            ]
+        ]);
         $this->load($params);
 
         if (!$this->validate()) {
@@ -64,7 +89,9 @@ class UsuarioSearch extends Usuario
 
         $query->andFilterWhere(['like', 'usu_nombre', $this->usu_nombre])
             ->andFilterWhere(['like', 'usu_paterno', $this->usu_paterno])
-            ->andFilterWhere(['like', 'usu_materno', $this->usu_materno]);
+            ->andFilterWhere(['like', 'usu_materno', $this->usu_materno])
+            ->andFilterWhere(['like', 'username', $this->userUsername])
+            ->andFilterWhere(['like', 'email', $this->userEmail]);
 
         return $dataProvider;
     }

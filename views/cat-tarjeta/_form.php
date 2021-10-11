@@ -1,9 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 use app\models\Usuario;
+use app\models\CatTarjeta;
 use kartik\select2\Select2;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\CatTarjeta */
@@ -30,7 +31,7 @@ use kartik\select2\Select2;
     <?php /* $form->field($model, 'tar_fkusuario')->textInput() */ ?>
     <div class="col-md-4">
   <?= $form->field($model, 'tar_fkusuario')->widget(Select2::classname(), [
-    'data' => Usuario::getMap3(),
+    'data' =>Usuario::getMap2(),
     'language' => 'es',
     'options' => ['placeholder' => 'Selecciona el Usuario'],
     'pluginOptions' => [

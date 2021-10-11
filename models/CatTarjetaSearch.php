@@ -12,6 +12,7 @@ use app\models\CatTarjeta;
 class CatTarjetaSearch extends CatTarjeta
 {
     public $usuarioNombre;
+    public $nombreCompleto;
     /**
      * {@inheritdoc}
      */
@@ -19,7 +20,7 @@ class CatTarjetaSearch extends CatTarjeta
     {
         return [
             [['tar_id', 'tar_fkusuario'], 'integer'],
-            [['tar_numtarjeta', 'tar_expiracion', 'tar_financiera', 'tar_tipo','usuarioNombre'], 'safe'],
+            [['tar_numtarjeta', 'tar_expiracion', 'tar_financiera', 'tar_tipo','usuarioNombre','nombreCompleto',], 'safe'],
         ];
     }
 
@@ -63,6 +64,12 @@ class CatTarjetaSearch extends CatTarjeta
                     'desc'=>['usu_nombre' => SORT_DESC],
                     'default'=>SORT_ASC,
                 ],
+                'nombreCompleto'=> [
+                     // Concatenamos con CONCAT y ponemos los campos para buscar y el orden afecta la busqueda
+                    'asc'=>['CONCAT(usu_nombre," ",usu_paterno," ",usu_materno)' => SORT_ASC],
+                    'desc'=>['CONCAT(usu_nombre," ",usu_paterno," ",usu_materno)' => SORT_DESC],
+                    'default'=>SORT_ASC,
+                ],
             ]
         ]);
         
@@ -85,7 +92,9 @@ class CatTarjetaSearch extends CatTarjeta
             ->andFilterWhere(['like', 'tar_expiracion', $this->tar_expiracion])
             ->andFilterWhere(['like', 'tar_financiera', $this->tar_financiera])
             ->andFilterWhere(['like', 'tar_tipo', $this->tar_tipo])
-            ->andFilterWhere(['like', 'usu_nombre', $this->usuarioNombre]);
+            ->andFilterWhere(['like', 'usu_nombre', $this->usuarioNombre])
+            // Concatenamos con CONCAT y ponemos los campos para buscar y el orden afecta la busqueda
+            ->andFilterWhere(['like', 'CONCAT(usu_nombre," ",usu_paterno," ",usu_materno)', $this->nombreCompleto]);
             
         return $dataProvider;
     }

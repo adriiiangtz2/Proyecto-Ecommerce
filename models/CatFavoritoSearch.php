@@ -14,6 +14,7 @@ class CatFavoritoSearch extends CatFavorito
 {
     public $productoNombre;
     public $usuarioNombre;
+    public $nombreCompleto;
     /**
      * {@inheritdoc}
      */
@@ -21,7 +22,7 @@ class CatFavoritoSearch extends CatFavorito
     {
         return [
             [['fav_id', 'fav_fkproducto', 'fav_fkusuario'], 'integer'],
-            [['productoNombre','usuarioNombre'], 'safe'],
+            [['productoNombre','usuarioNombre','nombreCompleto'], 'safe'],
         ];
     }
 
@@ -46,8 +47,7 @@ class CatFavoritoSearch extends CatFavorito
         $query = CatFavorito::find();
 
         // add conditions that should always apply here
-        $query->joinWith('favFkproducto');
-        $query->joinWith('favFkusuario');
+        $query->joinWith(['favFkproducto','favFkusuario']);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -62,11 +62,17 @@ class CatFavoritoSearch extends CatFavorito
                     'desc'=>['pro_nombre' => SORT_DESC],
                     'default'=>SORT_ASC,
                 ],
-                'usuarioNombre'=> [
-                    'asc'=>['usu_nombre' => SORT_ASC],
-                    'desc'=>['usu_nombre' => SORT_DESC],
+                // 'usuarioNombre'=> [
+                //     'asc'=>['usu_nombre' => SORT_ASC],
+                //     'desc'=>['usu_nombre' => SORT_DESC],
+                //     'default'=>SORT_ASC,
+                // ],
+                'nombreCompleto'=> [
+                    'asc'=>['CONCAT(usu_nombre," ",usu_paterno," ",usu_materno)' => SORT_ASC],
+                    'desc'=>['CONCAT(usu_nombre," ",usu_paterno," ",usu_materno)' => SORT_DESC],
                     'default'=>SORT_ASC,
                 ],
+                'fav_estado',
             ]
         ]);
 
@@ -83,9 +89,11 @@ class CatFavoritoSearch extends CatFavorito
             'fav_id' => $this->fav_id,
             'fav_fkproducto' => $this->fav_fkproducto,
             'fav_fkusuario' => $this->fav_fkusuario,
+            'fav_estado' => $this->fav_estado,
         ]);
         $query->andFilterWhere(['like', 'pro_nombre', $this->productoNombre])
-        ->andFilterWhere(['like','usu_nombre', $this->usuarioNombre]);
+        ->andFilterWhere(['like','usu_nombre', $this->usuarioNombre])
+        ->andFilterWhere(['like','CONCAT(usu_nombre," ",usu_paterno," ",usu_materno)', $this->nombreCompleto]);
        
         return $dataProvider;
     }

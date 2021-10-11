@@ -2,6 +2,7 @@
 
 use yii\bootstrap4\Html;
 
+
 $botones = [
     (object)['nombre' => 'Usuario', 'url' => '/usuario', 'img' => 'Usuario'],
     (object)['nombre' => 'Tarjetas', 'url' => '/cat-tarjeta', 'img' => 'Tarjetas'],
@@ -20,8 +21,13 @@ $botones = [
     (object)['nombre' => 'Codigo Postal', 'url' => '/cat-cp', 'img' => 'Codigo Postal'],
     (object)['nombre' => 'Municipios', 'url' => '/cat-municipios', 'img' => 'Municipios'],
     (object)['nombre' => 'Estados', 'url' => '/cat-estados', 'img' => 'Estados'],
+    (object)['nombre' => 'Imagen', 'url' => '/cat-imagen', 'img' => 'Imagen'],
 ];
 
+?>
+
+<?= 
+$this->render('/layouts/superadmin/navbar');
 ?>
 <div class="site-index">
     <div class="body-content">

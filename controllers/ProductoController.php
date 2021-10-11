@@ -68,11 +68,7 @@ class ProductoController extends Controller
                 $image = UploadedFile::getInstance($model, 'img');
                 if (!is_null($image)) {
                     $ext = end((explode(".", $image->name)));
-                    // generate a unique file name to prevent duplicate filenames
                     $model->pro_imagen = $model->pro_fktienda.'_'. Yii::$app->security->generateRandomString() . ".{$ext}";
-                    // the path to save file, you can set an uploadPath
-                    // in Yii::$app->params (as used in example below)                       
-                    //Yii::$app->params['uploadPath'] = Yii::$app->basePath . '/web/uploads/status/';
                     $path = Yii::$app->basePath.'/web/img/producto/' . $model->pro_imagen;
                     if($image->saveAs($path) && $model->save()){
                         return $this->redirect(['view', 'id' => $model->pro_id]);
@@ -99,10 +95,16 @@ class ProductoController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->pro_id]);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $image = UploadedFile::getInstance($model, 'img');
+            if (!is_null($image)){
+                $path = Yii::$app->basePath . '/web/img/producto/' . $model->pro_imagen;
+                $image->saveAs($path);
+            }
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->pro_id]);
+            }
         }
-
         return $this->render('update', [
             'model' => $model,
         ]);

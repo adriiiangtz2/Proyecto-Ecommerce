@@ -4,20 +4,20 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Usuario */
+/* @var $model app\models\CatImagen */
 
-$this->title = $model->usu_id;
-$this->params['breadcrumbs'][] = ['label' => 'Usuarios', 'url' => ['index']];
+$this->title = $model->ima_id;
+$this->params['breadcrumbs'][] = ['label' => 'Cat Imagens', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="usuario-view">
+<div class="cat-imagen-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Editar', ['update', 'id' => $model->usu_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Eliminar', ['delete', 'id' => $model->usu_id], [
+        <?= Html::a('Update', ['update', 'ima_id' => $model->ima_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'ima_id' => $model->ima_id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -29,14 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'usu_id',
-            'usu_nombre',
-            'usu_paterno',
-            'usu_materno',
-            'usu_fkuser',
-            // user wevimar
-            'userUsername',
-            'userEmail',
+            'ima_id',
+            'ima_url:url',
+            'ima_fkproducto',
         ],
     ]) ?>
 

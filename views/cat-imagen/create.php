@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\CarritoDetalle */
+/* @var $model app\models\CatImagen */
 
-$this->title = 'Añadir detalle del carrito';
-$this->params['breadcrumbs'][] = ['label' => 'Detalles del carrito', 'url' => ['index']];
+$this->title = 'Create Cat Imagen';
+$this->params['breadcrumbs'][] = ['label' => 'Cat Imagens', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="carrito-detalle-create">
+<div class="cat-imagen-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
