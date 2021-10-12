@@ -77,6 +77,18 @@ class CatFavorito extends \yii\db\ActiveRecord
     public function getProductoNombre(){
         return $this->favFkproducto->pro_nombre;
     }
+    public function getProductoImagen(){
+        return $this->favFkproducto->pro_imagen;
+    }
+    public function getFavoritoSeleccion(){ 
+        return "{$this->productoNombre} {$this->productoImagen}";
+    }
+
+    // public static function favorito(){
+
+    // }
+
+
 
     // Estas 3 funciones traen el nombre y apellido de un usuario y se guardan VISTA
     // Esta funcion guarda el nombre de la tabla USUARIO y se muestra en el form FAVORITOS
@@ -93,4 +105,5 @@ class CatFavorito extends \yii\db\ActiveRecord
     public function getNombreCompleto(){ 
         return $this->usuarioNombre . ' ' . $this->usuarioPaterno . ' ' . $this->usuarioMaterno;
     }
+
 }
