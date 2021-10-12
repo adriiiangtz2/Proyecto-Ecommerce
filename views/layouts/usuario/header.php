@@ -18,6 +18,7 @@ use yii\bootstrap4\Html;
                     <!-- se le coloca una id-->
                     <ul id="menuItems">
                         <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html">Favoritos</a></li>
                         <li><a href="/layouts/usuario/productos">Products</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>

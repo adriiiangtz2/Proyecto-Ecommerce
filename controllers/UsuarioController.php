@@ -137,7 +137,7 @@ class UsuarioController extends Controller
         if ($this->request->isPost && $usuario->load($this->request->post()) && $user->load($this->request->post())) {
 
         //copia codigo de wevimark/migrations/insert
-		$user->status = User::STATUS_ACTIVE;;
+		$user->status = User::STATUS_ACTIVE;
 		$user->save(false);
         //me hacen falta llenar datos en tabla  usuario la id de user
         $usuario->usu_fkuser = $user->id;   

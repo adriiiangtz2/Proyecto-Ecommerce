@@ -9,6 +9,7 @@ use app\models\CatFavoritoSearch;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
+use yii\data\Pagination;
 
 
 /**
@@ -134,4 +135,19 @@ class CatFavoritoController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+
+    //mostrar productos favoritos
+    public function actionFavorito(){
+
+        $model=Producto::find();
+
+        // $paginacion= new Pagination([
+        //     'defaultPageSize'=>1,
+        //     'totalCount'=>$model->count(),
+        // ]);
+        $favorito=$model->all();
+
+       return $this->render('registrarFav',['favorito'=>$favorito]);
+   }
 }
