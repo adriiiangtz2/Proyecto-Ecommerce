@@ -164,6 +164,6 @@ class Producto extends \yii\db\ActiveRecord
 
     public function getImagen()
     {
-        return Html::img("/img/".(empty($this->pro_imagen) ? 'Productos.jpg' : "producto/{$this->pro_imagen}"));
+        return Html::img("/img/".(empty($this->pro_imagen) ? 'Productos.jpg' : "producto/{$this->pro_imagen}"), ['width' => '120' , 'height' => '120']);
     }
 }

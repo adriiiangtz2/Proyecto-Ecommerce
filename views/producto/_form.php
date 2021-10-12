@@ -7,7 +7,7 @@ use app\models\CatMarca;
 use kartik\file\FileInput;
 use kartik\date\DatePicker;
 use kartik\select2\Select2;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Producto */
