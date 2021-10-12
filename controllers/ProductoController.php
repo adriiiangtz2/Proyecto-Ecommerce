@@ -8,6 +8,7 @@ use app\models\Producto;
 use yii\web\UploadedFile;
 use app\models\ProductoSearch;
 use yii\web\NotFoundHttpException;
+use yii\data\Pagination;
 
 /**
  * ProductoController implements the CRUD actions for Producto model.
