@@ -105,5 +105,5 @@ class CatFavorito extends \yii\db\ActiveRecord
     public function getNombreCompleto(){ 
         return $this->usuarioNombre . ' ' . $this->usuarioPaterno . ' ' . $this->usuarioMaterno;
     }
-
+   
 }
