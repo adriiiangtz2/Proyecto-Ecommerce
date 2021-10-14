@@ -6,7 +6,7 @@ use app\models\Usuario;
 use app\models\Domicilio;
 use kartik\date\DatePicker;
 use kartik\select2\Select2;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 use app\models\CatMetodopago;
 
 /* @var $this yii\web\View */
