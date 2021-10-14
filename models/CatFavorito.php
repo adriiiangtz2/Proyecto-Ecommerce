@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\Usuario;
 /* hola */
 /**
  * This is the model class for table "cat_favorito".
@@ -104,6 +105,23 @@ class CatFavorito extends \yii\db\ActiveRecord
     // Se hace una concatenacion de las funciones de la linea 73, se muestra en la vista VISTA
     public function getNombreCompleto(){ 
         return $this->usuarioNombre . ' ' . $this->usuarioPaterno . ' ' . $this->usuarioMaterno;
+    }
+
+    //funcion que trae el usuario qu inicia sesion 
+    //esta funcion se manda al controlador
+    public static function usuario() { 
+        return CatFavorito::find()->joinWith(['favFkusuario'])->where(['usu_fkuser'=>2])->one();
+    }
+    
+    // funcion que trae todo la fila de productos dependiendo del id de usuario
+    //esta funcion se manda al controlador
+    public static function favorito(){
+        // $id=usuario();
+    //    $usuario= $id->fav_fkusuario;
+        // return $file=Producto::find()->leftJoin('cat_favorito','fav_fkproducto = pro_id AND fav_fkusuario='.$usuario)
+        return $file=Producto::find()->leftJoin('cat_favorito','fav_fkproducto = pro_id AND fav_fkusuario= 1')
+                            //   ->where('fav_fkusuario ='.$usuario)->all();
+                              ->where('fav_fkusuario = 1')->all();
     }
    
 }
