@@ -33,24 +33,30 @@ $this->title = 'E-commerce';
 </head>
 
 <body>
-<h1>Vista a usuario cuando inicia Sesion</h1>
-<?= 
-$this->render('/layouts/usuario/header');
-?>
+<!-- VISTA CUANDO EL USUARIO SE HA REGISTRADO -->
+<?= $this->render('/layouts/usuario/header') ?>
+<?= $this->render('/layouts/usuario/informacion') ?>
+
   <!-- INICIA FEATURED CATEGORY -->
 <div class="categories">
     <div class="small-container">
         <div class="filas">
             <div class="colum-3">
-                <?= Html::img('plantilla/images/category-1.jpg', ['class' => 'logo']) ?>
+                <?= Html::img('plantilla/images/category-1.jpg', [
+                    'class' => 'logo',
+                ]) ?>
 
             </div>
             <div class="colum-3">
-                <?= Html::img('plantilla/images/category-2.jpg', ['class' => 'logo']) ?>
+                <?= Html::img('plantilla/images/category-2.jpg', [
+                    'class' => 'logo',
+                ]) ?>
 
             </div>
             <div class="colum-3">
-                <?= Html::img('plantilla/images/category-3.jpg', ['class' => 'logo']) ?>
+                <?= Html::img('plantilla/images/category-3.jpg', [
+                    'class' => 'logo',
+                ]) ?>
 
             </div>
         </div>
@@ -63,7 +69,10 @@ $this->render('/layouts/usuario/header');
     <h2 class="title">Featured Productos</h2>
     <div class="filas">
         <div class="colum-4">
-            <a href="product-datails.html"> <?= Html::img('plantilla/images/product-1.jpg', ['class' => 'logo']) ?></a>
+            <a href="product-datails.html"> <?= Html::img(
+                'plantilla/images/product-1.jpg',
+                ['class' => 'logo']
+            ) ?></a>
             <h4>red Printed T-shirt</h4>
             <div class="rating">
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -80,7 +89,9 @@ $this->render('/layouts/usuario/header');
 
         </div>
         <div class="colum-4">
-            <?= Html::img('plantilla/images/product-2.jpg', ['class' => 'logo']) ?>
+            <?= Html::img('plantilla/images/product-2.jpg', [
+                'class' => 'logo',
+            ]) ?>
             <h4>red Printed T-shirt</h4>
             <div class="rating">
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -97,7 +108,9 @@ $this->render('/layouts/usuario/header');
 
         </div>
         <div class="colum-4">
-            <?= Html::img('plantilla/images/product-3.jpg', ['class' => 'logo']) ?>
+            <?= Html::img('plantilla/images/product-3.jpg', [
+                'class' => 'logo',
+            ]) ?>
             <h4>red Printed T-shirt</h4>
             <div class="rating">
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -114,7 +127,9 @@ $this->render('/layouts/usuario/header');
 
         </div>
         <div class="colum-4">
-            <?= Html::img('plantilla/images/product-4.jpg', ['class' => 'logo']) ?>
+            <?= Html::img('plantilla/images/product-4.jpg', [
+                'class' => 'logo',
+            ]) ?>
             <h4>red Printed T-shirt</h4>
             <div class="rating">
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -140,7 +155,10 @@ $this->render('/layouts/usuario/header');
         <div class="small-container">
             <div class="filas">
                 <div class="colum-2">
-                    <?= Html::img('plantilla/images/exclusive.png', ['class' => 'logo', 'style' => 'width:600px;']) ?>
+                    <?= Html::img('plantilla/images/exclusive.png', [
+                        'class' => 'logo',
+                        'style' => 'width:600px;',
+                    ]) ?>
                 </div>
                 <div class="colum-2">
                     <p>Exclusivo y valioso</p>
@@ -172,7 +190,9 @@ $this->render('/layouts/usuario/header');
                         <i class="fa fa-star" aria-hidden="true"></i>
                         <i class="fa fa-star"></i>
                     </div>
-                    <?= Html::img('plantilla/images/user-1.png', ['class' => 'logo']) ?>
+                    <?= Html::img('plantilla/images/user-1.png', [
+                        'class' => 'logo',
+                    ]) ?>
                     <h3>sean paker</h3>
                 </div>
 
@@ -190,7 +210,9 @@ $this->render('/layouts/usuario/header');
                         <i class="fa fa-star" aria-hidden="true"></i>
                         <i class="fa fa-star"></i>
                     </div>
-                    <?= Html::img('plantilla/images/user-2.png', ['class' => 'logo']) ?>
+                    <?= Html::img('plantilla/images/user-2.png', [
+                        'class' => 'logo',
+                    ]) ?>
                     <h3>sean paker</h3>
                 </div>
 
@@ -208,7 +230,9 @@ $this->render('/layouts/usuario/header');
                         <i class="fa fa-star" aria-hidden="true"></i>
                         <i class="fa fa-star"></i>
                     </div>
-                    <?= Html::img('plantilla/images/user-3.png', ['class' => 'logo']) ?>
+                    <?= Html::img('plantilla/images/user-3.png', [
+                        'class' => 'logo',
+                    ]) ?>
                     <h3>sean paker</h3>
                 </div>
 
@@ -223,19 +247,29 @@ $this->render('/layouts/usuario/header');
         <div class="small-container">
             <div class="filas">
                 <div class="colum-5">
-                    <?= Html::img('plantilla/images/logo-godrej.png', ['class' => 'logo']) ?>
+                    <?= Html::img('plantilla/images/logo-godrej.png', [
+                        'class' => 'logo',
+                    ]) ?>
                 </div>
                 <div class="colum-5">
-                    <?= Html::img('plantilla/images/logo-coca-cola.png', ['class' => 'logo']) ?>
+                    <?= Html::img('plantilla/images/logo-coca-cola.png', [
+                        'class' => 'logo',
+                    ]) ?>
                 </div>
                 <div class="colum-5">
-                    <?= Html::img('plantilla/images/logo-oppo.png', ['class' => 'logo']) ?>
+                    <?= Html::img('plantilla/images/logo-oppo.png', [
+                        'class' => 'logo',
+                    ]) ?>
                 </div>
                 <div class="colum-5">
-                    <?= Html::img('plantilla/images/logo-paypal.png', ['class' => 'logo']) ?>
+                    <?= Html::img('plantilla/images/logo-paypal.png', [
+                        'class' => 'logo',
+                    ]) ?>
                 </div>
                 <div class="colum-5">
-                    <?= Html::img('plantilla/images/logo-philips.png', ['class' => 'logo']) ?>
+                    <?= Html::img('plantilla/images/logo-philips.png', [
+                        'class' => 'logo',
+                    ]) ?>
                 </div>
 
 
@@ -243,7 +277,5 @@ $this->render('/layouts/usuario/header');
         </div>
     </div> 
 
-<?= 
-$this->render('/layouts/footer');
-?>
+<?= $this->render('/layouts/footer') ?>
  
