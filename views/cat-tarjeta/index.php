@@ -10,6 +10,9 @@ use yii\grid\GridView;
 $this->title = 'Registro de  Tarjetas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?= 
+$this->render('/layouts/superadmin/navbar');
+?>
 <div class="cat-tarjeta-index">
 
     <h1><?= Html::encode($this->title) ?></h1>

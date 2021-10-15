@@ -1,10 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-use app\models\Producto;
 use app\models\Usuario;
+use app\models\Producto;
 use kartik\select2\Select2;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\CatFavorito */
