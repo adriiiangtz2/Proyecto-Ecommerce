@@ -157,4 +157,9 @@ class CatFavoritoController extends Controller
 //se manda  ala vista 
        return $this->render('registrarFav',compact('fav','usu'));
    }
+
+   public function actionBoton()
+    {
+        return $this->render('btn-fav');
+    }
 }

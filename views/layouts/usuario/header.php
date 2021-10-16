@@ -18,7 +18,7 @@
                     <ul id="menuItems">
                         <li><a href="/site/principal">Home</a></li>
                         <li><a href="/cat-favorito/favorito">Favoritos</a></li>
-                        <li><a href="/layouts/usuario/productos">Products</a></li>
+                        <li><a href="/producto/productos">Products</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="account.html">Account</a></li>

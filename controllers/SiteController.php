@@ -92,6 +92,10 @@ class SiteController extends Controller
     {
         return $this->render('favorito');
     }
+    public function actionProductos()
+    {
+        return $this->render('producto');
+    }
 
     //Redirecciona el home , pero no muestra la imagen
 
