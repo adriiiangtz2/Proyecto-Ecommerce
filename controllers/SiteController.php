@@ -88,6 +88,21 @@ class SiteController extends Controller
         return $this->render('botonera');
     }
 
+    public function actionFavorito()
+    {
+        return $this->render('favorito');
+    }
+    public function actionProductos()
+    {
+        return $this->render('producto');
+    }
+
+    //Redirecciona el home , pero no muestra la imagen
+
+    public function actionPrincipal()
+    {
+        return $this->render('/site/usuario/index');
+    }
 
     /**
      * Login action.

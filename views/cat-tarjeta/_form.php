@@ -4,7 +4,8 @@ use yii\helpers\Html;
 use app\models\Usuario;
 use app\models\CatTarjeta;
 use kartik\select2\Select2;
-use yii\widgets\ActiveForm;
+use kartik\widgets\DatePicker;
+use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\CatTarjeta */
@@ -19,8 +20,19 @@ use yii\widgets\ActiveForm;
     <div class="col-md-4">
     <?= $form->field($model, 'tar_numtarjeta')->textInput(['maxlength' => true]) ?>
     </div>
+
     <div class="col-md-4">
-    <?= $form->field($model, 'tar_expiracion')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'tar_expiracion')->widget(
+                DatePicker::className(),
+                [
+                    'type' => DatePicker::TYPE_INPUT,
+                    'value' => date('Y-m'),
+                    'pluginOptions' => [
+                        'autoclose' => true,
+                        'format' => 'yy/mm'
+                    ]
+                ]
+            );  ?>
     </div>  
     <div class="col-md-4">
     <?= $form->field($model, 'tar_financiera')->dropDownList([ 'Mastercard' => 'Mastercard', 'Visa' => 'Visa', 'American Express' => 'American Express', ], ['prompt' => '']) ?>

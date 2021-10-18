@@ -150,6 +150,11 @@ class Usuario extends \yii\db\ActiveRecord
     public function getUserEmail(){
         return $this->usuFkuser->email;
     }
+    public  static function usuario(){
+        return Usuario::find()->where(['usu_fkuser' => Yii::$app->user->id])->one();
+    }
+
+
 
 
 }

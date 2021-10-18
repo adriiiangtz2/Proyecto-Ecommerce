@@ -151,4 +151,6 @@ class UsuarioController extends Controller
         // direcciona a esta vista con render
         return $this->render('registrar', compact('usuario','user'));
     }
+
+
 }

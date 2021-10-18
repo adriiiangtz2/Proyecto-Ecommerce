@@ -140,14 +140,26 @@ class CatFavoritoController extends Controller
     //mostrar productos favoritos
     public function actionFavorito(){
 
-        $model=Producto::find();
+        // $model=Producto::find();
+           
+        // // $paginacion= new Pagination([
+        // //     'defaultPageSize'=>1,
+        // //     'totalCount'=>$model->count(),
+        // // ]);
+        // $favorito=$model->all();
+        
+        // //funcion que se trae del modelo
+        // $fav=CatFavorito::favorito();
+        // //funcion que se trae del modelo
+        // $usu=CatFavorito::usuario();
+        
 
-        // $paginacion= new Pagination([
-        //     'defaultPageSize'=>1,
-        //     'totalCount'=>$model->count(),
-        // ]);
-        $favorito=$model->all();
-
-       return $this->render('registrarFav',['favorito'=>$favorito]);
+//se manda  ala vista 
+       return $this->render('registrarFav',compact('fav','usu'));
    }
+
+   public function actionBoton()
+    {
+        return $this->render('btn-fav');
+    }
 }

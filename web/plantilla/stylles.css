@@ -562,3 +562,12 @@ form a{
   transform: translateX(100px);
   transition: all 1s;
 }
+
+
+/* favorito */
+.botonfavorito{
+  background-color: transparent;
+  border:none;
+  font-size: 25px;
+  color: #000;
+}

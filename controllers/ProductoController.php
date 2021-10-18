@@ -132,6 +132,17 @@ class ProductoController extends Controller
      * @return Producto the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
+
+    public function actionProductos(){
+
+        $model= Producto::find();
+
+        $producto = $model->all();
+        
+        return $this->render('productoVis',['producto' => $producto]);
+
+    }
+
     protected function findModel($id)
     {
         if (($model = Producto::findOne($id)) !== null) {
