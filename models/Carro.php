@@ -57,17 +57,17 @@ class Carro extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'car_id' => 'Id',
-            'car_iva' => 'IVA',
-            'car_fecha' => 'Fecha',
-            'car_estatus' => 'Estatus',
-            'car_fkusuario' => 'Usuario',
-            'car_fkmetodo' => 'Método de pago',
+            'car_id'          => 'Id',
+            'car_iva'         => 'IVA',
+            'car_fecha'       => 'Fecha',
+            'car_estatus'     => 'Estatus',
+            'car_fkusuario'   => 'Usuario',
+            'car_fkmetodo'    => 'Método de pago',
             'car_fkdomicilio' => 'Domicilio',
-            'car_fkenvio' => 'Envío',
-            'usuarioNombre' => 'Usuario',
-            'metodoNombre' => 'Método de pago',
-            'envioMetodo' => 'Método de envío',
+            'car_fkenvio'     => 'Envío',
+            'usuarioNombre'   => 'Usuario',
+            'metodoNombre'    => 'Método de pago',
+            'envioMetodo'     => 'Método de envío',
         ];
     }
 
