@@ -5,47 +5,39 @@ use yii\helpers\Html;
 
 ?>
  <!-- INICIO DE LA CABECERA  -->
- <div class="header">
+<div class="header">
         <!-- contenedor general -->
-        <div class="contenedor" style="margin-top:55px;">
+        <div class="contenedor">
 
-              <!-- contenedor logo y menu -->
-              <div class="barra">
-                  <div class="logo">
-                      <a href="index.html"><?= Html::img('plantilla/images/logo.png', ['class' => 'logo', 'style'=>'width:125px;']) ?></a> 
-                      
+            <!-- contenedor logo y menu -->
+            <div class="barra">
+                <div class="logo">
+                   <a href="index.html"><?= Html::img(
+                       '/plantilla/images/logo.png',
+                       ['class' => 'logo', 'style' => 'width:125px;']
+                   ) ?></a> 
                 </div>
                 <nav>
                     <!-- se le coloca una id-->
                     <ul id="menuItems">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="productos.html">Products</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="/site/principal">Home</a></li>
+                        <li><a href="/cat-favorito/favorito">Favoritos</a></li>
+                        <li><a href="/producto/productos">Products</a></li>
+                        <li><a href="/cat-favorito/boton">About</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="account.html">Account</a></li>
+                        <li><a href="/user-management/auth/logout">cerrar Sesion</a></li>
                     </ul>
                 </nav>
-                <a href="card.html"><?= Html::img('plantilla/images/cart.png', ['style'=>'width:30px; height:30px'])?></a> 
+               <a href="card.html"><?= Html::img('/plantilla/images/cart.png', [
+                   'class' => 'logo',
+                   'style' => 'width:30px; height:30px',
+               ]) ?>
+               </a> 
                 <!-- se le coloca una accion al menu un evento -->
-                <?= Html::img('plantilla/images/menu.png', ['class' => 'menu-icon','onclick'=>'menutoggle()','style'=>'width:30px; height:30px'])?>
-            </div>
+                <img src="images/menu.png" width="30px" height="30px" class="menu-icon" onclick="menutoggle()">
             </div>
             <!-- termina contenedor logo y menu -->
-            <div class="filas">
-                <div class="colum-2">
-                    <h1>Lorem ipsuonsectetur<br> adipisicing elit.</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis saepe numquam molestias ipsa
-                        quis, recusandae totam doloremque</p>
-                    <!-- &#187 flecha -->
-                    <a href="#" class="btnn">Explore now &#187</a>
-                </div>
-                <div class="colum-2">
-                <?= Html::img('plantilla/images/image1.png', ['class' => 'logo', 'style'=>'width:500px;']) ?>
-                </div>
-
-            </div>
 
         </div>
         <!-- ----TERMINA EL CONTENEDOR CENTRAL ----- -->
-    </div>
-    <!------- FIN DE LA CABECERA ------>

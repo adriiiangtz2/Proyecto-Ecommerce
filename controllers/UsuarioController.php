@@ -16,6 +16,9 @@ use webvimark\modules\UserManagement\models\User;
  */
 class UsuarioController extends Controller
 {
+    //se crea esta variable que se usara en site/usuario/header 
+    //permide darle acciones a esa vista y ponerla a como la url
+    public $freeAccessActions = ['registrar-usuario'];
     /**
      * @inheritDoc
      */
@@ -146,7 +149,9 @@ class UsuarioController extends Controller
             // var_dump($this->request->post());
             // echo('</pre>');
             // die;
-        return $this->redirect(['view', 'id' => $usuario->usu_id]);
+
+            // Aqui se redirecciona una vez que guarde el usuario 
+        return $this->redirect(['/', 'id' => $usuario->usu_id]);
         }
         // direcciona a esta vista con render
         return $this->render('registrar', compact('usuario','user'));

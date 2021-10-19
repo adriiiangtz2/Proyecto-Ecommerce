@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
          <!-- $form->field($favoritos, 'seg_fkdivision')->hiddenInput()->label(false);  -->
         <?= $form->field($favoritos, 'fav_estado')->hiddenInput(['value' => 0])->label(false); ?>
-        <?= Html::button( ' ', ['onclick' => 'favoritos(' . $favoritos->fav_id . ')', 'class' => 'botonfavorito fas fa-heart']); ?>
+        <?= Html::button( ' ', ['onclick' => 'favoritos(' . $favoritos->fav_id . ')', 'class' => 'botonfavorito fas fa-heart',"data-id"=>$favoritos->fav_id]); ?>
         
         <?php ActiveForm::end(); ?>
 </div>

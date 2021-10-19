@@ -1,40 +1,76 @@
-<?php
 
-use yii\bootstrap4\Html; ?>
-<!-- INICIO DE LA CABECERA  -->
-<div class="header">
-    <!-- contenedor general -->
-    <div class="contenedor">
+  <?php use yii\bootstrap4\Html; ?>
+  <?php
 
-        <!-- contenedor logo y menu -->
-        <div class="barra">
-            <div class="logo">
-                <a href="index.html"><?= Html::img(
-                                            '/plantilla/images/logo.png',
-                                            ['class' => 'logo', 'style' => 'width:125px;']
-                                        ) ?></a>
-            </div>
-            <nav>
-                <!-- se le coloca una id-->
-                <ul id="menuItems">
-                    <li><a href="/site/principal">Home</a></li>
-                    <li><a href="/cat-favorito/favorito">Favoritos</a></li>
-                    <li><a href="/producto/productos">Products</a></li>
-                    <li><a href="/carro/carrito">Carrito</a></li>
-                    <li><a href="/cat-favorito/boton">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="account.html">Account</a></li>
-                    <li><a href="/user-management/auth/logout">cerrar Sesion</a></li>
-                </ul>
-            </nav>
-            <a href="card.html"><?= Html::img('/plantilla/images/cart.png', [
-                                    'class' => 'logo',
-                                    'style' => 'width:30px; height:30px',
-                                ]) ?></a>
-            <!-- se le coloca una accion al menu un evento -->
-            <img src="images/menu.png" width="30px" height="30px" class="menu-icon" onclick="menutoggle()">
-        </div>
-        <!-- termina contenedor logo y menu -->
+use yii\bootstrap4\Nav;
+use yii\bootstrap4\NavBar;
 
-    </div>
-    <!-- ----TERMINA EL CONTENEDOR CENTRAL ----- -->
+    NavBar::begin([
+        'brandLabel' => Yii::$app->name,
+        'brandUrl' => Yii::$app->homeUrl,
+        'options' => [
+            'class' => 'headerr navbar navbar-expand-md  fixed-top a',
+        ],
+    ]);
+
+
+    
+    echo Nav::widget([
+        'options' => ['class' => ''],
+        'encodeLabels' => false,
+        'items' => [
+          
+            [
+                'label' => 'Productos',
+                'url'=>['/producto/productos'],
+
+            ],
+            [
+                'label' => 'Favorito',
+                'url'=>['/cat-favorito/favorito'],
+                //no se delcara en controlador por que aparece cuando se registre
+                //se niega ! por que aparecera cuando se registre 
+                // isGuest es para cuando no se ha registrado es cliente
+                'visible'=> !Yii::$app->user->isGuest
+            ],
+            [
+                'label' => 'Carrito',
+                'url'=>['/carro/carrito'],
+            ],
+            [
+                'label' => 'Registrar',
+                'url'=>['/usuario/registrar-usuario'],
+                //se delcara en el controllador usuario por que aparecera la vista directamente
+                // como no tiene el negado , desaparecera cuando se registre
+                'visible'=>Yii::$app->user->isGuest
+                
+            ],
+
+            Yii::$app->user->isGuest ? (
+                ['label' => 'Iniciar Sesion', 'url' => ['/user-management/auth/login']]
+            ) : (
+
+                ['label' => 'Cerrar Sesion', 'url' => ['/user-management/auth/logout']]
+                /* '<li>'
+                . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
+                . Html::submitButton(
+                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>' */
+                ),
+
+                
+
+
+        ],
+    ]);
+    
+
+
+
+
+
+    NavBar::end();
+?>
