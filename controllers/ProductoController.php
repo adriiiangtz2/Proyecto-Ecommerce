@@ -15,6 +15,8 @@ use yii\data\Pagination;
  */
 class ProductoController extends Controller
 {
+    public $freeAccessActions = ['productos'];
+
     /**
      * @inheritDoc
      */
@@ -120,7 +122,13 @@ class ProductoController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model=$this->findModel($id);
+        if(file_exists($model->pro_imagen)){
+            unlink($model->pro_imagen);
+        }
+        
+        $model->delete();
+
 
         return $this->redirect(['index']);
     }
