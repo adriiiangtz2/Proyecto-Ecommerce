@@ -22,7 +22,7 @@ class CarroController extends Controller
     public function behaviors()
     {
         return [
-            'ghost-access'=> [
+            'ghost-access' => [
                 'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
             ],
         ];
@@ -74,8 +74,8 @@ class CarroController extends Controller
         } else {
             $model->loadDefaultValues();
         }
-        
-       /* return $this->render('create', [
+
+        /* return $this->render('create', [
             'model' => $model
         ]); */
 
@@ -115,7 +115,10 @@ class CarroController extends Controller
 
         return $this->redirect(['index']);
     }
-
+    public function actionCarrito()
+    {
+        return $this->render('carrito');
+    }
     /**
      * Finds the Carro model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

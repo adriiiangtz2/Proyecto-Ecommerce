@@ -51,14 +51,14 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cardet_id' => 'Id',
-            'cardet_cantidad' => 'Cantidad',
-            'cardet_precio' => 'Precio',
+            'cardet_id'         => 'Id',
+            'cardet_cantidad'   => 'Cantidad',
+            'cardet_precio'     => 'Precio',
             'cardet_valoracion' => 'Valoración',
             'cardet_comentario' => 'Comentario',
             'cardet_fkproducto' => 'Producto',
-            'productoNombre' => 'Producto',
-            'cardet_fkcarro' => 'Carrito',
+            'productoNombre'    => 'Producto',
+            'cardet_fkcarro'    => 'Carrito',
         ];
     }
 
