@@ -115,10 +115,6 @@ class CarroController extends Controller
 
         return $this->redirect(['index']);
     }
-    public function actionCarrito()
-    {
-        return $this->render('carrito');
-    }
     /**
      * Finds the Carro model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

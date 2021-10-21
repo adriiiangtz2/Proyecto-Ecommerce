@@ -1,30 +1,40 @@
+<?php
+    $total = 0;
+?>
 <?= $this->render('/layouts/usuario/header') ?>
 <!-- card items details -->
+<div id="cardet">
+
 <div class="small-container card-page">
     <table>
         <tr>
-            <th>Product</th>
-            <th>Quality</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
             <th>SubTotal</th>
         </tr>
-
-        <tr>
-            <td>
-                <div class="card-info">
-                    <img src="images/buy-1.jpg">
-                    <div>
-                        <p>red printed t-shirt</p>
-                        <small>Price: $50.00 </small>
-                        <br>
-                        <a href="">Remove</a>
+        <?php foreach (\app\models\CarritoDetalle::productosCarrito() as $carritoDe) : ?>
+            <tr>
+                <td>
+                    <div class="card-info">
+                        <img src=<?= $carritoDe->cardetFkproducto->getUrl() ?>>
+                        <div>
+                            <p><?= $carritoDe->productoNombre ?></p>
+                            <small>Precio: $<?= $carritoDe->productoPrecio ?></small>
+                            <br>
+                            <a onclick="eliminarProducto(<?= $carritoDe->cardet_id ?>)" href="">Elminar</a>
+                        </div>
                     </div>
-                </div>
-            </td>
-            <td><input type="number" value="1"></td>
-            <td>$50.00</td>
-        </tr>
-
-        </tr>
+                </td>
+                <td><input id="input-cant<?= $carritoDe->cardet_id ?>" type="number" onclick="registrarCantidad(<?= $carritoDe->cardet_id ?>)" value=<?= $carritoDe->cardet_cantidad ?>></td>
+                <td>$<?= $carritoDe->cardet_precio ?></td>
+                <?php 
+                $total = $total + $carritoDe->cardet_precio;
+                $iva = $total * 0.16;
+                $importe = $total + $iva;
+                ?>
+            </tr>
+        <?php endforeach; ?>
+        <!-- </tr>
         <tr>
             <td>
                 <div class="card-info">
@@ -56,7 +66,7 @@
             </td>
             <td><input type="number" value="1"></td>
             <td>$70.00</td>
-        </tr>
+        </tr> -->
 
     </table>
 
@@ -64,19 +74,19 @@
         <table>
             <tr>
                 <td>SubTotal</td>
-                <td>$200.00</td>
+                <td>$<?= $total ?></td>
 
             </tr>
 
             <tr>
-                <td>tax</td>
-                <td>$200.00</td>
+                <td>Impuestos</td>
+                <td>$<?= $iva ?></td>
 
             </tr>
 
             <tr>
                 <td>Total</td>
-                <td>$200.00</td>
+                <td>$<?= $importe ?></td>
 
             </tr>
         </table>
@@ -85,4 +95,5 @@
 
 
 
+</div>
 </div>

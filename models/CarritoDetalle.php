@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use app\models\Carro;
+use app\models\Producto;
+use app\models\Devoluciones;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -38,6 +41,7 @@ class CarritoDetalle extends \yii\db\ActiveRecord
         return [
             [['cardet_cantidad', 'cardet_precio', 'cardet_fkproducto', 'cardet_fkcarro'], 'required'],
             [['cardet_cantidad', 'cardet_valoracion', 'cardet_fkproducto', 'cardet_fkcarro'], 'integer'],
+            [['cardet_estatus'], 'safe'],
             [['cardet_precio'], 'number'],
             [['cardet_comentario'], 'string'],
             [['cardet_fkproducto'], 'exist', 'skipOnError' => true, 'targetClass' => Producto::className(), 'targetAttribute' => ['cardet_fkproducto' => 'pro_id']],
@@ -59,6 +63,7 @@ class CarritoDetalle extends \yii\db\ActiveRecord
             'cardet_fkproducto' => 'Producto',
             'productoNombre'    => 'Producto',
             'cardet_fkcarro'    => 'Carrito',
+            'cardet_estatus'    => 'Estatus',
         ];
     }
 
@@ -99,6 +104,14 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     public static function map()
     {
         return ArrayHelper::map(CarritoDetalle::find()->all(), 'cardet_id', 'cardet_id');
+    }
+    public static function productosCarrito()
+    {
+        return self::find()->innerJoin('carro', 'car_id = cardet_fkcarro and car_fkusuario = '.Usuario::usuario()->usu_id.' and car_estatus = "Apartado" and cardet_estatus = 1')->all();
+    }
+    public function getProductoPrecio()
+    {
+        return $this->cardetFkproducto->pro_precio;
     }
 }
 
