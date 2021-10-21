@@ -7,6 +7,7 @@ use kartik\rating\StarRating;
 
 ?>
 <!-- tittle -->
+<?= $this->render('/layouts/usuario/header') ?>
 <div class="small-container">
 
     <div class="row row-2">
@@ -51,7 +52,10 @@ use kartik\rating\StarRating;
 
                         </div>
                         <p>$<?= html::encode("{$productos->pro_precio}") ?> </p>
-
+                        <div id="identificador<?=$productos->pro_id?>">
+                        <!-- agrega el boton -->
+                            <?= $this->render('/cat-favorito/btnfavpro', compact('productos')) ?>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>
