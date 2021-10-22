@@ -172,8 +172,6 @@ class DomicilioController extends Controller
             return $this->redirect(['view', 'id' => $domicilio->dom_id]);
         }
         // direcciona a esta vista con render
-
-
         return $this->render('registro', compact('domicilio', 'user'));
     }
     public function actionCp()

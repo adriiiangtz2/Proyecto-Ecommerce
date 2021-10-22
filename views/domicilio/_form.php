@@ -21,42 +21,41 @@ use yii\bootstrap4\ActiveForm;
 
     <div class="row offer">
 
-    <div class="col-md-3">
-        <?= $form->field($model, 'dom_ciudad')->textInput(['rows' => 6]) ?>
-    </div>
-    <div class="col-md-3">
-        <?= $form->field($model, 'dom_colonia')->textInput(['rows' => 6]) ?>
-    </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'dom_ciudad')->textInput(['rows' => 6]) ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'dom_colonia')->textInput(['rows' => 6]) ?>
+        </div>
 
-    <div class="col-md-3">
-        <?= $form->field($model, 'dom_calle')->textarea(['rows' => 6]) ?>
+        <div class="col-md-3">
+            <?= $form->field($model, 'dom_calle')->textarea(['rows' => 6]) ?>
 
-    </div>
-    <div class="col-md-3">
-        <?= $form->field($model, 'dom_numExt')->textInput(['maxlength' => true]) ?>
-    </div>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'dom_numExt')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'dom_numInt')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'dom_telefono')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'dom_fkusuario')->widget(Select2::classname(), [
+                'data' => Usuario::map(),
+                'language' => 'es',
+                'options' => ['placeholder' => 'selecciona el usuario ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
+        </div>
 
-    <div class="col-md-3">
-        <?= $form->field($model, 'dom_numInt')->textInput(['maxlength' => true]) ?>
+        <div class="col-md-3">
+            <?= $form->field($model, 'dom_fkcp')->textInput() ?>
+        </div>
     </div>
-    <div class="col-md-3">
-        <?= $form->field($model, 'dom_telefono')->textInput(['maxlength' => true]) ?>
-    </div>
-    <div class="col-md-3">
-        <?=$form->field($model, 'dom_fkusuario')->widget(Select2::classname(), [
-         'data' => Usuario::map(),
-         'language' => 'es',
-         'options' => ['placeholder' => 'selecciona el usuario ...'],
-         'pluginOptions' => [
-         'allowClear' => true
-    ],
-    ]);?>
-    </div>
-
-    <div class="col-md-3">
-        <?= $form->field($model, 'dom_fkcp')->textInput() ?>
-    </div>
-    </div>    
     <?/*= $form->field($model, 'dom_colonia')->widget(DepDrop::classname(), [
     'options'=>['est_id'=>'mun_fkestado','prompt' =>'selecciona el municipio....', ],
     'pluginOptions'=>[
@@ -64,11 +63,11 @@ use yii\bootstrap4\ActiveForm;
         'placeholder'=>'Selecciona el municipio',
         'url'=>Url::to(['domicilio/subcat'])
     ]
-]);*/?>
+]);*/ ?>
     <div class="row justify-content-center">
-    <div class="form-group">
-        <?= Html::submitButton('guardar', ['class' => 'btnn']) ?>
-    </div>
+        <div class="form-group">
+            <?= Html::submitButton('guardar', ['class' => 'btnn']) ?>
+        </div>
     </div>
     <?php ActiveForm::end(); ?>
 

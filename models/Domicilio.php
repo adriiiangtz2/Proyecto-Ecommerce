@@ -117,7 +117,6 @@ class Domicilio extends \yii\db\ActiveRecord
     {
         return ArrayHelper::map(Domicilio::find()->all(), 'dom_id', 'dom_id');
     }
-
     //Funcion para traer el usuario
 
     public  static function Domicilio()
