@@ -16,8 +16,6 @@ use yii\bootstrap4\ActiveForm;
     <div class="col">
     <?= $form->field($model, 'est_id')->textInput() ?>
     </div>
-
-
     <div class="col">
     <?= $form->field($model, 'est_estado')->textInput(['maxlength' => true]) ?>
     </div>

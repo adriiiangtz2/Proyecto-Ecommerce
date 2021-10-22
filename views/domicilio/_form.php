@@ -22,17 +22,10 @@ use yii\bootstrap4\ActiveForm;
     <div class="row offer">
 
     <div class="col-md-3">
-        <?= $form->field($model, 'dom_ciudad')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'dom_ciudad')->textInput(['rows' => 6]) ?>
     </div>
     <div class="col-md-3">
-        <?= $form->field($model, 'dom_colonia')->widget(Select2::classname(), [
-    'data' => CatMunicipios::map(),
-    'language' => 'es',
-    'options' => ['placeholder' => 'selecciona el municipio ...'],
-    'pluginOptions' => [
-        'allowClear' => true
-    ],
-    ]);?>
+        <?= $form->field($model, 'dom_colonia')->textInput(['rows' => 6]) ?>
     </div>
 
     <div class="col-md-3">
@@ -50,12 +43,12 @@ use yii\bootstrap4\ActiveForm;
         <?= $form->field($model, 'dom_telefono')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-md-3">
-         <?=$form->field($model, 'dom_fkusuario')->widget(Select2::classname(), [
-    'data' => Usuario::map(),
-    'language' => 'es',
-    'options' => ['placeholder' => 'selecciona el usuario ...'],
-    'pluginOptions' => [
-        'allowClear' => true
+        <?=$form->field($model, 'dom_fkusuario')->widget(Select2::classname(), [
+         'data' => Usuario::map(),
+         'language' => 'es',
+         'options' => ['placeholder' => 'selecciona el usuario ...'],
+         'pluginOptions' => [
+         'allowClear' => true
     ],
     ]);?>
     </div>
@@ -72,7 +65,6 @@ use yii\bootstrap4\ActiveForm;
         'url'=>Url::to(['domicilio/subcat'])
     ]
 ]);*/?>
-    <?php /*$form->field($model, 'dom_fkusuario')->textInput()*/ ?>
     <div class="row justify-content-center">
     <div class="form-group">
         <?= Html::submitButton('guardar', ['class' => 'btnn']) ?>
