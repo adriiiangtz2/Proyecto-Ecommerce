@@ -2,14 +2,17 @@
 
 namespace app\controllers;
 
+use Yii;
+use yii\web\Response;
+use app\models\Usuario;
 use yii\web\Controller;
 use app\models\Producto;
+use yii\data\Pagination;
 use app\models\CatFavorito;
-use app\models\CatFavoritoSearch;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use app\models\CatFavoritoSearch;
 use yii\web\NotFoundHttpException;
-use yii\data\Pagination;
 
 
 /**
@@ -139,27 +142,73 @@ class CatFavoritoController extends Controller
 
     //mostrar productos favoritos
     public function actionFavorito(){
-
-        // $model=Producto::find();
-           
+        // $model=Producto::find();       
         // // $paginacion= new Pagination([
         // //     'defaultPageSize'=>1,
         // //     'totalCount'=>$model->count(),
         // // ]);
         // $favorito=$model->all();
-        
         // //funcion que se trae del modelo
         // $fav=CatFavorito::favorito();
         // //funcion que se trae del modelo
         // $usu=CatFavorito::usuario();
-        
-
 //se manda  ala vista 
        return $this->render('registrarFav',compact('fav','usu'));
    }
 
    public function actionBoton()
     {
-        return $this->render('btn-fav');
+        return $this->render('btnfav');
     }
+
+    public function actionBtnfav()
+    {
+        $fav = new CatFavorito(); //instanciamos el modelo
+        if($this->request->isAjax){//Si la petición es por AJAX
+            $id = $this->request->post('id'); //Obtenemos el id por post
+            if(isset($id)){//Si existe el id
+                $fav = $this->findModel($id); //encontramos el modelo con el id
+            }
+            $fav->fav_estado = $this->request->post('es');//obtenemos el estado por post y lo guardamos en una variable
+            $fav->save(); //guardamos los cambios en el modelo
+        }
+        $response = Yii::$app->response; //Obtenemos los datos de la respuesta 
+        $response->format = Response::FORMAT_JSON; //Le damos formato a la respuesta
+        $response->data = ['save' => $id];//
+        $response->data = ['html' => $this->renderPartial('registrarFav')];//Renderizamos parcial
+        return $response;
+    }
+
+    public function actionBtnfavpro()
+    {
+        // llega el id del js 
+        $pro = $this->request->post('id');
+        //se hace una consulta para que traiga el id del que se registra
+        $fav = CatFavorito::find()->where(['fav_fkproducto' => $pro, 'fav_fkusuario' => Usuario::usuario()->usu_id])->one();
+       
+        $productos = Producto::findOne(['pro_id' => $pro]);
+        // si no ha asigando ese favorito lo guarda
+        if (!isset($fav)) {
+            $model = new CatFavorito();
+            $model->fav_fkproducto = $pro;
+            $model->fav_fkusuario   = Usuario::usuario()->usu_id;
+            $model->fav_estado = 1;
+            $model->save();
+            // si no le cambia los valores
+        }else{
+            if ($fav->fav_estado == 1) {
+                $fav->fav_estado = 0;
+            } else {
+                $fav->fav_estado = 1;
+
+            }
+            $fav->save();
+        }
+        $response = Yii::$app->response; //Obtenemos los datos de la respuesta 
+        $response->format = Response::FORMAT_JSON; //Le damos formato a la respuesta
+        $response->data = ['html' => $this->renderPartial('btnfavpro', compact('productos'))]; //Renderizamos parcial
+        return $response;
+    }
+
+    
 }

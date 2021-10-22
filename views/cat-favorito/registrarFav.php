@@ -6,8 +6,8 @@ use yii\widgets\LinkPager;
 
 // $favoritos = CatFavorito::favorito();
 ?>
+<div class="" id="identificador">
 <?= $this->render('/layouts/usuario/header') ?>
-<div class="categories">
 <h1>Productos Favoritos</h1>
 <div class="small-container">
     <div class="filas">
@@ -18,20 +18,21 @@ use yii\widgets\LinkPager;
             <a href="product-datails.html"> <img src=<?= $favoritos->favFkproducto->getUrl() ?> class="logo"> </a>
             <h4>
                 <?= html::encode( "{$favoritos->favFkproducto->pro_nombre}" ) ?> </h4>
-            <div class="rating">
-                <i class="fa fa-star" aria-hidden="true"></i>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star-half" aria-hidden="true"></i>
                 <!-- <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                    <i class="fa fa-address-book" aria-hidden="true"></i> -->
+                <i class="fa fa-address-book" aria-hidden="true"></i> -->
 
             </div>
             <p>$<?= html::encode(
                 "{$favoritos->favFkproducto->pro_precio}"
-            ) ?> </p>
+                
+                ) ?><?= $this->render('/cat-favorito/btnfav', compact('favoritos')) ?> </p>
             
         </div>
         <?php endforeach; ?>

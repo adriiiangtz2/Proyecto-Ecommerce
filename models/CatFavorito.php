@@ -113,6 +113,19 @@ class CatFavorito extends \yii\db\ActiveRecord
         return CatFavorito::find()->where(['fav_fkusuario'=> Usuario::usuario()->usu_id,'fav_estado'=>1] )->all();
     }
     
+    public static function estado($id)
+    {
+        $es =  CatFavorito::find()->andWhere([
+                'fav_fkusuario' => Usuario::usuario()->usu_id,
+                'fav_fkproducto'  => $id,
+               ])->one();
+        if(isset($es)){
+            return  $es->fav_estado;
+        }
+        else{
+            return $es = 0;
+        }
+    }
     // funcion que trae todo la fila de productos dependiendo del id de usuario
     // esta funcion se manda al controlador
     // public static function favorito(){

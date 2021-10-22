@@ -60,9 +60,9 @@ class CarritoDetalleSearch extends CarritoDetalle
                 'cardet_valoracion',
                 'cardet_comentario',
                 'productoNombre' => [
-                    'asc' => ['pro_nombre' => SORT_ASC], 
+                    'asc' => ['pro_nombre'  => SORT_ASC], 
                     'desc' => ['pro_nombre' => SORT_DESC], 
-                    'default' => SORT_ASC,
+                    'default'               => SORT_ASC,
                 ],
                 'cardet_fkcarro'
             ]
@@ -78,12 +78,12 @@ class CarritoDetalleSearch extends CarritoDetalle
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'cardet_id' => $this->cardet_id,
-            'cardet_cantidad' => $this->cardet_cantidad,
-            'cardet_precio' => $this->cardet_precio,
+            'cardet_id'         => $this->cardet_id,
+            'cardet_cantidad'   => $this->cardet_cantidad,
+            'cardet_precio'     => $this->cardet_precio,
             'cardet_valoracion' => $this->cardet_valoracion,
             'cardet_fkproducto' => $this->cardet_fkproducto,
-            'cardet_fkcarro' => $this->cardet_fkcarro,
+            'cardet_fkcarro'    => $this->cardet_fkcarro,
         ]);
 
         $query->andFilterWhere(['like', 'cardet_comentario', $this->cardet_comentario])

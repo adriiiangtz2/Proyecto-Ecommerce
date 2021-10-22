@@ -42,6 +42,7 @@ class Carro extends \yii\db\ActiveRecord
             [['car_iva', 'car_fecha', 'car_estatus', 'car_fkusuario', 'car_fkmetodo', 'car_fkdomicilio', 'car_fkenvio'], 'required'],
             [['car_iva'], 'number'],
             [['car_fecha'], 'safe'],
+            [['car_total'], 'number'],
             [['car_estatus'], 'string'],
             [['car_fkusuario', 'car_fkmetodo', 'car_fkdomicilio', 'car_fkenvio'], 'integer'],
             [['car_fkusuario'], 'exist', 'skipOnError' => true, 'targetClass' => Usuario::className(), 'targetAttribute' => ['car_fkusuario' => 'usu_id']],
@@ -57,17 +58,18 @@ class Carro extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'car_id' => 'Id',
-            'car_iva' => 'IVA',
-            'car_fecha' => 'Fecha',
-            'car_estatus' => 'Estatus',
-            'car_fkusuario' => 'Usuario',
-            'car_fkmetodo' => 'Método de pago',
+            'car_id'          => 'Id',
+            'car_iva'         => 'IVA',
+            'car_fecha'       => 'Fecha',
+            'car_estatus'     => 'Estatus',
+            'car_fkusuario'   => 'Usuario',
+            'car_fkmetodo'    => 'Método de pago',
             'car_fkdomicilio' => 'Domicilio',
-            'car_fkenvio' => 'Envío',
-            'usuarioNombre' => 'Usuario',
-            'metodoNombre' => 'Método de pago',
-            'envioMetodo' => 'Método de envío',
+            'car_fkenvio'     => 'Envío',
+            'usuarioNombre'   => 'Usuario',
+            'metodoNombre'    => 'Método de pago',
+            'envioMetodo'     => 'Método de envío',
+            'car_total'       => 'Total',
         ];
     }
 

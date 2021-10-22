@@ -40,7 +40,7 @@ class CatMetodopago extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'met_id' => 'Id',
+            'met_id'     => 'Id',
             'met_nombre' => 'Nombre',
         ];
     }

@@ -93,13 +93,13 @@ class CarroSearch extends Carro
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'car_id' => $this->car_id,
-            'car_iva' => $this->car_iva,
-            'car_fecha' => $this->car_fecha,
-            'car_fkusuario' => $this->car_fkusuario,
-            'car_fkmetodo' => $this->car_fkmetodo,
+            'car_id'          => $this->car_id,
+            'car_iva'         => $this->car_iva,
+            'car_fecha'       => $this->car_fecha,
+            'car_fkusuario'   => $this->car_fkusuario,
+            'car_fkmetodo'    => $this->car_fkmetodo,
             'car_fkdomicilio' => $this->car_fkdomicilio,
-            'car_fkenvio' => $this->car_fkenvio,
+            'car_fkenvio'     => $this->car_fkenvio,
         ]);
 
         $query->andFilterWhere(['like', 'car_estatus', $this->car_estatus])
