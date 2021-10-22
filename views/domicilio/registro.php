@@ -6,8 +6,6 @@ use app\models\Usuario;
 use yii\bootstrap4\Html;
 use kartik\depdrop\DepDrop;
 use yii\bootstrap4\ActiveForm;
-
-
 ?>
 <div>
     <h1> Registrar Domicilio</h1>
