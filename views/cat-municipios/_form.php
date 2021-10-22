@@ -10,7 +10,6 @@ use yii\bootstrap4\ActiveForm;
 ?>
 <div class="cat-municipios-form">
     <?php $form = ActiveForm::begin(); ?>
-
     <div class="row offer">
         <div class="col">
             <?= $form->field($model, 'mun_id')->textInput() ?>

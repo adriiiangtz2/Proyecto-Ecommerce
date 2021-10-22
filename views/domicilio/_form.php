@@ -15,7 +15,6 @@ use yii\bootstrap4\ActiveForm;
 ?>
 
 <div class="domicilio-form">
-
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row offer">

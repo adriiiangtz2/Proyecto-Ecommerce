@@ -67,7 +67,6 @@ class Domicilio extends \yii\db\ActiveRecord
             'coloniaNombre' => 'colonia',
 
             'usuarioNombre' => 'usuario',
-
         ];
     }
 

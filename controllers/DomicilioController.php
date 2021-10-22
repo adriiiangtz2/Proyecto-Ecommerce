@@ -25,7 +25,6 @@ class DomicilioController extends Controller
             ],
         ];
     }
-
     public function actionSubcat()
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;

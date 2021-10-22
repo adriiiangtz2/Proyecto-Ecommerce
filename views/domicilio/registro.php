@@ -12,7 +12,6 @@ use yii\bootstrap4\ActiveForm;
 
     <div class="Registrar-domicilio">
 
-
         <?php $form = ActiveForm::begin(); ?>
 
         <div class="row">
