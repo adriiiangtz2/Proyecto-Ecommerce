@@ -73,4 +73,9 @@ class CatEstados extends \yii\db\ActiveRecord
     public static function getEstados(){
         return self::find()->select(['est_estado','est_id'])->indexBy('est_id')->column();
     }   
+    public static function sumaid(){
+
+       return self::find()->select(['est_id'=>'( MAX(`est_id`)+ 1) '])->one()->est_id;
+       
+    }
 }
