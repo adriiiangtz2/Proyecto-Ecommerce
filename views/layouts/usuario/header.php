@@ -39,6 +39,11 @@ use yii\bootstrap4\NavBar;
                 'visible'=> !Yii::$app->user->isGuest
             ],
             [
+                'label' => 'Tarjetas',
+                'url'=>['/cat-tarjeta/registrar'],
+                'visible'=> !Yii::$app->user->isGuest
+            ],
+            [
                 'label' => 'Registrar',
                 'url'=>['/usuario/registrar-usuario'],
                 //se delcara en el controllador usuario por que aparecera la vista directamente

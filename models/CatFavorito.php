@@ -113,6 +113,7 @@ class CatFavorito extends \yii\db\ActiveRecord
         return CatFavorito::find()->where(['fav_fkusuario'=> Usuario::usuario()->usu_id,'fav_estado'=>1] )->all();
     }
     
+    // consulta como tiene el estatus
     public static function estado($id)
     {
         $es =  CatFavorito::find()->andWhere([
