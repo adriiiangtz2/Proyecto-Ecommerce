@@ -7,12 +7,11 @@ use yii\widgets\DetailView;
 /* @var $model app\models\CatMunicipios */
 
 $this->title = $model->mun_id;
-$this->params['breadcrumbs'][] = ['label' => ' Municipios', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Municipios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="cat-municipios-view">
-
     <h1><?= Html::encode($this->title) ?></h1>
     <p>
         <?= Html::a('Modificar', ['update', 'mun_id' => $model->mun_id, 'mun_fkestado' => $model->mun_fkestado], ['class' => 'btn btn-primary']) ?>
@@ -21,6 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'data' => [
                 'confirm' => '¿Estas seguro que desea eliminar est municipios?',
                 'method' => 'post',
+
+
             ],
         ]) ?>
     </p>
@@ -33,5 +34,4 @@ $this->params['breadcrumbs'][] = $this->title;
             'EstadoNombre',
         ],
     ]) ?>
-
 </div>
