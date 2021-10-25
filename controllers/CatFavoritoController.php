@@ -206,6 +206,7 @@ class CatFavoritoController extends Controller
         }
         $response = Yii::$app->response; //Obtenemos los datos de la respuesta 
         $response->format = Response::FORMAT_JSON; //Le damos formato a la respuesta
+        // se manda la viriable a la vista del boton
         $response->data = ['html' => $this->renderPartial('btnfavpro', compact('productos'))]; //Renderizamos parcial
         return $response;
     }
