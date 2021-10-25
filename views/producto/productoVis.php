@@ -30,7 +30,7 @@ use yii\widgets\ListView;
                         'class' => 'row',
                         'id' => 'list-wrapper',
                     ],
-                    'itemView' => 'producto_item',
+                    'itemView' => 'productoitem',
                     'itemOptions' => [
                         'tag' => false,
                         /*'class' => 'col-lg-4',*/

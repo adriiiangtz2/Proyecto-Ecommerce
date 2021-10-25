@@ -165,8 +165,8 @@ class ProductoController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionProductoItem()
+    public function actionProductoitem()
     {
-        return $this->render('producto_item');
+        return $this->render('productoItem');
     }
 }
