@@ -2,8 +2,9 @@
 
 use yii\helpers\Html;
 use app\models\Producto;
-use yii\widgets\LinkPager;
+use yii\widgets\ListView;
 use kartik\rating\StarRating;
+use justinvoelker\separatedpager\LinkPager;
 
 ?>
 <!-- tittle -->
@@ -24,43 +25,34 @@ use kartik\rating\StarRating;
         <h1>Productos</h1>
         <div class="small-container">
             <div class="filas">
-                <?php foreach ($producto as $productos) : ?>
-                    <div class="colum-4">
-                        <a href="product-datails.html"> <img src="/img/producto/<?= $productos->pro_imagen ?>" class="logo"> </a>
-                        <h4><?= html::encode("{$productos->pro_nombre}")      ?></h4>
-                        <div class="rating">
-                            <?php
-                            echo StarRating::widget([
-                                'name' => 'rating_44',
-                                'pluginOptions' => [
-                                    'theme' => 'krajee-svg',
-                                    'filledStar' => '<span class="krajee-icon krajee-icon-star"></span>',
-                                    'emptyStar' => '<span class="krajee-icon krajee-icon-star"></span>'
-                                ]
-                            ]);
-                            ?>
-                        
-                        <!--<i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star-half" aria-hidden="true"></i> -->
-                            <!-- <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                    <i class="fa fa-address-book" aria-hidden="true"></i> -->
-
-                        </div>
-                        <p>$<?= html::encode("{$productos->pro_precio}") ?> </p>
-
-                    </div>
-                <?php endforeach; ?>
+                <?=
+                ListView::widget([
+                    'dataProvider' => $dataProvider,
+                    'options' => [
+                        'tag' => 'div',
+                        'class' => 'row',
+                        'id' => 'list-wrapper',
+                    ],
+                    'itemView' => 'producto_item',
+                    'itemOptions' => [
+                        'tag' => false,
+                        /*'class' => 'col-lg-4',*/
+                    ],
+                    'layout' => "<div class='col-md-12'>{summary}</div>{items}<div class='col-md-12'>{pager}</div>",
+                ]);
+                ?>
+                
             </div>
         </div>
 
-        <div class="page-btn">
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>&#8594;</span>
+        <div class="page">
+            <?php /*echo LinkPager::widget([
+                'pagination' => $pages,
+                'prevPageLabel' => false,
+                'nextPageLabel' => false,
+                'maxButtonCount' => 2,
+                'options' => [
+                    'class' => 'ip-mosaic__pagin-list',
+                ],
+            ]);*/ ?>
         </div>

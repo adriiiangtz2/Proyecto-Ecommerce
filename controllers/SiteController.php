@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use yii\web\Response;
 use yii\web\Controller;
+use app\models\Producto;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use yii\filters\VerbFilter;
@@ -165,4 +166,17 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+    public function actionStars()
+    {
+        $model = Producto::find()->where(['pro_id' => $_POST['id']])->one();
+        
+        if (!empty($model)){
+            $model->estrellas = $_POST['stars'];
+            if ($model->save()){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

@@ -8,7 +8,6 @@ use app\models\Producto;
 use yii\web\UploadedFile;
 use app\models\ProductoSearch;
 use yii\web\NotFoundHttpException;
-use yii\data\Pagination;
 
 /**
  * ProductoController implements the CRUD actions for Producto model.
@@ -71,9 +70,9 @@ class ProductoController extends Controller
                 $image = UploadedFile::getInstance($model, 'img');
                 if (!is_null($image)) {
                     $ext = end((explode(".", $image->name)));
-                    $model->pro_imagen = $model->pro_fktienda.'_'. Yii::$app->security->generateRandomString() . ".{$ext}";
-                    $path = Yii::$app->basePath.'/web/img/producto/' . $model->pro_imagen;
-                    if($image->saveAs($path) && $model->save()){
+                    $model->pro_imagen = $model->pro_fktienda . '_' . Yii::$app->security->generateRandomString() . ".{$ext}";
+                    $path = Yii::$app->basePath . '/web/img/producto/' . $model->pro_imagen;
+                    if ($image->saveAs($path) && $model->save()) {
                         return $this->redirect(['view', 'id' => $model->pro_id]);
                     }
                 }
@@ -83,7 +82,7 @@ class ProductoController extends Controller
         }
         return $this->render('create', [
             'model' => $model,
-            
+
         ]);
     }
 
@@ -100,7 +99,7 @@ class ProductoController extends Controller
 
         if ($this->request->isPost && $model->load($this->request->post())) {
             $image = UploadedFile::getInstance($model, 'img');
-            if (!is_null($image)){
+            if (!is_null($image)) {
                 $path = Yii::$app->basePath . '/web/img/producto/' . $model->pro_imagen;
                 $image->saveAs($path);
             }
@@ -122,11 +121,11 @@ class ProductoController extends Controller
      */
     public function actionDelete($id)
     {
-        $model=$this->findModel($id);
-        if(file_exists($model->pro_imagen)){
-            unlink($model->pro_imagen);
+        $model = $this->findModel($id);
+        if (file_exists(Yii::$app->basePath . '/web/img/producto/' . $model->pro_imagen)) {
+            unlink(Yii::$app->basePath . '/web/img/producto/' . $model->pro_imagen);
         }
-        
+
         $model->delete();
 
 
@@ -141,14 +140,20 @@ class ProductoController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
 
-    public function actionProductos(){
+    public function actionProductos()
+    {
 
-        $model= Producto::find();
+        $searchModel = new ProductoSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
 
-        $producto = $model->all();
-        
-        return $this->render('productoVis',['producto' => $producto]);
+        $dataProvider->pagination = ([
+            'pageSize' => 3,
+        ]);
 
+        return $this->render('productoVis', ([
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]));
     }
 
     protected function findModel($id)

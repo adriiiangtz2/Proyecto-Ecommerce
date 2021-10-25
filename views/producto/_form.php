@@ -7,6 +7,7 @@ use app\models\CatMarca;
 use kartik\file\FileInput;
 use kartik\date\DatePicker;
 use kartik\select2\Select2;
+use kartik\rating\StarRating;
 use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -26,6 +27,14 @@ use yii\bootstrap4\ActiveForm;
 
         <div class="col-md-4">
             <?= $form->field($model, 'pro_precio')->textInput(['maxlength' => true]) ?>
+        </div>
+
+        <div class="col-md-4">
+            <?= $form->field($model, "pro_estrellas")->widget(StarRating::classname(), [
+                'pluginOptions' => ['step' => 1,],
+            ]);
+            ?>
+
         </div>
 
         <div class="col-md-4">
