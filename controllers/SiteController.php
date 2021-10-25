@@ -166,17 +166,4 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
-    public function actionStars()
-    {
-        $model = Producto::find()->where(['pro_id' => $_POST['id']])->one();
-        
-        if (!empty($model)){
-            $model->estrellas = $_POST['stars'];
-            if ($model->save()){
-                return true;
-            }
-        }
-        return false;
-    }
-
 }
