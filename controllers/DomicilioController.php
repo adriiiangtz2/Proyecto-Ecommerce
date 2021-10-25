@@ -45,7 +45,6 @@ class DomicilioController extends Controller
         }
         return ['output' => '', 'selected' => ''];
     }
-
     /**
      * Lists all Domicilio models.
      * @return mixed

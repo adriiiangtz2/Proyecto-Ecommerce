@@ -14,7 +14,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="cat-municipios-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a('Modificar', ['update', 'mun_id' => $model->mun_id, 'mun_fkestado' => $model->mun_fkestado], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Eliminar', ['delete', 'mun_id' => $model->mun_id, 'mun_fkestado' => $model->mun_fkestado], [

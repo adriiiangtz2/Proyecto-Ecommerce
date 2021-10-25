@@ -75,7 +75,6 @@ class CatEstados extends \yii\db\ActiveRecord
     }
     public static function sumaid()
     {
-
         return self::find()->select(['est_id' => '( MAX(`est_id`)+ 1) '])->one()->est_id;
     }
 }

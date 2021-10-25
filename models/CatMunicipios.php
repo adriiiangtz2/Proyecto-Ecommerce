@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "cat_municipios".
@@ -77,7 +78,6 @@ class CatMunicipios extends \yii\db\ActiveRecord
     }
     public static function getMunicipiosList($est_id)
     {
-
         $MunicipiosList = self::find()
             ->select(['mun_id', 'mun_municipio'])
             ->where(['est_id' => $est_id])

@@ -13,7 +13,6 @@ use yii\widgets\ActiveForm;
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
-
     <?= $form->field($model, 'mun_id') ?>
 
     <?= $form->field($model, 'mun_fkestado') ?>

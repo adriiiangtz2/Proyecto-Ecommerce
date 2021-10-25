@@ -9,7 +9,6 @@ use yii\bootstrap4\ActiveForm;
 ?>
 
 <div class="cat-estados-form">
-
     <?php $form = ActiveForm::begin(); ?>
     <div class="row offer">
         <div class="col">

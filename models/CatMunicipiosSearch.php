@@ -22,7 +22,6 @@ class CatMunicipiosSearch extends CatMunicipios
             [['mun_municipio', 'estadoNombre'], 'safe'],
         ];
     }
-
     /**
      * {@inheritdoc}
      */

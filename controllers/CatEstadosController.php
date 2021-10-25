@@ -18,17 +18,11 @@ class CatEstadosController extends Controller
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
+        return [
+            'ghost-access' => [
+                'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+            ],
+        ];
     }
 
     /**
@@ -58,7 +52,6 @@ class CatEstadosController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
-
     /**
      * Creates a new CatEstados model.
      * If creation is successful, the browser will be redirected to the 'view' page.
