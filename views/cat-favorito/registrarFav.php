@@ -14,7 +14,7 @@ use yii\widgets\LinkPager;
         <!-- LLega del controlador $fav -->
         <!-- funcion del modelo favorito -->
     <?php foreach (\app\models\CatFavorito::favorito() as $favoritos): ?>
-        <div class="colum-4">
+        <div class="colum-4" style="position:relative;">
             <a href="product-datails.html"> <img src=<?= $favoritos->favFkproducto->getUrl() ?> class="logo"> </a>
             <h4>
                 <?= html::encode( "{$favoritos->favFkproducto->pro_nombre}" ) ?> </h4>
