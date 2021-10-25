@@ -159,8 +159,9 @@ use yii\bootstrap4\ActiveForm;
 			<button type="submit" class="btn-enviar">Enviar</button>
 		</form>
 	</div>
-
+	<?= $this->render('/layouts/footer') ?>
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 	<script src="js/tarjeta.js"></script>
 </body>
 </html>
+
