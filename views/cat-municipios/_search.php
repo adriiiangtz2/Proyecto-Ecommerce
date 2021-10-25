@@ -16,7 +16,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'mun_id') ?>
 
     <?= $form->field($model, 'mun_fkestado') ?>
-
     <?= $form->field($model, 'mun_municipio') ?>
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
