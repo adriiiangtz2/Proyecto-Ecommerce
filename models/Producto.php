@@ -47,8 +47,9 @@ class Producto extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['pro_nombre', 'pro_precio', 'pro_fecha', 'pro_descripcion', 'pro_estatus', 'pro_color', 'pro_fktipo', 'pro_fkmarca', 'pro_fktienda'], 'required'],
+            [['pro_nombre', 'pro_precio', 'pro_fecha', 'pro_descripcion', 'pro_estatus', 'pro_color', 'pro_estrellas' ,'pro_fktipo', 'pro_fkmarca', 'pro_fktienda'], 'required'],
             [['pro_precio'], 'number'],
+            [['pro_estrellas'],'string'],
             [['pro_fecha', 'img'], 'safe'],
             [['pro_descripcion', 'pro_estatus'], 'string'],
             [['pro_fktipo', 'pro_fkmarca', 'pro_fktienda'], 'integer'],
@@ -74,6 +75,7 @@ class Producto extends \yii\db\ActiveRecord
             'pro_id'          => 'Id',
             'pro_nombre'      => 'Nombre',
             'pro_precio'      => 'Precio',
+            'pro_estrellas'   => 'Estrellas',
             'pro_fecha'       => 'Fecha',
             'pro_descripcion' => 'Descripción',
             'pro_dimensiones' => 'Dimensiones',

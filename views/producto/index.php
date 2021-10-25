@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'pro_id',
             'pro_nombre',
             'pro_precio',
+            'pro_estrellas',
             'pro_fecha',
             'pro_descripcion:ntext',
             //'pro_dimensiones',

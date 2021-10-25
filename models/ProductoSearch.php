@@ -49,6 +49,7 @@ class ProductoSearch extends Producto
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => ['pageSize' => 3]
         ]);
 
         $dataProvider->setSort([
