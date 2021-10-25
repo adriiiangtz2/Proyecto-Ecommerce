@@ -1,10 +1,6 @@
 <?php
 
-use yii\helpers\Html;
-use app\models\Producto;
 use yii\widgets\ListView;
-use kartik\rating\StarRating;
-use justinvoelker\separatedpager\LinkPager;
 
 ?>
 <!-- tittle -->
@@ -42,7 +38,7 @@ use justinvoelker\separatedpager\LinkPager;
                     'layout' => "<div class='col-md-12'>{summary}</div>{items}<div class='col-md-12'>{pager}</div>",
                 ]);
                 ?>
-                
+
             </div>
         </div>
-        </div>
+    </div>
