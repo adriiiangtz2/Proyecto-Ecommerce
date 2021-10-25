@@ -44,15 +44,4 @@ use justinvoelker\separatedpager\LinkPager;
                 
             </div>
         </div>
-
-        <div class="page">
-            <?php /*echo LinkPager::widget([
-                'pagination' => $pages,
-                'prevPageLabel' => false,
-                'nextPageLabel' => false,
-                'maxButtonCount' => 2,
-                'options' => [
-                    'class' => 'ip-mosaic__pagin-list',
-                ],
-            ]);*/ ?>
         </div>
