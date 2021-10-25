@@ -18,8 +18,8 @@ class CatMunicipiosSearch extends CatMunicipios
     public function rules()
     {
         return [
-            [['mun_id', 'mun_fkestado'],'integer'],
-            [['mun_municipio','estadoNombre'], 'safe'],
+            [['mun_id', 'mun_fkestado'], 'integer'],
+            [['mun_municipio', 'estadoNombre'], 'safe'],
         ];
     }
 
@@ -44,25 +44,26 @@ class CatMunicipiosSearch extends CatMunicipios
         $query = CatMunicipios::find();
 
         $query->joinWith('munFkestado');
-        
+
 
         // add conditions that should always apply here
-       
+
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
         $dataProvider->setSort([
-                'attributes' => [
+            'attributes' => [
                 'mun_id',
                 'mun_fkestado',
                 'mun_municipio',
-                
-                'estadoNombre' =>[
+
+                'estadoNombre' => [
                     'asc' => ['est_estado' => SORT_ASC],
-                     'desc' => ['est_estado' => SORT_DESC],
-                     'default' => SORT_ASC,]
+                    'desc' => ['est_estado' => SORT_DESC],
+                    'default' => SORT_ASC,
+                ]
             ]
 
         ]);
@@ -81,10 +82,10 @@ class CatMunicipiosSearch extends CatMunicipios
             'mun_fkestado' => $this->mun_fkestado,
         ]);
 
-        $query-> andFilterWhere(['like', 'est_estado', $this->estadoNombre])
-      ->  andFilterWhere(['like', 'mun_municipio', $this->mun_municipio]);
-        
-        
+        $query->andFilterWhere(['like', 'est_estado', $this->estadoNombre])
+            ->andFilterWhere(['like', 'mun_municipio', $this->mun_municipio]);
+
+
 
         return $dataProvider;
     }

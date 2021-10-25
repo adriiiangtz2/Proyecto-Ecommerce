@@ -7,7 +7,6 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\CatMunicipiosSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
 <div class="cat-municipios-search">
 
     <?php $form = ActiveForm::begin([

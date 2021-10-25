@@ -10,8 +10,8 @@ use yii\grid\GridView;
 $this->title = ' Municipios';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cat-municipios-index"> 
-    
+<div class="cat-municipios-index">
+
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -19,7 +19,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Agregar Municipios', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
