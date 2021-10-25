@@ -55,7 +55,7 @@ class Domicilio extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-             'dom_id' => 'Id',
+            'dom_id' => 'Id',
             'dom_ciudad' => 'Ciudad',
             'dom_colonia' => 'Colonia',
             'dom_calle' => 'Calle',
@@ -64,12 +64,9 @@ class Domicilio extends \yii\db\ActiveRecord
             'dom_telefono' => 'Número de teléfono',
             'dom_fkusuario' => 'Usuario',
             'dom_fkcp' => 'Código postal',
-            'coloniaNombre'=> 'colonia',
-        
-            'usuarioNombre'=> 'usuario',
+            'coloniaNombre' => 'colonia',
 
-
-
+            'usuarioNombre' => 'usuario',
         ];
     }
 
@@ -103,17 +100,33 @@ class Domicilio extends \yii\db\ActiveRecord
         return $this->hasOne(Usuario::className(), ['usu_id' => 'dom_fkusuario']);
     }
 
-    public function getColoniaNombre(){
+    public function getColoniaNombre()
+    {
 
-           return $this->domFkcp->cp_colonia;
+        return $this->domFkcp->cp_colonia;
     }
-    public function getUsuarioNombre(){
+    public function getUsuarioNombre()
+    {
 
-           return $this -> domFkusuario -> usu_nombre;
+        return $this->domFkusuario->usu_nombre;
     }
     public static function map()
     {
         return ArrayHelper::map(Domicilio::find()->all(), 'dom_id', 'dom_id');
     }
- 
+    //Funcion para traer el usuario
+
+    public  static function Domicilio()
+    {
+        return Domicilio::find()->where(['dom_fkusuario' => Yii::$app->usuario->usu_id])->one();
+    }
+    public static function cp($cp_id)
+    {
+        $colonias = [];
+        $cp = CatCp::find()->where(['cp_cp' => $cp_id])->all();
+        foreach ($cp as $c) {
+            $colonias[] = ['id' => $c->cp_colonia, 'name' => $c->cp_colonia];
+        }
+        return $colonias;
+    }
 }

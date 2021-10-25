@@ -8,6 +8,7 @@ use justinvoelker\separatedpager\LinkPager;
 
 ?>
 <!-- tittle -->
+<?= $this->render('/layouts/usuario/header') ?>
 <div class="small-container">
 
     <div class="row row-2">

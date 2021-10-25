@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\Usuario;
 use yii\web\Controller;
 use app\models\Domicilio;
 use yii\filters\VerbFilter;
@@ -11,42 +12,39 @@ use app\models\DomicilioSearch;
 use yii\web\NotFoundHttpException;
 use webvimark\modules\UserManagement\models\User;
 
-/**
- * DomicilioController implements the CRUD actions for Domicilio model.
- */
 class DomicilioController extends Controller
 {
     /**
      * @inheritDoc
      */
-       public function behaviors()
-{
-	return [
-		'ghost-access'=> [
-			'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
-		],
-	];
-}
-
-public function actionSubcat() {
-    Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-    $out = [];
-    if (isset($_POST['depdrop_parents'])) {
-        $parents = $_POST['depdrop_parents'];
-        if ($parents != null) {
-            $est_id = $parents[0];
-            $out = CatMunicipios::getMunicipiosList($est_id); 
-            // the getSubCatList function will query the database based on the
-            // cat_id and return an array like below:
-            // [
-            //    ['id'=>'<sub-cat-id-1>', 'name'=>'<sub-cat-name1>'],
-            //    ['id'=>'<sub-cat_id_2>', 'name'=>'<sub-cat-name2>']
-            // ]
-            return ['output'=>$out, 'selected'=>''];
-        }
+    public function behaviors()
+    {
+        return [
+            'ghost-access' => [
+                'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+            ],
+        ];
     }
-    return ['output'=>'', 'selected'=>''];
-}
+    public function actionSubcat()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $parents = $_POST['depdrop_parents'];
+            if ($parents != null) {
+                $est_id = $parents[0];
+                $out = CatMunicipios::getMunicipiosList($est_id);
+                // the getSubCatList function will query the database based on the
+                // cat_id and return an array like below:
+                // [
+                //    ['id'=>'<sub-cat-id-1>', 'name'=>'<sub-cat-name1>'],
+                //    ['id'=>'<sub-cat_id_2>', 'name'=>'<sub-cat-name2>']
+                // ]
+                return ['output' => $out, 'selected' => ''];
+            }
+        }
+        return ['output' => '', 'selected' => ''];
+    }
 
     /**
      * Lists all Domicilio models.
@@ -98,6 +96,7 @@ public function actionSubcat() {
         ]);
     }
 
+
     /**
      * Updates an existing Domicilio model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -147,10 +146,43 @@ public function actionSubcat() {
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-    public function actionRegistrarDomicilio(){
+    public function actionRegistrarDomicilio()
+    {
 
         $domicilio = new Domicilio();
+        $usuario = new Usuario();
         $user = new User();
-        return $this-> render('registro', compact('domicilio', 'user'));
+
+        if ($this->request->isPost && $domicilio->load($this->request->post()) && $user->load($this->request->post())) {
+
+            //copia codigo de wevimark/migrations/insert
+            $user->status = User::STATUS_ACTIVE;
+            $user->save(false);
+            //me hacen falta llenar datos en tabla  usuario la id de user
+            $domicilio->dom_fkusuario = $usuario->usu_id;
+            $domicilio->save();
+            // echo('<pre>');
+            // var_dump($this->request->post());
+            // echo('</pre>');
+            // die;
+            return $this->redirect(['view', 'id' => $domicilio->dom_id]);
+        }
+        // direcciona a esta vista con render
+        return $this->render('registro', compact('domicilio', 'user'));
+    }
+    public function actionCp()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $parents = $_POST['depdrop_parents'];
+            if ($parents != null) {
+                $cp_id = $parents[0];
+                $out = Domicilio::cp($cp_id);
+
+                return ['output' => $out, 'selected' => ''];
+            }
+        }
+        return ['output' => '', 'selected' => ''];
     }
 }

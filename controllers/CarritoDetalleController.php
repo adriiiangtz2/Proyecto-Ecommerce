@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use Yii;
+use yii\web\Response;
 use yii\web\Controller;
 use app\models\Producto;
 use yii\filters\VerbFilter;
@@ -113,6 +115,35 @@ class CarritoDetalleController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionCarrito()
+    {
+        return $this->render('carrito');
+    }
+    public function actionRegistrar()
+    {
+        $id=$this->request->post('id');
+        $carDetalle = CarritoDetalle::find()->where(['cardet_id' => $id]) -> one(); 
+        $precio = Producto::find()->where(['pro_id' => $carDetalle -> cardet_fkproducto])->one()->pro_precio;
+        $carDetalle -> cardet_cantidad = $this->request->post('cantidad');
+        $total = $precio* $carDetalle -> cardet_cantidad;
+        $carDetalle -> cardet_precio = $total;
+        $carDetalle -> save();
+        $response = Yii::$app->response;
+        $response->format = Response::FORMAT_JSON; 
+        $response->data = ['html' => $this->renderPartial('carrito')];
+        return $response;
+    }
+    public function actionEliminar()
+    {
+        $id=$this->request->post('id');
+        $carDetalle = CarritoDetalle::find()->where(['cardet_id' => $id]) -> one(); 
+        $carDetalle -> cardet_estatus = 0;
+        $carDetalle -> save();
+        $response = Yii::$app->response;
+        $response->format = Response::FORMAT_JSON; 
+        $response->data = ['html' => $this->renderPartial('carrito')];
+        return $response;
+    }
     /**
      * Finds the CarritoDetalle model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

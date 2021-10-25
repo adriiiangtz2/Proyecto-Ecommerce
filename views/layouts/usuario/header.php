@@ -35,7 +35,12 @@ use yii\bootstrap4\NavBar;
             ],
             [
                 'label' => 'Carrito',
-                'url'=>['/carro/carrito'],
+                'url'=>['/carrito-detalle/carrito'],
+                'visible'=> !Yii::$app->user->isGuest
+            ],
+            [
+                'label' => 'Tarjetas',
+                'url'=>['/cat-tarjeta/registrar'],
                 'visible'=> !Yii::$app->user->isGuest
             ],
             [

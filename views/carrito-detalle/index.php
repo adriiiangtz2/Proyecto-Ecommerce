@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Añadir detalles al carrito', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Carrito Vista', ['carrito-detalle/carrito'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

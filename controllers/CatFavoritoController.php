@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Response;
+use app\models\Usuario;
 use yii\web\Controller;
 use app\models\Producto;
 use yii\data\Pagination;
@@ -175,6 +176,37 @@ class CatFavoritoController extends Controller
         $response->format = Response::FORMAT_JSON; //Le damos formato a la respuesta
         $response->data = ['save' => $id];//
         $response->data = ['html' => $this->renderPartial('registrarFav')];//Renderizamos parcial
+        return $response;
+    }
+
+    public function actionBtnfavpro()
+    {
+        // llega el id del js 
+        $pro = $this->request->post('id');
+        //se hace una consulta para que traiga el id del que se registra
+        $fav = CatFavorito::find()->where(['fav_fkproducto' => $pro, 'fav_fkusuario' => Usuario::usuario()->usu_id])->one();
+       
+        $productos = Producto::findOne(['pro_id' => $pro]);
+        // si no ha asigando ese favorito lo guarda
+        if (!isset($fav)) {
+            $model = new CatFavorito();
+            $model->fav_fkproducto = $pro;
+            $model->fav_fkusuario   = Usuario::usuario()->usu_id;
+            $model->fav_estado = 1;
+            $model->save();
+            // si no le cambia los valores
+        }else{
+            if ($fav->fav_estado == 1) {
+                $fav->fav_estado = 0;
+            } else {
+                $fav->fav_estado = 1;
+
+            }
+            $fav->save();
+        }
+        $response = Yii::$app->response; //Obtenemos los datos de la respuesta 
+        $response->format = Response::FORMAT_JSON; //Le damos formato a la respuesta
+        $response->data = ['html' => $this->renderPartial('btnfavpro', compact('productos'))]; //Renderizamos parcial
         return $response;
     }
 

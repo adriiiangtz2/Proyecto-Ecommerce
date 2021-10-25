@@ -138,4 +138,16 @@ class CatTarjetaController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionRegistrar()
+    {
+        $model = new CatTarjeta();
+
+        if ($this->request->isPost && $model->load($this->request->post()) ) {
+
+        return $this->render('registrar');
+        }
+
+        return $this->render('registrar', compact('model'));
+    }
 }
