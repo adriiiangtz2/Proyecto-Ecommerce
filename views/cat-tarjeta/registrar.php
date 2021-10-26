@@ -20,6 +20,7 @@ use yii\bootstrap4\ActiveForm;
 </head>
 <?= $this->render('/layouts/usuario/header') ?>
 <body class="body-tarjeta">
+<?= Html::a('Mis Tarjetas',['cat-tarjeta/mostrar'], ['class' => 'btntarjeta']) ?>	
 	<div class="contenedor-tarjeta">
 
 		<!-- Tarjeta -->
@@ -156,7 +157,7 @@ use yii\bootstrap4\ActiveForm;
 		<!-- <button type="submit" class="btn-enviar">Enviar</button> -->
 		<div class="row justify-content-center">
 			<div class="form-group">
-				<?= Html::submitButton('Guardar', ['class' => 'btnn btn-success']) ?>
+				<?= Html::submitButton('Guardar', ['class' => 'btntarjeta2']) ?>
 				<?php ActiveForm::end(); ?>
 	</div>
 		</div>

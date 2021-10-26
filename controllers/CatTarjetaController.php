@@ -154,4 +154,9 @@ class CatTarjetaController extends Controller
 
         return $this->render('registrar', compact('model'));
     }
+
+    public function actionMostrar()
+    {
+        return $this->render('mostrar');
+    }
 }

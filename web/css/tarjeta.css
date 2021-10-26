@@ -7,7 +7,7 @@
 .contenedor-tarjeta {
 	width: 90%;
 	max-width: 1000px;
-	padding: 40px 20px;
+	/* padding: 40px 20px; */
 	margin: auto;
 	display: flex;
 	flex-direction: column;
@@ -188,7 +188,7 @@
 	background: #fff;
 	width: 100%;
 	max-width: 700px;
-	padding: 150px 30px 30px 30px;
+	padding: 150px 30px 0px 30px;
 	border-radius: 10px;
 	position: relative;
 	top: -150px;
@@ -283,4 +283,30 @@
 
 .formulario-tarjeta .btn-enviar:hover {
 	background: #1850b1;
+}
+
+.contarjeta{
+    display: flex;
+    flex-direction: row;
+}
+.tarjet{
+    width:100%;
+	border: 10px solid black;
+}
+.btntarjeta{
+	position: absolute;
+    left: 80%;
+    top: 199px;
+    padding: 5px;
+    background: #060605cf;
+    color: #F9F9F9;
+    border-radius: 12px;
+    font-size: 13px;
+}
+.btntarjeta2{
+    padding: 5px;
+    background: #060605cf;
+    color: #F9F9F9;
+    border-radius: 12px;
+    font-size: 16px;
 }
