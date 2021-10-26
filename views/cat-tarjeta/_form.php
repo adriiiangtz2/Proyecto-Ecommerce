@@ -29,7 +29,7 @@ use yii\bootstrap4\ActiveForm;
                     'value' => date('Y-m'),
                     'pluginOptions' => [
                         'autoclose' => true,
-                        'format' => 'yy/mm'
+                        'format' => 'mm/yy'
                     ]
                 ]
             );  ?>

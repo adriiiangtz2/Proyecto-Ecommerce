@@ -1,13 +1,14 @@
 const tarjeta = document.querySelector('#tarjeta'),
 	  btnAbrirFormulario = document.querySelector('#btn-abrir-formulario'),
 	  formulario = document.querySelector('#formulario-tarjeta'),
+	  formulariot = document.querySelector('#formulariot'),
 	  numeroTarjeta = document.querySelector('#tarjeta .numero'),
 	  nombreTarjeta = document.querySelector('#tarjeta .nombre'),
 	  logoMarca = document.querySelector('#logo-marca'),
 	  firma = document.querySelector('#tarjeta .firma p'),
 	  mesExpiracion = document.querySelector('#tarjeta .mes'),
 	  yearExpiracion = document.querySelector('#tarjeta .year');
-	  ccv = document.querySelector('#tarjeta .ccv');
+	//   ccv = document.querySelector('#tarjeta .ccv');
 
 // * Volteamos la tarjeta para mostrar el frente.
 const mostrarFrente = () => {
@@ -28,33 +29,33 @@ btnAbrirFormulario.addEventListener('click', () => {
 });
 
 // * Select del mes generado dinamicamente.
-for(let i = 1; i <= 12; i++){
-	let opcion = document.createElement('option');
-	opcion.value = i;
-	opcion.innerText = i;
-	formulario.selectMes.appendChild(opcion);
-}
+// for(let i = 1; i <= 12; i++){
+// 	let opcion = document.createElement('option');
+// 	opcion.value = i;
+// 	opcion.innerText = i;
+// 	formulario.selectMes.appendChild(opcion);
+// }
 
 // * Select del año generado dinamicamente.
-const yearActual = new Date().getFullYear();
-for(let i = yearActual; i <= yearActual + 8; i++){
-	let opcion = document.createElement('option');
-	opcion.value = i;
-	opcion.innerText = i;
-	formulario.selectYear.appendChild(opcion);
-}
+// const yearActual = new Date().getFullYear();
+// for(let i = yearActual; i <= yearActual + 8; i++){
+// 	let opcion = document.createElement('option');
+// 	opcion.value = i;
+// 	opcion.innerText = i;
+// 	formulario.selectYear.appendChild(opcion);
+// }
 
 // * Input numero de tarjeta
-formulario.inputNumero.addEventListener('keyup', (e) => {
+formulariot.inputNumero.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.inputNumero.value = valorInput
+	formulariot.inputNumero.value = valorInput
 	// Eliminamos espacios en blanco
 	.replace(/\s/g, '')
 	// Eliminar las letras
 	.replace(/\D/g, '')
 	// Ponemos espacio cada cuatro numeros
-	.replace(/([0-9]{4})/g, '$1 ')
+	.replace(/([0-9]{16})/g, '$1 ')
 	// Elimina el ultimo espaciado
 	.trim();
 
@@ -83,43 +84,49 @@ formulario.inputNumero.addEventListener('keyup', (e) => {
 });
 
 // * Input nombre de tarjeta
-formulario.inputNombre.addEventListener('keyup', (e) => {
+formulariot.inputNombre.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.inputNombre.value = valorInput.replace(/[0-9]/g, '');
+	formulariot.inputNombre.value = valorInput.replace(/[0-9]/g, '');
 	nombreTarjeta.textContent = valorInput;
 	firma.textContent = valorInput;
 
 	if(valorInput == ''){
-		nombreTarjeta.textContent = 'Jhon Doe';
+		nombreTarjeta.textContent = 'Usuario';
 	}
 
 	mostrarFrente();
 });
 
 // * Select mes
-formulario.selectMes.addEventListener('change', (e) => {
-	mesExpiracion.textContent = e.target.value;
-	mostrarFrente();
-});
+// formulario.selectMes.addEventListener('change', (e) => {
+// 	mesExpiracion.textContent = e.target.value;
+// 	mostrarFrente();
+// });
 
 // * Select Año
-formulario.selectYear.addEventListener('change', (e) => {
-	yearExpiracion.textContent = e.target.value.slice(2);
-	mostrarFrente();
-});
+// formulario.selectYear.addEventListener('change', (e) => {
+// 	yearExpiracion.textContent = e.target.value.slice(2);
+// 	mostrarFrente();
+// });
 
 // * CCV
-formulario.inputCCV.addEventListener('keyup', () => {
-	if(!tarjeta.classList.contains('active')){
-		tarjeta.classList.toggle('active');
-	}
+// formulario.inputCCV.addEventListener('keyup', () => {
+// 	if(!tarjeta.classList.contains('active')){
+// 		tarjeta.classList.toggle('active');
+// 	}
 
-	formulario.inputCCV.value = formulario.inputCCV.value
-	// Eliminar los espacios
-	.replace(/\s/g, '')
-	// Eliminar las letras
-	.replace(/\D/g, '');
+// 	formulario.inputCCV.value = formulario.inputCCV.value
+// 	// Eliminar los espacios
+// 	.replace(/\s/g, '')
+// 	// Eliminar las letras
+// 	.replace(/\D/g, '');
 
-	ccv.textContent = formulario.inputCCV.value;
+// 	ccv.textContent = formulario.inputCCV.value;
+// });
+
+$('#cattarjeta-tar_expiracion').on('change',function(e){
+	$('#cattarjeta-tar_expiracion').val();
+	console.log($('#cattarjeta-tar_expiracion').val());
+	mesExpiracion.textContent =$('#cattarjeta-tar_expiracion').val();
 });

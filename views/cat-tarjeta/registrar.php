@@ -1,6 +1,7 @@
 <?php 
 
 use app\models\Usuario;
+use yii\bootstrap4\Html;
 use app\models\CatFavorito;
 use kartik\date\DatePicker;
 use kartik\widgets\Select2;
@@ -36,12 +37,12 @@ use yii\bootstrap4\ActiveForm;
 					<div class="flexbox">
 						<div class="grupo" id="nombre">
 							<p class="label">Nombre Tarjeta</p>
-							<p class="nombre">Jhon Doe</p>
+							<p class="nombre">Nombre</p>
 						</div>
 
 						<div class="grupo" id="expiracion">
 							<p class="label">Expiracion</p>
-							<p class="expiracion"><span class="mes">MM</span> / <span class="year">AA</span></p>
+							<p class="expiracion"><span class="mes">MM</span> <!-- / <span class="year">AA</span> --></p>
 						</div>
 					</div>
 				</div>
@@ -72,10 +73,10 @@ use yii\bootstrap4\ActiveForm;
 		</div>
 		<!-- Formulario -->
 		
-		<form action="" id="formulario-tarjeta" class="formulario-tarjeta">
+		<div action="" id="formulario-tarjeta" class="formulario-tarjeta">
+			<?php $form = ActiveForm::begin(['id'=>'formulariot']); ?>
 			
 		<div class="grupo">
-			<?php $form = ActiveForm::begin(); ?>
 		    <?= $form->field($model, 'tar_numtarjeta')->textInput(['maxlength' => true , 'id'=>'inputNumero'],) ?>
 			</div>
 	
@@ -87,9 +88,7 @@ use yii\bootstrap4\ActiveForm;
 			
 			<div class="grupo">
 				
-				<?= $form
-        ->field($model, 'tar_financiera')
-        ->dropDownList(
+				<?= $form->field($model, 'tar_financiera')->dropDownList(
 			[
 				'Mastercard' => 'Mastercard',
                 'Visa' => 'Visa',
@@ -100,9 +99,7 @@ use yii\bootstrap4\ActiveForm;
 			</div>
 			<div class="grupo">
 			
-			<?= $form
-        ->field($model, 'tar_tipo')
-        ->dropDownList(
+			<?= $form->field($model, 'tar_tipo')->dropDownList(
             [
                 'Debito' => 'Debito',
                 'Credito' => 'Credito',
@@ -113,14 +110,12 @@ use yii\bootstrap4\ActiveForm;
 			</div>
 	
 			<div class="grupo">
-			<?= $form
-        ->field($model, 'tar_expiracion')
-        ->widget(DatePicker::className(), [
+			<?= $form->field($model, 'tar_expiracion')->widget(DatePicker::className(), [
             'type' => DatePicker::TYPE_INPUT,
             'value' => date('Y-m'),
             'pluginOptions' => [
                 'autoclose' => true,
-                'format' => 'yy/mm',
+                'format' => 'mm/yy',
             ],
         ]) ?>
 			</div>
@@ -128,10 +123,10 @@ use yii\bootstrap4\ActiveForm;
 			<div class="flexbox">
 				<div class="grupo expira">
 					
-			        <label for="selectMes">Expiracion</label>
+			<!--   <label for="selectMes">Expiracion</label> -->
 					
 					<div class="flexbox">
-						<div class="grupo-select">
+						<!-- <div class="grupo-select">
 							
 						    <select name="mes" id="selectMes">
 								<option disabled selected>Mes</option>
@@ -146,21 +141,30 @@ use yii\bootstrap4\ActiveForm;
 							</select>
 							<i class="fas fa-angle-down"></i>
 						</div>
-					</div>
+					</div> -->
 				</div>
 
-				<div class="grupo ccv">
+				<!-- <div class="grupo ccv">
 					<label for="inputCCV">CCV</label>
 					<input type="text" id="inputCCV" maxlength="3">
-				</div>
+				</div> -->
 			
 			
 			</div>
-			<button type="submit" class="btn-enviar">Enviar</button>
-		</form>
+			
+		</div>
+		<!-- <button type="submit" class="btn-enviar">Enviar</button> -->
+		<div class="row justify-content-center">
+			<div class="form-group">
+				<?= Html::submitButton('Guardar', ['class' => 'btnn btn-success']) ?>
+				<?php ActiveForm::end(); ?>
 	</div>
-	<?= $this->render('/layouts/footer') ?>
-	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+		</div>
+</div>
+
+
+<?= $this->render('/layouts/footer') ?>
+<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 	<script src="js/tarjeta.js"></script>
 </body>
 </html>

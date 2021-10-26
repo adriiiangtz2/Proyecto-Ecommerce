@@ -2,11 +2,12 @@
 
 namespace app\controllers;
 
-use app\models\CatTarjeta;
-use app\models\CatTarjetaSearch;
+use app\models\Usuario;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
+use app\models\CatTarjeta;
 use yii\filters\VerbFilter;
+use app\models\CatTarjetaSearch;
+use yii\web\NotFoundHttpException;
 
 /**
  * CatTarjetaController implements the CRUD actions for CatTarjeta model.
@@ -143,9 +144,12 @@ class CatTarjetaController extends Controller
     {
         $model = new CatTarjeta();
 
+       
         if ($this->request->isPost && $model->load($this->request->post()) ) {
 
-        return $this->render('registrar');
+         
+            $model->tar_fkusuario = Usuario::usuario()->usu_id;
+            $model->save();
         }
 
         return $this->render('registrar', compact('model'));
