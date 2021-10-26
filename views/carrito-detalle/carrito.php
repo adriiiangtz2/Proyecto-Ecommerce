@@ -1,4 +1,6 @@
 <?php
+
+use yii\bootstrap4\Html;
     $total = 0;
 ?>
 <?= $this->render('/layouts/usuario/header') ?>
@@ -90,8 +92,17 @@
 
             </tr>
         </table>
-    </div>
 
+    </div>
+    <?php 
+    if(!empty(\app\models\CarritoDetalle::productosCarrito())){ ?>
+
+         <?= Html::a('Pagar', ['carrito-detalle/checkout'], ['class' => 'btn btn-warning'])?> 
+    
+    <?php }
+    ?>
+
+        
 
 
 

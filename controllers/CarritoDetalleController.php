@@ -3,7 +3,9 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\Carro;
 use yii\web\Response;
+use app\models\Usuario;
 use yii\web\Controller;
 use app\models\Producto;
 use yii\filters\VerbFilter;
@@ -118,6 +120,32 @@ class CarritoDetalleController extends Controller
     public function actionCarrito()
     {
         return $this->render('carrito');
+    }
+    public function actionCheckout()
+    {
+        $model = new Carro();
+        $carro = Carro::carro();
+       
+        if ($this->request->isPost){
+
+         if( $model->load($this->request->post()) ) {
+            $carro -> car_fkmetodo = $model -> car_fkmetodo;
+            $carro -> car_fkdomicilio = $model -> car_fkdomicilio;
+            $carro -> car_fkenvio = $model -> car_fkenvio;
+            $carro -> car_estatus = 'Pagado';
+            $carro->save();
+
+            
+            return $this->redirect('/');
+        }
+    }
+
+        return $this->render('checkout', compact('model'));
+/*         return $this->render('checkout'); */
+    }
+    public function actionConfirmacion()
+    {
+        return $this->render('confirmacion');
     }
     public function actionRegistrar()
     {

@@ -152,4 +152,8 @@ class Carro extends \yii\db\ActiveRecord
     {
         return ArrayHelper::map(Carro::find()->all(), 'car_id', 'car_id');
     }
+    public static function carro()
+    {
+        return self::find()->where(['and',['car_fkusuario' => Usuario::usuario()->usu_id], ['car_estatus' => 'Apartado']])->one();
+    }
 }

@@ -113,5 +113,9 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     {
         return $this->cardetFkproducto->pro_precio;
     }
+    public static function domicilio()
+    {
+        return ArrayHelper::map(Domicilio::find()->where(['dom_fkusuario' => Usuario::usuario()->usu_id])->all(), 'dom_id', 'dom_ciudad');
+    }
 }
 

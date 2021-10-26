@@ -1,0 +1,7 @@
+.content-check{
+    display: flex;
+    flex-direction: row;
+}
+.cardet{
+    width:50%;
+}
