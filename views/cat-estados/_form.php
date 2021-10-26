@@ -9,21 +9,16 @@ use yii\bootstrap4\ActiveForm;
 ?>
 
 <div class="cat-estados-form">
-
     <?php $form = ActiveForm::begin(); ?>
     <div class="row offer">
-
-    <div class="col">
-    <?= $form->field($model, 'est_id')->textInput() ?>
-    </div>
-    <div class="col">
-    <?= $form->field($model, 'est_estado')->textInput(['maxlength' => true]) ?>
-    </div>
+        <div class="col">
+            <?= $form->field($model, 'est_estado')->textInput(['maxlength' => true]) ?>
+        </div>
     </div>
     <div class="row justify-content-center">
-    <div class="form-group">
-        <?= Html::submitButton('guardar', ['class' => 'btnn']) ?>
-    </div>
+        <div class="form-group">
+            <?= Html::submitButton('guardar', ['class' => 'btnn']) ?>
+        </div>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -60,7 +60,6 @@ class CatEstadosSearch extends CatEstados
         $query->andFilterWhere([
             'est_id' => $this->est_id,
         ]);
-
         $query->andFilterWhere(['like', 'est_estado', $this->est_estado]);
 
         return $dataProvider;

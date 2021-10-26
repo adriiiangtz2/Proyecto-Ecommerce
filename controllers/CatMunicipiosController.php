@@ -7,7 +7,6 @@ use app\models\CatMunicipiosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use webvimark\modules\UserManagement\models\User;
 
 /**
  * CatMunicipiosController implements the CRUD actions for CatMunicipios model.
@@ -17,14 +16,15 @@ class CatMunicipiosController extends Controller
     /**
      * @inheritDoc
      */
-   public function behaviors()
-{
-	return [
-		'ghost-access'=> [
-			'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
-		],
-	];
-}
+    public function behaviors()
+    {
+        return [
+            'ghost-access' => [
+                'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+            ],
+        ];
+    }
+
     /**
      * Lists all CatMunicipios models.
      * @return mixed
@@ -39,7 +39,6 @@ class CatMunicipiosController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
-
     /**
      * Displays a single CatMunicipios model.
      * @param integer $mun_id

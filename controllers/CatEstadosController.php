@@ -16,15 +16,14 @@ class CatEstadosController extends Controller
     /**
      * @inheritDoc
      */
-  
-        public function behaviors()
-{
-	return [
-		'ghost-access'=> [
-			'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
-		],
-	];
-}
+    public function behaviors()
+    {
+        return [
+            'ghost-access' => [
+                'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+            ],
+        ];
+    }
 
     /**
      * Lists all CatEstados models.
@@ -53,7 +52,6 @@ class CatEstadosController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
-
     /**
      * Creates a new CatEstados model.
      * If creation is successful, the browser will be redirected to the 'view' page.

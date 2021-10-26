@@ -13,24 +13,7 @@ use yii\bootstrap4\ActiveForm;
     <div class="Registrar-domicilio">
 
         <?php $form = ActiveForm::begin(); ?>
-
-        <div class="row">
-            <div class="col-md-3">
-                <?= $form->field($user, 'username')->textInput(['maxlength' => 255, 'autocomplete' => 'off']) ?>
-            </div>
-
-            <div class="col-md-3">
-                <?= $form->field($user, 'password')->passwordInput(['maxlength' => 255, 'autocomplete' => 'off']) ?>
-            </div>
-
-            <div class="col-md-3">
-                <?= $form->field($user, 'repeat_password')->passwordInput(['maxlength' => 255, 'autocomplete' => 'off']) ?>
-            </div>
-
-            <div class="col-md-3">
-                <?= $form->field($user, 'email')->textInput(['maxlength' => 255]) ?>
-            </div>
-
+        <div class="row offer">
             <div class="col-md-3">
                 <?= $form->field($domicilio, 'dom_fkcp')->textInput(['id' => 'dom_cp']) ?>
             </div>
@@ -66,13 +49,14 @@ use yii\bootstrap4\ActiveForm;
             </div>
 
         </div>
+        <div class="row justify-content-center">
 
-        <div class="form-group">
-            <?= Html::submitButton('guardar', ['class' => 'btn btn-success']) ?>
+            <div class="form-group">
+                <?= Html::submitButton('guardar', ['class' => 'btn btnn']) ?>
+            </div>
         </div>
 
         <?php ActiveForm::end(); ?>
 
     </div>
-
 </div>

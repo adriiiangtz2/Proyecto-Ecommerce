@@ -17,7 +17,6 @@ use yii\helpers\ArrayHelper;
  */
 class CatMunicipios extends \yii\db\ActiveRecord
 {
-    
     /**
      * {@inheritdoc}
      */
@@ -32,10 +31,9 @@ class CatMunicipios extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['mun_id', 'mun_fkestado', 'mun_municipio'], 'required'],
-            [['mun_id', 'mun_fkestado'], 'integer'],
+            [['mun_fkestado', 'mun_municipio'], 'required'],
+            [['mun_fkestado'], 'integer'],
             [['mun_municipio'], 'string', 'max' => 49],
-            [['mun_id', 'mun_fkestado'], 'unique', 'targetAttribute' => ['mun_id', 'mun_fkestado']],
             [['mun_fkestado'], 'exist', 'skipOnError' => true, 'targetClass' => CatEstados::className(), 'targetAttribute' => ['mun_fkestado' => 'est_id']],
         ];
     }
@@ -49,10 +47,10 @@ class CatMunicipios extends \yii\db\ActiveRecord
             'mun_id' => 'Id',
             'mun_fkestado' => 'Estado',
             'mun_municipio' => 'Municipio',
-            
-            'estadoNombre'=> 'Estado',
+            'estadoNombre' => 'Estado',
         ];
     }
+
     /**
      * Gets query for [[CatCps]].
      *
@@ -73,22 +71,23 @@ class CatMunicipios extends \yii\db\ActiveRecord
         return $this->hasOne(CatEstados::className(), ['est_id' => 'mun_fkestado']);
     }
 
-    public function getEstadoNombre(){
+    public function getEstadoNombre()
+    {
 
-        return $this -> munFkestado -> est_estado;
+        return $this->munFkestado->est_estado;
     }
-    public static function getMunicipiosList($est_id){
-
+    public static function getMunicipiosList($est_id)
+    {
         $MunicipiosList = self::find()
-        ->select(['mun_id', 'mun_municipio'])
-        ->where(['est_id'=>$est_id])
-        ->asArray()
-        ->all();
+            ->select(['mun_id', 'mun_municipio'])
+            ->where(['est_id' => $est_id])
+            ->asArray()
+            ->all();
         return  $MunicipiosList;
     }
 
-     public static function map(){
-        return ArrayHelper::map(CatMunicipios::find()->all(),'mun_id','mun_municipio');
+    public static function map()
+    {
+        return ArrayHelper::map(CatMunicipios::find()->all(), 'mun_id', 'mun_municipio');
     }
-   
 }

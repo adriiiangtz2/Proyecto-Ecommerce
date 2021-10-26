@@ -23,16 +23,15 @@ class CatEstados extends \yii\db\ActiveRecord
     {
         return 'cat_estados';
     }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['est_id', 'est_estado'], 'required'],
-            [['est_id'], 'integer'],
+            [['est_estado'], 'required'],
             [['est_estado'], 'string', 'max' => 31],
-            [['est_id'], 'unique'],
         ];
     }
 
@@ -66,16 +65,16 @@ class CatEstados extends \yii\db\ActiveRecord
     {
         return $this->hasMany(CatMunicipios::className(), ['mun_fkestado' => 'est_id']);
     }
-
-     public static function getMap4(){
-        return ArrayHelper::map(CatEstados::find()->all(),'est_id','est_estado'); 
+    public static function getmap4()
+    {
+        return ArrayHelper::map(CatEstados::find()->all(), 'est_id', 'est_estado');
     }
-    public static function getEstados(){
-        return self::find()->select(['est_estado','est_id'])->indexBy('est_id')->column();
-    }   
-    public static function sumaid(){
-
-       return self::find()->select(['est_id'=>'( MAX(`est_id`)+ 1) '])->one()->est_id;
-       
+    public static function getEstados()
+    {
+        return self::find()->select(['est_estado', 'est_id'])->indexBy('est_id')->column();
+    }
+    public static function sumaid()
+    {
+        return self::find()->select(['est_id' => '( MAX(`est_id`)+ 1) '])->one()->est_id;
     }
 }
