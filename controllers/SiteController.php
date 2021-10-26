@@ -61,9 +61,9 @@ class SiteController extends Controller
      *
      * @return string
      */
- public $id;
-     //funcion para asignar vista de usuario y superadmin
-    public function actionIndex($id=null)
+    public $id;
+    //funcion para asignar vista de usuario y superadmin
+    public function actionIndex($id = null)
     {
 
         $vista = 'usuario/index';
@@ -74,10 +74,9 @@ class SiteController extends Controller
         if (User::hasRole('Admin')) {
             $vista = 'superadmin/index';
             return $this->render($vista);
-        }
-        else if(User::hasRole('Usuario')){
+        } else if (User::hasRole('Usuario')) {
             $vista = 'usuario/index';
-            return $this->render($vista, compact('id') );
+            return $this->render($vista, compact('id'));
         }
         return $this->render($vista);
     }

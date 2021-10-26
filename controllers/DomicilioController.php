@@ -51,6 +51,7 @@ class DomicilioController extends Controller
      */
     public function actionIndex()
     {
+
         $searchModel = new DomicilioSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
@@ -145,7 +146,7 @@ class DomicilioController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-    public function actionRegistrarDomicilio()
+    public function actionRegistrar()
     {
 
         $domicilio = new Domicilio();

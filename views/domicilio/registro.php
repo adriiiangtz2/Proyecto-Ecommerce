@@ -8,7 +8,7 @@ use kartik\depdrop\DepDrop;
 use yii\bootstrap4\ActiveForm;
 ?>
 <div>
-    <h1> Registrar Domicilio</h1>
+    <h1> Domicilio</h1>
 
     <div class="Registrar-domicilio">
 
