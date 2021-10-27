@@ -7,7 +7,6 @@ use yii\widgets\LinkPager;
 // $favoritos = CatFavorito::favorito();
 ?>
 <div class="" id="identificador">
-<?= $this->render('/layouts/usuario/header') ?>
 <h1>Productos Favoritos</h1>
 <div class="small-container">
     <div class="filas">

@@ -1,5 +1,3 @@
-<?= $this->render('/layouts/usuario/header') ?>
-
 <?php foreach (\app\models\CatTarjeta::tarjeta() as $tarjeta): ?>
 <section class="tarjeta" id="tarjeta">
 			<div class="delantera">
