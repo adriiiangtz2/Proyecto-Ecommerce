@@ -1,6 +1,6 @@
 <?= $this->render('/layouts/usuario/header') ?>
 
-
+<?php foreach (\app\models\CatTarjeta::tarjeta() as $tarjeta): ?>
 <section class="tarjeta" id="tarjeta">
 			<div class="delantera">
 				<div class="logo-marca" id="logo-marca">
@@ -10,17 +10,17 @@
 				<div class="datos">
 					<div class="grupo" id="numero">
 						<p class="label">Número Tarjeta</p>
-						<p class="numero">#### #### #### ####</p>
+						<p class="numero"><?=$tarjeta->tar_numtarjeta ?></p>
 					</div>
 					<div class="flexbox">
 						<div class="grupo" id="nombre">
 							<p class="label">Nombre Tarjeta</p>
-							<p class="nombre">Nombre</p>
+							<p class="nombre"><?=$tarjeta->tarFkusuario->getNombreCompleto(); ?></p>
 						</div>
 
 						<div class="grupo" id="expiracion">
 							<p class="label">Expiracion</p>
-							<p class="expiracion"><span class="mes">MM</span> <!-- / <span class="year">AA</span> --></p>
+							<p class="expiracion"><span class="mes"><?=$tarjeta->tar_expiracion ?></span> <!-- / <span class="year">AA</span> --></p>
 						</div>
 					</div>
 				</div>
@@ -43,4 +43,4 @@
 			</div>
 		</section>
 
-        
+        <?php endforeach; ?>

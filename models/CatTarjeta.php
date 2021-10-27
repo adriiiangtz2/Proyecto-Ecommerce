@@ -84,4 +84,8 @@ class CatTarjeta extends \yii\db\ActiveRecord
     public function getNombreCompleto(){ 
         return $this->usuarioNombre . ' ' . $this->usuarioPaterno . ' ' . $this->usuarioMaterno;
     }
+
+    public static function tarjeta() { 
+        return CatTarjeta::find()->where(['tar_fkusuario'=> Usuario::usuario()->usu_id] )->all();
+    }
 }
