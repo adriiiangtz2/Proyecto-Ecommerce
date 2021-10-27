@@ -148,27 +148,17 @@ class DomicilioController extends Controller
     }
     public function actionRegistrar()
     {
-
         $domicilio = new Domicilio();
-        $usuario = new Usuario();
-        $user = new User();
 
-        if ($this->request->isPost && $domicilio->load($this->request->post()) && $user->load($this->request->post())) {
 
-            //copia codigo de wevimark/migrations/insert
-            $user->status = User::STATUS_ACTIVE;
-            $user->save(false);
-            //me hacen falta llenar datos en tabla  usuario la id de user
-            $domicilio->dom_fkusuario = $usuario->usu_id;
+        if ($this->request->isPost && $domicilio->load($this->request->post())) {
+
+
+            $domicilio->dom_fkusuario = Usuario::usuario()->usu_id;
             $domicilio->save();
-            // echo('<pre>');
-            // var_dump($this->request->post());
-            // echo('</pre>');
-            // die;
-            return $this->redirect(['view', 'id' => $domicilio->dom_id]);
         }
-        // direcciona a esta vista con render
-        return $this->render('registro', compact('domicilio', 'user'));
+
+        return $this->render('registro', compact('domicilio'));
     }
     public function actionCp()
     {
