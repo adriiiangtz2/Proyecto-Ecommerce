@@ -37,4 +37,3 @@ use yii\widgets\LinkPager;
         <?php endforeach; ?>
         </div>
     </div>
-    <?= $this->render('/layouts/footer') ?>
