@@ -10,9 +10,6 @@ use yii\grid\GridView;
 $this->title = 'Cat Favoritos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<?= 
-$this->render('/layouts/superadmin/navbar');
-?>
 <div class="cat-favorito-index">
 
     <h1><?= Html::encode($this->title) ?></h1>

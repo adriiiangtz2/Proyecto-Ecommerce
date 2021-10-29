@@ -5,7 +5,6 @@ use yii\bootstrap4\ActiveForm;
 ?>
 <!-- creamos esta vista una vez mandada en render -->
 <div>
-<?= $this->render('/layouts/usuario/header') ?>
     <?php $form = ActiveForm::begin(); ?>
     <div class="account-page" >
         <div class="contenedor-usu">

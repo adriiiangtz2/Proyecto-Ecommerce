@@ -18,7 +18,6 @@ use yii\bootstrap4\ActiveForm;
 	<link href="https://fonts.googleapis.com/css?family=Lato|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/estilos.css">
 </head>
-<?= $this->render('/layouts/usuario/header') ?>
 <body class="body-tarjeta">
 <?= Html::a('Mis Tarjetas',['cat-tarjeta/mostrar'], ['class' => 'btntarjeta']) ?>	
 	<div class="contenedor-tarjeta">
@@ -164,7 +163,7 @@ use yii\bootstrap4\ActiveForm;
 </div>
 
 
-<?= $this->render('/layouts/footer') ?>
+
 <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 	<script src="js/tarjeta.js"></script>
 </body>

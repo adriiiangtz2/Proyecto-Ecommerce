@@ -36,141 +36,124 @@ $this->title = 'E-commerce';
 <!-- VISTA CUANDO EL USUARIO SE HA REGISTRADO -->
 <?= $this->render('/layouts/usuario/header') ?>
 <?= $this->render('/layouts/usuario/informacion') ?>
-
-  <!-- INICIA FEATURED CATEGORY -->
-<div class="categories">
-    <div class="small-container">
-        <div class="filas">
-            <div class="colum-3">
-                <?= Html::img('plantilla/images/category-1.jpg', [
-                    'class' => 'logo',
-                ]) ?>
-
-            </div>
-            <div class="colum-3">
-                <?= Html::img('plantilla/images/category-2.jpg', [
-                    'class' => 'logo',
-                ]) ?>
-
-            </div>
-            <div class="colum-3">
-                <?= Html::img('plantilla/images/category-3.jpg', [
-                    'class' => 'logo',
-                ]) ?>
-
-            </div>
-        </div>
-    </div>
-</div>
-<!--------- FIN DE FACTURE CATEGORI ----- -->
-
-<!-- INICIO futured products -->
-<div class="small-container">
-    <h2 class="title">Featured Productos</h2>
-    <div class="filas">
-        <div class="colum-4">
-            <a href="product-datails.html"> <?= Html::img(
-                'plantilla/images/product-1.jpg',
-                ['class' => 'logo']
-            ) ?></a>
-            <h4>red Printed T-shirt</h4>
-            <div class="rating">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star-half" aria-hidden="true"></i>
-                <!-- <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                    <i class="fa fa-address-book" aria-hidden="true"></i> -->
-
-            </div>
-            <p>$50.00</p>
-
-        </div>
-        <div class="colum-4">
-            <?= Html::img('plantilla/images/product-2.jpg', [
-                'class' => 'logo',
-            ]) ?>
-            <h4>red Printed T-shirt</h4>
-            <div class="rating">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <!-- <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                    <i class="fa fa-address-book" aria-hidden="true"></i> -->
-
-            </div>
-            <p>$50.00</p>
-
-        </div>
-        <div class="colum-4">
-            <?= Html::img('plantilla/images/product-3.jpg', [
-                'class' => 'logo',
-            ]) ?>
-            <h4>red Printed T-shirt</h4>
-            <div class="rating">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-
-                <!-- <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                    <i class="fa fa-address-book" aria-hidden="true"></i> -->
-
-            </div>
-            <p>$50.00</p>
-
-        </div>
-        <div class="colum-4">
-            <?= Html::img('plantilla/images/product-4.jpg', [
-                'class' => 'logo',
-            ]) ?>
-            <h4>red Printed T-shirt</h4>
-            <div class="rating">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star-half" aria-hidden="true"></i>
-
-                <!-- <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                    <i class="fa fa-address-book" aria-hidden="true"></i> -->
-
-            </div>
-            <p>$50.00</p>
-
-        </div>
-
-
-
-    </div>
-
-    <!-- offer -->
-    <div class="offer">
+            <!-- INICIA FEATURED CATEGORY -->
+    <div class="categories">
         <div class="small-container">
             <div class="filas">
-                <div class="colum-2">
-                    <?= Html::img('plantilla/images/exclusive.png', [
+                <div class="colum-3">
+                    <?= Html::img('plantilla/images/category-1.jpg', [
                         'class' => 'logo',
-                        'style' => 'width:600px;',
                     ]) ?>
                 </div>
-                <div class="colum-2">
-                    <p>Exclusivo y valioso</p>
-                    <h1>smart band 4</h1>
-                    <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quibusdam vero eos animi
-                        ratione. Inventore quam quo obcaecati delectus cum non accusamus assumenda! Officiis totam
-                        voluptatem explicabo vel in possimus!</small><br>
-                    <a href="" class="btn">buy now &#187 </a>
+                <div class="colum-3">
+                    <?= Html::img('plantilla/images/category-2.jpg', [
+                        'class' => 'logo',
+                    ]) ?>
                 </div>
+                <div class="colum-3">
+                    <?= Html::img('plantilla/images/category-3.jpg', [
+                        'class' => 'logo',
+                    ]) ?>
+                </div>       
             </div>
         </div>
     </div>
+
+            <!--------- FIN DE FACTURE CATEGORI ----- -->
+            <!-- INICIO futured products -->
+    <div class="small-container">
+        <h2 class="title">Featured Productos</h2>
+        <div class="filas">
+            <div class="colum-4">
+                <a href="product-datails.html"> <?= Html::img('plantilla/images/product-1.jpg',['class' => 'logo']) ?></a>
+                <h4>red Printed T-shirt</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-half" aria-hidden="true"></i>
+                    <!-- <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        <i class="fa fa-address-book" aria-hidden="true"></i> -->
+                </div>
+                <p>$50.00</p>
+            </div>
+            <div class="colum-4">
+                <?= Html::img('plantilla/images/product-2.jpg', [
+                    'class' => 'logo',
+                ]) ?>
+                <h4>red Printed T-shirt</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <!-- <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        <i class="fa fa-address-book" aria-hidden="true"></i> -->
+
+                </div>
+                <p>$50.00</p>
+            </div>
+            <div class="colum-4">
+                <?= Html::img('plantilla/images/product-3.jpg', [
+                    'class' => 'logo',
+                ]) ?>
+                <h4>red Printed T-shirt</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                    <!-- <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        <i class="fa fa-address-book" aria-hidden="true"></i> -->
+
+                </div>
+                <p>$50.00</p>
+            </div>
+            <div class="colum-4">
+                <?= Html::img('plantilla/images/product-4.jpg', [
+                    'class' => 'logo',
+                ]) ?>
+                <h4>red Printed T-shirt</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-half" aria-hidden="true"></i>
+                    <!-- <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        <i class="fa fa-address-book" aria-hidden="true"></i> -->
+                </div>
+                <p>$50.00</p>
+            </div>
+        </div>
+    </div>
+        <!-- offer -->
+        <div class="offer">
+            <div class="small-container">
+                <div class="filas">
+                    <div class="colum-2">
+                        <?= Html::img('plantilla/images/exclusive.png', [
+                            'class' => 'logo',
+                            'style' => 'width:600px;',
+                        ]) ?>
+                    </div>
+                    <div class="colum-2">
+                        <p>Exclusivo y valioso</p>
+                        <h1>smart band 4</h1>
+                        <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quibusdam vero eos animi
+                            ratione. Inventore quam quo obcaecati delectus cum non accusamus assumenda! Officiis totam
+                            voluptatem explicabo vel in possimus!</small><br>
+                        <a href="" class="btn">buy now &#187 </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <!-- testimonial -->
     <div class="testimonial">
@@ -215,7 +198,6 @@ $this->title = 'E-commerce';
                     ]) ?>
                     <h3>sean paker</h3>
                 </div>
-
                 <div class="colum-3">
                     <i class="fa fa-quote-left"></i>
                     <p>
@@ -235,14 +217,10 @@ $this->title = 'E-commerce';
                     ]) ?>
                     <h3>sean paker</h3>
                 </div>
-
-
             </div>
         </div>
-
     </div>
     <!-- brands -->
-
     <div class="brands">
         <div class="small-container">
             <div class="filas">
@@ -271,11 +249,6 @@ $this->title = 'E-commerce';
                         'class' => 'logo',
                     ]) ?>
                 </div>
-
-
             </div>
         </div>
     </div> 
-
-<?= $this->render('/layouts/footer') ?>
- 

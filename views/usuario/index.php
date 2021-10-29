@@ -10,9 +10,6 @@ use yii\grid\GridView;
 $this->title = 'Usuarios';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<?= 
-$this->render('/layouts/superadmin/navbar');
-?>
 <div class="usuario-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
