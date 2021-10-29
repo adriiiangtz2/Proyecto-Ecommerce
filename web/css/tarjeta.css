@@ -1,23 +1,24 @@
-
+/* 
 .body-tarjeta {
-	background: #ddeefc;
+	background: #176db4;
 	font-family: 'Lato', sans-serif;
-}
+} */
 
 .contenedor-tarjeta {
-	width: 90%;
-	max-width: 1000px;
+	width: 100%;
+	max-width: 100%;
 	/* padding: 40px 20px; */
+	/* align-items: center; */
 	margin: auto;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+    flex-direction: row;
+	/* flex-direction: column; */
 }
 
 /* ---------- Estilos Generales de las Tarjetas ----------*/
 .tarjeta {
 	width: 100%;
-	max-width: 550px;
+	max-width: 100%;
 	position: relative;
 	color: #fff;
 	transition: .3s ease all;
@@ -38,7 +39,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	box-shadow: 0 10px 10px 0 rgba(90,116,148,0.3);
+	box-shadow: 0 10px 10px 0 rgba(4, 60, 128, 0.3);
 }
 
 /* ---------- Tarjeta Delantera ----------*/
@@ -162,16 +163,17 @@
 	height: 50px;
 	font-size: 20px;
 	line-height: 20px;
-	background: #2364d2;
+	background: #646c7a;
 	color: #fff;
 	position: relative;
 	top: -25px;
+	left: 43%;
 	z-index: 3;
 	border-radius: 100%;
-	box-shadow: -5px 4px 8px rgba(24,56,182,0.4);
+	box-shadow: -5px 4px 8px rgba(116, 129, 177, 0.4);
 	padding: 5px;
 	transition: all .2s ease;
-	border: none;
+	border: 2px solid rgb(255, 253, 253);
 	cursor: pointer;
 }
 
@@ -185,16 +187,19 @@
 
 /* ---------- Formulario Tarjeta ----------*/
 .formulario-tarjeta {
-	background: #fff;
+	background: #f3f3f3;
 	width: 100%;
-	max-width: 700px;
-	padding: 150px 30px 0px 30px;
+	/* max-width: 700px; */
+	/* background: transparent; */
+	padding: 30px;
+	top: -60px;
+	padding-top: none;
 	border-radius: 10px;
 	position: relative;
-	top: -150px;
 	z-index: 1;
 	clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 	transition: clip-path .3s ease-out;
+	border: 1px solid #d4d4d4;
 }
 
 .formulario-tarjeta.active {
@@ -203,7 +208,7 @@
 
 .formulario-tarjeta label {
 	display: block;
-	color: #7d8994;
+	color: #000000;
 	margin-bottom: 5px;
 	font-size: 16px;
 }
@@ -284,20 +289,21 @@
 .formulario-tarjeta .btn-enviar:hover {
 	background: #1850b1;
 }
-
+/* ------------VISTAS REGISTRAR--------------- */
 .contarjeta{
     display: flex;
     flex-direction: row;
 }
 .tarjet{
-    width:100%;
-	border: 10px solid black;
+    width:49%;
+	/* border: 2px solid black; */
+	padding-right: 20px;
+	/* border-right: 2px solid black; */
+	border-radius: 2px;
+	width: 100%;
+	height: 100%;
 }
 .btntarjeta{
-	position: absolute;
-    left: 80%;
-    top: 199px;
-    padding: 5px;
     background: #060605cf;
     color: #F9F9F9;
     border-radius: 12px;
@@ -309,4 +315,93 @@
     color: #F9F9F9;
     border-radius: 12px;
     font-size: 16px;
+}
+
+/* ------------VISTAS MOTRAR--------------- */
+.tarjetas-guardadas{
+	display: flex;
+	height: 55px;
+	width: 100%;
+	margin:5px;
+	/* border: 1px solid rgba(0, 0, 0, 0.157); */
+	border-bottom: none;
+	color: black;
+	border-radius: 2px;
+	padding: 5px;
+}
+.infos-tarjetas{
+	padding: 2px;
+	display: flex;
+	background: #F3F3F3;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	color: black;
+	padding: 11px 0px 11px 18px;
+	border: 2px solid rgba(0, 0, 0, 0.157);
+}
+
+.infos-tarjetas > p {
+	color: rgb(51, 50, 50);
+	justify-items: center;
+}
+.expira-fin{
+	position: absolute;
+	right: 10%;
+
+}
+.desplegar-tarjeta-info{
+	position: absolute;
+	right: 3%;
+	border: none;
+	background: transparent;
+	font-size: 20px;
+	transition:steps(end )
+
+}
+.desplegar-tarjeta-info.active{
+	transform: rotate(180deg);
+}
+
+/* -----FORMULARIO DE TARJETA MOSTRAR */
+.formulario-tarjeta-mostrar{
+	justify-content: center;
+	width: 37%;
+	background: rgba(0,85,212,0.4);
+	border: 1px solid black;
+	margin-left: 3%;
+	position: relative;
+	z-index: 1;
+	top: 30%;
+}
+.mostrar{
+	display: none;
+	width: 100%;
+	height: auto;
+	left: 0px;
+	display: none;
+	background-color: rgb(163, 0, 0);
+	padding-top: 30px;
+	margin-top: 10px;
+	opacity: 1;
+	visibility: hidden;
+	z-index: 10;
+	cursor: initial;
+}
+.mostrar2{
+	display: block;
+	width: 101%;
+	height: 240px;
+	left: -3px;
+	top: 84%;
+	position: absolute;
+	background-color: #F3F3F3;
+	margin-top: 10px;
+	opacity: 1;
+	z-index: 10;
+	cursor: initial;
+	border: 2px solid rgba(0, 0, 0, 0.157);
+	border-top: none;
+	padding: 5px;
+
 }

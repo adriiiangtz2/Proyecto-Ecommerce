@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use Yii;
+use yii\web\Response;
 use app\models\Usuario;
 use yii\web\Controller;
 use app\models\CatTarjeta;
@@ -143,20 +145,35 @@ class CatTarjetaController extends Controller
     public function actionRegistrar()
     {
         $model = new CatTarjeta();
-
-       
-        if ($this->request->isPost && $model->load($this->request->post()) ) {
-
-         
+      
+        if ($this->request->isPost && $model->load($this->request->post()) ) {     
             $model->tar_fkusuario = Usuario::usuario()->usu_id;
             $model->save();
         }
-
+    
         return $this->render('registrar', compact('model'));
     }
+
+
 
     public function actionMostrar()
     {
         return $this->render('mostrar');
+    }
+    public function actionRegistrartarjeta()
+    {
+        //estos nados le llegan al js y se remplazan por los id que llegan
+        $model = new CatTarjeta();
+        $model->tar_numtarjeta = $this->request->post('numtarjeta');
+        $model->tar_expiracion = $this->request->post('expiracion');
+        $model->tar_fkusuario = Usuario::usuario()->usu_id;
+        $model->tar_financiera = $this->request->post('financiera');
+        $model->tar_tipo = $this->request->post('tipo');
+        $model->save();
+        $response = Yii::$app->response; //Obtenemos los datos de la respuesta 
+        $response->format = Response::FORMAT_JSON; //Le damos formato a la respuesta
+        // se manda la viriable a la vista del boton
+        $response->data = ['html' => $this->renderPartial('mostrar')]; //Renderizamos parcial
+        return $response;
     }
 }

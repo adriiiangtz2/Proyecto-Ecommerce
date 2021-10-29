@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use app\models\Usuario;
 use yii\bootstrap4\Html;
@@ -19,14 +19,13 @@ use yii\bootstrap4\ActiveForm;
 	<link rel="stylesheet" href="css/estilos.css">
 </head>
 <body class="body-tarjeta">
-<?= Html::a('Mis Tarjetas',['cat-tarjeta/mostrar'], ['class' => 'btntarjeta']) ?>	
 	<div class="contenedor-tarjeta">
-
+<div class="tarjet">
 		<!-- Tarjeta -->
 		<section class="tarjeta" id="tarjeta">
 			<div class="delantera">
 				<div class="logo-marca" id="logo-marca">
-					<!-- <img src="img/logos/visa.png" alt=""> -->
+				<?= Html::img('/img/tarjeta/logos/visa.png') ?>
 				</div>
 				<img src="/img/tarjeta/chip-tarjeta.png" class="chip" alt="">
 				<div class="datos">
@@ -74,10 +73,12 @@ use yii\bootstrap4\ActiveForm;
 		<!-- Formulario -->
 		
 		<div action="" id="formulario-tarjeta" class="formulario-tarjeta">
-			<?php $form = ActiveForm::begin(['id'=>'formulariot']); ?>
+			<?php $form = ActiveForm::begin(['id' => 'formulariot']); ?>
 			
 		<div class="grupo">
-		    <?= $form->field($model, 'tar_numtarjeta')->textInput(['maxlength' => true , 'id'=>'inputNumero'],) ?>
+		    <?= $form
+          ->field($model, 'tar_numtarjeta')
+          ->textInput(['maxlength' => true, 'id' => 'inputNumero']) ?>
 			</div>
 	
 			<div class="grupo">
@@ -89,83 +90,78 @@ use yii\bootstrap4\ActiveForm;
 			<div class="grupo">
 				
 				<?= $form->field($model, 'tar_financiera')->dropDownList(
-			[
-				'Mastercard' => 'Mastercard',
-                'Visa' => 'Visa',
-                'American Express' => 'American Express',
-            ],
-            ['prompt' => '']
-			) ?>
+        [
+            'Mastercard' => 'Mastercard',
+            'Visa' => 'Visa',
+            'American Express' => 'American Express',
+        ],
+        ['prompt' => '']
+    ) ?>
 			</div>
 			<div class="grupo">
 			
 			<?= $form->field($model, 'tar_tipo')->dropDownList(
-            [
-                'Debito' => 'Debito',
-                'Credito' => 'Credito',
-                'Monedero' => 'Monedero',
-            ],
-            ['prompt' => '']
-        ) ?>
+       [
+           'Debito' => 'Debito',
+           'Credito' => 'Credito',
+           'Monedero' => 'Monedero',
+       ],
+       ['prompt' => '']
+   ) ?>
 			</div>
 	
 			<div class="grupo">
 			<?= $form->field($model, 'tar_expiracion')->widget(DatePicker::className(), [
-            'type' => DatePicker::TYPE_INPUT,
-            'value' => date('Y-m'),
-            'pluginOptions' => [
-                'autoclose' => true,
-                'format' => 'mm/yy',
-            ],
-        ]) ?>
+       'type' => DatePicker::TYPE_INPUT,
+       'value' => date('Y-m'),
+       'pluginOptions' => [
+           'autoclose' => true,
+           'format' => 'mm/yy',
+       ],
+   ]) ?>
 			</div>
-
-			<div class="flexbox">
-				<div class="grupo expira">
-					
-			<!--   <label for="selectMes">Expiracion</label> -->
-					
-					<div class="flexbox">
-						<!-- <div class="grupo-select">
-							
-						    <select name="mes" id="selectMes">
-								<option disabled selected>Mes</option>
-							</select>
-							<i class="fas fa-angle-down"></i>
-						</div>
-						<div class="grupo-select">
-							
-						
-						    <select name="year" id="selectYear">
-								<option disabled selected>Año</option>
-							</select>
-							<i class="fas fa-angle-down"></i>
-						</div>
-					</div> -->
+			    <div class="flexbox">
+				<div class="grupo expira">	
+			    <div class="flexbox">
 				</div>
-
-				<!-- <div class="grupo ccv">
-					<label for="inputCCV">CCV</label>
-					<input type="text" id="inputCCV" maxlength="3">
-				</div> -->
-			
-			
 			</div>
 			
 		</div>
 		<!-- <button type="submit" class="btn-enviar">Enviar</button> -->
 		<div class="row justify-content-center">
 			<div class="form-group">
-				<?= Html::submitButton('Guardar', ['class' => 'btntarjeta2']) ?>
+				<?= Html::button('Guardar', [
+        'class' => 'btntarjeta2',
+        'onclick' => 'recargarTarjeta()',
+    ]) ?>
 				<?php ActiveForm::end(); ?>
 	</div>
 		</div>
-</div>
+	</div>
+	</div>
+	<!-- MOSTRAR TARJETAS  MANDAMOS UN RENDER SOLAMENTE-->
+
+	<div class=" tarjet tarjet-mostrar">
+		<p>Tus métodos de pago guardados</p>
+	<div class="d-flex justify-content-center">
+		<?= Html::a(
+		'Mis Tarjetas',
+		['cat-tarjeta/mostrar'],
+		['class' => 'btntarjeta2']
+	) ?>
+		</div>
+		
+		<!-- SE RENDERIZA LA VISTA REGISTRAR -->
+		<div  id="idmostrar" style="height:500px;overflow-x:hidden;width:106%;padding:18px;">
+		
+		<?= $this->render('mostrar') ?>  
+		
+	    </div> 
+	</div>
 
 
-
-<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 	<script src="js/tarjeta.js"></script>
-</body>
-</html>
+	</body>
+	</html>
 
