@@ -14,8 +14,10 @@ use yii\bootstrap4\Html;
 		<p class="expira-fin"><b><?=$tarjeta->tar_expiracion ?></b></p>
 		<!-- inicia -->
 		<div>
+			<!-- FUNCION QUE CAMBIE DE CLASES A CONTENEDOR OCULTO -->
 			<button class="desplegar-tarjeta-info" id="desplegar-tarjeta-info<?=$tarjeta->tar_id?>" onclick="desplegar(<?=$tarjeta->tar_id?>)" >
-				<i class="fas fa-angle-down"></i>
+				<!-- ICONO DE DESPLIEGUE -->
+			<i class="fas fa-angle-down"></i>
 			</button>	
 			<div class="mostrar" id="mostrar<?=$tarjeta->tar_id?>">
 				<div class="infor-desplagado"style="display:flex; justify-content:space-between;">
@@ -29,7 +31,12 @@ use yii\bootstrap4\Html;
 					<div>
 					<p><b>Direccion de facturacion:</b></p>
 					<p>Traer datos de la tabla domicilio</p>
-						
+					<!-- FUNCION QUE ELIMINA -->
+					<button class="eliminar-btn-tarjeta"id="eliminar-tarjeta<?=$tarjeta->tar_id?> "onclick="eliminar(<?=$tarjeta->tar_id?>)">
+						Eliminar
+						<!-- ICONO DE CLOSE -->
+						<i class="fas fa-window-close"></i>
+					</button>
 					</div>
 				</div>
 			</div>

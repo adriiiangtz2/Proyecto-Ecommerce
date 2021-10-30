@@ -152,7 +152,7 @@ use yii\bootstrap4\ActiveForm;
 		</div>
 		
 		<!-- SE RENDERIZA LA VISTA REGISTRAR -->
-		<div  id="idmostrar" style="height:500px;overflow-x:hidden;width:106%;padding:18px;">
+		<div  id="idmostrar" style="height:376px;overflow-x:hidden;width:106%;padding:18px;">
 		
 		<?= $this->render('mostrar') ?>  
 		
@@ -161,7 +161,6 @@ use yii\bootstrap4\ActiveForm;
 
 
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-	<script src="js/tarjeta.js"></script>
 	</body>
 	</html>
 

@@ -117,3 +117,16 @@ function recargarTarjeta() {
     }
   });
 }
+
+//funcion eliminar Vista mostrar 
+function eliminar(id) {
+  console.log('imprime el id :');
+  console.log({id});
+  $.post("/cat-tarjeta/btneliminar", {id:id}, function (data) {
+
+    if (data) {
+      $("#idtarjeta").html(data.html);
+      console.log("hola");
+    }
+  });
+}
