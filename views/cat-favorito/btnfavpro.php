@@ -17,7 +17,7 @@ $es = $estado == 1;
    
  <?= Html::button(' ', [
      'id' => 'icon-fav' . $productos->pro_id . '',
-     'onclick' => 'favoritoIcon(' . $productos->pro_id . ')','style'=>'font-size:19px',
+     'onclick' => 'favoritoIcon(' . $productos->pro_id .','.$estado. ')','style'=>'font-size:19px; color:#ca2020;',/* se le agrega color al boton */
      'class' => 'botonfavorito ' . ($es ? 'fas fa-heart' : 'far fa-heart'),
  ]) ?>
  

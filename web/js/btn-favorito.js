@@ -1,5 +1,12 @@
 // boton btnfav
-function favoritos(id){
+function favoritos(id,estado){
+console.log(es);
+ if (estado==1){
+$("#icon-fav1"+id).css("transform", "scale(1.2) rotate(-20deg)");
+ }else{
+    $("#icon-fav1"+id).css("transform", "rotate(20deg)");
+    $("#icon-fav1"+id).addClass("fas fa-heart-broken");
+ }
     // var div = $('#seguimiento-seg_fkdivision').val();
     var es = $('#catfavorito-fav_estado').val();
     console.log(es);
@@ -18,9 +25,21 @@ function favoritos(id){
     }); 
 };
 // boton btnfavpro
-function favoritoIcon(id){
+function favoritoIcon(id,es){
     // guarda los datos que contenga este id 
 // let nav = $("#icon-fav"+id).val();
+const Estado0 =0;
+
+console.log(es);
+ if (Estado0==es){
+    $("#icon-fav"+id).addClass("fas fa-heart");
+    // $("#icon-fav"+id).css("transform", "scale(1.3) rotate(-20deg)");
+    $("#icon-fav"+id).css("transform", "scale(1.3)");
+}else{
+    $("#icon-fav"+id).css("transform", "scale(1.2) rotate(20deg)");
+    $("#icon-fav"+id).addClass("fas fa-heart-broken");
+ }
+
 $.post('/cat-favorito/btnfavpro', {id: id}, function(data){
     console.log('click');
 

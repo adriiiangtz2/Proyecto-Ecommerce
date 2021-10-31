@@ -1,8 +1,10 @@
 <?php
 use yii\helpers\Html;
+use app\models\CatFavorito;
 use yii\widgets\ActiveForm;
 // $tipo = $seguido->seg_estado;
 // $sigues = $tipo == 1;
+$estado = CatFavorito::estado($proid);
 ?>
 <div class="cat-favorito-form"style="
     position: absolute;
@@ -13,7 +15,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
          <!-- $form->field($favoritos, 'seg_fkdivision')->hiddenInput()->label(false);  -->
         <?= $form->field($favoritos, 'fav_estado')->hiddenInput(['value' => 0])->label(false); ?>
-        <?= Html::button( ' ', ['onclick' => 'favoritos(' . $favoritos->fav_id . ')', 'class' => 'botonfavorito fas fa-heart','style'=>'font-size:19px',"data-id"=>$favoritos->fav_id]); ?>
+        <?= Html::button( ' ', ['onclick' => 'favoritos(' . $favoritos->fav_id .','.$estado. ')', 'class' => 'botonfavorito fas fa-heart','id' => 'icon-fav1' . $favoritos->fav_id . '','style'=>'font-size:19px;color:#ca2020;',"data-id"=>$favoritos->fav_id]); ?>
         
         <?php ActiveForm::end(); ?>
 </div>
