@@ -6,85 +6,105 @@ use yii\bootstrap4\NavBar;
 use webvimark\modules\UserManagement\UserManagementModule;
 ?>
 <?php
-
 NavBar::begin([
     'brandLabel' => Yii::$app->name,
     'brandUrl' => Yii::$app->homeUrl,
-    'options' => [
-        'class' => 'headerr navbar navbar-expand-md  fixed-top a',
-    ],
+    'options' => ['class' => 'headerr navbar navbar-expand-md  fixed-top a'],
 ]);
-
-
 echo Nav::widget([
     'options' => ['class' => ''],
     'encodeLabels' => false,
     'items' => [
-
         [
             'label' => 'Administrador',
             'items' => UserManagementModule::menuItems(),
-            'visible' => Yii::$app->user->isSuperAdmin
+            'visible' => Yii::$app->user->isSuperAdmin,
         ],
+
         [
             'label' => 'Menu',
             'url' => ['/site/menu'],
-            'visible' => Yii::$app->user->isSuperAdmin
+            'visible' => Yii::$app->user->isSuperAdmin,
         ],
 
         [
-            'label' => 'Productos',
+            'label' => '<i class="fas fa-tshirt"></i>'.' Productos',
             'url' => ['/producto/productos'],
-            'visible' => !Yii::$app->user->isSuperAdmin
+            'visible' => !Yii::$app->user->isSuperAdmin,
+        ],
 
-        ],
         [
-            'label' => 'Favorito',
-            'url' => ['/cat-favorito/favorito'],
-            //no se delcara en controlador por que aparece cuando se registre
-            //se niega ! por que aparecera cuando se registre 
-            // isGuest es para cuando no se ha registrado es cliente
-            'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin
+            'label' => '<i class="fas fa-heart"></i>'.' Favorito',
+            'url' => ['/cat-favorito/favorito'], //no se delcara en controlador por que aparece cuando se registre //se niega ! por que aparecera cuando se registre // isGuest es para cuando no se ha registrado es cliente
+            'visible' =>
+                !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
         ],
+
         [
-            'label' => 'Carrito',
+            'label' => '<i class="fas fa-shopping-cart"></i>'.' Carrito',
             'url' => ['/carrito-detalle/carrito'],
-            'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin
+            'visible' =>
+                !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
         ],
-        [
-            'label' => 'Tarjetas',
-            'url' => ['/cat-tarjeta/registrar'],
-            'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin
-        ],
+
+        // [
+        //     'label' => 'Tarjetas',
+        //     'url' => ['/cat-tarjeta/registrar'],
+        //     'visible' =>
+        //         !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
+        // ],
+
         [
             'label' => 'Registrar',
-            'url' => ['/usuario/registrar-usuario'],
-            //se delcara en el controllador usuario por que aparecera la vista directamente
-            // como no tiene el negado , desaparecera cuando se registre
-            'visible' => Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin
-
+            'url' => ['/usuario/registrar-usuario'], //se delcara en el controllador usuario por que aparecera la vista directamente // como no tiene el negado , desaparecera cuando se registre
+            'visible' =>
+                Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
         ],
+
+        // [
+        //     'label' => 'Domicilio',
+        //     'url' => ['/domicilio/registrar'],
+        //     'visible' =>
+        //         !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
+        // ],
+
+
+        // MENU DESPLEGABLE PARA EL USUARIO INFO
         [
-            'label' => 'Domicilio',
-            'url' => ['/domicilio/registrar'],
-            'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin
+            'label' => '<i class="fas fa-sort-amount-down"></i>'.' Cuentas y Listas',
+            'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
+            'items' => [
+                ['label' => '<i class="fas fa-user"></i> '.' Mi Cuenta', 'url' => '#'],
+                
+                ['label' => '<i class="fas fa-credit-card"></i>'.' Mis Tarjetas', 'url' => ['/cat-tarjeta/registrar'],
+                'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,],
+                
+                [ 'label' => '<i class="far fa-address-card"></i>'.' Domicilio','url' => ['/domicilio/registrar'],
+                'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
+                ],
+
+                ['label' => '<i class="fas fa-boxes"></i>'.' Mis Pedidos', 'url' => '#'],
+            ],
         ],
 
-        Yii::$app->user->isGuest ? (['label' => 'Iniciar Sesion', 'url' => ['/user-management/auth/login']]) : (['label' => 'Cerrar Sesion', 'url' => ['/user-management/auth/logout']]
-            /* '<li>'
+        //BOTON INICIO DE SESION
+             Yii::$app->user->isGuest
+? [
+                'label' => 'Iniciar Sesion',
+                'url' => ['/user-management/auth/login'],
+            ]
+            : [
+                'label' => 'Cerrar Sesion',
+                'url' => ['/user-management/auth/logout'],
+            ] /* '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
                 . Html::submitButton(
                     'Logout (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
-                . '</li>' */),
-
-
-
-
+                . '</li>' */,
     ],
 ]);
-
 NavBar::end();
-?>
+ ?>
