@@ -130,3 +130,24 @@ function eliminar(id) {
     }
   });
 }
+
+//MOSTRAR LA VISTA MODAL DEPENDIENDO DEL ID DE VISTA EDITAR 
+function modal(id){
+  console.log(id);
+  $('#ventana-modal'+id).modal();
+}
+  
+
+
+
+
+// function modal(id){
+//   $.get('cat-tarjeta/editar',{id:id}).done(function (d){
+//     bootbox.dialog({
+//       title:"vista",
+//       size:'lg',
+//       message:d,
+//     });
+//   }).fail(function(f){console.log(f.responseText);});
+// }
+

@@ -161,6 +161,10 @@ class CatTarjetaController extends Controller
         return $this->render('mostrar');
     }
 
+    public function actionEditar()
+    {
+        return $this->render('editar');
+    }
     //REGISTRA UNA TARJETA DE UN USUARIO DE LA TABLA TARJETA
     public function actionRegistrartarjeta()
     {

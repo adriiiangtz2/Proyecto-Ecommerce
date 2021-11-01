@@ -289,7 +289,7 @@
 .formulario-tarjeta .btn-enviar:hover {
 	background: #1850b1;
 }
-/* ------------VISTAS REGISTRAR--------------- */
+/* ------------ INICIA VISTAS REGISTRAR                  ADRIAN             --------------- */
 .contarjeta{
     display: flex;
     flex-direction: row;
@@ -424,7 +424,25 @@
 .eliminar-btn-tarjeta i{
 	margin-left: 5px;
 }
-
+/* COLOR ROJO ICONO CORAZON  */
 .color-rojo-btn{
 	color: red;
 }
+
+/* BOTON PARA EDITAR LA TARJETA */
+.editar-btn-tarjeta{
+	display: flex;
+    align-items: center;
+    background-color: rgb(23 0 251 / 23%);
+    border: none;
+    padding: 3px;
+    padding-right: 7px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 4%;
+    right: 26%;
+}
+.editar-btn-tarjeta i{
+	margin-left: 5px;
+}
+/* ------------   TERMINA VISTAS REGISTRAR             ADRIAN              --------------- */
