@@ -162,5 +162,10 @@ class UsuarioController extends Controller
         return $this->render('registrar', compact('usuario','user'));
     }
 
+    public function actionBotonera()
+    {
+        return $this->render('botonera');
+    }
+
 
 }

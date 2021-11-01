@@ -71,10 +71,10 @@ echo Nav::widget([
 
         // MENU DESPLEGABLE PARA EL USUARIO INFO
         [
-            'label' => '<i class="fas fa-sort-amount-down"></i>'.' Cuentas y Listas',
+            'label' => '<i class="fas fa-sort-amount-down"></i>'.' Cuentas y Listas','url' => ['/usuario/botonera'],
             'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
             'items' => [
-                ['label' => '<i class="fas fa-user"></i> '.' Mi Cuenta', 'url' => '#'],
+                ['label' => '<i class="fas fa-user"></i> '.' Mi Cuenta', 'url' => '/usuario/botonera'],
                 
                 ['label' => '<i class="fas fa-credit-card"></i>'.' Mis Tarjetas', 'url' => ['/cat-tarjeta/registrar'],
                 'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,],

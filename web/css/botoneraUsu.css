@@ -1,0 +1,87 @@
+.card {
+    display: bl;
+    float: left;
+    width: 231px;
+    height: 268px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 2px #ddd;
+    overflow: hidden;
+    margin: 21px;
+    margin-top: 48px;
+    cursor: pointer;
+    background-color: rgb(233 235 255);
+    transition: all 300ms;
+    border-radius: 10px;
+  }
+  .card:hover {
+    background-color: black;
+  }
+  .card:last-child {
+    margin-right: 0px;
+  }
+  .card .icon {
+    display: block;
+    width: 100%;
+    height: 101px;
+    font-size: 50px;
+    text-align: center;
+    line-height: 130px;
+    margin: 0px auto;
+    transition: all 300ms;
+  }
+  .card:hover .icon {
+    font-size: 70px;
+    color: #3eb8e5;
+    /*$$$$$$$$$$$$$$$$$$$ INICIA ANIMACION DE LAS TARJETAS $$$$$$$$$$$$$$$$$$$$$$$*/
+    animation: showicon 300ms linear;
+  }
+  @keyframes showicon {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0%);
+    }
+  }
+  
+  .card .category {
+    width: 100%;
+    height: 50px;
+    font-family: "TrebuchetMA";
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #003764;
+    transition: all 300ms;
+  }
+  .card:hover .category {
+    animation: movercategoria 300ms linear;
+    color: white;
+  }
+  @keyframes movercategoria {
+    from {
+      transform: translateY(-200%);
+    }
+    to {
+      transform: translateY(0%);
+    }
+  }
+  .card .descripcion {
+    text-align: justify;
+    color: #003a69;
+    font-size: 15px;
+    padding: 10px;
+    transition: all 300ms;
+  }
+  .card:hover .descripcion {
+    color: white;
+    animation: movertexto 300ms linear;
+  }
+  @keyframes movertexto {
+    from {
+      transform: translateX(-300%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
