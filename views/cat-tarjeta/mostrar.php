@@ -24,7 +24,7 @@ use yii\bootstrap4\Html; ?>
 				<div class="infor-desplagado"style="display:flex; justify-content:space-between;">
 					<div >
 						<!-- trae el nombre completo de el modelo usuario -->
-						<p><b>Nombre en la tarjeta:</b> <br> <?= $tarjeta->tarFkusuario->getNombreCompleto() ?></p>
+						<p><b>Nombre en la tarjeta:</b> <br> <?= $tarjeta->tar_nombre ?></p>
 						<p><b>Tipo:</b> <br> <?= $tarjeta->tar_tipo ?></p>
 						<p><b>Entidad F. :</b> <br> <?= $tarjeta->tar_financiera ?></p>
 						<p><b>Expiracion:</b> <br> <?= $tarjeta->tar_expiracion ?></p>

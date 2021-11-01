@@ -20,6 +20,9 @@ use yii\bootstrap4\ActiveForm;
     <div class="col-md-4">
     <?= $form->field($model, 'tar_numtarjeta')->textInput(['maxlength' => true]) ?>
     </div>
+    <div class="col-md-4">
+    <?= $form->field($model, 'tar_nombre')->textInput(['maxlength' => true]) ?>
+    </div>
 
     <div class="col-md-4">
     <?= $form->field($model, 'tar_expiracion')->widget(

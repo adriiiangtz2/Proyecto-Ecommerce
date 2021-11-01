@@ -82,8 +82,8 @@ use yii\bootstrap4\ActiveForm;
 			</div>
 	
 			<div class="grupo">
-				<label for="inputNombre">Nombre</label>
-				<input type="text" id="inputNombre" maxlength="19" autocomplete="off">
+        <?= $form->field($model, 'tar_nombre')->textInput(['maxlength' => true, 'id' => 'inputNombre']) ?>
+
 			</div>
 			
 			

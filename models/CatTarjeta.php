@@ -35,9 +35,10 @@ class CatTarjeta extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['tar_numtarjeta', 'tar_expiracion', 'tar_financiera', 'tar_tipo', 'tar_fkusuario'], 'required'],
+            [['tar_numtarjeta','tar_nombre','tar_expiracion', 'tar_financiera', 'tar_tipo', 'tar_fkusuario'], 'required'],
             [['tar_financiera', 'tar_tipo'], 'string'],
             [['tar_fkusuario'], 'integer'],
+            [['tar_nombre'], 'safe'],
             [['tar_numtarjeta'], 'string', 'max' => 16],
             [['tar_expiracion'], 'string', 'max' => 5],
             [['tar_fkusuario'], 'exist', 'skipOnError' => true, 'targetClass' => Usuario::className(), 'targetAttribute' => ['tar_fkusuario' => 'usu_id']],
@@ -56,6 +57,7 @@ class CatTarjeta extends \yii\db\ActiveRecord
             'tar_financiera' => 'Institución financiera',
             'tar_tipo' => 'Tipo',
             'tar_fkusuario' => 'Usuario',
+            'tar_nombre' => 'Nombre',
             'usuarioNombre' => 'Usuario Tarjeta',
         ];
     }

@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'tar_expiracion',
             'tar_financiera',
             'tar_tipo',
+            'tar_nombre',
             // 'usuarioNombre',
             // Nombre de get function de CatTarjeta
             'nombreCompleto',

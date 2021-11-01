@@ -18,6 +18,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'tar_id') ?>
 
     <?= $form->field($model, 'tar_numtarjeta') ?>
+    <?= $form->field($model, 'tar_nombre') ?>
 
     <?= $form->field($model, 'tar_expiracion') ?>
 

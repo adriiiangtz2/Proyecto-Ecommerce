@@ -104,13 +104,13 @@ function desplegar(id){
 //DESPLEGAR DE VISTA MOSTRAR
 function recargarTarjeta() {
   let numero = $("#inputNumero").val();
-  // let numero = $('#inputNombre').val();
+  let nombre = $('#inputNombre').val();
   let financiera = $("#cattarjeta-tar_financiera").val();
   let tipo = $("#cattarjeta-tar_tipo").val();
   let expiracion = $("#cattarjeta-tar_expiracion").val();
   // guarda los datos que contenga este id
   // let nav = $("#icon-fav"+id).val();
-  $.post("/cat-tarjeta/registrartarjeta", {numtarjeta:numero,financiera:financiera,tipo:tipo,expiracion:expiracion}, function (data) {
+  $.post("/cat-tarjeta/registrartarjeta", {numtarjeta:numero,financiera:financiera,tipo:tipo,expiracion:expiracion,nombre:nombre}, function (data) {
     if (data) {
       $("#idmostrar").html(data.html);
       console.log("hola");
@@ -135,6 +135,19 @@ function eliminar(id) {
 function modal(id){
   console.log(id);
   $('#ventana-modal'+id).modal();
+}
+
+
+//FUNCIONAMIENTO EDITAR
+function editartarjeta(id)
+{
+    let expiracion = $('#input-expira' + id).val();
+    console.log(id,expiracion);
+    $.post('/cat-tarjeta/editar', {expiracion:expiracion,id:id}, function (data){
+      if (data) {
+          $('#ventana-modal'+id).html(data.html);
+      } 
+    });
 }
   
 
