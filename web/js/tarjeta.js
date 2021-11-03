@@ -1,17 +1,16 @@
 const tarjeta = document.querySelector("#tarjeta"),
-  btnAbrirFormulario = document.querySelector("#btn-abrir-formulario"),
-  btnAbrirTarjeta = document.querySelector("#desplegar-tarjeta-info"),
-  btnMostrar = document.querySelector("#desplegar-tarjeta-info .mostrar"),
-  formulario = document.querySelector("#formulario-tarjeta"),
-  formulariot = document.querySelector("#formulariot"),
-  numeroTarjeta = document.querySelector("#tarjeta .numero"),
-  nombreTarjeta = document.querySelector("#tarjeta .nombre"),
-  logoMarca = document.querySelector("#logo-marca"),
-  firma = document.querySelector("#tarjeta .firma p"),
-  mesExpiracion = document.querySelector("#tarjeta .mes"),
-  yearExpiracion = document.querySelector("#tarjeta .year");
+btnAbrirFormulario = document.querySelector("#btn-abrir-formulario"),
+btnAbrirTarjeta = document.querySelector("#desplegar-tarjeta-info"),
+btnMostrar = document.querySelector("#desplegar-tarjeta-info .mostrar"),
+formulario = document.querySelector("#formulario-tarjeta"),
+formulariot = document.querySelector("#formulariot"),
+numeroTarjeta = document.querySelector("#tarjeta .numero"),
+nombreTarjeta = document.querySelector("#tarjeta .nombre"),
+logoMarca = document.querySelector("#logo-marca"),
+firma = document.querySelector("#tarjeta .firma p"),
+mesExpiracion = document.querySelector("#tarjeta .mes"),
+yearExpiracion = document.querySelector("#tarjeta .year");
 //   ccv = document.querySelector('#tarjeta .ccv');
-
 // * Volteamos la tarjeta para mostrar el frente.
 const mostrarFrente = () => {
   if (tarjeta.classList.contains("active")) {
@@ -32,25 +31,20 @@ btnAbrirFormulario.addEventListener("click", () => {
 // * Input numero de tarjeta
 formulariot.inputNumero.addEventListener("keyup", (e) => {
   let valorInput = e.target.value;
-
   formulariot.inputNumero.value = valorInput
-    // Eliminamos espacios en blanco
-    .replace(/\s/g, "")
-    // Eliminar las letras
-    .replace(/\D/g, "")
-    // Ponemos espacio cada cuatro numeros
-    .replace(/([0-9]{16})/g, "$1 ")
-    // Elimina el ultimo espaciado
-    .trim();
-
+  // Eliminamos espacios en blanco
+  .replace(/\s/g, "")
+  // Eliminar las letras
+  .replace(/\D/g, "")
+  // Ponemos espacio cada cuatro numeros
+  .replace(/([0-9]{16})/g, "$1 ")
+  // Elimina el ultimo espaciado
+  .trim();
   numeroTarjeta.textContent = valorInput;
-
   if (valorInput == "") {
     numeroTarjeta.textContent = "#### #### #### ####";
-
     logoMarca.innerHTML = "";
   }
-
   if (valorInput[0] == 4) {
     logoMarca.innerHTML = "";
     const imagen = document.createElement("img");
@@ -70,15 +64,12 @@ formulariot.inputNumero.addEventListener("keyup", (e) => {
 // * Input nombre de tarjeta
 formulariot.inputNombre.addEventListener("keyup", (e) => {
   let valorInput = e.target.value;
-
   formulariot.inputNombre.value = valorInput.replace(/[0-9]/g, "");
   nombreTarjeta.textContent = valorInput;
   firma.textContent = valorInput;
-
   if (valorInput == "") {
     nombreTarjeta.textContent = "Usuario";
   }
-
   mostrarFrente();
 });
 
@@ -99,7 +90,6 @@ function desplegar(id){
   } else if ($(`#mostrar${id}`).hasClass("mostrar2")) {
     $(`#mostrar${id}`).removeClass("mostrar2").addClass("mostrar");
   }
-
 };
 //DESPLEGAR DE VISTA MOSTRAR
 function recargarTarjeta() {
@@ -123,7 +113,6 @@ function eliminar(id) {
   console.log('imprime el id :');
   console.log({id});
   $.post("/cat-tarjeta/btneliminar", {id:id}, function (data) {
-
     if (data) {
       $("#idtarjeta").html(data.html);
       console.log("hola");
@@ -136,7 +125,6 @@ function modal(id){
   console.log(id);
   $('#ventana-modal'+id).modal();
 }
-
 
 //FUNCIONAMIENTO EDITAR
 function editartarjeta(id)

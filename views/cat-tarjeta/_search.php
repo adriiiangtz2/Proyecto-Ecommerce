@@ -16,14 +16,10 @@ use yii\widgets\ActiveForm;
     ]); ?>
 
     <?= $form->field($model, 'tar_id') ?>
-
     <?= $form->field($model, 'tar_numtarjeta') ?>
     <?= $form->field($model, 'tar_nombre') ?>
-
     <?= $form->field($model, 'tar_expiracion') ?>
-
     <?= $form->field($model, 'tar_financiera') ?>
-
     <?= $form->field($model, 'tar_tipo') ?>
 
     <?php // echo $form->field($model, 'tar_fkusuario') ?>

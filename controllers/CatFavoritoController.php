@@ -87,7 +87,6 @@ class CatFavoritoController extends Controller
            /*  'producto' => $producto, */
         ]);
     }
-     
 
     /**
      * Updates an existing CatFavorito model.
@@ -142,21 +141,10 @@ class CatFavoritoController extends Controller
 
     //mostrar productos favoritos
     public function actionFavorito(){
-        // $model=Producto::find();       
-        // // $paginacion= new Pagination([
-        // //     'defaultPageSize'=>1,
-        // //     'totalCount'=>$model->count(),
-        // // ]);
-        // $favorito=$model->all();
-        // //funcion que se trae del modelo
-        // $fav=CatFavorito::favorito();
-        // //funcion que se trae del modelo
-        // $usu=CatFavorito::usuario();
-//se manda  ala vista 
-       return $this->render('registrarFav',compact('fav','usu'));
-   }
-
-   public function actionBoton()
+        return $this->render('registrarFav',compact('fav','usu'));
+    }
+    
+    public function actionBoton()
     {
         return $this->render('btnfav');
     }
@@ -185,7 +173,6 @@ class CatFavoritoController extends Controller
         $pro = $this->request->post('id');
         //se hace una consulta para que traiga el id del que se registra
         $fav = CatFavorito::find()->where(['fav_fkproducto' => $pro, 'fav_fkusuario' => Usuario::usuario()->usu_id])->one();
-       
         $productos = Producto::findOne(['pro_id' => $pro]);
         // si no ha asigando ese favorito lo guarda
         if (!isset($fav)) {
@@ -200,7 +187,6 @@ class CatFavoritoController extends Controller
                 $fav->fav_estado = 0;
             } else {
                 $fav->fav_estado = 1;
-
             }
             $fav->save();
         }
@@ -210,6 +196,4 @@ class CatFavoritoController extends Controller
         $response->data = ['html' => $this->renderPartial('btnfavpro', compact('productos'))]; //Renderizamos parcial
         return $response;
     }
-
-    
 }

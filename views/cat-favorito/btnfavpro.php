@@ -14,13 +14,10 @@ $es = $estado == 1;
     font-size: 10px;
 ">
     <?php $form = ActiveForm::begin(); ?>
-   
- <?= Html::button(' ', [
-     'id' => 'icon-fav' . $productos->pro_id . '',
-     'onclick' => 'favoritoIcon(' . $productos->pro_id .','.$estado. ')','style'=>'font-size:19px; color:#ca2020;',/* se le agrega color al boton */
-     'class' => 'botonfavorito ' . ($es ? 'fas fa-heart' : 'far fa-heart'),
- ]) ?>
- 
- <?php ActiveForm::end(); ?>
+    <?= Html::button(' ', ['id' => 'icon-fav' . $productos->pro_id . '',
+    'onclick' => 'favoritoIcon(' . $productos->pro_id .','.$estado. ')','style'=>'font-size:19px; color:#ca2020;',/* se le agrega color al boton */
+    'class' => 'botonfavorito ' . ($es ? 'fas fa-heart' : 'far fa-heart'),
+    ]) ?>
+    <?php ActiveForm::end(); ?>
 </div>
 <!-- <button class="botonfavorito"><i class="fas fa-heart"> hola</i></button> -->

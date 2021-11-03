@@ -145,16 +145,12 @@ class CatTarjetaController extends Controller
     public function actionRegistrar()
     {
         $model = new CatTarjeta();
-      
         if ($this->request->isPost && $model->load($this->request->post()) ) {     
             $model->tar_fkusuario = Usuario::usuario()->usu_id;
             $model->save();
         }
-    
         return $this->render('registrar', compact('model'));
     }
-
-
 
     public function actionMostrar()
     {
@@ -165,7 +161,6 @@ class CatTarjetaController extends Controller
     {
         $id=$this->request->post('id');
         $CatTarjeta = CatTarjeta::find()->where(['tar_id' => $id]) -> one(); 
-    
         $CatTarjeta -> tar_expiracion = $this->request->post('expiracion');
         $CatTarjeta -> save();
         $response = Yii::$app->response;
@@ -196,12 +191,11 @@ class CatTarjetaController extends Controller
     // ELIMINA UN CAMPO DE LA TABLA TARJETA
     public function actionBtneliminar()
     {
-      // llega el id del js 
-      $id = $this->request->post('id');
-      //se hace una consulta para que traiga el id del que se registra
-      $this->findModel($id)->delete();
-    //   ->where(['tar_fkusuario' => Usuario::usuario()->usu_id  and  'tar_id'=>$id ])->one()
-
+        // llega el id del js 
+        $id = $this->request->post('id');
+        //se hace una consulta para que traiga el id del que se registra
+        $this->findModel($id)->delete();
+        //   ->where(['tar_fkusuario' => Usuario::usuario()->usu_id  and  'tar_id'=>$id ])->one()
         $response = Yii::$app->response; //Obtenemos los datos de la respuesta 
         $response->format = Response::FORMAT_JSON; //Le damos formato a la respuesta
         // se manda la viriable a la vista del boton
