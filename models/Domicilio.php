@@ -128,4 +128,8 @@ class Domicilio extends \yii\db\ActiveRecord
         }
         return $colonias;
     }
+    public static function domi()
+    {
+        return Domicilio::find()->where(['dom_fkusuario' => Usuario::usuario()->usu_id])->all();
+    }
 }
