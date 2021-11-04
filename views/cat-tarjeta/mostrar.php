@@ -16,34 +16,7 @@ use yii\bootstrap4\Html; ?>
 				<!-- ICONO DE DESPLIEGUE -->
 				<i class="fas fa-angle-down"></i>
 			</button>	
-			<div class="mostrar" id="mostrar<?= $tarjeta->tar_id ?>">
-			<div class="infor-desplagado"style="display:flex; justify-content:space-between;">
-			<div >
-				<!-- trae el nombre completo de el modelo usuario -->
-				<p><b>Nombre en la tarjeta:</b> <br> <?= $tarjeta->tar_nombre ?></p>
-				<p><b>Tipo:</b> <br> <?= $tarjeta->tar_tipo ?></p>
-				<p><b>Entidad F. :</b> <br> <?= $tarjeta->tar_financiera ?></p>
-				<p><b>Expiracion:</b> <br> <?= $tarjeta->tar_expiracion ?></p>
-			</div>
-			<div>
-				<p><b>Direccion de facturacion:</b></p>
-				<p>Traer datos de la tabla domicilio</p>
-				<!-- VENTANA EMERGENTE MODAL EL ID BTN SOLO DIFERENCIA LOS BOTONES, LA FUNCION SI SE USA EN JS -->
-			</div>
-			<!-- termina -->
-			<!-- FUNCION QUE EDITA -->
-			<button type="button" class="editar-btn-tarjeta" data-toggle="modal" data-target="#exampleModal" id="btn-modal<?= $tarjeta->tar_id ?>" onclick="modal(<?= $tarjeta->tar_id ?>)">
-			Editar
-			<i class="far fa-edit"></i>
-		</button>
-		<!-- FUNCION QUE ELIMINA -->
-		<button class="eliminar-btn-tarjeta"id="eliminar-tarjeta<?= $tarjeta->tar_id ?> "onclick="eliminar(<?= $tarjeta->tar_id ?>)">
-		Eliminar
-		<!-- ICONO DE CLOSE -->
-		<i class="fas fa-window-close"></i>
-	</button>
-</div>
-</div>
+				
 </div>
 <!-- inicia -->
 </div>
@@ -51,6 +24,9 @@ use yii\bootstrap4\Html; ?>
 <!-- <div action="" id="formulario-tarjeta-mostrar" class="formulario-tarjeta-mostrar">
 </div> -->
 </div>
+<div class="mostrar" id="mostrar<?= $tarjeta->tar_id ?>">
+				<?= $this->render('info-tar', compact('tarjeta')) ?> 
+			</div>
 <!-- termina -->
 <!-- PERMANECE OCULTA HASTA QUE LA FUNCION MODEL SE EJECUTA -->
 <?= $this->render('editar', compact('tarjeta')) ?>  
