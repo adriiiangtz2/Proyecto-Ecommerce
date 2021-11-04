@@ -175,4 +175,8 @@ class DomicilioController extends Controller
         }
         return ['output' => '', 'selected' => ''];
     }
+    public function actionMostrar()
+    {
+        return $this->render('mostrar');
+    }
 }

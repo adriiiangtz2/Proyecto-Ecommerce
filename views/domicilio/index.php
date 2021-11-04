@@ -18,7 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Agregar Domicilio', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -28,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'dom_id',
             'dom_ciudad:ntext',
-           //'dom_colonia:ntext',
+            //'dom_colonia:ntext',
             'dom_calle:ntext',
             'dom_numExt',
             'dom_numInt',
