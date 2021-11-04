@@ -39,7 +39,7 @@ use yii\bootstrap4\Html;
                     <a href="#" class="btn">Explore now &#187</a>
                 </div>
                 <div class="colum-2">
-                <?= Html::img('plantilla/images/image1.png', ['class' => 'logo', 'style'=>'width:500px;']) ?>
+                <?= Html::img('plantilla/images/image1.png', ['class' => 'logo', 'style'=>'width:480px;']) ?>
                 </div>
 
             </div>

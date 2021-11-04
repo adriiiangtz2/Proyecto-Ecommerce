@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use Yii;
+use yii\web\Response;
 use app\models\Usuario;
 use yii\web\Controller;
 use app\models\CatTarjeta;
@@ -143,15 +145,10 @@ class CatTarjetaController extends Controller
     public function actionRegistrar()
     {
         $model = new CatTarjeta();
-
-       
-        if ($this->request->isPost && $model->load($this->request->post()) ) {
-
-         
+        if ($this->request->isPost && $model->load($this->request->post()) ) {     
             $model->tar_fkusuario = Usuario::usuario()->usu_id;
             $model->save();
         }
-
         return $this->render('registrar', compact('model'));
     }
 
@@ -159,4 +156,51 @@ class CatTarjetaController extends Controller
     {
         return $this->render('mostrar');
     }
+
+    public function actionEditar()
+    {
+        $id=$this->request->post('id');
+        $CatTarjeta = CatTarjeta::find()->where(['tar_id' => $id]) -> one(); 
+        $CatTarjeta -> tar_expiracion = $this->request->post('expiracion');
+        $CatTarjeta -> save();
+        $response = Yii::$app->response;
+        $response->format = Response::FORMAT_JSON; 
+        $response->data = ['html' => $this->renderPartial('editar')];
+        return $response;
+    }
+    //REGISTRA UNA TARJETA DE UN USUARIO DE LA TABLA TARJETA
+    public function actionRegistrartarjeta()
+    {
+        // MOSTRAR
+        //estos nados le llegan al js y se remplazan por los id que llegan
+        $model = new CatTarjeta();
+        $model->tar_numtarjeta = $this->request->post('numtarjeta');
+        $model->tar_expiracion = $this->request->post('expiracion');
+        $model->tar_fkusuario = Usuario::usuario()->usu_id;
+        $model->tar_financiera = $this->request->post('financiera');
+        $model->tar_tipo = $this->request->post('tipo');
+        $model->tar_nombre = $this->request->post('nombre');
+        $model->save();
+        $response = Yii::$app->response; //Obtenemos los datos de la respuesta 
+        $response->format = Response::FORMAT_JSON; //Le damos formato a la respuesta
+        // se manda la viriable a la vista del boton
+        $response->data = ['html' => $this->renderPartial('mostrar')]; //Renderizamos parcial
+        return $response;
+    }
+
+    // ELIMINA UN CAMPO DE LA TABLA TARJETA
+    public function actionBtneliminar()
+    {
+        // llega el id del js 
+        $id = $this->request->post('id');
+        //se hace una consulta para que traiga el id del que se registra
+        $this->findModel($id)->delete();
+        //   ->where(['tar_fkusuario' => Usuario::usuario()->usu_id  and  'tar_id'=>$id ])->one()
+        $response = Yii::$app->response; //Obtenemos los datos de la respuesta 
+        $response->format = Response::FORMAT_JSON; //Le damos formato a la respuesta
+        // se manda la viriable a la vista del boton
+        $response->data = ['html' => $this->renderPartial('mostrar')]; //Renderizamos parcial
+        return $response;
+    }
+
 }

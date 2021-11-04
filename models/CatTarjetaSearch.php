@@ -70,6 +70,7 @@ class CatTarjetaSearch extends CatTarjeta
                     'desc'=>['CONCAT(usu_nombre," ",usu_paterno," ",usu_materno)' => SORT_DESC],
                     'default'=>SORT_ASC,
                 ],
+                'tar_nombre',
             ]
         ]);
         
@@ -90,6 +91,7 @@ class CatTarjetaSearch extends CatTarjeta
 
         $query->andFilterWhere(['like', 'tar_numtarjeta', $this->tar_numtarjeta])
             ->andFilterWhere(['like', 'tar_expiracion', $this->tar_expiracion])
+            ->andFilterWhere(['like', 'tar_nombre', $this->tar_nombre])
             ->andFilterWhere(['like', 'tar_financiera', $this->tar_financiera])
             ->andFilterWhere(['like', 'tar_tipo', $this->tar_tipo])
             ->andFilterWhere(['like', 'usu_nombre', $this->usuarioNombre])

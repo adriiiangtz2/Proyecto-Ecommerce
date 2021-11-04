@@ -59,7 +59,7 @@ nav ul li a:hover{
 }
 .colum-2 {
   /* El espacio del 100 que agarraran las dos colum-2 */
-  flex-basis: 50%;
+  flex-basis: 46%;
   min-width: 300px;
   /* border: 1px solid black; */
 }
