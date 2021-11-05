@@ -8,6 +8,8 @@ use webvimark\modules\UserManagement\UserManagementModule;
 <?php
 NavBar::begin([
     'brandLabel' => Yii::$app->name,
+    // 'brandLabel' => '<img  style="width:30%;margin:none;" src='.Yii::$app->getUrlManager()->getBaseUrl().'/plantilla/images/logo.png>',
+    'brandLabel' => Yii::$app->name. '   ' .Html::img('/plantilla/images/logo.png',['style' => 'width: 100px;']),
     'brandUrl' => Yii::$app->homeUrl,
     'options' => ['class' => 'headerr navbar navbar-expand-md  fixed-top a'],
 ]);

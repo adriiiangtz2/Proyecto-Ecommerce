@@ -6,6 +6,7 @@ use app\models\CatFavorito;
 use kartik\date\DatePicker;
 use kartik\widgets\Select2;
 use yii\bootstrap4\ActiveForm;
+// hola
 ?>
 <!DOCTYPE html>
 <html lang="en">
