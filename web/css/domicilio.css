@@ -1,3 +1,6 @@
+.domicilio-contenedor {
+  padding: inherit;
+}
 .contenedor-card-domicilio {
   border-radius: 5px;
   line-height: 1;
@@ -6,6 +9,8 @@
   text-align: center;
   font-size: 21px;
   border: 1px solid #b9aeae;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 .domicilio-botones {
 }
@@ -29,4 +34,7 @@
   justify-content: space-between;
   margin: 0 auto;
   padding: 0 auto;
+}
+.hiper a {
+  text-decoration: none;
 }

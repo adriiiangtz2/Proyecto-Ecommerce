@@ -27,22 +27,19 @@
    </head>
 
    <body>
+       <div>
+           <h1>Mis direcciones</h1>
+       </div>
+       <div class="row domicilio-contenedor">
+           <div class="col-md-3 contenedor-agregar"> <a class="hiper" href="registrar" style="text-decoration: none">
+                   <!-- owl-carousel -->
+                   <div class="contenedor-card-agregar">
+                       <h3>Agregar direccion
+                           <br> <i class="fas fa-plus"></i>
+                       </h3>
 
-
-       <a id="" class="" href="registrar">
-
-           <h2 class="a-color-tertiary">Agregar dirección</h2>
-
-       </a>
-       <div class="row">
-           <div class="col-md-3 contenedor-agregar">
-               <!-- owl-carousel -->
-               <div class="contenedor-card-agregar">
-                   <h3>Agregar direccion
-                       <br> <i class="fas fa-plus"></i>
-                   </h3>
-
-               </div>
+                   </div>
+               </a>
            </div>
            <?php foreach (\app\models\Domicilio::domi() as $domicilio) : ?>
 
@@ -52,7 +49,6 @@
 
                    <div class="domicilio-titulo">
                        <h3>Domicilio</h3>
-
                    </div>
                    <div class="domicilio-informacion">
                        <div>
