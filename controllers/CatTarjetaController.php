@@ -160,12 +160,13 @@ class CatTarjetaController extends Controller
     public function actionEditar()
     {
         $id=$this->request->post('id');
-        $CatTarjeta = CatTarjeta::find()->where(['tar_id' => $id]) -> one(); 
-        $CatTarjeta -> tar_expiracion = $this->request->post('expiracion');
-        $CatTarjeta -> save();
+        $tarjeta = CatTarjeta::find()->where(['tar_id' => $id]) -> one(); 
+        $tarjeta -> tar_nombre = $this->request->post('nombre');
+        $tarjeta -> tar_expiracion = $this->request->post('expiracion');
+        $tarjeta -> save();
         $response = Yii::$app->response;
         $response->format = Response::FORMAT_JSON; 
-        $response->data = ['html' => $this->renderPartial('editar')];
+        $response->data = ['html' => $this->renderPartial('info-tar',compact('tarjeta'))];
         return $response;
     }
     //REGISTRA UNA TARJETA DE UN USUARIO DE LA TABLA TARJETA

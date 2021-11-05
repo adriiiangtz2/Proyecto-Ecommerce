@@ -14,7 +14,7 @@ use yii\bootstrap4\ActiveForm;
         </button>
     </div>
     
-    <div class="modal-body">
+    <div class="modal-body" id="modal-body-editar">
       <!-- CONTENIDO PRINCIPAL -->
       <div class="row" style="height:200px">
       <div class="col-md-4">
@@ -47,8 +47,9 @@ use yii\bootstrap4\ActiveForm;
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-    <button type="button" class="btn btn-primary">Guardar</button>
+    <button type="button" class="btn btn-primary" onclick="editarTarjeta(<?= $tarjeta->tar_id ?>)">Guardar</button>
   </div>
 </div>
 </div>
+<script src="js/tarjeta.js"></script>
 </div>

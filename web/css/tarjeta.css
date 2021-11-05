@@ -163,7 +163,7 @@
 	height: 50px;
 	font-size: 20px;
 	line-height: 20px;
-	background: #646c7a;
+	background: #a1a2a3;
 	color: #fff;
 	position: relative;
 	top: -25px;
@@ -178,7 +178,7 @@
 }
 
 .contenedor-btn .btn-abrir-formulario:hover {
-	background: #1850b1;
+	background: #7c8fb1ca;
 }
 
 .contenedor-btn .btn-abrir-formulario.active {
@@ -187,7 +187,7 @@
 
 /* ---------- Formulario Tarjeta ----------*/
 .formulario-tarjeta {
-	background: #f3f3f3;
+
 	width: 100%;
 	/* max-width: 700px; */
 	/* background: transparent; */
@@ -199,7 +199,10 @@
 	z-index: 1;
 	clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 	transition: clip-path .3s ease-out;
-	border: 1px solid #d4d4d4;
+
+	border-radius: 17px;
+background: #fdfdfd;
+box-shadow:  10px 10px 15px #e4e4e4,
 }
 
 .formulario-tarjeta.active {
@@ -212,7 +215,12 @@
 	margin-bottom: 5px;
 	font-size: 16px;
 }
-
+.formulario-tarjeta > input{
+	color: black;
+	border-radius: 17px;
+    background: #fafafa;
+    box-shadow:  6px 6px 5px #e4e4e4,
+}
 .formulario-tarjeta input,
 .formulario-tarjeta select,
 .btn-enviar {
@@ -317,28 +325,57 @@
     font-size: 16px;
 }
 
+.contenedor-izq-tarjeta{
+	margin-top: 15px;
+	border-radius: 17px;
+background: #fdfdfd;
+box-shadow:  10px 10px 15px #e4e4e4,
+             -6px -10px 15px #ffffff;
+}
+/* ESTILOS BARRA DERECHA SCROLL */
+.contenedor-izq-tarjeta::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.contenedor-izq-tarjeta::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.contenedor-izq-tarjeta::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #474747;
+}
 /* ------------VISTAS MOTRAR--------------- */
 .tarjetas-guardadas{
 	display: flex;
 	height: 55px;
 	width: 100%;
-	margin:5px;
+	/* margin:5px; */
 	/* border: 1px solid rgba(0, 0, 0, 0.157); */
 	border-bottom: none;
 	color: black;
-	border-radius: 2px;
-	padding: 5px;
+	padding-bottom: 10px;
+	/* padding: 5px; */
 }
 .infos-tarjetas{
 	padding: 2px;
 	display: flex;
-	background: #F3F3F3;
 	width: 100%;
 	height: 100%;
 	position: relative;
 	color: black;
 	padding: 11px 0px 11px 18px;
-	border: 2px solid rgba(0, 0, 0, 0.157);
+	border-radius: 17px;
+background: #fafafa;
+box-shadow:  6px 6px 5px #e4e4e4,
+             -6px -6px 5px #ffffff;
 }
 
 .infos-tarjetas > p {
@@ -365,6 +402,17 @@
 	transform: rotate(180deg);
 }
 
+.btnMostrarTj{
+	border-radius: 17px;
+	background: #fafafa;
+	box-shadow:  6px 6px 5px #e4e4e4,-6px -6px 5px #ffffff;
+	padding: 5px;
+	text-decoration: none;
+}
+.btnMostrarTj:hover{
+	text-decoration: none;
+}
+
 /* -----FORMULARIO DE TARJETA MOSTRAR */
 .formulario-tarjeta-mostrar{
 	justify-content: center;
@@ -378,34 +426,18 @@
 }
 .mostrar{
 	display: none;
-	width: 100%;
-	height: auto;
-	left: 0px;
-	display: none;
-	background-color: rgb(163, 0, 0);
-	padding-top: 30px;
-	margin-top: 10px;
-	opacity: 1;
-	visibility: hidden;
-	z-index: 10;
-	cursor: initial;
 }
 .mostrar2{
 	display: block;
-	width: 101%;
-	height: 240px;
-	left: -3px;
-	top: 84%;
-	position: absolute;
-	background-color: #F3F3F3;
-	margin-top: 10px;
-	opacity: 1;
-	z-index: 10;
-	cursor: initial;
-	border: 2px solid rgba(0, 0, 0, 0.157);
-	border-top: none;
-	padding: 5px;
-
+	/* border: 1px solid black; */
+	width: 100%;
+	background: #c1b7b763;
+	/* border: 2px solid rgba(0, 0, 0, 0.157); */
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 17px;
+	background: #fafafa;
+	box-shadow:  6px 6px 5px #e4e4e4,-6px -6px 5px #ffffff;
 }
 
 /* boton eliminar  vista tarjeta*/
@@ -417,7 +449,7 @@
     padding: 3px;
     padding-right: 7px;
     font-weight: bold;
-    position: absolute;
+    /* position: absolute; */
     bottom: 4%;
     right: 4%;
 }
@@ -438,7 +470,7 @@
     padding: 3px;
     padding-right: 7px;
     font-weight: bold;
-    position: absolute;
+    /* position: absolute; */
     bottom: 4%;
     right: 26%;
 }

@@ -6,6 +6,7 @@ use app\models\CatFavorito;
 use kartik\date\DatePicker;
 use kartik\widgets\Select2;
 use yii\bootstrap4\ActiveForm;
+// hola
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,14 +131,17 @@ use yii\bootstrap4\ActiveForm;
 							</div>
 							<!-- MOSTRAR TARJETAS  MANDAMOS UN RENDER SOLAMENTE-->
 							<div class=" tarjet tarjet-mostrar">
-								<p>Tus métodos de pago guardados</p>
-								<div class="d-flex justify-content-center">
-									<?= Html::a('Mis Tarjetas',['cat-tarjeta/mostrar'],['class' => 'btntarjeta2']) ?>
+									<div class="d-flex" style="justify-content: space-around;align-items: center;">
+									<p>Tus métodos de pago guardados</p>
+									<?= Html::a('Mis Tarjetas',['cat-tarjeta/mostrar'],['class' => 'btnMostrarTj']) ?>
+									
 								</div>
+								<hr>
 								<!-- SE RENDERIZA LA VISTA REGISTRAR -->
-								<div  id="idmostrar" style="height:376px;overflow-x:hidden;width:106%;padding:18px;">
+								<div  id="idmostrar" class="contenedor-izq-tarjeta" style="height:376px;overflow-x:hidden;width:106%;padding:18px;">
 								<?= $this->render('mostrar') ?>  
 							</div> 
+							
 						</div>
 						<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 					</body>
