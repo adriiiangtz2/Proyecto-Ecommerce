@@ -1,0 +1,32 @@
+.contenedor-card-domicilio {
+  border-radius: 5px;
+  line-height: 1;
+}
+.domicilio-titulo {
+  text-align: center;
+  font-size: 21px;
+  border: 1px solid #b9aeae;
+}
+.domicilio-botones {
+}
+.domicilio-informacion {
+  padding: 10px;
+  line-height: 20px;
+  border: 1px solid #b9aeae;
+}
+.contenedor-agregar {
+  display: flex;
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+  align-self: center;
+  margin: 0 auto;
+  padding: 0 auto;
+  border: 1px dashed #b9aeae;
+}
+.contenedor-card-agregar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 auto;
+}

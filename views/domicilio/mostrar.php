@@ -28,85 +28,58 @@
 
    <body>
 
-       <div class="a-row a-spacing-micro">
-           <div class="a-column a-span4 a-spacing-none a-spacing-top-mini address-column">
-               <a id="ya-myab-address-add-link" class="a-link-normal add-new-address-button" href="registrar">
-                   <div class="a-box first-desktop-address-tile">
-                       <div class="a-box-inner a-padding-extra-large">
-                           <div id="ya-myab-plus-address-icon" class="a-section a-spacing-none address-plus-icon aok-inline-block"></div>
-                           <h2 class="a-color-tertiary">Agregar dirección</h2>
+
+       <a id="" class="" href="registrar">
+
+           <h2 class="a-color-tertiary">Agregar dirección</h2>
+
+       </a>
+       <div class="row">
+           <div class="col-md-3 contenedor-agregar">
+               <!-- owl-carousel -->
+               <div class="contenedor-card-agregar">
+                   <h3>Agregar direccion
+                       <br> <i class="fas fa-plus"></i>
+                   </h3>
+
+               </div>
+           </div>
+           <?php foreach (\app\models\Domicilio::domi() as $domicilio) : ?>
+
+
+               <div class="col-md-3 contenedor-card-domicilio ">
+                   <!-- owl-carousel -->
+
+                   <div class="domicilio-titulo">
+                       <h3>Domicilio</h3>
+
+                   </div>
+                   <div class="domicilio-informacion">
+                       <div>
+                           <p><b> Ciudad:</b><?= $domicilio->dom_ciudad ?><br>
+                               <b>Colonia:</b><?= $domicilio->dom_colonia ?><br>
+                               <b>Calle:</b><?= $domicilio->dom_calle ?><br>
+                               <b>Numero exterior:</b><?= $domicilio->dom_numExt ?><br>
+                               <b>Numero interior:</b><?= $domicilio->dom_numInt ?><br>
+                               <b>Teléfono :</b><?= $domicilio->dom_telefono ?><br>
+                               <b>Código postal:</b><?= $domicilio->dom_fkcp ?>
+                           </p>
                        </div>
                    </div>
-               </a>
-           </div>
-
-
-           <div class="main">
-               <h1>Mis Domicilios</h1>
-           </div>
-           <div class="row">
-               <?php foreach (\app\models\Domicilio::domi() as $domicilio) : ?>
-
-                   <div class="col-6">
-                       <!-- owl-carousel -->
-
-                       <div class="pricing pricing-two">
-                           <div class="pricing-top top-two">
-                               <h3>Domicilio</h3>
-                           </div>
-                           <div class="pricing-bottom">
-                               <table>
-                                   <tr>
-                                       <td>Id </td>
-                                       <td><?= $domicilio->dom_id ?></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Ciudad</td>
-                                       <td style="text-align:left"><?= $domicilio->dom_ciudad ?></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Colonia</td>
-                                       <td><?= $domicilio->dom_colonia ?></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Calle</td>
-                                       <td><?= $domicilio->dom_calle ?></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Numero exterior</td>
-                                       <td><?= $domicilio->dom_numExt ?></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Numero interior</td>
-                                       <td> <?= $domicilio->dom_numInt ?></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Teléfono </td>
-                                       <td><?= $domicilio->dom_telefono ?></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Código postal</td>
-                                       <td><?= $domicilio->dom_fkcp ?></td>
-                                   </tr>
-                               </table>
-                               <p class="w3agile">-</p>
-                               <p>
-                                   <?= Html::a('Modificar', ['update', 'id' => $domicilio->dom_id], ['class' => 'btn btn-primary']) ?>
-                                   <?= Html::a('Eliminar', ['delete', 'id' => $domicilio->dom_id], [
-                                        'class' => 'btn btn-danger',
-                                        'data' => [
-                                            'confirm' => '¿Estas seguro que quieres eliminar este domicilio?',
-                                            'method' => 'post',
-                                        ],
-                                    ]) ?>
-                               </p>
-                           </div>
-                       </div>
+                   <div class="domicilio-botones">
+                       <?= Html::a('Modificar', ['update', 'id' => $domicilio->dom_id], ['class' => 'btn ']) ?>
+                       <?= Html::a('Eliminar', ['delete', 'id' => $domicilio->dom_id], [
+                            'class' => 'btn btn-danger',
+                            'data' => [
+                                'confirm' => '¿Estas seguro que quieres eliminar este domicilio?',
+                                'method' => 'post',
+                            ],
+                        ]) ?>
                    </div>
+               </div>
 
-
-               <?php endforeach; ?>
-           </div>
+           <?php endforeach; ?>
+       </div>
 
 
    </body>
