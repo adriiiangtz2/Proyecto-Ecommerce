@@ -5,7 +5,7 @@ use yii\bootstrap4\Html;
 
 $card = [
     (object)['nombre' => 'Usuario'    , 'url'  => '', 'img' => '<i class="fas fa-user-cog"></i>', 'info' => 'Informacion del Usuario'  ],
-    (object)['nombre' => 'Domicilio'  , 'url'  => '/domicilio/registrar', 'img' => '<i class="far fa-address-card"></i>', 'info' => 'Edita direcciones para pedidos y regalos'  ],
+    (object)['nombre' => 'Domicilio'  , 'url'  => '/domicilio/mostrar', 'img' => '<i class="far fa-address-card"></i>', 'info' => 'Edita direcciones para pedidos y regalos'  ],
     (object)['nombre' => 'Tarjetas'   , 'url' => '/cat-tarjeta/registrar', 'img' => '<i class="fas fa-credit-card"></i>' , 'info' => 'Administra configuraciones y metodos de pago'  ],
     
 ];
