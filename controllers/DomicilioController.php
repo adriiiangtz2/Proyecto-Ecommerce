@@ -69,7 +69,7 @@ class DomicilioController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
+        return $this->render('mostrar', [
             'model' => $this->findModel($id),
         ]);
     }
@@ -128,7 +128,7 @@ class DomicilioController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['mostrar']);
     }
 
     /**

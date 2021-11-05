@@ -94,7 +94,7 @@ echo Nav::widget([
                 ],
 
                 [
-                    'label' => '<i class="far fa-address-card"></i>' . ' Domicilio', 'url' => ['/domicilio/registrar'],
+                    'label' => '<i class="far fa-address-card"></i>' . ' Domicilio', 'url' => ['/domicilio/mostrar'],
                     'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
                 ],
 
