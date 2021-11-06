@@ -45,7 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'pro_fktipo',
             //'pro_fkmarca',
             //'pro_fktienda',
-            'marca',
+            'pro_descuento',
+            //'marca',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

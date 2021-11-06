@@ -40,6 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'imagen',
             'format' => 'raw' ,
             ],
+            'pro_descuento',
             'pro_estatus',
             'pro_color',
             'pro_fktipo',

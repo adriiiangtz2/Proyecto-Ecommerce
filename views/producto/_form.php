@@ -9,6 +9,7 @@ use kartik\date\DatePicker;
 use kartik\select2\Select2;
 use kartik\rating\StarRating;
 use yii\bootstrap4\ActiveForm;
+use kartik\number\NumberControl;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Producto */
@@ -25,8 +26,18 @@ use yii\bootstrap4\ActiveForm;
             <?= $form->field($model, 'pro_nombre')->textInput(['maxlength' => true]) ?>
         </div>
 
-        <div class="col-md-4">
+        <?php /*<div class="col-md-4">
             <?= $form->field($model, 'pro_precio')->textInput(['maxlength' => true]) ?>
+        </div>*/ ?>
+        
+
+        <div class="col-md-4">
+            <?= $form->field($model, 'pro_precio')->widget(NumberControl::classname(), [
+                'maskedInputOptions' => [
+                    'prefix' => '$',
+                    'allowMinus' => false
+                ]
+            ]) ?>
         </div>
 
         <div class="col-md-4">
@@ -35,6 +46,20 @@ use yii\bootstrap4\ActiveForm;
             ]);
             ?>
 
+        </div>
+
+        <div class="col-md-4">
+            <?= $form->field($model, 'pro_descuento')->textInput(['type' => 'number']); ?>
+        </div>
+
+        <div class="col-md-4">
+            <?= $form->field($model, 'descuentoCompra')->widget(NumberControl::classname(), [
+                'disabled' => true,
+                'maskedInputOptions' => [
+                    'prefix' => '$',
+                    'allowMinus' => false
+                ]
+            ]) ?>
         </div>
 
         <div class="col-md-4">
@@ -97,11 +122,11 @@ use yii\bootstrap4\ActiveForm;
             ]); ?>
         </div>
 
-        <div class="col-md-12">
-            <?= $form->field($model, 'pro_descripcion')->textarea(['rows' => 6]) ?>
+        <div class="col-md-6">
+            <?= $form->field($model, 'pro_descripcion')->textarea(['rows' => 16]) ?>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-md-6">
             <?= $form->field($model, 'img')->widget(FileInput::classname(), [
                 'options'       => ['accept' => 'image/*'],
                 'pluginOptions' => [
@@ -130,3 +155,12 @@ use yii\bootstrap4\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$js = <<<JAVASCRIPT
+    $("#producto-pro_descuento").on('change', function(e){
+        //console.log($("#producto-pro_precio").val().replace(/[$,]/g,'') * (100 - $("#producto-pro_descuento").val()));
+        $("#producto-descuentocompra-disp").val($("#producto-pro_precio").val().replace(/[$,]/g,'') * (100 - $("#producto-pro_descuento").val()) / 100);
+    });
+JAVASCRIPT;
+$this->registerJs($js);
+?>

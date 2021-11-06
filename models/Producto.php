@@ -33,6 +33,9 @@ class Producto extends \yii\db\ActiveRecord
 {
 
     public $img;
+    public $marca;
+    public $tipo;
+    public $descuentoCompra;
     /**
      * {@inheritdoc}
      */
@@ -48,16 +51,15 @@ class Producto extends \yii\db\ActiveRecord
     {
         return [
             [['pro_nombre', 'pro_precio', 'pro_fecha', 'pro_descripcion', 'pro_estatus', 'pro_color', 'pro_estrellas' ,'pro_fktipo', 'pro_fkmarca', 'pro_fktienda'], 'required'],
-            [['pro_precio'], 'number'],
+            [['pro_precio', 'pro_descuento', 'descuentoCompra'], 'number'],
             [['pro_estrellas'],'string'],
-            [['pro_fecha', 'img'], 'safe'],
+            [['pro_fecha', 'img'. 'marca','tipo'], 'safe'],
             [['pro_descripcion', 'pro_estatus'], 'string'],
             [['pro_fktipo', 'pro_fkmarca', 'pro_fktienda'], 'integer'],
             [['pro_nombre'], 'string', 'max'            => 100],
             [['pro_dimensiones'], 'string', 'max'       => 50],
             [['pro_imagen'], 'string', 'max'            => 150],
             [['pro_color'], 'string', 'max'             => 10],
-            //[['img'], 'safe'],
             [['img'], 'file', 'extensions'              => 'jpg, gif, png'],
             [['img'], 'file', 'maxSize'                 => '100000'],
             [['pro_fktienda'], 'exist', 'skipOnError'   => true, 'targetClass' => Tienda::className(), 'targetAttribute'   => ['pro_fktienda' => 'tie_id']],
@@ -85,8 +87,12 @@ class Producto extends \yii\db\ActiveRecord
             'pro_fktipo'      => 'Tipo de producto',
             'pro_fkmarca'     => 'Características',
             'pro_fktienda'    => 'Tienda',
+            'pro_descuento'   => 'Porcentaje',
+            'descuentoCompra' => 'Compra con descuento',
             'img'             => 'Imagen',
             'imagen'          => 'Imagen',
+            'marca'           => 'Marca',
+            'tipo'            => 'Tipo',
         ];
     }
 
@@ -171,7 +177,14 @@ class Producto extends \yii\db\ActiveRecord
 
     public function getUrl(){
         return "/img/" . (empty($this->pro_imagen) ? 'Productos.jpg' : "producto/{$this->pro_imagen}");
-        //siguiente linea es de prueba
-        // return Html::img("/img/".(empty($this->pro_imagen) ? 'Productos.jpg' : "producto/{$this->pro_imagen}"), ['width' => '120' , 'height' => '120']);
+    }
+
+    public function getPromedio(){
+        $promedio = 0;
+        $contador = count($this->carritoDetalles);
+        foreach($this->carritoDetalles as $producto){
+            $promedio += $producto->cardet_valoracion;
+        }
+        return $promedio/ ($contador == 0 ? 1 : count($this->carritoDetalles));
     }
 }
