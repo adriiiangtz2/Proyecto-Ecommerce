@@ -20,7 +20,7 @@ class ProductoSearch extends Producto
         return [
             [['pro_id', 'pro_fktipo', 'pro_fkmarca', 'pro_fktienda'], 'integer'],
             [['pro_nombre', 'pro_fecha', 'pro_descripcion', 'pro_dimensiones', 'pro_imagen', 'pro_estatus', 'pro_color', 'marca'], 'safe'],
-            [['pro_precio'], 'number'],
+            [['pro_precio','pro_descuento'], 'number'],
         ];
     }
 
@@ -63,6 +63,7 @@ class ProductoSearch extends Producto
                 'pro_color',
                 'pro_fecha',
                 'pro_precio',
+                'pro_descuento',
                 'marca' => [
                     'asc' => ['pro_fkmarca' => 'SORT_ASC'],
                     'desc' => ['pro_fkmarca' => 'SORT_DESC'],
@@ -84,6 +85,7 @@ class ProductoSearch extends Producto
             'pro_id' => $this->pro_id,
             'pro_precio' => $this->pro_precio,
             'pro_fecha' => $this->pro_fecha,
+            'pro_descuento' => $this->pro_descuento,
             'pro_fktipo' => $this->pro_fktipo,
             'pro_fkmarca' => $this->pro_fkmarca,
             'pro_fktienda' => $this->pro_fktienda,

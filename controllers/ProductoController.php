@@ -142,18 +142,19 @@ class ProductoController extends Controller
 
     public function actionProductos()
     {
-
+        $model = new Producto();
         $searchModel = new ProductoSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-
         $dataProvider->pagination = ([
             'pageSize' => 3,
         ]);
 
-        return $this->render('productoVis', ([
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]));
+        return $this->render('productoVis', compact('searchModel','dataProvider', 'model'));
+    }
+
+    public function actionProductoitem()
+    {
+        return $this->render('productoItem');
     }
 
     protected function findModel($id)
@@ -163,10 +164,5 @@ class ProductoController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
-    }
-
-    public function actionProductoitem()
-    {
-        return $this->render('productoItem');
     }
 }
