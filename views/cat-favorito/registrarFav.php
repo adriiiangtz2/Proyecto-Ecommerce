@@ -1,20 +1,25 @@
 <?php
 
 use yii\helpers\Html;
-use app\models\CatFavorito;
+use app\models\CatTarjeta;
 use yii\widgets\LinkPager;
+use app\models\CatFavorito;
+$total = 0;
+$favo= \app\models\CatFavorito::favorito();
 
 // $favoritos = CatFavorito::favorito();
 ?>
 <div class="" id="identificador">
-    <h1>Productos Favoritos</h1>
+    <h3><b>MI LISTA DE DESEOS</b></h3>
+    <p><?=count($favo)?> ARTICULOS</p>
     <div class="small-container">
         <div class="filas">
             <!-- LLega del controlador $fav -->
             <!-- funcion del modelo favorito -->
             <?php
-        if (!empty(\app\models\CatFavorito::favorito())):
-         foreach (\app\models\CatFavorito::favorito() as $favoritos): ?>
+        if (!empty($favo)):
+         foreach ($favo as $favoritos): ?>
+         
                 <div class="colum-4" style="position:relative;">
                 <a href="product-datails.html"> <img src=<?= $favoritos->favFkproducto->getUrl() ?> class="logo"> </a>
                 <h4>
@@ -37,7 +42,7 @@ use yii\widgets\LinkPager;
             
          else: ?>
          <div  style="height: 400px;display: flex;align-items: center;">
-             <h2 >Los productos que agregues a tus Favoritos se guardarán aquí.</h2>
+             <p>Aún no has añadido ningún artículo a tu lista de deseos. Comienza a comprar y añade tus favoritos.</p>
          </div>
  <?php  endif?>
         </div>

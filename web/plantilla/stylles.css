@@ -156,6 +156,8 @@ h4 {
 
 .colum-4:hover {
   transform: translateY(-5px);
+  box-shadow:  20px 20px 66px #b8b8b8,
+             -20px -20px 66px #ffffff;
 }
 /* offer */
 
