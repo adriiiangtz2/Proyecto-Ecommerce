@@ -47,7 +47,7 @@ echo Nav::widget([
         ],
 
         [
-            'label' => '<i class="fas fa-heart"></i>' . ' Favorito',
+            'label' => '<i class="fas fa-heart"></i>',
             'url' => ['/cat-favorito/favorito'], //no se delcara en controlador por que aparece cuando se registre //se niega ! por que aparecera cuando se registre // isGuest es para cuando no se ha registrado es cliente
             'visible' =>
             !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
@@ -55,7 +55,7 @@ echo Nav::widget([
         ],
 
         [
-            'label' => '<i class="fas fa-shopping-cart"></i>' . ' Carrito',
+            'label' => '<i class="fas fa-shopping-cart"></i>',
             'url' => ['/carrito-detalle/carrito'],
             'visible' =>
             !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,

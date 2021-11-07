@@ -1,7 +1,10 @@
 <?php
 use yii\bootstrap4\Html; ?>
 <div class="" id="idtarjeta">
-	<?php foreach (\app\models\CatTarjeta::tarjeta() as $tarjeta): ?>
+
+<?php
+        if (!empty(\app\models\CatTarjeta::tarjeta())):
+        foreach (\app\models\CatTarjeta::tarjeta() as $tarjeta): ?>
 		<!-- incia -->
 		<div class="tarjetas-guardadas">
 			<!-- inicia -->
@@ -30,6 +33,12 @@ use yii\bootstrap4\Html; ?>
 <!-- termina -->
 <!-- PERMANECE OCULTA HASTA QUE LA FUNCION MODEL SE EJECUTA -->
 <?= $this->render('editar', compact('tarjeta')) ?>  
-<?php endforeach; ?>	
 </div>
+<?php endforeach;
+            
+		else: ?>
+		<div  style="width:auto;height:250px;display: flex;align-items: center;text-aling:center;">
+			<p><b>GUARDA TUS FORMAS DE PAGO</b></p>
+		</div>
+<?php  endif?>
 <script src="js/tarjeta.js"></script>

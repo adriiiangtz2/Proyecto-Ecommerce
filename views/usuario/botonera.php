@@ -4,9 +4,10 @@
 use yii\bootstrap4\Html;
 
 $card = [
-    (object)['nombre' => 'Usuario'    , 'url'  => '', 'img' => '<i class="fas fa-user-cog"></i>', 'info' => 'Informacion del Usuario'  ],
+    (object)['nombre' => 'Usuario'    , 'url'  => 'informacion', 'img' => '<i class="fas fa-user-cog"></i>', 'info' => 'Informacion del Usuario'  ],
     (object)['nombre' => 'Domicilio'  , 'url'  => '/domicilio/mostrar', 'img' => '<i class="far fa-address-card"></i>', 'info' => 'Edita direcciones para pedidos y regalos'  ],
     (object)['nombre' => 'Tarjetas'   , 'url' => '/cat-tarjeta/registrar', 'img' => '<i class="fas fa-credit-card"></i>' , 'info' => 'Administra configuraciones y metodos de pago'  ],
+    (object)['nombre' => 'Favoritos'   , 'url' => '/cat-favorito/favorito', 'img' => '<i class="fab fa-gratipay"></i>' , 'info' => 'Los productos que agregues a tus Favoritos se guardarán aquí.'  ],
     
 ];
 

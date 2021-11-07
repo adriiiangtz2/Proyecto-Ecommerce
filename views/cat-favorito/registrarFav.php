@@ -12,7 +12,9 @@ use yii\widgets\LinkPager;
         <div class="filas">
             <!-- LLega del controlador $fav -->
             <!-- funcion del modelo favorito -->
-            <?php foreach (\app\models\CatFavorito::favorito() as $favoritos): ?>
+            <?php
+        if (!empty(\app\models\CatFavorito::favorito())):
+         foreach (\app\models\CatFavorito::favorito() as $favoritos): ?>
                 <div class="colum-4" style="position:relative;">
                 <a href="product-datails.html"> <img src=<?= $favoritos->favFkproducto->getUrl() ?> class="logo"> </a>
                 <h4>
@@ -31,6 +33,12 @@ use yii\widgets\LinkPager;
                 <p>$<?= html::encode("{$favoritos->favFkproducto->pro_precio}") ?>
                 <?= $this->render('/cat-favorito/btnfav', compact('favoritos')) ?> </p>
             </div>
-            <?php endforeach; ?>
+            <?php endforeach;
+            
+         else: ?>
+         <div  style="height: 400px;display: flex;align-items: center;">
+             <h2 >Los productos que agregues a tus Favoritos se guardarán aquí.</h2>
+         </div>
+ <?php  endif?>
         </div>
     </div>

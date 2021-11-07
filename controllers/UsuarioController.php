@@ -158,6 +158,12 @@ class UsuarioController extends Controller
     {
         return $this->render('botonera');
     }
+    public function actionInformacion()
+    {
+        $id=Usuario::usuario();
+        $usua = Usuario::findOne(['usu_id' => $id]);
+        return $this->render('informacion',compact('usua'));
+    }
 
 
 }
