@@ -19,8 +19,9 @@ $favo= \app\models\CatFavorito::favorito();
             <?php
         if (!empty($favo)):
          foreach ($favo as $favoritos): ?>
-         
+        
                 <div class="colum-4" style="position:relative;">
+                <!-- <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> -->
                 <a href="product-datails.html"> <img src=<?= $favoritos->favFkproducto->getUrl() ?> class="logo"> </a>
                 <h4>
                     <?= html::encode( "{$favoritos->favFkproducto->pro_nombre}" ) ?> 

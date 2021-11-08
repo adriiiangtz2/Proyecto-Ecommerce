@@ -10,7 +10,7 @@ $usuario = Usuario::usuario();
     <h3><b>MIS DATOS</b></h3>
     <p>Modifica tus datos personales a continuación para que tu cuenta esté actualizada.</p>
     <div class="row">
-        <div class="col-md-5" style="border:1px DASHED black;margin:5px;">
+        <div class="col-md-5" style="border:1px DASHED black;margin:5px;padding:10px;">
         <div><h3><b>DATOS</b></h3></div>
         <p><b>Nombre</b><br><?=$usuario->nombreCompleto?></p><br>
         <p><b>Nacimiento</b><br> </p><br>
@@ -18,14 +18,14 @@ $usuario = Usuario::usuario();
         <button>Editar</button> 
     </div>
     
-    <div class="col-md-5" style="border:1px DASHED black;margin:5px;">
+    <div class="col-md-5" style="border:1px DASHED black;margin:5px;padding:10px;">
         <div><h3><b>DATOS DE ACCESO</b></h3></div>
         <p><b>USERNAME</b><br><?=$usuario->userUsername?></p><br>
         <p><b>CORREO ELECTRONICO</b><br><?=$usuario->userEmail?></p><br>
         <button>Editar</button> 
         
     </div>
-    <div class="col-md-5" style="border:1px DASHED black;margin:5px;">
+    <div class="col-md-5" style="border:1px DASHED black;margin:5px;padding:10px;">
         <div><h3><b>CERRAR SESIÓN EN TODOS LOS NAVEGADORES</b></h3></div>
         <p>Al elegir esta opción, se cerrará tu sesión en todos los navegadores web que hayas utilizado para acceder a la página web de adidas. Para volver a iniciar sesión, tendrás que ingresar tus credenciales.</p>
         <button>Cerrar sesion</button><br><br>

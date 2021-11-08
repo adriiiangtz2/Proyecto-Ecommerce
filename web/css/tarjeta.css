@@ -329,8 +329,12 @@ box-shadow:  10px 10px 15px #e4e4e4,
 	margin-top: 15px;
 	border-radius: 17px;
 background: #fdfdfd;
-box-shadow:  10px 10px 15px #e4e4e4,
-             -6px -10px 15px #ffffff;
+border: 1px dashed black;
+}
+.contenedor-izq-tarjeta:hover{
+	transform: translateY(-5px);
+  box-shadow:  20px 20px 66px #b8b8b8,
+             -20px -20px 66px #ffffff;
 }
 /* ESTILOS BARRA DERECHA SCROLL */
 .contenedor-izq-tarjeta::-webkit-scrollbar-track
@@ -373,10 +377,10 @@ box-shadow:  10px 10px 15px #e4e4e4,
 	color: black;
 	padding: 11px 0px 11px 18px;
 	border-radius: 17px;
-background: #fafafa;
-box-shadow:  6px 6px 5px #e4e4e4,
-             -6px -6px 5px #ffffff;
+	border: 1px dashed black;
+
 }
+
 
 .infos-tarjetas > p {
 	color: rgb(51, 50, 50);
@@ -437,7 +441,7 @@ box-shadow:  6px 6px 5px #e4e4e4,
 	margin-bottom: 10px;
 	border-radius: 17px;
 	background: #fafafa;
-	box-shadow:  6px 6px 5px #e4e4e4,-6px -6px 5px #ffffff;
+    border: 1px dashed black;
 }
 
 /* boton eliminar  vista tarjeta*/

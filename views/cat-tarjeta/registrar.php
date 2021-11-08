@@ -21,6 +21,8 @@ use yii\bootstrap4\ActiveForm;
 <body class="body-tarjeta">
 	<div class="contenedor-tarjeta">
 		<div class="tarjet">
+			<h3><b>TUS METODOS DE PAGO GUARDADOS</b></h3>
+			<P>MUESTRA MIS METODOS DE PAGOS GUARDADOS EN EL PASO DEL PAGO</P>
 			<!-- Tarjeta -->
 			<section class="tarjeta" id="tarjeta">
 				<div class="delantera">
@@ -132,8 +134,7 @@ use yii\bootstrap4\ActiveForm;
 							<!-- MOSTRAR TARJETAS  MANDAMOS UN RENDER SOLAMENTE-->
 							<div class=" tarjet tarjet-mostrar">
 									<div class="d-flex" style="justify-content: space-around;align-items: center;">
-									<p>Tus métodos de pago guardados</p>
-									<?= Html::a('Mis Tarjetas',['cat-tarjeta/mostrar'],['class' => 'btnMostrarTj']) ?>
+								<b><?= Html::a('MIS TARJETAS',['cat-tarjeta/mostrar'],['class' => '']) ?></b>	
 									
 								</div>
 								<hr>
