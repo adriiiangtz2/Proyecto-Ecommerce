@@ -125,7 +125,12 @@ $total = 0;
             <?= $form->field($model, 'car_fkmetodo')->widget(Select2::classname(), [
             'data' => CatMetodopago::map(),
             'language' => 'es',
-            'options' => ['placeholder' => 'Selecciona un metodo de pago...'],
+            'options' => [
+                
+                    'placeholder' => 'Selecciona un metodo de pago...',
+                    'onclick' => "guardarMetodo()",
+                
+            ],
             'pluginOptions' => [
                 'allowClear' => true
             ],
@@ -160,8 +165,13 @@ $total = 0;
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
+    
+
 
     <?php ActiveForm::end(); ?>
+    <div class="form-group">
+        <?= Html::submitButton('Guardar1', ['onclick' => 'guardarMetodo()']) ?>
+    </div> 
     </div>
 
-</div>
+</div>  
