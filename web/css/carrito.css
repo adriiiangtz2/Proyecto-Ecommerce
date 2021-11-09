@@ -1,0 +1,15 @@
+.contendor-ningun-producto{
+    height: 400px;align-items: center;
+}
+.contendor-ningun-producto > div > p{
+    display: flex;
+    justify-content: center;
+}
+.contenedor-imagen-carrito{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.contenedor-imagen-carrito > img{
+    width: 500px;
+}
