@@ -434,7 +434,7 @@ select:focus {
 
 /* card items  */
 .card-page {
-  margin: 80px auto;
+  margin: 30px auto;
 }
 table {
   width: 100%;
@@ -567,7 +567,6 @@ form a{
   transform: translateX(100px);
   transition: all 1s;
 }
-
 
 /* favorito */
 .botonfavorito{
