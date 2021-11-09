@@ -3,9 +3,9 @@ use app\models\Usuario;
 $usuario = Usuario::usuario();
 ?>
 <div>
-
     <div style="TEXT-ALIGN: center;">
-    <h3 style="text-transform: uppercase;"><b>hola <?=$usua->usu_nombre?></b></h3>
+    <h3 style="text-transform: uppercase;"><b>hola
+        <?=$usua->usu_nombre?></b></h3>
     </div>
     <h3><b>MIS DATOS</b></h3>
     <p>Modifica tus datos personales a continuación para que tu cuenta esté actualizada.</p>
@@ -32,10 +32,7 @@ $usuario = Usuario::usuario();
         <p><b>GESTIONAR CUENTA</b></p><br>
         <button>Eliminar cuenta</button> 
     </div>
-
-
 </div>
 <br>
-  <h3><b>¿NECESITAS AYUDA?</b></h3>
-
+<h3><b>¿NECESITAS AYUDA?</b></h3>
 </div>

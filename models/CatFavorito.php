@@ -107,7 +107,7 @@ class CatFavorito extends \yii\db\ActiveRecord
         return $this->usuarioNombre . ' ' . $this->usuarioPaterno . ' ' . $this->usuarioMaterno;
     }
 
-    //funcion que trae el usuario qu inicia sesion 
+    //funcion que trae el usuario que inicia sesion 
     //esta funcion se manda al controlador
     public static function favorito() { 
         return CatFavorito::find()->where(['fav_fkusuario'=> Usuario::usuario()->usu_id,'fav_estado'=>1] )->all();
@@ -127,14 +127,4 @@ class CatFavorito extends \yii\db\ActiveRecord
                 return $es = 0;
             }
         }
-        // funcion que trae todo la fila de productos dependiendo del id de usuario
-        // esta funcion se manda al controlador
-        // public static function favorito(){
-        //     // $id=usuario();
-        // //    $usuario= $id->fav_fkusuario;
-        //     // return $file=Producto::find()->leftJoin('cat_favorito','fav_fkproducto = pro_id AND fav_fkusuario='.$usuario)
-        //     return $file=Producto::find()->leftJoin('cat_favorito','fav_fkproducto = pro_id AND fav_fkusuario= 1')
-        //                         //   ->where('fav_fkusuario ='.$usuario)->all();
-        //                           ->where('fav_fkusuario = 1')->all();
-        // }
 }

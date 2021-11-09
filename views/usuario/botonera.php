@@ -14,11 +14,12 @@ $card = [
 ?>            
                 <!-- INICIA CONTENEDOR GENERAL -->
                 <div class="row">
+                    <!-- ##### inicia el ciclo #######-->
                     <?php foreach ($card as $cards) { ?>
                         <div class="col-md-4">
                             <div id="cards">
                                 <div class="card">
-                               <?= Html::a("<p>{$cards->img}</p>", ["{$cards->url}"], ['class' => 'icon','styles'=>'']) ?>
+                                    <?= Html::a("<p>{$cards->img}</p>", ["{$cards->url}"], ['class' => 'icon','styles'=>'']) ?>
                                     <h3 class="category"><b><?=$cards->nombre?></b></h3>
                                     <p class="descripcion"><b>
                                         <?=$cards->info?>
@@ -27,7 +28,7 @@ $card = [
                                 </div>
                                 </div>
                             </div>
+                            <!-- ##### Termina el ciclo #######-->
                     <?php } ?>
-
+                    <!-- TERMINA CONTENEDOR GENERAL -->
                 </div>
-         <!-- TERMINA CONTENEDOR GENERAL -->
