@@ -23,7 +23,7 @@ $favo= \app\models\CatFavorito::favorito();
                     $descuento= $favoritos->favFkproducto->pro_descuento;
                     $precio   = $favoritos->favFkproducto->pro_precio;?>
                     <!--#### inicia contenedor de los productos #####-->
-                    <div class="colum-4 columm4">
+                    <div id="contendor-fav<?=$favoritos->fav_id?>" class="colum-4 columm4">
                         <!-- preloader oculto -->
                         <div id ="lds-facebook_<?=$favoritos->fav_id?>" class=""><div></div><div></div><div></div></div>
                         <a href="product-datails.html"> <img src=<?= $favoritos->favFkproducto->getUrl() ?> class="logo"> </a>                   

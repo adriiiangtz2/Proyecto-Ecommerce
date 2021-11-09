@@ -16,7 +16,7 @@ $card = [
                 <div class="row">
                     <!-- ##### inicia el ciclo #######-->
                     <?php foreach ($card as $cards) { ?>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div id="cards">
                                 <div class="card">
                                     <?= Html::a("<p>{$cards->img}</p>", ["{$cards->url}"], ['class' => 'icon','styles'=>'']) ?>

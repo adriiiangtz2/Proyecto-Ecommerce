@@ -15,14 +15,16 @@ $usuario = Usuario::usuario();
         <p><b>Nombre</b><br><?=$usuario->nombreCompleto?></p><br>
         <p><b>Nacimiento</b><br> </p><br>
         <p><b>Genero</b><br> </p><br>
-        <button>Editar</button> 
+        <button class="" onclick="modalusu(<?= $usuario->usu_id ?>)">Editar</button> 
+        <?= $this->render('editar-datos', compact('usuario')) ?> 
     </div>
     
     <div class="col-md-5" style="border:1px DASHED black;margin:5px;padding:10px;">
         <div><h3><b>DATOS DE ACCESO</b></h3></div>
         <p><b>USERNAME</b><br><?=$usuario->userUsername?></p><br>
         <p><b>CORREO ELECTRONICO</b><br><?=$usuario->userEmail?></p><br>
-        <button>Editar</button> 
+        <button class="" onclick="modalacceso(<?= $usuario->usu_id ?>)">Editar</button> 
+        <?= $this->render('editar-acceso', compact('usuario')) ?> 
         
     </div>
     <div class="col-md-5" style="border:1px DASHED black;margin:5px;padding:10px;">

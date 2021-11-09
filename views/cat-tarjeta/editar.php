@@ -14,21 +14,21 @@ use yii\bootstrap4\ActiveForm;
         </button>
     </div>
     
-    <div class="modal-body" id="modal-body-editar">
+    <div class="modal-body" id="modal-body-editar" style="border:1px dashed;">
       <!-- CONTENIDO PRINCIPAL -->
       <div class="row" style="height:200px">
       <div class="col-md-4">
-        <p><b>Metodo de pago:</b> <br>
+        <p><b>Metodo de pago:</b><br>
         <p><b><?= $tarjeta->tar_financiera ?></b>   con terminacion: <b><?php echo substr($tarjeta->tar_numtarjeta,12,16); ?></b></p>
       </div>
 
       <?php $form = ActiveForm::begin(); ?>
       <div class="row">
         <div class="col-md-6">
-          <?= $form->field($tarjeta, 'tar_nombre')->textInput(['maxlength' => true ,'id' => "inputNom_{$tarjeta->tar_id}"]) ?>
+         <b><?= $form->field($tarjeta, 'tar_nombre')->textInput(['maxlength' => true ,'id' => "inputNom_{$tarjeta->tar_id}"]) ?></b> 
         </div>
         <div class="col-md-6">
-          <?= $form->field($tarjeta, 'tar_expiracion')->widget(DatePicker::className(), [
+        <b>  <?= $form->field($tarjeta, 'tar_expiracion')->widget(DatePicker::className(), [
             'type' => DatePicker::TYPE_INPUT,
             'value' => date('Y-m'),
             'options'=>[
@@ -38,7 +38,7 @@ use yii\bootstrap4\ActiveForm;
           'autoclose' => true,
           'format' => 'mm/yy',
         ],
-        ]) ?>
+        ]) ?></b>
         </div>
       </div>
       <?php ActiveForm::end(); ?>
@@ -46,8 +46,8 @@ use yii\bootstrap4\ActiveForm;
     <!-- TERMINA CONTENIDO PRINCIPAL -->
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-    <button type="button" class="btn btn-primary" onclick="editarTarjeta(<?= $tarjeta->tar_id ?>)">Guardar</button>
+    <button type="button" class="editar-btn-tarjeta" data-dismiss="modal">Cerrar <i class="fas fa-window-close"></i></button>
+    <button type="button" class="eliminar-btn-tarjeta" onclick="editarTarjeta(<?= $tarjeta->tar_id ?>)">Guardar <i class="far fa-save"></i></button>
   </div>
 </div>
 </div>

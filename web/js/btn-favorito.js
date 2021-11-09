@@ -1,6 +1,9 @@
 // boton btnfav
 function favoritos(id,estado){
+    //le coloca la clase  el preloader
     $(`#lds-facebook_${id}`).removeClass("nada").addClass("lds-facebook");
+    //le coloca un un fondo rojo
+    $("#contendor-fav"+id).css("background", "#ffb0b078");
     console.log(es);
     if (estado==1){
         $("#icon-fav1"+id).css("transform", "scale(1.2) rotate(-20deg)");
