@@ -162,7 +162,23 @@ class UsuarioController extends Controller
     {
         $id=Usuario::usuario();
         $usua = Usuario::findOne(['usu_id' => $id]);
-        return $this->render('informacion',compact('usua'));
+        return $this->render('informacion');
+    }
+
+    public function actionEditardato()
+    {
+      
+    }
+    public function actionEditaracceso()
+    {
+        $usuario=Usuario::usuario();
+        
+        $user = User::find()->where(['id'=>$usuario->usu_fkuser])->one();
+        // echo('<pre>');
+        // var_dump($user);
+        // echo('</pre>');
+        // die;
+        return $this->render('editaracceso',compact('user'));
     }
 
 

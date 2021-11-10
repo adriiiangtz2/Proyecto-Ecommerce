@@ -16,25 +16,19 @@ use yii\bootstrap4\ActiveForm;
     
     <div class="modal-body" id="modal-body-editar" style="border:1px dashed;">
       <!-- CONTENIDO PRINCIPAL -->
-      <div class="row" style="height:200px">
-      <div class="col-md-6">
-        <p><b>Editar Nombre:</b><br>
-        <p><b></b></p>
-      </div>
-
       <?php $form = ActiveForm::begin(); ?>
-      <div class="row">
-          <div class="col-md-6">
-            <p><b>Editar nacimiento:</b><br>
-         <b></b> 
+      <div class="row">  
+      <div class="col-md-3">
+            <p><b> <?= $form->field($usuario, 'usu_nombre')->textInput(['maxlength' => true]) ?></b></p>
+          </div>
+         <div class="col-md-3">
+         <p><b> <?= $form->field($usuario, 'usu_paterno')->textInput(['maxlength' => true]) ?></b></p>
         </div>
-        <div class="col-md-6">
-            <p><b>Editar genero:</b><br>
-        <b>  </b>
+        <div class="col-md-3">
+        <p><b><?= $form->field($usuario, 'usu_materno')->textInput(['maxlength' => true]) ?></b></p>
         </div>
       </div>
       <?php ActiveForm::end(); ?>
-    </div>
     <!-- TERMINA CONTENIDO PRINCIPAL -->
   </div>
   <div class="modal-footer">
