@@ -22,3 +22,17 @@ function eliminarProducto(id)
       } 
     });
 }
+function modaldomicilio(id){
+  // console.log(id);
+  $('#ventana-modaldomicilio'+id).modal();
+}
+function registrarDomicilio()
+{
+    let id = $('input[name=domcolor]:checked', '#modal-body-domicilio').val();
+    $.post('/carrito-detalle/editar-domicilio', {id:id}, function (data){
+      if (data) {
+          $('#domi-info').html(data.html);
+      } 
+    });
+    console.log(id)
+}

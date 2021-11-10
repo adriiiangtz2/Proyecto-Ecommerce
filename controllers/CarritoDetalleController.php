@@ -172,6 +172,17 @@ class CarritoDetalleController extends Controller
         $response->data = ['html' => $this->renderPartial('carrito')];
         return $response;
     }
+    public function actionEditarDomicilio()
+    {
+        $carro = Carro::carro();
+        $id=$this->request->post('id');
+        $carro->car_fkdomicilio = $id;
+        $carro->save();
+        $response = Yii::$app->response;
+        $response->format = Response::FORMAT_JSON;
+        $response->data = ['html' => $this->renderPartial('domusu')];
+        return $response;
+    }
     /**
      * Finds the CarritoDetalle model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

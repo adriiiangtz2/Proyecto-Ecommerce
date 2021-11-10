@@ -117,5 +117,9 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     {
         return ArrayHelper::map(Domicilio::find()->where(['dom_fkusuario' => Usuario::usuario()->usu_id])->all(), 'dom_id', 'dom_ciudad');
     }
+    public static function domicilioCheck()
+    {
+        return Domicilio::find()->where(['dom_id' => Carro::carro()->car_fkdomicilio])->one();
+    }
 }
 

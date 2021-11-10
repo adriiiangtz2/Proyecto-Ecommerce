@@ -1,7 +1,25 @@
 .content-check{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 .cardet{
-    width:50%;
+    width:100%;
 }
+.checkoutcuadro{
+    border:1px DASHED black;margin:5px;padding:10px;
+    justify-content: space-between;
+}
+.checkoutcuadro > div{
+    border:1px DASHED black;
+
+}
+.checkoutcuadro > div > div{
+    border:1px DASHED black;
+}
+.checkout-domicilio {
+    display: flex;
+    padding: 10px;
+    line-height: 20px;
+    border: 1px solid #b9aeae;
+  }
+  
