@@ -8,20 +8,68 @@ function modalacceso(id){
     $('#ventana-modalacceso'+id).modal();
   }
   
-  //FUNCIONAMIENTO EDITAR
-function editaracceso(id)
+//FUNCIONAMIENTO EDITAR
+function editardatos(id)
 {
+  let nombre = $("#usu-nombre").val();
+  let paterno = $("#usu-paterno").val();
+  let materno = $("#usu-materno").val();
   console.log(id);
-  let username = $("#inputuser_"+id).val();
-  let correo = $("#inputcorreo_"+id).val();
   console.log(nombre);
-  console.log(expiracion);
+  console.log(paterno);
+  console.log(materno);
+ 
   //manda el controler
-    $.post('/cat-tarjeta/editar', {id:id,nombre:nombre,expiracion:expiracion}, function (data){
+    $.post('/usuario/dato',{id:id,nombre:nombre,paterno:paterno,materno:materno}, function (data){
+      console.log("hola"+data.html);
       if (data) {
         console.log('hola');
-          $('#mostrar'+id).html(data.html);
-          console.log('#mostrar ------'+id);
+          $('#mostrardatos').html(data.html);
       } 
     });
+}
+
+//FUNCIONAMIENTO EDITAR
+function editardatos2(id)
+{
+  
+  //manda el controler
+  $.post('/usuario/dato2',{id:id}, function (data){
+    console.log("hola"+data.html);
+    if (data) {
+      console.log('hola');
+      $('#titulo-usu').html(data.html);
+    } 
+  });
+}
+function editarUnion(id)
+{
+  editardatos(id);
+  editardatos2(id);
+}
+
+function editaracceso(id)
+{
+  let username = $("#user-username").val();
+  // let paterno = $("#usu-paterno").val();
+  let correo = $("#user-correo").val();
+  console.log(id);
+  console.log(username);
+  console.log(correo);
+  //manda el controler
+  $.post('/usuario/acceso',{id:id,username:username,correo:correo}, function (data){
+    console.log("hola"+data.html);
+    if (data) {
+      console.log('hola');
+        $('#mostrardatos2').html(data.html);
+    } 
+  });
+}
+
+function eliminarcuenta(id){
+  console.log(id);
+  $.post('/usuario/estatus',{id:id}, function (data){
+    console.log('si paso');
+    console.log("hola"+data.html);
+  });
 }

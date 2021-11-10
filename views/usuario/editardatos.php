@@ -19,13 +19,13 @@ use yii\bootstrap4\ActiveForm;
       <?php $form = ActiveForm::begin(); ?>
       <div class="row">  
       <div class="col-md-3">
-            <p><b> <?= $form->field($usuario, 'usu_nombre')->textInput(['maxlength' => true]) ?></b></p>
+            <p><b> <?= $form->field($usuario, 'usu_nombre')->textInput(['maxlength' => true, 'id' => 'usu-nombre']) ?></b></p>
           </div>
          <div class="col-md-3">
-         <p><b> <?= $form->field($usuario, 'usu_paterno')->textInput(['maxlength' => true]) ?></b></p>
+         <p><b> <?= $form->field($usuario, 'usu_paterno')->textInput(['maxlength' => true, 'id' => 'usu-paterno']) ?></b></p>
         </div>
         <div class="col-md-3">
-        <p><b><?= $form->field($usuario, 'usu_materno')->textInput(['maxlength' => true]) ?></b></p>
+        <p><b><?= $form->field($usuario, 'usu_materno')->textInput(['maxlength' => true, 'id' => 'usu-materno']) ?></b></p>
         </div>
       </div>
       <?php ActiveForm::end(); ?>
@@ -33,7 +33,7 @@ use yii\bootstrap4\ActiveForm;
   </div>
   <div class="modal-footer">
     <button type="button" class="editar-btn-tarjeta" data-dismiss="modal">Cerrar <i class="fas fa-window-close"></i></button>
-    <button type="button" class="eliminar-btn-tarjeta" onclick="editarTarjeta()">Guardar <i class="far fa-save"></i></button>
+    <button type="button" class="eliminar-btn-tarjeta" onclick="editarUnion(<?= $usuario->usu_id ?>)">Guardar <i class="far fa-save"></i></button>
   </div>
 </div>
 </div>

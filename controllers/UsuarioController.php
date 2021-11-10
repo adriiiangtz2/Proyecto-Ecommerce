@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use Yii;
+use yii\web\Response;
 use app\models\Usuario;
 use yii\web\Controller;
 use app\models\UsuarioSearch;
@@ -165,20 +167,48 @@ class UsuarioController extends Controller
         return $this->render('informacion');
     }
 
-    public function actionEditardato()
+    public function actionDato()
     {
-      
+        $id=$this->request->post('id');
+        $usuario = Usuario::find()->where(['usu_id' => $id]) -> one(); 
+        $usuario -> usu_nombre = $this->request->post('nombre');
+        $usuario -> usu_paterno = $this->request->post('paterno');
+        $usuario -> usu_materno = $this->request->post('materno');
+        $usuario -> save();
+        $response = Yii::$app->response;
+        $response->format = Response::FORMAT_JSON; 
+        $response->data = ['html' => $this->renderPartial('info-datos',compact('usuario'))];
+        return $response;
     }
-    public function actionEditaracceso()
+    public function actionDato2()
     {
-        $usuario=Usuario::usuario();
+        $id=$this->request->post('id');
+        $usuario = Usuario::find()->where(['usu_id' => $id]) -> one(); 
+        $response = Yii::$app->response;
+        $response->format = Response::FORMAT_JSON; 
+        $response->data = ['html' => $this->renderPartial('titulo',compact('usuario'))];
+        return $response;
+    }
+    public function actionAcceso()
+    {
+        $id=$this->request->post('id');
+        $user = User::find()->where(['id' => $id]) -> one();
+        $user -> username= $this->request->post('username');
+        $user -> email = $this->request->post('correo');
+        $user -> save();
+        $response = Yii::$app->response;
+        $response->format = Response::FORMAT_JSON; 
+        $response->data = ['html' => $this->renderPartial('info-acceso',compact('user'))];
+        return $response;
+    }
+    public function actionEstatus()
+    {
+        $user=Usuario::usuario()->usuFkuser;
+        $user->status = 0;
+        $user -> save();
+      
         
-        $user = User::find()->where(['id'=>$usuario->usu_fkuser])->one();
-        // echo('<pre>');
-        // var_dump($user);
-        // echo('</pre>');
-        // die;
-        return $this->render('editaracceso',compact('user'));
+        return $this->redirect(['/']);
     }
 
 
