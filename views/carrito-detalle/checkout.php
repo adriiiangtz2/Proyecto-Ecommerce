@@ -10,11 +10,38 @@ use app\models\CarritoDetalle;
 use yii\bootstrap4\ActiveForm;
 
 $total = 0;
+$domicilio = \app\models\CarritoDetalle::domicilioCheck();
 ?>
 <!-- card items details -->
 <div class="content-check">
 
-    
+    <div class="cardet-form cardet">
+        
+        <div class="row">
+            <div class="col-md-8 checkoutcuadro d-flex ">
+                <div class="d-flex" id="domi-info">
+                <?= $this->render('domusu') ?> 
+                </div>
+                <div style="border-style:none;">
+                    <button class="editar-btn-tarjeta" onclick="modaldomicilio(<?= $domicilio->dom_id ?>)">Cambiar</button>
+                    
+                </div>
+            </div>
+            <?= $this->render('domicilio', compact('domicilio')) ?> 
+        </div>
+
+        <div class="form-group">
+            <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+        </div>
+
+        <?php $form = ActiveForm::begin(); ?>
+
+
+        <?php ActiveForm::end(); ?>
+        <div class="form-group">
+            <?= Html::submitButton('Guardar1', ['onclick' => 'guardarMetodo()']) ?>
+        </div>
+    </div>
     <div id="cardet" class="cardet">
 
         <div class="small-container card-page">
@@ -33,7 +60,7 @@ $total = 0;
                                     <p><?= $carritoDe->productoNombre ?></p>
                                     <small>Precio: $<?= $carritoDe->productoPrecio ?></small>
                                     <br>
-                                    
+
                                 </div>
                             </div>
                         </td>
@@ -110,68 +137,6 @@ $total = 0;
 
         </div>
     </div>
-    <div class="cardet-form cardet">
-    <?php $form = ActiveForm::begin(); ?>
-
-    <div class="row">
-        <? /* $form->field($model, 'car_fecha')->textInput()*/ ?>
-        <?php /*$form->field($model, 'car_fkusuario')->textInput()*/ ?>
-       
 
 
-        <? /* $form->field($model, 'car_fkmetodo')->textInput() */?>
-        
-        <div class="col-md-4">
-            <?= $form->field($model, 'car_fkmetodo')->widget(Select2::classname(), [
-            'data' => CatMetodopago::map(),
-            'language' => 'es',
-            'options' => [
-                
-                    'placeholder' => 'Selecciona un metodo de pago...',
-                    'onclick' => "guardarMetodo()",
-                
-            ],
-            'pluginOptions' => [
-                'allowClear' => true
-            ],
-        ]); ?>
-        </div>
-
-        <? /* $form->field($model, 'car_fkdomicilio')->textInput() */ ?>
-        <div class="col-md-4">
-            <?= $form->field($model, 'car_fkdomicilio')->widget(Select2::classname(), [
-            'data' => CarritoDetalle::domicilio(),
-            'language' => 'es',
-            'options' => ['placeholder' => 'Selecciona un domicilio...'],
-            'pluginOptions' => [
-                'allowClear' => true
-            ],
-        ]); ?>
-        </div>
-        <? /* $form->field($model, 'car_fkenvio')->textInput() */ ?>
-
-        <div class="col-md-4">
-            <?= $form->field($model, 'car_fkenvio')->widget(Select2::classname(), [
-            'data' => Envio::map(),
-            'language' => 'es',
-            'options' => ['placeholder' => 'Selecciona un método de envio...'],
-            'pluginOptions' => [
-                'allowClear' => true
-            ],
-        ]); ?>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
-    </div>
-    
-
-
-    <?php ActiveForm::end(); ?>
-    <div class="form-group">
-        <?= Html::submitButton('Guardar1', ['onclick' => 'guardarMetodo()']) ?>
-    </div> 
-    </div>
-
-</div>  
+</div>
