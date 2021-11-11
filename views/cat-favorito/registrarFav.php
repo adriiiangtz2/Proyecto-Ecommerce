@@ -26,7 +26,8 @@ $favo= \app\models\CatFavorito::favorito();
                     <div id="contendor-fav<?=$favoritos->fav_id?>" class="colum-4 columm4">
                         <!-- preloader oculto -->
                         <div id ="lds-facebook_<?=$favoritos->fav_id?>" class=""><div></div><div></div><div></div></div>
-                        <a href="product-datails.html"> <img src=<?= $favoritos->favFkproducto->getUrl() ?> class="logo"> </a>                   
+                        <a href="" > <img src=<?= $favoritos->favFkproducto->getUrl() ?> class="logo"> </a>                   
+                        <?= Html::a('Detalles', ['/producto/detalles', 'id' => $favoritos->fav_fkproducto], ['class' => 'profile-link']) ?>
                         <div class="rating">
                             <!-- estrellas -->
                         </div>

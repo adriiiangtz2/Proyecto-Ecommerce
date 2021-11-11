@@ -48,3 +48,14 @@ function favoritoIcon(id,es){
     }); 
 };
 
+
+function detallesproducto(id){
+
+    console.log(id);
+    $.post('/cat-favorito/detalles', {id:id}, function(data){
+        console.log(id);
+        console.log('hola');
+    }); 
+
+}
+
