@@ -23,7 +23,7 @@ use yii\bootstrap4\ActiveForm;
        <p><b> <?= $form->field($user, 'username')->textInput(['maxlength' => 255, 'autocomplete'=>'off','id' => 'user-username']) ?>   </b></p>
       </div>
       <div class="col-md-3">
-        
+      <p><b> <?= $form->field($user, 'password')->passwordInput(['maxlength' => 255, 'autocomplete'=>'off','id' => 'user-password']) ?>  </b></p>
       </div>
       <div class="col-md-3">
       <p><b> <?= $form->field($user, 'email')->textInput(['maxlength' => 255,'id' => 'user-correo']) ?>  </b></p>

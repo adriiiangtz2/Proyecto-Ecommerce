@@ -51,13 +51,14 @@ function editarUnion(id)
 function editaracceso(id)
 {
   let username = $("#user-username").val();
-  // let paterno = $("#usu-paterno").val();
+  let password = $("#user-password").val();
   let correo = $("#user-correo").val();
   console.log(id);
+  console.log(password);
   console.log(username);
   console.log(correo);
   //manda el controler
-  $.post('/usuario/acceso',{id:id,username:username,correo:correo}, function (data){
+  $.post('/usuario/acceso',{id:id,username:username,correo:correo,password:password}, function (data){
     console.log("hola"+data.html);
     if (data) {
       console.log('hola');

@@ -193,19 +193,42 @@ class UsuarioController extends Controller
     {
         $id=$this->request->post('id');
         $user = User::find()->where(['id' => $id]) -> one();
-        $user -> username= $this->request->post('username');
-        $user -> email = $this->request->post('correo');
-        $user -> save();
+        $user->username = $this->request->post('username');
+        $user->password = $this->request->post('password');
+        $user->email    = $this->request->post('correo');
+        $user->save();
         $response = Yii::$app->response;
         $response->format = Response::FORMAT_JSON; 
         $response->data = ['html' => $this->renderPartial('info-acceso',compact('user'))];
         return $response;
     }
+    //funcion para eliminar cuenta 
     public function actionEstatus()
     {
-        $user=Usuario::usuario()->usuFkuser;
-        $user->status = 0;
-        $user -> save();
+        //EL ESTATUS NO SE PUEDE CAMBIAR POR QUE LO TIENE QUE HACER OTRO ROL
+        // $user=Yii::$app->user->identity;
+        //TRAE EL USUARIO LOGEADO 
+        $user=User::findOne(Yii::$app->user->id);
+        $user->username = 'USERNAMEINDESCIFRABLE';   
+        //cambia nsu contraseña para que no l reconozca 
+        $user->password = 'CONTRASEÑAINDESCIFRABLE';    
+        $user->update();
+        // echo('<pre>');
+        // var_dump($user->errors);
+        // var_dump($user);
+        // echo('</pre>');
+        // die;
+
+        // $user=User::findOne(12);
+        // $user->status = 0;
+        // $user->superadmin = 0;
+        // $user->password = '1234567890';    
+        // $user->update();
+        // echo('<pre>');
+        // var_dump($user->errors);
+        // var_dump($user);
+        // echo('</pre>');
+        // die;
       
         
         return $this->redirect(['/']);

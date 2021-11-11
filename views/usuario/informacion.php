@@ -7,14 +7,14 @@ $user = $usuario->usuFkuser;
 ?>
 <div id ="">
     <!-- primer contenedor -->
-    <div id="titulo-usu"style="TEXT-ALIGN: center;border:2px solid black;">
+    <div id="titulo-usu"style="TEXT-ALIGN: center;">
     <?= $this->render('titulo', compact('usuario')) ?> 
     </div>
     <h3><b>MIS DATOS</b></h3>
     <p>Modifica tus datos personales a continuación para que tu cuenta esté actualizada.</p>
     <div class="row" >
          <!-- segundo contenedor -->
-        <div id="mostrardatos" class="col-md-5"  style="border:1px DASHED black;margin:5px;padding:10px;border:2px solid black;">
+        <div id="mostrardatos" class="col-md-5"  style="border:1px DASHED black;margin:5px;padding:10px;">
         <?= $this->render('info-datos', compact('usuario')) ?> 
         </div>
         <?= $this->render('editardatos', compact('usuario')) ?> 
@@ -30,10 +30,10 @@ $user = $usuario->usuFkuser;
     <div class="col-md-5" style="border:1px DASHED black;margin:5px;padding:10px;">
         <div><h3><b>CERRAR SESIÓN EN TODOS LOS NAVEGADORES</b></h3></div>
         <p>Al elegir esta opción, se cerrará tu sesión en todos los navegadores web que hayas utilizado para acceder a la página web de adidas. Para volver a iniciar sesión, tendrás que ingresar tus credenciales.</p>
-        <button class="editar-btn-tarjeta">Cerrar sesion</button><br><br>
+        <button class="botonCambiar-usuario">Cerrar sesion</button><br><br>
         <p><b>GESTIONAR CUENTA</b></p><br>
-        <!-- <button class="editar-btn-tarjeta" onclick="eliminarcuenta(<?php/* $user->id */?>)"Eliminar cuenta</button>  -->>
-        <?= Html::a('eliminar cuenta', ['/usuario/estatus'], ['class' => 'btn btn-warning']) ?>
+       <!-- falta mandar una alerta al momento de eliminar la cuenta  -->
+        <?= Html::a('Eliminar cuenta', ['/usuario/estatus'], ['class' => 'botonCambiar-usuario btn-warning']) ?>
     </div>
 </div>
 <br>
