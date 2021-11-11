@@ -436,7 +436,7 @@ select:focus {
 .card-page {
   margin: 30px auto;
 }
-table {
+.tabla {
   width: 100%;
   border-collapse: collapse;
 }
@@ -445,7 +445,7 @@ table {
   display: flex;
   flex-wrap: wrap;
 }
-th {
+.tha {
   text-align: left;
   padding: 5px;
   color: #fff;

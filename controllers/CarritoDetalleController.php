@@ -183,6 +183,28 @@ class CarritoDetalleController extends Controller
         $response->data = ['html' => $this->renderPartial('domusu')];
         return $response;
     }
+    public function actionEditarTarjeta()
+    {
+        $carro = Carro::carro();
+        $id=$this->request->post('id');
+        $carro->car_fk = $id;
+        $carro->save();
+        $response = Yii::$app->response;
+        $response->format = Response::FORMAT_JSON;
+        $response->data = ['html' => $this->renderPartial('tarusu')];
+        return $response;
+    }
+    public function actionEditarEnvio()
+    {
+        $carro = Carro::carro();
+        $id=$this->request->post('id');
+        $carro->car_fkenvio = $id;
+        $carro->save();
+        $response = Yii::$app->response;
+        $response->format = Response::FORMAT_JSON;
+        $response->data = ['html' => $this->renderPartial('envusu')];
+        return $response;
+    }
     /**
      * Finds the CarritoDetalle model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

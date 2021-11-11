@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use app\models\Carro;
 use app\models\Producto;
+use app\models\CatTarjeta;
 use app\models\Devoluciones;
 use yii\helpers\ArrayHelper;
 
@@ -96,7 +97,7 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Devoluciones::className(), ['dev_fkcarritodetalle' => 'cardet_id']);
     }
-    
+
     public function getProductoNombre()
     {
         return $this->cardetFkproducto->pro_nombre;
@@ -107,7 +108,7 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     }
     public static function productosCarrito()
     {
-        return self::find()->innerJoin('carro', 'car_id = cardet_fkcarro and car_fkusuario = '.Usuario::usuario()->usu_id.' and car_estatus = "Apartado" and cardet_estatus = 1')->all();
+        return self::find()->innerJoin('carro', 'car_id = cardet_fkcarro and car_fkusuario = ' . Usuario::usuario()->usu_id . ' and car_estatus = "Apartado" and cardet_estatus = 1')->all();
     }
     public function getProductoPrecio()
     {
@@ -121,5 +122,16 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     {
         return Domicilio::find()->where(['dom_id' => Carro::carro()->car_fkdomicilio])->one();
     }
+    public static function tarjetaCheck()
+    {
+        return CatTarjeta::find()->where(['tar_fkusuario' => Usuario::usuario()->usu_id])->one();
+    }
+    public static function envioCheck()
+    {
+        return Envio::find()->where(['env_id' => Carro::carro()->car_fkenvio])->one();
+    }
+    public static function envioModal()
+    {
+        return Envio::find()->all();
+    }
 }
-

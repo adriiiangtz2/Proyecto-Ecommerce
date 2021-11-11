@@ -1,6 +1,6 @@
 <?php $domicilio = \app\models\CarritoDetalle::domicilioCheck(); ?>
 <div>
-    <h6><b>DIRECCIÓN DE ENVIO</b></h6>
+    <h6><b>1 - DIRECCIÓN DE ENVIO</b></h6>
 </div>
 <div style="margin-left: 10px;">
     <p><b> Ciudad:</b><?= $domicilio->dom_ciudad ?><br>
@@ -11,4 +11,6 @@
         <b>Teléfono :</b><?= $domicilio->dom_telefono ?><br>
         <b>Código postal:</b><?= $domicilio->dom_fkcp ?>
     </p>
+    <button class="botonCambiar"type="button">Añadir direccion</button >
 </div>
+

@@ -9,11 +9,11 @@ $total = 0;
     <h3><b>MI CARRITO</b></h3>
     <div class="small-container card-page">
         <?php if (!empty(\app\models\CarritoDetalle::productosCarrito())) : ?>
-            <table>
+            <table class="tabla">
                 <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>SubTotal</th>
+                    <th class="tha">Producto</th>
+                    <th class="tha">Cantidad</th>
+                    <th class="tha">SubTotal</th>
                 </tr>
                 <?php foreach (\app\models\CarritoDetalle::productosCarrito() as $carritoDe) : ?>
                     <tr>
