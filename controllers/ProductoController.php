@@ -181,4 +181,9 @@ class ProductoController extends Controller
            'dataProvider' => $dataProvider,
         ]);
     }
+
+    public function actionDetalles()
+    {
+        return $this->render('detalles');
+    }
 }
