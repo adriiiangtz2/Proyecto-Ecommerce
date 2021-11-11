@@ -35,6 +35,8 @@ class Producto extends \yii\db\ActiveRecord
     public $img;
     public $marca;
     public $tipo;
+    public $tienda;
+    public $menorPrecio;
     public $descuentoCompra;
     /**
      * {@inheritdoc}
@@ -53,7 +55,7 @@ class Producto extends \yii\db\ActiveRecord
             [['pro_nombre', 'pro_precio', 'pro_fecha', 'pro_descripcion', 'pro_estatus', 'pro_color', 'pro_estrellas' ,'pro_fktipo', 'pro_fkmarca', 'pro_fktienda'], 'required'],
             [['pro_precio', 'pro_descuento', 'descuentoCompra'], 'number'],
             [['pro_estrellas'],'string'],
-            [['pro_fecha', 'img'. 'marca','tipo'], 'safe'],
+            [['pro_fecha', 'img'. 'marca','tipo', 'tienda', 'menorPrecio'], 'safe'],
             [['pro_descripcion', 'pro_estatus'], 'string'],
             [['pro_fktipo', 'pro_fkmarca', 'pro_fktienda'], 'integer'],
             [['pro_nombre'], 'string', 'max'            => 100],
@@ -93,6 +95,8 @@ class Producto extends \yii\db\ActiveRecord
             'imagen'          => 'Imagen',
             'marca'           => 'Marca',
             'tipo'            => 'Tipo',
+            'tienda'          => 'Tienda',
+            'menorPrecio'     => 'Menor precio',
         ];
     }
 
@@ -179,7 +183,8 @@ class Producto extends \yii\db\ActiveRecord
         return "/img/" . (empty($this->pro_imagen) ? 'Productos.jpg' : "producto/{$this->pro_imagen}");
     }
 
-    public function getPromedio(){
+    public function getPromedio()
+    {
         $promedio = 0;
         $contador = count($this->carritoDetalles);
         foreach($this->carritoDetalles as $producto){

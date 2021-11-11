@@ -19,7 +19,7 @@ class ProductoSearch extends Producto
     {
         return [
             [['pro_id', 'pro_fktipo', 'pro_fkmarca', 'pro_fktienda'], 'integer'],
-            [['pro_nombre', 'pro_fecha', 'pro_descripcion', 'pro_dimensiones', 'pro_imagen', 'pro_estatus', 'pro_color', 'marca'], 'safe'],
+            [['pro_nombre', 'pro_fecha', 'pro_descripcion', 'pro_dimensiones', 'pro_imagen', 'pro_estatus', 'pro_color', 'marca', 'tipo', 'tienda', 'menorPrecio'], 'safe'],
             [['pro_precio','pro_descuento'], 'number'],
         ];
     }
