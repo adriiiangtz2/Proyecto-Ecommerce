@@ -182,8 +182,9 @@ class ProductoController extends Controller
         ]);
     }
 
-    public function actionDetalles()
+    public function actionDetalles($id)
     {
-        return $this->render('detalles');
+        $productos = Producto::findOne(['pro_id' => $id]);
+        return $this->render('detalles', compact('productos'));
     }
 }
