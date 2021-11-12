@@ -63,7 +63,7 @@
                        </div>
                    </div>
                    <div class="domicilio-botones">
-                       <?= Html::a('Modificar', ['update', 'id' => $domicilio->dom_id], ['class' => 'btn ']) ?>
+                       <?= Html::a('Modificar', ['update', 'id' => $domicilio->dom_id], ['class' => 'btn btn-primary']) ?>
                        <?= Html::a('Eliminar', ['delete', 'id' => $domicilio->dom_id], [
                             'class' => 'btn btn-danger',
                             'data' => [

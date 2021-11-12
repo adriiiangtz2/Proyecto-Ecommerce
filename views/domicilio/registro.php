@@ -106,8 +106,9 @@ use yii\bootstrap4\ActiveForm;
                                             <div class="form-group last col-sm-12">
 
                                                 <div class="form-group">
-                                                    <?= Html::submitButton('guardar', ['class' => 'btn btnn']) ?>
-
+                                                    <a href="mostrar">
+                                                        <?= Html::submitButton('guardar', ['class' => 'btn btnn']) ?>
+                                                    </a>
                                                 </div>
                                                 <?php ActiveForm::end(); ?>
                                             </div>
