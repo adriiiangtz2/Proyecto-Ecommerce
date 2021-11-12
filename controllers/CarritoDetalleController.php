@@ -4,10 +4,12 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Carro;
+use app\models\Envio;
 use yii\web\Response;
 use app\models\Usuario;
 use yii\web\Controller;
 use app\models\Producto;
+use app\models\CatTarjeta;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use app\models\CarritoDetalle;
@@ -25,7 +27,7 @@ class CarritoDetalleController extends Controller
     public function behaviors()
     {
         return [
-            'ghost-access'=> [
+            'ghost-access' => [
                 'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
             ],
         ];
@@ -75,11 +77,11 @@ class CarritoDetalleController extends Controller
         } else {
             $model->loadDefaultValues();
         }
-     
-      /*  return $this->render('create', [
+
+        /*  return $this->render('create', [
             'model' => $model,
         ]); */
-        
+
         return $this->render('create', compact('model'));
     }
 
@@ -121,27 +123,76 @@ class CarritoDetalleController extends Controller
     {
         return $this->render('carrito');
     }
+    public function actionAgregarProducto()
+    {
+        $id = $this->request->post('id');
+        $producto = Producto::findOne(['pro_id' => $id]);
+        if (empty(Carro::carro())) {
+            $carro = new Carro();
+            $carro->car_iva = 0.16 * $producto->pro_precio;
+            $carro->car_fecha = date('Y-m-d H:i:s');
+            $carro->car_estatus = 'Apartado';
+            $carro->car_fkusuario = Usuario::usuario()->usu_id;
+            $carro->car_fkmetodo = 2;
+            $carro->car_fkdomicilio = CarritoDetalle::domicilioPredeterminado()->dom_id;
+            $carro->car_fkenvio = Envio::find()->one()->env_id;
+            $carro->car_fktarjeta = CatTarjeta::find()->one()->tar_id;
+            $carro->save();
+            $carrito = new CarritoDetalle();
+            $carrito->cardet_cantidad = 1;
+            $carrito->cardet_precio = $producto->pro_precio;
+            $carrito->cardet_fkproducto = $id;
+            $carrito->cardet_fkcarro = $carro->car_id;
+            $carrito->cardet_estatus = 1;
+            $carrito->save();
+        } else {
+            if (empty(CarritoDetalle::productoRepetido($id))) {
+                $carrito = new CarritoDetalle();
+                $carrito->cardet_precio = $producto->pro_precio;
+                $carrito->cardet_fkproducto = $id;
+                $carrito->cardet_fkcarro = Carro::carro()->car_id;
+                $carrito->cardet_estatus = 1;
+                $carrito->cardet_cantidad = 1;
+                $carrito->save();
+            } else {
+                $carritoRep = CarritoDetalle::productoRepetido($id);
+                $carritoRep -> cardet_cantidad = $carritoRep -> cardet_cantidad + 1;
+                $carritoRep -> cardet_precio = $carritoRep -> cardet_cantidad * $producto->pro_precio;
+                $carritoRep -> save();
+            }
+        }
+    }
     public function actionCheckout()
     {
         $model = new Carro();
         $carro = Carro::carro();
-       
-        if ($this->request->isPost){
 
-         if( $model->load($this->request->post()) ) {
-            $carro -> car_fkmetodo = $model -> car_fkmetodo;
-            $carro -> car_fkdomicilio = $model -> car_fkdomicilio;
-            $carro -> car_fkenvio = $model -> car_fkenvio;
-            $carro -> car_estatus = 'Pagado';
-            $carro->save();
+        if ($this->request->isPost) {
 
-            
-            return $this->redirect('/');
+            if ($model->load($this->request->post())) {
+                $carro->car_fkmetodo = $model->car_fkmetodo;
+                $carro->car_fkdomicilio = $model->car_fkdomicilio;
+                $carro->car_fkenvio = $model->car_fkenvio;
+                $carro->car_estatus = 'Pagado';
+                $carro->save();
+
+
+                return $this->redirect('/');
+            }
         }
-    }
 
         return $this->render('checkout', compact('model'));
-/*         return $this->render('checkout'); */
+        /*         return $this->render('checkout'); */
+    }
+    public function actionFinalizarPago()
+    {
+        /* $id = $this->request->post('id'); */
+        $carro = Carro::carro();
+        $carro->car_estatus = 'Pagado';
+        $carro->car_fecha = date('Y-m-d H:i:s');
+        $carro->car_total = $this->request->post('total');
+        $carro->car_iva = $this->request->post('iva');
+        $carro->save();
     }
     public function actionConfirmacion()
     {
@@ -149,33 +200,33 @@ class CarritoDetalleController extends Controller
     }
     public function actionRegistrar()
     {
-        $id=$this->request->post('id');
-        $carDetalle = CarritoDetalle::find()->where(['cardet_id' => $id]) -> one(); 
-        $precio = Producto::find()->where(['pro_id' => $carDetalle -> cardet_fkproducto])->one()->pro_precio;
-        $carDetalle -> cardet_cantidad = $this->request->post('cantidad');
-        $total = $precio* $carDetalle -> cardet_cantidad;
-        $carDetalle -> cardet_precio = $total;
-        $carDetalle -> save();
+        $id = $this->request->post('id');
+        $carDetalle = CarritoDetalle::find()->where(['cardet_id' => $id])->one();
+        $precio = Producto::find()->where(['pro_id' => $carDetalle->cardet_fkproducto])->one()->pro_precio;
+        $carDetalle->cardet_cantidad = $this->request->post('cantidad');
+        $total = $precio * $carDetalle->cardet_cantidad;
+        $carDetalle->cardet_precio = $total;
+        $carDetalle->save();
         $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON; 
+        $response->format = Response::FORMAT_JSON;
         $response->data = ['html' => $this->renderPartial('carrito')];
         return $response;
     }
     public function actionEliminar()
     {
-        $id=$this->request->post('id');
-        $carDetalle = CarritoDetalle::find()->where(['cardet_id' => $id]) -> one(); 
-        $carDetalle -> cardet_estatus = 0;
-        $carDetalle -> save();
+        $id = $this->request->post('id');
+        $carDetalle = CarritoDetalle::find()->where(['cardet_id' => $id])->one();
+        $carDetalle->cardet_estatus = 0;
+        $carDetalle->save();
         $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON; 
+        $response->format = Response::FORMAT_JSON;
         $response->data = ['html' => $this->renderPartial('carrito')];
         return $response;
     }
     public function actionEditarDomicilio()
     {
         $carro = Carro::carro();
-        $id=$this->request->post('id');
+        $id = $this->request->post('id');
         $carro->car_fkdomicilio = $id;
         $carro->save();
         $response = Yii::$app->response;
@@ -186,8 +237,8 @@ class CarritoDetalleController extends Controller
     public function actionEditarTarjeta()
     {
         $carro = Carro::carro();
-        $id=$this->request->post('id');
-        $carro->car_fk = $id;
+        $id = $this->request->post('id');
+        $carro->car_fktarjeta = $id;
         $carro->save();
         $response = Yii::$app->response;
         $response->format = Response::FORMAT_JSON;
@@ -197,7 +248,7 @@ class CarritoDetalleController extends Controller
     public function actionEditarEnvio()
     {
         $carro = Carro::carro();
-        $id=$this->request->post('id');
+        $id = $this->request->post('id');
         $carro->car_fkenvio = $id;
         $carro->save();
         $response = Yii::$app->response;

@@ -67,7 +67,7 @@ $precio =$productos->pro_precio;
                 <br>
                 <p><?= $productos->pro_descripcion ?> </p>  
 
-                <button class="boton-agregar-carrito">Agregar Al carrito <i class="fas fa-arrow-right"></i></button>
+                <button onclick="agregarCarro(<?= $productos->pro_id?>)" class="boton-agregar-carrito">Agregar Al carrito <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
     </div>
@@ -156,7 +156,7 @@ $precio =$productos->pro_precio;
 
             </div>
         </div>
-
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 

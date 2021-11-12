@@ -1,6 +1,6 @@
 .content-check {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .cardet {

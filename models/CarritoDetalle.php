@@ -124,7 +124,7 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     }
     public static function tarjetaCheck()
     {
-        return CatTarjeta::find()->where(['tar_fkusuario' => Usuario::usuario()->usu_id])->one();
+        return CatTarjeta::find()->where(['tar_id' => Carro::carro()->car_fktarjeta])->one();
     }
     public static function envioCheck()
     {
@@ -133,5 +133,17 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     public static function envioModal()
     {
         return Envio::find()->all();
+    }
+    public static function domicilioPredeterminado()
+    {
+        return Domicilio::find()->where(['dom_fkusuario' => Usuario::usuario()->usu_id])->one();
+    }
+    public static function tarjetaPredeterminado()
+    {
+        return CatTarjeta::find()->where(['tar_fkusuario' => Usuario::usuario()->usu_id])->one();
+    }
+    public static function productoRepetido($id)
+    {
+        return CarritoDetalle::find()->andWhere(['cardet_fkproducto' => $id]) -> andWhere(['cardet_fkcarro' => Carro::carro()-> car_id]) -> one();
     }
 }
