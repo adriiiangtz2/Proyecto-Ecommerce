@@ -9,16 +9,16 @@
                 </button>
             </div>
 
-            <div class="modal-body" id="modal-body-envio" style="border:1px dashed;">
+            <div class="modal-body" id="modal-body-envio">
 
                 <?php foreach (\app\models\CarritoDetalle::envioModal() as $envio) : ?>
 
-                    <div style="align-items: baseline; display: flex;">
+                    <div class="alinearInputModal">
                         <div style="padding: 10px;">
                             <input type="radio" id="informacion<?= $envio->env_id ?>" name="envcolor" value="<?= $envio->env_id ?>">
                         </div>
                         <div class="d-flex">
-                            <p>$<b><?= $envio->env_costo ?></b> Metodo de envio: <b><?= $envio->env_metodo ?></b> - Tiempo de entrega: <b><?= $envio->env_tiempo ?></b></p>
+                            <p>$<b><?= $envio->env_costo ?></b> Método de envío: <b><?= $envio->env_metodo ?></b> - Tiempo de entrega: <b><?= $envio->env_tiempo ?></b></p>
                         </div>
                     </div>
 

@@ -5,7 +5,7 @@
 <div style="margin-left: 10px;">
     <div>
         <div class="d-flex" style="width: 115%">
-            <p><b><?= $tarjeta->tar_financiera ?></b> con terminacion: <b><?php echo substr($tarjeta->tar_numtarjeta, 12, 16); ?></b></p>
+            <p><b><?= $tarjeta->tar_financiera ?></b> con terminación: <b><?php echo substr($tarjeta->tar_numtarjeta, 12, 16); ?></b></p>
         </div>
         <button class="botonCambiar"type="button">Agregar una tarjeta de crédito o débito</button >
     </div>

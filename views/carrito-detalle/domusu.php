@@ -6,11 +6,11 @@
     <p><b> Ciudad:</b><?= $domicilio->dom_ciudad ?><br>
         <b>Colonia:</b><?= $domicilio->dom_colonia ?><br>
         <b>Calle:</b><?= $domicilio->dom_calle ?><br>
-        <b>Numero exterior:</b><?= $domicilio->dom_numExt ?><br>
-        <b>Numero interior:</b><?= $domicilio->dom_numInt ?><br>
+        <b>Número exterior:</b><?= $domicilio->dom_numExt ?><br>
+        <b>Número interior:</b><?= $domicilio->dom_numInt ?><br>
         <b>Teléfono :</b><?= $domicilio->dom_telefono ?><br>
         <b>Código postal:</b><?= $domicilio->dom_fkcp ?>
     </p>
-    <button class="botonCambiar"type="button">Añadir direccion</button >
+    <button class="botonCambiar"type="button">Añadir dirección</button >
 </div>
 

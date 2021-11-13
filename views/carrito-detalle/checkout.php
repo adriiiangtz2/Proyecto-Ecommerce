@@ -103,22 +103,37 @@ $envio = \app\models\CarritoDetalle::envioCheck();
             </p>
         </div>
     </div>
-    <div>
-        <div>
-            <button type="button" onclick="finalizarPago()" class="btn btn-primary">Finalizar pedido</button>
+    <div class="contenedor-finalizar">
+        <div id="finalizarbotondiv" class="finalizar-divs">
+            <button type="button" onclick="finalizarPago()" class="btn btn-warning finalizar-pedido-boton">Finalizar pedido</button>
+            <br>
+            <p class="color-texto-importante">Al realizar tu pedido, aceptas el aviso de privacidad y las condiciones de uso de Redstore.</p>
         </div>
-        <div>
-            <p><b> Subtotal:</b>$<?= $total ?><br>
-                <b> Impuestos:</b>$<?= $iva ?><br>
-                <b> Envio:</b>$<?= $envio_costo ?><br>
-                <b> Total:</b>$<?= $importe ?><br>
-                <input id="total-carro" class="d-none" type="text" value="<?= $importe?>"></input>
-                <input id="iva-carro" class="d-none" type="text" value="<?= $iva?>"></input>
-            </p>
+        <div class="finalizar-divs">
+            <div>
+                <h5><b>Confirmación del Pedido</b></h5>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <p>Productos:</p>
+                    <p>Impuestos:</p>
+                    <p>Envio:</p>
+                </div>
+                <div class="col-md-4 text-right">
+                    <p>$<?= $total ?></p>
+                    <p>$<?= $iva ?></p>
+                    <p>$<?= $envio_costo ?></p>
+                </div>
+            </div>
         </div>
-        <!-- <div>
-            <h1>Su pedido se ha realizado</h1>
-        </div> -->
+        <div class="finalizar-divs">
+            <p class="color-total-finalizar"><b>Total (IVA incluido, si aplica), <br>
+                    $<?= $importe ?></b></p>
+        </div>
+        <div class="envio-informacion">
+            <p class="color-envio-informacion">¿Cómo se calculan los gastos de envío?</p>
+            <p>Se ha aplicado el envío Redstore Prime a los productos incluidos en la oferta para tu pedido. </p>
+        </div>
     </div>
 </div>
 
