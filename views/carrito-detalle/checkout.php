@@ -129,6 +129,8 @@ $envio = \app\models\CarritoDetalle::envioCheck();
         <div class="finalizar-divs">
             <p class="color-total-finalizar"><b>Total (IVA incluido, si aplica), <br>
                     $<?= $importe ?></b></p>
+            <input id="total-carro" class="d-none" type="text" value="<?= $importe ?>"></input>
+            <input id="iva-carro" class="d-none" type="text" value="<?= $iva ?>"></input>
         </div>
         <div class="envio-informacion">
             <p class="color-envio-informacion">¿Cómo se calculan los gastos de envío?</p>
