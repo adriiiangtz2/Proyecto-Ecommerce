@@ -8,16 +8,22 @@
 .domicilio-titulo {
   text-align: center;
   font-size: 21px;
-  border: 1px solid #b9aeae;
+  border: 1px solid #f0f2f2;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  background-color: #f0f2f2;
 }
 .domicilio-botones {
+  border: 1px dashed #b9aeae;
+  background: #f0f2f2;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .domicilio-informacion {
   padding: 10px;
   line-height: 20px;
-  border: 1px solid #b9aeae;
+  border: 1px solid #f0f2f2;
 }
 .contenedor-agregar {
   display: flex;
@@ -25,8 +31,10 @@
   /* justify-content: space-between; */
   align-self: center;
   margin: 0 auto;
-  padding: 0 auto;
-  border: 1px dashed #b9aeae;
+  background-color: #f0f2f2;
+  padding: 30px;
+  justify-content: center;
+  border: 1px dashed;
 }
 .contenedor-card-agregar {
   display: flex;
@@ -37,4 +45,12 @@
 }
 .hiper a {
   text-decoration: none;
+}
+.boton-modificar-domicilio {
+  background-color: rgb(73, 73, 247);
+  border: none;
+}
+.boton-eliminar-domicilio {
+  background-color: rgb(219, 130, 130);
+  border: none;
 }

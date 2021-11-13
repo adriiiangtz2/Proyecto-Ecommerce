@@ -28,16 +28,18 @@
 
    <body>
        <div>
-           <h1>Mis direcciones</h1>
+           <h4> <b>MIS DIRECCIONES</b></h4>
        </div>
        <div class="row domicilio-contenedor">
            <div class="col-md-3 contenedor-agregar"> <a class="hiper" href="registrar" style="text-decoration: none">
                    <!-- owl-carousel -->
                    <div class="contenedor-card-agregar">
-                       <h3>Agregar direccion
-                           <br> <i class="fas fa-plus"></i>
-                       </h3>
-
+                       <div style="display: flex; justify-content: center; text-align: center;">
+                           <h4>AGREGAR DIRECCIONES </h4>
+                       </div>
+                       <div style="display: flex; justify-content: center;">
+                           <i class="fas fa-plus"></i>
+                       </div>
                    </div>
                </a>
            </div>

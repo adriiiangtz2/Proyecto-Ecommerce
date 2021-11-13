@@ -153,7 +153,6 @@ class DomicilioController extends Controller
 
         if ($this->request->isPost && $domicilio->load($this->request->post())) {
 
-
             $domicilio->dom_fkusuario = Usuario::usuario()->usu_id;
             $domicilio->save();
         }
