@@ -1,8 +1,10 @@
 <?php
 
 use yii\helpers\Html;
+use app\models\Usuario;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+use app\models\CarritoDetalle;
 use webvimark\modules\UserManagement\UserManagementModule;
 ?>
 <?php
@@ -55,7 +57,7 @@ echo Nav::widget([
         ],
 
         [
-            'label' => '<i class="fas fa-shopping-cart"></i>',
+            'label' => '<i class="fas fa-shopping-cart"></i> <label id="contador">'.CarritoDetalle::carritoContador().'</label>',
             'url' => ['/carrito-detalle/carrito'],
             'visible' =>
             !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,

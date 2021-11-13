@@ -110,6 +110,19 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     {
         return self::find()->innerJoin('carro', 'car_id = cardet_fkcarro and car_fkusuario = ' . Usuario::usuario()->usu_id . ' and car_estatus = "Apartado" and cardet_estatus = 1')->all();
     }
+    public static function carritoContador()
+    {
+        $contador = 0;
+        if (!Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin) {
+            $contenidoCarrito = self::find()->innerJoin('carro', 'car_id = cardet_fkcarro and car_fkusuario = ' . Usuario::usuario()->usu_id . ' and car_estatus = "Apartado" and cardet_estatus = 1')->all();
+            foreach ($contenidoCarrito as $pro) :
+                $contador = $contador + $pro->cardet_cantidad;
+            endforeach;
+            return $contador;
+        }else{
+            return null;
+        }
+    }
     public function getProductoPrecio()
     {
         return $this->cardetFkproducto->pro_precio;
@@ -144,6 +157,6 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     }
     public static function productoRepetido($id)
     {
-        return CarritoDetalle::find()->andWhere(['cardet_fkproducto' => $id]) -> andWhere(['cardet_fkcarro' => Carro::carro()-> car_id]) -> one();
+        return CarritoDetalle::find()->andWhere(['cardet_fkproducto' => $id])->andWhere(['cardet_fkcarro' => Carro::carro()->car_id])->one();
     }
 }

@@ -158,9 +158,14 @@ class CarritoDetalleController extends Controller
                 $carritoRep = CarritoDetalle::productoRepetido($id);
                 $carritoRep -> cardet_cantidad = $carritoRep -> cardet_cantidad + 1;
                 $carritoRep -> cardet_precio = $carritoRep -> cardet_cantidad * $producto->pro_precio;
+                $carritoRep -> cardet_estatus = 1;
                 $carritoRep -> save();
             }
         }
+        $response = Yii::$app->response;
+        $response->format = Response::FORMAT_JSON;
+        $response->data = ['html' => CarritoDetalle::carritoContador()];
+        return $response;
     }
     public function actionCheckout()
     {
@@ -209,7 +214,7 @@ class CarritoDetalleController extends Controller
         $carDetalle->save();
         $response = Yii::$app->response;
         $response->format = Response::FORMAT_JSON;
-        $response->data = ['html' => $this->renderPartial('carrito')];
+        $response->data = ['html' => $this->renderPartial('carrito'),'contador'=>CarritoDetalle::carritoContador(), 'carfinal' => $this->renderPartial('carrito-final'), 'importefinal' => $this->renderPartial('finalizar')];
         return $response;
     }
     public function actionEliminar()
@@ -217,10 +222,11 @@ class CarritoDetalleController extends Controller
         $id = $this->request->post('id');
         $carDetalle = CarritoDetalle::find()->where(['cardet_id' => $id])->one();
         $carDetalle->cardet_estatus = 0;
+        $carDetalle->cardet_cantidad = 0;
         $carDetalle->save();
         $response = Yii::$app->response;
         $response->format = Response::FORMAT_JSON;
-        $response->data = ['html' => $this->renderPartial('carrito')];
+        $response->data = ['html' => $this->renderPartial('carrito'), 'carfinal' => $this->renderPartial('carrito-final')];
         return $response;
     }
     public function actionEditarDomicilio()
@@ -253,7 +259,7 @@ class CarritoDetalleController extends Controller
         $carro->save();
         $response = Yii::$app->response;
         $response->format = Response::FORMAT_JSON;
-        $response->data = ['html' => $this->renderPartial('envusu')];
+        $response->data = ['html' => $this->renderPartial('envusu'), 'importefinal' => $this->renderPartial('finalizar')];
         return $response;
     }
     /**

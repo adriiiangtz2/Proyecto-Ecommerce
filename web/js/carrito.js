@@ -1,9 +1,8 @@
-function agregarCarro(id)
-{
+function agregarCarro(id) {
   console.log(id);
-  $.post('/carrito-detalle/agregar-producto', {id:id}, function (data){
+  $.post('/carrito-detalle/agregar-producto', { id: id }, function (data) {
     if (data) {
-    }else{
+      $('#contador').html(data.html);
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -14,88 +13,92 @@ function agregarCarro(id)
     }
   });
 }
-function registrarCantidad(id)
-{
-    let cantidad = $('#input-cant' + id).val();
-    $.post('/carrito-detalle/registrar', {cantidad:cantidad,id:id}, function (data){
-      if (data) {
-          $('#cardet').html(data.html);
-      } 
-    });
+function registrarCantidad(id, num = null) {
+  let cantidad = $('#input-cant' + id).val();
+  $.post('/carrito-detalle/registrar', { cantidad: cantidad, id: id }, function (data) {
+    if (data) {
+      if (num != null) {
+        $('#cardet').html(data.carfinal);
+      } else {
+        $('#cardet').html(data.html);
+      }
+      $('#contenedor-carrito-final').html(data.importefinal);
+      $('#contador').html(data.contador);
+    }
+  });
 }
-function guardarMetodo()
-{
-/*   console.log(id);*/
+function guardarMetodo() {
+  /*   console.log(id);*/
   console.log("HOLA");
-  let metodo = $('#carro-car_fkmetodo').val(); 
+  let metodo = $('#carro-car_fkmetodo').val();
   console.log(metodo);
 }
-function eliminarProducto(id)
-{
-    $.post('/carrito-detalle/eliminar', {id:id}, function (data){
-      if (data) {
-          $('#cardet').html(data.html);
-      } 
-    });
+function eliminarProducto(id, num = null) {
+  $.post('/carrito-detalle/eliminar', { id: id }, function (data) {
+    if (data) {
+      if (num != null) {
+        $('#cardet').html(data.carfinal);
+      } else {
+        $('#cardet').html(data.html);
+      }
+    }
+  });
 }
-function modaldomicilio(id){
+function modaldomicilio(id) {
   // console.log(id);
-  $('#ventana-modaldomicilio'+id).modal();
+  $('#ventana-modaldomicilio' + id).modal();
 }
-function modaltarjeta(id){
+function modaltarjeta(id) {
   // console.log(id);
-  $('#ventana-modaltarjeta'+id).modal();
+  $('#ventana-modaltarjeta' + id).modal();
 }
-function modalenvio(id){
+function modalenvio(id) {
   // console.log(id);
-  $('#ventana-modalenvio'+id).modal();
+  $('#ventana-modalenvio' + id).modal();
   console.log(id);
 }
-function registrarDomicilio()
-{
-    let id = $('input[name=domcolor]:checked', '#modal-body-domicilio').val();
-    $.post('/carrito-detalle/editar-domicilio', {id:id}, function (data){
-      if (data) {
-          $('#domi-info').html(data.html);
-      } 
-    });
-    console.log(id)
+function registrarDomicilio() {
+  let id = $('input[name=domcolor]:checked', '#modal-body-domicilio').val();
+  $.post('/carrito-detalle/editar-domicilio', { id: id }, function (data) {
+    if (data) {
+      $('#domi-info').html(data.html);
+    }
+  });
+  console.log(id)
 }
-function registrarTarjeta()
-{
-    let id = $('input[name=tarjcolor]:checked', '#modal-body-tarjeta').val();
-    $.post('/carrito-detalle/editar-tarjeta', {id:id}, function (data){
-      if (data) {
-          $('#tarje-info').html(data.html);
-      } 
-    });
-    console.log(id)
+function registrarTarjeta() {
+  let id = $('input[name=tarjcolor]:checked', '#modal-body-tarjeta').val();
+  $.post('/carrito-detalle/editar-tarjeta', { id: id }, function (data) {
+    if (data) {
+      $('#tarje-info').html(data.html);
+    }
+  });
+  console.log(id)
 }
-function registrarEnvio()
-{
-    let id = $('input[name=envcolor]:checked', '#modal-body-envio').val();
-    $.post('/carrito-detalle/editar-envio', {id:id}, function (data){
-      if (data) {
-          $('#envi-info').html(data.html);
-      } 
-    });
-    console.log(id)
+function registrarEnvio() {
+  let id = $('input[name=envcolor]:checked', '#modal-body-envio').val();
+  $.post('/carrito-detalle/editar-envio', { id: id }, function (data) {
+    if (data) {
+      $('#envi-info').html(data.html);
+      $('#contenedor-carrito-final').html(data.importefinal);
+    }
+  });
+  console.log(id)
 }
-function finalizarPago()
-{
+function finalizarPago() {
   let total = $('#total-carro').val();
   let iva = $('#iva-carro').val();
   console.log(total);
-  $.post('/carrito-detalle/finalizar-pago', {total:total, iva:iva}, function (data){
+  $.post('/carrito-detalle/finalizar-pago', { total: total, iva: iva }, function (data) {
     if (data) {
-        
-    } else{
+
+    } else {
       Swal.fire(
         'Su pedido se ha realizado correctamente.',
         'Seras redireccionado.',
         'success'
-      ) .then(function(){
-        window.location='/';
+      ).then(function () {
+        window.location = '/';
       });
     }
   });

@@ -60,40 +60,7 @@ $envio = \app\models\CarritoDetalle::envioCheck();
             </div>
         </div>
         <div id="cardet" class="cardet col-md-12">
-
-            <div class="small-container-checkout card-page">
-                <table class="tabla">
-                    <tr>
-                        <th class="tha">Producto</th>
-                        <th class="tha">Cantidad</th>
-                        <th class="tha">SubTotal</th>
-                    </tr>
-                    <?php foreach (\app\models\CarritoDetalle::productosCarrito() as $carritoDe) : ?>
-                        <tr>
-                            <td>
-                                <div class="card-info">
-                                    <img src=<?= $carritoDe->cardetFkproducto->getUrl() ?>>
-                                    <div>
-                                        <p><?= $carritoDe->productoNombre ?></p>
-                                        <small>Precio: $<?= $carritoDe->productoPrecio ?></small>
-                                        <br>
-
-                                    </div>
-                                </div>
-                            </td>
-                            <td><input id="input-cant<?= $carritoDe->cardet_id ?>" type="number" onclick="registrarCantidad(<?= $carritoDe->cardet_id ?>)" value=<?= $carritoDe->cardet_cantidad ?>></td>
-                            <td>$<?= $carritoDe->cardet_precio ?></td>
-                            <?php
-                            $total = $total + $carritoDe->cardet_precio;
-                            $iva = $total * 0.16;
-                            $envio_costo = $envio->env_costo;
-                            $importe = $total + $iva + $envio_costo;
-                            ?>
-                        </tr>
-                    <?php endforeach; ?>
-
-                </table>
-            </div>
+            <?= $this->render('carrito-final') ?>
         </div>
         <div class="col-md-12">
             <p class="infoinferior">
@@ -103,39 +70,8 @@ $envio = \app\models\CarritoDetalle::envioCheck();
             </p>
         </div>
     </div>
-    <div class="contenedor-finalizar">
-        <div id="finalizarbotondiv" class="finalizar-divs">
-            <button type="button" onclick="finalizarPago()" class="btn btn-warning finalizar-pedido-boton">Finalizar pedido</button>
-            <br>
-            <p class="color-texto-importante">Al realizar tu pedido, aceptas el aviso de privacidad y las condiciones de uso de Redstore.</p>
-        </div>
-        <div class="finalizar-divs">
-            <div>
-                <h5><b>Confirmación del Pedido</b></h5>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <p>Productos:</p>
-                    <p>Impuestos:</p>
-                    <p>Envio:</p>
-                </div>
-                <div class="col-md-4 text-right">
-                    <p>$<?= $total ?></p>
-                    <p>$<?= $iva ?></p>
-                    <p>$<?= $envio_costo ?></p>
-                </div>
-            </div>
-        </div>
-        <div class="finalizar-divs">
-            <p class="color-total-finalizar"><b>Total (IVA incluido, si aplica), <br>
-                    $<?= $importe ?></b></p>
-            <input id="total-carro" class="d-none" type="text" value="<?= $importe ?>"></input>
-            <input id="iva-carro" class="d-none" type="text" value="<?= $iva ?>"></input>
-        </div>
-        <div class="envio-informacion">
-            <p class="color-envio-informacion">¿Cómo se calculan los gastos de envío?</p>
-            <p>Se ha aplicado el envío Redstore Prime a los productos incluidos en la oferta para tu pedido. </p>
-        </div>
+    <div id="contenedor-carrito-final" class="contenedor-finalizar">
+    <?= $this->render('finalizar') ?>
     </div>
 </div>
 
