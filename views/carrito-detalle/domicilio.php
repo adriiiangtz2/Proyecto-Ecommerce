@@ -16,7 +16,7 @@ use yii\bootstrap4\ActiveForm;
                 </button>
             </div>
 
-            <div class="modal-body" id="modal-body-domicilio" style="border:1px dashed;">
+            <div class="modal-body" id="modal-body-domicilio">
                
                     <?php foreach (\app\models\Domicilio::domi() as $domicilio) : ?>
 
@@ -28,15 +28,15 @@ use yii\bootstrap4\ActiveForm;
 
                             </div>
                             <div class="checkout-domicilio">
-                                <div style="padding: 10px;">
+                                <div class="modalinput">
                                     <input type="radio" id="informacion<?= $domicilio->dom_id ?>" name="domcolor" value="<?= $domicilio->dom_id ?>">
                                 </div>
                                 <div>
                                     <p><b> Ciudad: </b><?= $domicilio->dom_ciudad ?>
                                         <b>, Colonia: </b><?= $domicilio->dom_colonia ?>
                                         <b>, Calle: </b><?= $domicilio->dom_calle ?>
-                                        <b>, Numero exterior: </b><?= $domicilio->dom_numExt ?>
-                                        <b>, Numero interior: </b><?= $domicilio->dom_numInt ?>
+                                        <b>, Número exterior: </b><?= $domicilio->dom_numExt ?>
+                                        <b>, Número interior: </b><?= $domicilio->dom_numInt ?>
                                         <b>, Teléfono :</b><?= $domicilio->dom_telefono ?>
                                         <b>, Código postal: </b><?= $domicilio->dom_fkcp ?>
                                     </p>

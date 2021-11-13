@@ -1,6 +1,7 @@
+/* Estilos de vista checkout general */
 .content-check {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .cardet {
@@ -38,19 +39,75 @@
     justify-content: space-between;
 }
 
-.checkoutcuadro>div {}
-
-.checkoutcuadro>div>div {}
-
 .checkout-domicilio {
     display: flex;
     padding: 10px;
     line-height: 20px;
-    border: 1px solid #b9aeae;
 }
 
 .small-container-checkout {
     max-width: 1080 px;
     margin: auto;
     padding-right: 25 px;
+}
+.alinearInputModal{
+    align-items: baseline; 
+    display: flex;
+}
+.input-tarjeta{
+    
+}
+#contenedor-tarjeta:hover{
+    background: #FCF5EE;
+    border-radius: 5px;
+    border: 2px solid;
+    border-color: #FBD8B4;
+}
+.infoinferior{
+    font-size:12px;
+}
+.contenedor-finalizar{
+    background: #F0F2F2;
+    border: 1px solid #F0F2F2;
+    height:fit-content;
+    padding: 2px;
+    border-radius: 5px;
+    width: 28%;
+}
+.finalizar-divs{
+    padding:5px; 
+    background: white;
+}
+.finalizar-pedido-boton{
+    width: 90%; 
+    border-radius: 10px;
+}
+#finalizarbotondiv{
+    text-align:center;
+}
+.color-texto-importante{
+    color: #007185;
+}
+.color-total-finalizar{
+    color: #B12704;
+}
+.envio-informacion{
+    padding: 5px;
+}
+.color-envio-informacion{
+    color: #007185;
+}
+
+/*Estilos modales de checkout */
+.div-vista-checkout{
+    margin-left: 10px;
+}
+.div-vista-tarjeta{
+    width: 115%;
+}
+.modalinput{
+    padding: 10px;
+}
+.modaltarjeta{
+    justify-content: space-between;
 }

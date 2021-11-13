@@ -12,43 +12,43 @@ use app\models\CatTarjeta;
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <div class="modal-body" id="modal-body-tarjeta">
+                <div class="row">
+                    <div class="col-md-2">
 
-            <div class="modal-body" id="modal-body-tarjeta" style="border:1px dashed;">
-
-                <table>
-                    <tr>
-                        <th></th>
-                        <th>Institución</th>
-                        <th>Terminación</th>
-                        <th>Nombre</th>
-                        <th>Vencimiento</th>
-                    </tr>
-                    <?php foreach (\app\models\CatTarjeta::tarjeta() as $tarjeta) : ?>
-                        <tr>
-                            <td>
-                                <div style="padding: 10px;">
-                                    <input type="radio" id="informacion<?= $tarjeta->tar_id ?>" name="tarjcolor" value="<?= $tarjeta->tar_id ?>">
+                    </div>
+                    <div class="col-md-4">
+                        <p><b>Tarjeta</b></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><b>Nombre en la tarjeta</b></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p><b>Vencimiento</b></p>
+                    </div>
+                </div>
+                <?php foreach (\app\models\CatTarjeta::tarjeta() as $tarjeta) : ?>
+                    <div id="contenedor-tarjeta" class="activo">
+                        <div class="d-flex input-tarjeta modaltarjeta">
+                            <div class="d-flex">
+                                <div class="modalinput">
+                                    <input class="input-tarjeta" type="radio" id="informacion<?= $tarjeta->tar_id ?>" name="tarjcolor" value="<?= $tarjeta->tar_id ?>">
                                 </div>
-                            </td>
-                            <td>
+
                                 <div class="card-info">
-                                    <p><b><?= $tarjeta->tar_financiera ?></b> </p>
+                                    <p><b><?= $tarjeta->tar_financiera ?></b> con terminación <b><?php echo substr($tarjeta->tar_numtarjeta, 12, 16); ?></b></p>
                                 </div>
-                            </td>
-                            <td>
-                                <p><b><?php echo substr($tarjeta->tar_numtarjeta, 12, 16); ?></b></p>
-                            </td>
-                            <td>
+                            </div>
+                            <div>
                                 <p><?= $tarjeta->tar_nombre ?></p>
-                            </td>
-                            <td>
+                            </div>
+                            <div>
                                 <p><b><?= $tarjeta->tar_expiracion ?></b></p>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
+                            </div>
 
-                </table>
-
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
             <div class="modal-footer">
                 <button type="button" class="editar-btn-tarjeta" data-dismiss="modal">Cerrar <i class="fas fa-window-close"></i></button>

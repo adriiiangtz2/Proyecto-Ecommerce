@@ -449,25 +449,25 @@ select:focus {
   text-align: left;
   padding: 5px;
   color: #fff;
-  background-color: #ff523b;
+  background-color: #007185;
   font-weight: bold;
 }
-td {
+.tabla td {
   padding: 10px 5px;
 }
-td input {
+.tabla td input {
   width: 40px;
   height: 30px;
   padding: 5px;
 }
-td input:focus {
+.tabla td input:focus {
   outline: none;
 }
-td a {
-  color: #ff523b;
+.tabla td a {
+  color: #007185;
   font-size: 12px;
 }
-td img {
+.tabla td img {
   width: 80px;
   height: 80px;
   margin-right: 10px;
@@ -478,7 +478,7 @@ td img {
 }
 
 .total-price table {
-  border-top: 3px solid #ff523b;
+  border-top: 3px solid #007185;
   width: 100%;
   max-width: 430px;
 }

@@ -96,7 +96,7 @@ $total = 0;
                 </table>
 
             </div>
-            <?= Html::a('Pagar', ['carrito-detalle/checkout'], ['class' => 'btn btn-warning']) ?>
+            <?= Html::a('Proceder al pago', ['carrito-detalle/checkout'], ['class' => 'btn btn-warning']) ?>
         <?php else : ?>
             <div class="contendor-ningun-producto">
                 <div>
