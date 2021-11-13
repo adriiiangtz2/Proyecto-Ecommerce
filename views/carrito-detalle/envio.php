@@ -14,7 +14,7 @@
                 <?php foreach (\app\models\CarritoDetalle::envioModal() as $envio) : ?>
 
                     <div class="alinearInputModal">
-                        <div style="padding: 10px;">
+                        <div class="modalinput">
                             <input type="radio" id="informacion<?= $envio->env_id ?>" name="envcolor" value="<?= $envio->env_id ?>">
                         </div>
                         <div class="d-flex">

@@ -1,3 +1,4 @@
+/* Estilos de vista checkout general */
 .content-check {
     display: flex;
     flex-direction: row;
@@ -62,6 +63,9 @@
     border: 2px solid;
     border-color: #FBD8B4;
 }
+.infoinferior{
+    font-size:12px;
+}
 .contenedor-finalizar{
     background: #F0F2F2;
     border: 1px solid #F0F2F2;
@@ -92,4 +96,18 @@
 }
 .color-envio-informacion{
     color: #007185;
+}
+
+/*Estilos modales de checkout */
+.div-vista-checkout{
+    margin-left: 10px;
+}
+.div-vista-tarjeta{
+    width: 115%;
+}
+.modalinput{
+    padding: 10px;
+}
+.modaltarjeta{
+    justify-content: space-between;
 }

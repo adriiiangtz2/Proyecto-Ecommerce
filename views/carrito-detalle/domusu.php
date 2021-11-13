@@ -2,7 +2,7 @@
 <div>
     <h6><b>1 - DIRECCIÓN DE ENVIO</b></h6>
 </div>
-<div style="margin-left: 10px;">
+<div class="div-vista-checkout">
     <p><b> Ciudad:</b><?= $domicilio->dom_ciudad ?><br>
         <b>Colonia:</b><?= $domicilio->dom_colonia ?><br>
         <b>Calle:</b><?= $domicilio->dom_calle ?><br>

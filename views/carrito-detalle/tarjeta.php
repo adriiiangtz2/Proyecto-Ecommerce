@@ -29,9 +29,9 @@ use app\models\CatTarjeta;
                 </div>
                 <?php foreach (\app\models\CatTarjeta::tarjeta() as $tarjeta) : ?>
                     <div id="contenedor-tarjeta" class="activo">
-                        <div class="d-flex input-tarjeta" style="justify-content: space-between;">
+                        <div class="d-flex input-tarjeta modaltarjeta">
                             <div class="d-flex">
-                                <div style="padding: 10px;">
+                                <div class="modalinput">
                                     <input class="input-tarjeta" type="radio" id="informacion<?= $tarjeta->tar_id ?>" name="tarjcolor" value="<?= $tarjeta->tar_id ?>">
                                 </div>
 
