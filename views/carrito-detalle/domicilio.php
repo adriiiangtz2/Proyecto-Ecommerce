@@ -27,7 +27,7 @@ use yii\bootstrap4\ActiveForm;
                             <div class="domicilio-titulo">
 
                             </div>
-                            <div class="checkout-domicilio">
+                            <div class="checkout-domicilio efecto-modal">
                                 <div class="modalinput">
                                     <input type="radio" id="informacion<?= $domicilio->dom_id ?>" name="domcolor" value="<?= $domicilio->dom_id ?>">
                                 </div>

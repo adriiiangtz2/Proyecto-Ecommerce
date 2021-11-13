@@ -28,7 +28,7 @@ use app\models\CatTarjeta;
                     </div>
                 </div>
                 <?php foreach (\app\models\CatTarjeta::tarjeta() as $tarjeta) : ?>
-                    <div id="contenedor-tarjeta" class="activo">
+                    <div id="contenedor-tarjeta" class="efecto-modal">
                         <div class="d-flex input-tarjeta modaltarjeta">
                             <div class="d-flex">
                                 <div class="modalinput">
