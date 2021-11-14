@@ -123,11 +123,14 @@ class CarritoDetalleController extends Controller
     {
         return $this->render('carrito');
     }
+    /* Registra un carro nuevo en caso de no haber uno ya, de lo contrario solo añade el producto al carro */
     public function actionAgregarProducto()
     {
         $id = $this->request->post('id');
         $producto = Producto::findOne(['pro_id' => $id]);
+        /* Condicion que compara si existe ya un carro contenedor activo creado en la base de datos */
         if (empty(Carro::carro())) {
+            /* Datos que se llenan en la tabla carro al momento de crear el carro */
             $carro = new Carro();
             $carro->car_iva = 0.16 * $producto->pro_precio;
             $carro->car_fecha = date('Y-m-d H:i:s');
@@ -136,8 +139,9 @@ class CarritoDetalleController extends Controller
             $carro->car_fkmetodo = 2;
             $carro->car_fkdomicilio = CarritoDetalle::domicilioPredeterminado()->dom_id;
             $carro->car_fkenvio = Envio::find()->one()->env_id;
-            $carro->car_fktarjeta = CatTarjeta::find()->one()->tar_id;
+            $carro->car_fktarjeta = CarritoDetalle::tarjetaPredeterminado()->tar_id;
             $carro->save();
+            /*Datos que se llenan en la tabla carrito_detalle al momento de crear el carro */
             $carrito = new CarritoDetalle();
             $carrito->cardet_cantidad = 1;
             $carrito->cardet_precio = $producto->pro_precio;
@@ -145,8 +149,9 @@ class CarritoDetalleController extends Controller
             $carrito->cardet_fkcarro = $carro->car_id;
             $carrito->cardet_estatus = 1;
             $carrito->save();
-        } else {
-            if (empty(CarritoDetalle::productoRepetido($id))) {
+        } else { /* Los siguientes datos que se llenan en carrito_detalle en caso de que ya exista un carro creado*/
+            if (empty(CarritoDetalle::productoRepetido($id))) /* Inicia otra condicion para comparar si un producto 
+            ya fue añadido al carrito, si no esta aun mete solo 1 dato, caso contrario suma 1 al dato cantidad del producto en el carrito*/ {
                 $carrito = new CarritoDetalle();
                 $carrito->cardet_precio = $producto->pro_precio;
                 $carrito->cardet_fkproducto = $id;
@@ -154,12 +159,12 @@ class CarritoDetalleController extends Controller
                 $carrito->cardet_estatus = 1;
                 $carrito->cardet_cantidad = 1;
                 $carrito->save();
-            } else {
+            } else /* Suma a cantidad si ya existe el producto en el carrito */ {
                 $carritoRep = CarritoDetalle::productoRepetido($id);
-                $carritoRep -> cardet_cantidad = $carritoRep -> cardet_cantidad + 1;
-                $carritoRep -> cardet_precio = $carritoRep -> cardet_cantidad * $producto->pro_precio;
-                $carritoRep -> cardet_estatus = 1;
-                $carritoRep -> save();
+                $carritoRep->cardet_cantidad = $carritoRep->cardet_cantidad + 1;
+                $carritoRep->cardet_precio = $carritoRep->cardet_cantidad * $producto->pro_precio;
+                $carritoRep->cardet_estatus = 1;
+                $carritoRep->save();
             }
         }
         $response = Yii::$app->response;
@@ -167,6 +172,7 @@ class CarritoDetalleController extends Controller
         $response->data = ['html' => CarritoDetalle::carritoContador()];
         return $response;
     }
+    /* Funcion complementaria al cerrado de carro */
     public function actionCheckout()
     {
         $model = new Carro();
@@ -189,9 +195,9 @@ class CarritoDetalleController extends Controller
         return $this->render('checkout', compact('model'));
         /*         return $this->render('checkout'); */
     }
+    /* Funcion que finaliza el pedido y cierra el carro activo del usuario en la bd  */
     public function actionFinalizarPago()
-    {
-        /* $id = $this->request->post('id'); */
+    {   /* Ultimos datos insertados en la base de datos al cerrar el carro */
         $carro = Carro::carro();
         $carro->car_estatus = 'Pagado';
         $carro->car_fecha = date('Y-m-d H:i:s');
@@ -203,8 +209,11 @@ class CarritoDetalleController extends Controller
     {
         return $this->render('confirmacion');
     }
+    /* Funcion que actualiza el registro de cantidad en la bd, actualiza el contador del navbar y actualiza la vista del navbar
+    y el carrito en tiempo real*/
     public function actionRegistrar()
     {
+        /* Datos de las vistas que se van a actualizar */
         $id = $this->request->post('id');
         $carDetalle = CarritoDetalle::find()->where(['cardet_id' => $id])->one();
         $precio = Producto::find()->where(['pro_id' => $carDetalle->cardet_fkproducto])->one()->pro_precio;
@@ -214,14 +223,18 @@ class CarritoDetalleController extends Controller
         $carDetalle->save();
         $response = Yii::$app->response;
         $response->format = Response::FORMAT_JSON;
-        $response->data = ['html' => $this->renderPartial('carrito'),'contador'=>CarritoDetalle::carritoContador(), 'carfinal' => $this->renderPartial('carrito-final'), 'importefinal' => $this->renderPartial('finalizar')];
+        /* Render que muestra el resultado en el carrito y el contador del navbar */
+        $response->data = ['html' => $this->renderPartial('carrito'), 'contador' => CarritoDetalle::carritoContador(), 'carfinal' => $this->renderPartial('carrito-final'), 'importefinal' => $this->renderPartial('finalizar')];
         return $response;
     }
+    /* Funcion para eliminar o deshabilitar un producto del carrito al eliminar */
     public function actionEliminar()
     {
         $id = $this->request->post('id');
         $carDetalle = CarritoDetalle::find()->where(['cardet_id' => $id])->one();
+        /* El dato se cambia a 0 que significa que no se va a mostrar ni a tomar en cuenta */
         $carDetalle->cardet_estatus = 0;
+        /* El dato de cantidad cambia a 0 para evitar que vuelva a tener la misma cantidad en caso de volver a añadir el producto*/
         $carDetalle->cardet_cantidad = 0;
         $carDetalle->save();
         $response = Yii::$app->response;
@@ -229,6 +242,7 @@ class CarritoDetalleController extends Controller
         $response->data = ['html' => $this->renderPartial('carrito'), 'carfinal' => $this->renderPartial('carrito-final')];
         return $response;
     }
+    /* Funcion para guardar el domicilio elegido en el checkout */
     public function actionEditarDomicilio()
     {
         $carro = Carro::carro();
@@ -237,9 +251,11 @@ class CarritoDetalleController extends Controller
         $carro->save();
         $response = Yii::$app->response;
         $response->format = Response::FORMAT_JSON;
+        /* Se muestra en la vista general del checkout */
         $response->data = ['html' => $this->renderPartial('domusu')];
         return $response;
     }
+    /* Funcion para guardar la tarjeta elegida en el checkout */
     public function actionEditarTarjeta()
     {
         $carro = Carro::carro();
@@ -248,9 +264,11 @@ class CarritoDetalleController extends Controller
         $carro->save();
         $response = Yii::$app->response;
         $response->format = Response::FORMAT_JSON;
+        /* Se muestra en la vista general del checkout */
         $response->data = ['html' => $this->renderPartial('tarusu')];
         return $response;
     }
+    /* Funcion para guardar el metodo de envio elegido en el checkout */
     public function actionEditarEnvio()
     {
         $carro = Carro::carro();
@@ -259,6 +277,7 @@ class CarritoDetalleController extends Controller
         $carro->save();
         $response = Yii::$app->response;
         $response->format = Response::FORMAT_JSON;
+        /* Se muestra en la vista general del checkout y el dato del precio de envio se actualiza en tiempo real en la vista*/
         $response->data = ['html' => $this->renderPartial('envusu'), 'importefinal' => $this->renderPartial('finalizar')];
         return $response;
     }
