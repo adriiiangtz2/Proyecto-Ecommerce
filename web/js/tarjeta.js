@@ -1,4 +1,4 @@
-//* ###### EMPIEZAN FUNCIONES VISTA TARJETA/REGISTRAR
+/* //* ###### EMPIEZAN FUNCIONES VISTA TARJETA/REGISTRAR */
 const tarjeta = document.querySelector("#tarjeta"),
 btnAbrirFormulario = document.querySelector("#btn-abrir-formulario"),
 btnAbrirTarjeta = document.querySelector("#desplegar-tarjeta-info"),
@@ -11,25 +11,25 @@ logoMarca = document.querySelector("#logo-marca"),
 firma = document.querySelector("#tarjeta .firma p"),
 mesExpiracion = document.querySelector("#tarjeta .mes"),
 yearExpiracion = document.querySelector("#tarjeta .year");
-//   ccv = document.querySelector('#tarjeta .ccv');
-// * Volteamos la tarjeta para mostrar el frente.
+/* //   ccv = document.querySelector('#tarjeta .ccv'); */
+/* // * Volteamos la tarjeta para mostrar el frente. */
 const mostrarFrente = () => {
   if (tarjeta.classList.contains("active")) {
     tarjeta.classList.remove("active");
   }
 };
 
-// * Rotacion de la tarjeta
+/* // * Rotacion de la tarjeta */
 tarjeta.addEventListener("click", () => {
   tarjeta.classList.toggle("active");
 });
 
-// * Boton de abrir formulario
+/* // * Boton de abrir formulario */
 btnAbrirFormulario.addEventListener("click", () => {
   btnAbrirFormulario.classList.toggle("active");
   formulario.classList.toggle("active");
 });
-// * Input numero de tarjeta
+/* // * Input numero de tarjeta */
 formulariot.inputNumero.addEventListener("keyup", (e) => {
   let valorInput = e.target.value;
   formulariot.inputNumero.value = valorInput
@@ -62,7 +62,7 @@ formulariot.inputNumero.addEventListener("keyup", (e) => {
   mostrarFrente();
 });
 
-// * Input nombre de tarjeta
+/* // * Input nombre de tarjeta */
 formulariot.inputNombre.addEventListener("keyup", (e) => {
   let valorInput = e.target.value;
   formulariot.inputNombre.value = valorInput.replace(/[0-9]/g, "");
@@ -80,7 +80,7 @@ $("#cattarjeta-tar_expiracion").on("change", function (e) {
   mesExpiracion.textContent = $("#cattarjeta-tar_expiracion").val();
 });
 
-// TODO  -------------------------CAMBIAR LAS CLASES DE MOSTRAR------------------------
+/* // TODO  -------------------------CAMBIAR LAS CLASES DE MOSTRAR------------------------ */
 //para que se le asigne un id a cada vez que realice el ciclo la vista mostrar
 //se le cambia las clases para mostrar y no mostrar el contenedor de info
 function desplegar(id){
@@ -92,10 +92,10 @@ function desplegar(id){
     $(`#mostrar${id}`).removeClass("mostrar2").addClass("mostrar");
   }
 };
-//* ###### TERMINA FUNCIONES VISTA TARJETA/REGISTRAR
+/* //* ###### TERMINA FUNCIONES VISTA TARJETA/REGISTRAR */
 
 
-//! Se utiliza en cat-tarjeta/registrar guarda la info del form
+/* //! Se utiliza en cat-tarjeta/registrar guarda la info del form */
 function recargarTarjeta() {
   let numero = $("#inputNumero").val();
   let nombre = $('#inputNombre').val();
@@ -112,7 +112,7 @@ function recargarTarjeta() {
   });
 }
 
-//! funcion eliminar Vista cat-registrar/mostrar 
+/* //! funcion eliminar Vista cat-registrar/mostrar  */
 function eliminar(id) {
   console.log('imprime el id :');
   console.log({id});
@@ -123,7 +123,7 @@ function eliminar(id) {
     }
   });
 }
-//! funcion editar Vista cat-registrar/mostrar 
+/* //! funcion editar Vista cat-registrar/mostrar  */
 function editarTarjeta(id)
 {
 
@@ -142,7 +142,7 @@ function editarTarjeta(id)
     });
 }
 
-//! Funcion para abir el modal de cat-tarjeta/editar
+/* //! Funcion para abir el modal de cat-tarjeta/editar */
 function modal(id){
   // console.log(id);
   $('#ventana-modal'+id).modal();

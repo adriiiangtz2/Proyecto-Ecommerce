@@ -1,4 +1,4 @@
-//! boton btnfav, vista favortios
+/* //! boton btnfav, vista favortios */
 function favoritos(id, estado) {
   console.log(id);
   //le coloca la clase  el preloader
@@ -26,7 +26,7 @@ function favoritos(id, estado) {
     }
   });
 }
-//! boton btnfavpro vista prodcutos
+/* //! boton btnfavpro vista prodcutos */
 function favoritoIcon(id, es) {
   // guarda los datos que contenga este id
   // let nav = $("#icon-fav"+id).val();
@@ -49,8 +49,8 @@ function favoritoIcon(id, es) {
   });
 }
 
-//! se ejecuta de la vista cat-favorito/registrarFav 
-// ? ahora no se utiliza
+/* //! se ejecuta de la vista cat-favorito/registrarFav  */
+/* // ? ahora no se utiliza */
 function detallesproducto(id) {
   console.log(id);
   $.post("/cat-favorito/detalles", { id: id }, function (data) {

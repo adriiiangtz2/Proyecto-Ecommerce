@@ -1,5 +1,5 @@
-//! MODAL para editar las tarjetas, los datos lleagn por compact
-//! Se renderiza en mostrar
+<!-- //! MODAL para editar las tarjetas, los datos lleagn por compact -->
+<!-- //! Se renderiza en mostrar -->
 <?php 
 use kartik\widgets\DatePicker;
 use yii\bootstrap4\ActiveForm;

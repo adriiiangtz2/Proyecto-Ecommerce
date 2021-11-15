@@ -1,9 +1,9 @@
-// ! Botonera creada para ver apartados para el usuario
+<!-- // ! Botonera creada para ver apartados para el usuario -->
 <?php
 use yii\bootstrap4\Html;
 ?>            
 <?php
-// TODO se crean objetos los cuales tendran 3 parametros ,Nombre,Url,Img,Info, se usa en ciclo de line 18
+/* // TODO se crean objetos los cuales tendran 3 parametros ,Nombre,Url,Img,Info, se usa en ciclo de line 18 */
 $card = [
     (object)['nombre' => 'USUARIO'    , 'url'  => 'informacion', 'img' => '<i class="fas fa-user-cog"></i>', 'info' => 'Informacion del Usuario'  ],
     (object)['nombre' => 'DOMICILIO'  , 'url'  => '/domicilio/mostrar', 'img' => '<i class="far fa-address-card"></i>', 'info' => 'EDITA DIRECCIONES PARA PEDIDOS Y REGALOS'  ],
@@ -12,9 +12,9 @@ $card = [
 ];
 ?>
 <h3><b>MI CUENTA</b></h3>
-                // *  INICIA CONTENEDOR GENERAL -->
+            <!--     // *  INICIA CONTENEDOR GENERAL -- -->
                 <div class="row">
-                    // TODO ##### inicia el ciclo #######-->
+                 <!--    // TODO ##### inicia el ciclo #######-- -->
                     <?php foreach ($card as $cards) { ?>
                         <div class="col-md-3">
                             <div id="cards">
@@ -28,7 +28,7 @@ $card = [
                                 </div>
                                 </div>
                             </div>
-                            // TODO -- ##### Termina el ciclo #######-->
+                           <!--  // TODO -- ##### Termina el ciclo #######-- -->
                     <?php } ?>
-                    //* TERMINA CONTENEDOR GENERAL -->
+                   <!--  //* TERMINA CONTENEDOR GENERAL -- -->
                 </div>

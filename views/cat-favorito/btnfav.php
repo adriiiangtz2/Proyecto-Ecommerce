@@ -1,9 +1,9 @@
-// ! Boton de la vista de favoritos, datos llega por compat
+<!-- // ! Boton de la vista de favoritos, datos llega por compat -->
 <?php
 use yii\helpers\Html;
 use app\models\CatFavorito;
 use yii\widgets\ActiveForm;
-// * esta funcion trar el valor del estado por defecto siempre vendra 0 
+/* // * esta funcion trar el valor del estado por defecto siempre vendra 0  */
 $estado = CatFavorito::estado($proid);
 ?>
 <div class="cat-favorito-form">

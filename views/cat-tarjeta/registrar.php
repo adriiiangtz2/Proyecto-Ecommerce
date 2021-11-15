@@ -1,4 +1,4 @@
-// ! Vista para agregar tarjetas de usuario, datos llegan por controlador
+<!-- // ! Vista para agregar tarjetas de usuario, datos llegan por controlador -->
 <?php
 use app\models\Usuario;
 use yii\bootstrap4\Html;
@@ -116,7 +116,7 @@ use yii\bootstrap4\ActiveForm;
 									<!-- <button type="submit" class="btn-enviar">Enviar</button> -->
 									<div class="row justify-content-center">
 										<div class="form-group">
-											//! Funcion qu guarda la infor de las tarjetas 
+											<!-- //! Funcion qu guarda la infor de las tarjetas  -->
 											<?= Html::button('Guardar', ['class' => 'btntarjeta2','onclick' => 'recargarTarjeta()',]) ?>
 											<?php ActiveForm::end(); ?>
 										</div>
@@ -131,7 +131,7 @@ use yii\bootstrap4\ActiveForm;
 								</div>
 								<hr>
 								<div  id="idmostrar" class="contenedor-izq-tarjeta" style="height:376px;overflow-x:hidden;width:106%;padding:18px;">
-							    //! Se renderia la vista mostrar  -->
+							   <!--  //! Se renderia la vista mostrar  -- -->
 								<?= $this->render('mostrar') ?>  
 							</div> 
 							
