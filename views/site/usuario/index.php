@@ -31,7 +31,7 @@ $this->title = 'E-commerce';
 </head>
 <!-- VISTA CUANDO EL USUARIO SE HA REGISTRADO -->
 <?= $this->render('/layouts/carrusel') ?>
-<?= $this->render('/layouts/usuario/header') ?>
+
 <?= $this->render('/layouts/usuario/informacion') ?>
             <!-- INICIA FEATURED CATEGORY -->
     <div class="categories">

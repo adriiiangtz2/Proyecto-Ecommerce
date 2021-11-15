@@ -9,14 +9,14 @@ body {
 }
 a {
   text-decoration: none;
-  color:#000;
-    font-weight: 600;
-
+    color: #000;
+    font-weight: 500;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+    font-size: 13px;
 }
 a:hover{
   color: rgb(20, 20, 20);
-
-  ;
 }
 p {
   color: #555;
@@ -45,10 +45,10 @@ nav ul li {
   /* border: 1px solid black; */
 }
 nav ul li a:hover{
-  border-bottom:3px solid black;
+  border-bottom:1px solid black;
   transition: 100ms;
   background-color: rgba(128, 128, 128, 0.13);
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .contenedor {
   max-width: 1300px;
@@ -96,7 +96,7 @@ nav ul li a:hover{
   background: radial-gradient(rgb(255, 255, 255), #f8f6f6);
 }
 .headerr .filas {
-  margin-left: 103px;
+  /* margin-left: 103px; */
 }
 /* FIN DEL HEADER */
 
@@ -607,7 +607,7 @@ form a{
 
 .contenedor-pagina-eccomerce{
   box-shadow: rgb(229 229 229) 0px -1px 0px 0px inset;
-  background: rgb(243, 243, 243);
+  background: rgb(255, 255, 255);
 
 }
 .contenedor--eccomerce{
@@ -617,4 +617,22 @@ form a{
 .container{
   max-width: 95%;
   
+}
+
+.menu-negro{
+  color: #f8f6f6;
+  font-size: 15px;
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.opercase{
+  text-transform: uppercase;
 }

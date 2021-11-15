@@ -7,17 +7,20 @@ use yii\bootstrap4\NavBar;
 use app\models\CarritoDetalle;
 use webvimark\modules\UserManagement\UserManagementModule;
 ?>
+<div class="menu-negro">
+   <div class="opercase">REDSTORE Bienvenido <?= \app\models\Usuario::usuario()->usu_nombre?></div> 
+</div>
 <?php
 NavBar::begin([
     'brandLabel' => Yii::$app->name,
     // 'brandLabel' => '<img  style="width:30%;margin:none;" src='.Yii::$app->getUrlManager()->getBaseUrl().'/plantilla/images/logo.png>',
     'brandLabel' => Yii::$app->name. '   ' .Html::img('/plantilla/images/logo.png',['style' => 'width: 100px;']),
     'brandUrl' => Yii::$app->homeUrl,
-    'options' => ['class' => 'headerr navbar navbar-expand-md  fixed-top a'],
+    'options' => ['class' => '','style' => "background-color:#fff;"],
 ]);
 //nav 1 - se divide para que pueda agarrar el style flex-grow y se jala a la izq
 echo Nav::widget([
-    'options' => ['class' => '', 'style' => "flex-grow:1;"],
+    'options' => ['class' => '', 'style' => "flex-grow:1"],
     'encodeLabels' => false,
     'items' => [
         [
