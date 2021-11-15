@@ -29,8 +29,6 @@ $this->title = 'E-commerce';
 
     <title>Ecommerce Website</title>
 </head>
-
-<body>
 <!-- VISTA CUANDO EL USUARIO SE HA REGISTRADO -->
 <?= $this->render('/layouts/carrusel') ?>
 <?= $this->render('/layouts/usuario/header') ?>

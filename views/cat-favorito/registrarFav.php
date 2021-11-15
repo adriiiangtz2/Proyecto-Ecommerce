@@ -29,11 +29,9 @@ $favo= \app\models\CatFavorito::favorito();
                         <!-- //! Boton que manda a vista de producto/detalles  -->
                        <!--  //TODO estructura de etiqueta (a) y dentro etiqueta (img)  -->
                         <?= Html::tag('a', Html::img($favoritos->favFkproducto->getUrl(),['class' => 'profile-link'] ), ['href'=>'/producto/detalles/'.$favoritos->fav_fkproducto],['class' => 'profile-link'] ); ?>   
-                        <?= Html::a('Detalles', ['/producto/detalles', 'id' => $favoritos->fav_fkproducto], ['class' => 'profile-link']) ?>
                         <div class="rating">
                        <!--  // ?-- apartado para estrellas -- -->
                         </div>
-                        <p style="margin:0;" > <?=$favoritos->favFkproducto->pro_nombre?></p>
                        <!--  // TODO  incia la condicional interno ------- -->
                         <?php if(($descuento)>0){
                             $opera= (($precio)/100)*$descuento; 
@@ -49,7 +47,11 @@ $favo= \app\models\CatFavorito::favorito();
                                 <?php }?>
                                 <!-- // ! Termina renderizado del boton ------------------- -->
                                 <?= $this->render('/cat-favorito/btnfav', compact('favoritos')) ?> 
-                                <p style="margin:0;" > <?=$favoritos->favFkproducto->pro_color?>  </p>
+                                <div class="contenedor-card-foter">
+                                    <p style="margin:0;" > <?=$favoritos->favFkproducto->pro_nombre?></p>
+                                    <p style="margin:0;" > <?=$favoritos->favFkproducto->pro_color?>  </p>
+                                    <?= Html::a('Ver mas <i class="fas fa-caret-down"></i>', ['/producto/detalles', 'id' => $favoritos->fav_fkproducto], ['class' => 'profile-link']) ?>
+                                </div>
                                <!--  //* -#### Termina contenedor de los productos #####--  -->
                             </div>
                             <!-- // TODO --------- Termina el ciclo --------------------------------------- -->

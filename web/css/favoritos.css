@@ -1,6 +1,7 @@
 /* VISTA REGISTRAR FAVORITO */
 .columm4 {
   position: relative;
+  clip-path: polygon(22% 0, 100% 0%, 79% 100%, 0% 100%);
 }
 .colum-4 p {
   font-size: 14px;
@@ -10,31 +11,63 @@
 }
 
 .colum-4:hover {
-  transform: translateY(-5px);
-  box-shadow: 20px 20px 66px #b8b8b8, -20px -20px 66px #ffffff;
+  transform: translateY(-15px);
+  box-shadow: 50px 20px 66px #b8b8b8, -20px -20px 66px #ffffff;
+ 
 }
+.columm4:hover .contenedor-card-foter{
+  background: rgb(212, 211, 211);
+  transition: 300ms;
+}
+.columm4:hover .contenedor-card-foter > a{
+  color: #000;
+  transition: 300ms;
+}
+.columm4:hover .contenedor-card-foter > p{
+  color: rgb(80, 80, 80);
+  transition: 300ms;
+  -webkit-text-stroke-width: thick;
+}
+.contenedor-card-foter{
+  padding-left: 20%;
+  background: rgb(144, 144, 144);
+  clip-path: polygon(4% 0, 100% 0, 91% 100%, 0% 100%);
+}
+.contenedor-card-foter > a{
+  color: #fff;
+  font-size: 10px;
+  text-decoration: none;
+  padding-left: 50%;
 
+}
+.contenedor-card-foter > p{
+  color: rgb(223, 223, 223);
+  font-size: 12px;
+}
 .precio-favorito {
   position: absolute;
   top: 60%;
   background: white;
-  left: 4%;
+  left: 9%;
   text-decoration-line: line-through;
 }
 .total-favorito {
   position: absolute;
   top: 70%;
   background: antiquewhite;
-  left: 4%;
+  left: 9%;
 }
 .descuento-favorito {
   margin: 0;
   position: absolute;
   top: 6%;
   background: #fdaaaa;
-  left: 4%;
+  left: 24%;
   font-weight: 700;
+  border-radius: 2px;
+  -webkit-text-stroke-width:10%;
 }
+
 
 .contendor-ningun-articulo{
     height: 400px;display: flex;align-items: center;

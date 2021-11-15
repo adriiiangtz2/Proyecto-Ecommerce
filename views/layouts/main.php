@@ -28,15 +28,15 @@ AppAsset::register($this);
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="d-flex flex-column h-100">
-
+<body class="d-flex flex-column h-100  contenedor-pagina-eccomerce">
     <?php $this->beginBody(); ?>
     <header>
         <?= $this->render('usuario/header') ?>
-
     </header>
     <main role="main" class="flex-shrink-0">
-        <div class="container">
+        <div class="container contenedor--eccomerce">
+        <!-- <div style="background-color:black;height:5px"></div><br> -->
+    
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs'])
                     ? $this->params['breadcrumbs']
