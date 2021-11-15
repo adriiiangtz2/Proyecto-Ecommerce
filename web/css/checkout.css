@@ -54,10 +54,7 @@
     align-items: baseline; 
     display: flex;
 }
-.input-tarjeta{
-    
-}
-#contenedor-tarjeta:hover{
+.efecto-modal:hover{
     background: #FCF5EE;
     border-radius: 5px;
     border: 2px solid;

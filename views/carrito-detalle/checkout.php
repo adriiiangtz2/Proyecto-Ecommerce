@@ -11,89 +11,73 @@ use app\models\CarritoDetalle;
 use yii\bootstrap4\ActiveForm;
 
 $total = 0;
+/* Consultas guardadas en una variable */
 $domicilio = \app\models\CarritoDetalle::domicilioCheck();
 $tarjeta = \app\models\CarritoDetalle::tarjetaCheck();
 $envio = \app\models\CarritoDetalle::envioCheck();
 ?>
-<!-- card items details -->
+<!-- Contenedores que muestran partes del checkout -->
 <div class="content-check d-flex">
     <div class="col-md-8">
         <div class="cardet-form cardet">
             <div class="col-md-12 contenedor-principal-checkout">
                 <div class="row">
                     <div class="col-md-12 checkoutcuadro d-flex ">
+                        <!-- Direccion de envio -->
                         <div class="d-flex" id="domi-info">
+                            <!-- Se llama la vista con un render. domusu es donde se encuentra la vista -->
                             <?= $this->render('domusu') ?>
                         </div>
                         <div class="contenedor-cambiar">
+                            <!-- Boton para llevar a la vista modal para elegir un domicilio de la lista. La vista del modal
+                        se encuentra en domicilio.php -->
                             <button class="botonCambiar" onclick="modaldomicilio(<?= $domicilio->dom_id ?>)">Cambiar</button>
                         </div>
                     </div>
+                    <!-- Donde se va a renderizar el cambio hecho en el modal -->
                     <?= $this->render('domicilio', compact('domicilio')) ?>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-12 checkoutcuadro d-flex ">
+                        <!-- Metodo de pago -->
                         <div class="d-flex" id="tarje-info">
+                            <!-- Se llama la vista con un render. tarusu es donde se encuentra la vista -->
                             <?= $this->render('tarusu') ?>
                         </div>
                         <div class="contenedor-cambiar">
+                            <!-- Boton para llevar a la vista modal para elegir una tarjeta de la lista. La vista del modal
+                        se encuentra en tarjeta.php -->
                             <button class="botonCambiar" onclick="modaltarjeta(<?= $tarjeta->tar_id ?>)">Cambiar</button>
 
                         </div>
                     </div>
+                    <!-- Donde se va a renderizar el cambio hecho en el modal -->
                     <?= $this->render('tarjeta', compact('tarjeta')) ?>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-12 checkoutcuadro d-flex ">
+                        <!-- Metodo de envio -->
                         <div class="d-flex" id="envi-info">
+                            <!-- Se llama la vista con un render. envusu es donde se encuentra la vista. La vista del modal
+                        se encuentra en envio.php-->
                             <?= $this->render('envusu') ?>
                         </div>
                         <div class="contenedor-cambiar">
+                            <!-- Boton para llevar a la vista modal para elegir un metodo de envio de la lista -->
                             <button class="botonCambiar" onclick="modalenvio(<?= $envio->env_id ?>)">Cambiar</button>
                         </div>
                     </div>
+                    <!-- Donde se va a renderizar el cambio hecho en el modal -->
                     <?= $this->render('envio', compact('envio')) ?>
                 </div>
                 <hr>
             </div>
         </div>
         <div id="cardet" class="cardet col-md-12">
-
-            <div class="small-container-checkout card-page">
-                <table class="tabla">
-                    <tr>
-                        <th class="tha">Producto</th>
-                        <th class="tha">Cantidad</th>
-                        <th class="tha">SubTotal</th>
-                    </tr>
-                    <?php foreach (\app\models\CarritoDetalle::productosCarrito() as $carritoDe) : ?>
-                        <tr>
-                            <td>
-                                <div class="card-info">
-                                    <img src=<?= $carritoDe->cardetFkproducto->getUrl() ?>>
-                                    <div>
-                                        <p><?= $carritoDe->productoNombre ?></p>
-                                        <small>Precio: $<?= $carritoDe->productoPrecio ?></small>
-                                        <br>
-
-                                    </div>
-                                </div>
-                            </td>
-                            <td><input id="input-cant<?= $carritoDe->cardet_id ?>" type="number" onclick="registrarCantidad(<?= $carritoDe->cardet_id ?>)" value=<?= $carritoDe->cardet_cantidad ?>></td>
-                            <td>$<?= $carritoDe->cardet_precio ?></td>
-                            <?php
-                            $total = $total + $carritoDe->cardet_precio;
-                            $iva = $total * 0.16;
-                            $envio_costo = $envio->env_costo;
-                            $importe = $total + $iva + $envio_costo;
-                            ?>
-                        </tr>
-                    <?php endforeach; ?>
-
-                </table>
-            </div>
+            <!-- Se manda a renderizar la tabla donde se muestran los productos en el carrito -->
+            <?= $this->render('carrito-final') ?>
         </div>
         <div class="col-md-12">
             <p class="infoinferior">
@@ -103,37 +87,9 @@ $envio = \app\models\CarritoDetalle::envioCheck();
             </p>
         </div>
     </div>
-    <div class="contenedor-finalizar">
-        <div id="finalizarbotondiv" class="finalizar-divs">
-            <button type="button" onclick="finalizarPago()" class="btn btn-warning finalizar-pedido-boton">Finalizar pedido</button>
-            <br>
-            <p class="color-texto-importante">Al realizar tu pedido, aceptas el aviso de privacidad y las condiciones de uso de Redstore.</p>
-        </div>
-        <div class="finalizar-divs">
-            <div>
-                <h5><b>Confirmación del Pedido</b></h5>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <p>Productos:</p>
-                    <p>Impuestos:</p>
-                    <p>Envio:</p>
-                </div>
-                <div class="col-md-4 text-right">
-                    <p>$<?= $total ?></p>
-                    <p>$<?= $iva ?></p>
-                    <p>$<?= $envio_costo ?></p>
-                </div>
-            </div>
-        </div>
-        <div class="finalizar-divs">
-            <p class="color-total-finalizar"><b>Total (IVA incluido, si aplica), <br>
-                    $<?= $importe ?></b></p>
-        </div>
-        <div class="envio-informacion">
-            <p class="color-envio-informacion">¿Cómo se calculan los gastos de envío?</p>
-            <p>Se ha aplicado el envío Redstore Prime a los productos incluidos en la oferta para tu pedido. </p>
-        </div>
+    <div id="contenedor-carrito-final" class="contenedor-finalizar">
+        <!-- Se manda a renderizar el contenedor con el boton para finalizar el pedido y el resumen final de la compra -->
+        <?= $this->render('finalizar') ?>
     </div>
 </div>
 
