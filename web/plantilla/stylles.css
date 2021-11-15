@@ -636,3 +636,66 @@ form a{
 .opercase{
   text-transform: uppercase;
 }
+.contenedor-cat-des-boto{
+  width:100%;
+  height: 100%;
+  padding: 10px;
+}
+.contenedor-icono-usuario-botonera{
+  padding: 4px;
+}
+.botonera-usuario{
+  width: 80px;
+
+  
+}
+@keyframes agrandar{
+  from{
+    transform:scale(1.0);
+  }
+  to{
+    transform: scale(1.1);
+  }
+}
+.contenedor-cards-boto-usu:hover .botonera-usuario{
+  animation-name: agrandar;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-timing-function:linear;
+  animation-direction:alternate;
+} 
+
+
+
+.contenedor-cards-boto-usu{
+  border: 1px solid rgb(190, 188, 188);
+  padding: 5px;
+  margin: 4px;
+  width: 300px;
+  height: 107px;
+  border-radius: 5px;
+  background-color: rgba(216, 216, 216, 0.253);
+}
+.contenedor-cat-des-boto > a{
+font-weight: 400;
+font-size: 20px;
+text-decoration: none;
+}
+.contenedor-cat-des-boto > p{
+font-weight: 100;
+font-size: 10px;
+cursor:default;
+}
+
+.contenedor-cards-boto-usu:hover{
+  transition: 500ms;
+  background-color: rgb(194, 192, 192);
+  clip-path: polygon(0% 0%, 83% 0, 100% 50%, 83% 100%, 0% 100%);
+  border-radius: 10px;
+
+}
+.contenedor-cards-boto-usu:hover .contenedor-cat-des-boto > p {
+  font-size: 12px;
+  transition: 400ms;
+
+}
