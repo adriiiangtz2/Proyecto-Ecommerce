@@ -12,7 +12,7 @@ $estado = CatFavorito::estado($proid);
     <?= Html::button( ' ', ['onclick' => 'favoritos(' . $favoritos->fav_id .','.$estado. ')',
      'class' => 'botonfavorito fas fa-heart',
      'id' => 'icon-fav1' . $favoritos->fav_id . '',
-     'style'=>'font-size:19px;color:#ca2020;',
+     'style'=>'font-size:19px;color:black;',
      "data-id"=>$favoritos->fav_id]); ?>
     <?php ActiveForm::end(); ?>
 </div>

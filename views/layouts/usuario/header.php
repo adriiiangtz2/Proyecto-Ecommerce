@@ -21,14 +21,14 @@ echo Nav::widget([
     'encodeLabels' => false,
     'items' => [
         [
-            'label' => 'Administrador',
+            'label' => 'ADMINISTRADOR',
             'items' => UserManagementModule::menuItems(),
             'visible' => Yii::$app->user->isSuperAdmin,
             //visible solo para el admin
         ],
 
         [
-            'label' => 'Menu',
+            'label' => 'MENU',
             'url' => ['/site/menu'],
             'visible' => Yii::$app->user->isSuperAdmin,
         ],
@@ -42,7 +42,7 @@ echo Nav::widget([
     'encodeLabels' => false,
     'items' => [
         [
-            'label' => '<i class="fas fa-tshirt"></i>' . ' Productos',
+            'label' => '<i class="fas fa-tshirt"></i>' . ' PRODUCTOS',
             'url' => ['/producto/productos'],
             'visible' => !Yii::$app->user->isSuperAdmin,
             // se declara en el controlador como free para que tengan acceso sin estar logeado
@@ -72,7 +72,7 @@ echo Nav::widget([
         // ],
 
         [
-            'label' => 'Registrar',
+            'label' => 'REGISTRAR',
             'url' => ['/usuario/registrar-usuario'], //se delcara en el controllador usuario por que aparecera la vista directamente // como no tiene el negado , desaparecera cuando se registre
             'visible' =>
             Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
@@ -87,31 +87,31 @@ echo Nav::widget([
 
         // MENU DESPLEGABLE PARA EL USUARIO INFO
         [
-            'label' => '<i class="fas fa-sort-amount-down"></i>' . ' Cuentas y Listas', 'url' => ['/usuario/botonera'],
+            'label' => '<i class="fas fa-sort-amount-down"></i>' . ' CUENTAS Y LISTAS', 'url' => ['/usuario/botonera'],
             'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
             'items' => [
                 ['label' => '<i class="fas fa-user"></i> ' . ' Mi Cuenta', 'url' => '/usuario/botonera'],
 
                 [
-                    'label' => '<i class="fas fa-credit-card"></i>' . ' Mis Tarjetas', 'url' => ['/cat-tarjeta/registrar'],
+                    'label' => '<i class="fas fa-credit-card"></i>' . ' MIS TARJETAS', 'url' => ['/cat-tarjeta/registrar'],
                     'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
                 ],
 
                 [
-                    'label' => '<i class="far fa-address-card"></i>' . ' Domicilio', 'url' => ['/domicilio/mostrar'],
+                    'label' => '<i class="far fa-address-card"></i>' . ' DOMICILIO', 'url' => ['/domicilio/mostrar'],
                     'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
                 ],
 
-                ['label' => '<i class="fas fa-boxes"></i>' . ' Mis Pedidos', 'url' => '#'],
+                ['label' => '<i class="fas fa-boxes"></i>' . ' MIS PEDIDOS', 'url' => '#'],
             ],
         ],
 
         //BOTON INICIO DE SESION
         Yii::$app->user->isGuest ? [
-            'label' => 'Iniciar Sesion',
+            'label' => 'INICIAR SESION',
             'url' => ['/user-management/auth/login'],
         ] : [
-            'label' => 'Cerrar Sesion',
+            'label' => 'CERRAR SESION',
             'url' => ['/user-management/auth/logout'],
         ] /* '<li>'
                     . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])

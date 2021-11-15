@@ -11,6 +11,7 @@
 }
 
 .colum-4:hover {
+  transition: 300ms;
   transform: translateY(-15px);
   box-shadow: 50px 20px 66px #b8b8b8, -20px -20px 66px #ffffff;
  
@@ -22,11 +23,13 @@
 .columm4:hover .contenedor-card-foter > a{
   color: #000;
   transition: 300ms;
+  animation: movercategoriaizq 300ms linear;
 }
 .columm4:hover .contenedor-card-foter > p{
   color: rgb(80, 80, 80);
   transition: 300ms;
   -webkit-text-stroke-width: thick;
+  animation: movercategoriaizq 300ms linear;
 }
 .contenedor-card-foter{
   padding-left: 20%;
@@ -45,28 +48,88 @@
   font-size: 12px;
 }
 .precio-favorito {
+  display: none;
+  /* position: absolute;
+  top: 60%;
+  background: white;
+  left: 9%;
+  text-decoration-line: line-through;
+  border-radius: 2px; */
+}
+.columm4:hover .precio-favorito {
+  display: block;
+  transition: 300ms;
+  animation: movercategoria 300ms linear;
   position: absolute;
   top: 60%;
   background: white;
   left: 9%;
   text-decoration-line: line-through;
+  border-radius: 2px;
 }
 .total-favorito {
+  display: none;
+  /* position: absolute;
+  top: 70%;
+  background: antiquewhite;
+  left: 9%;
+  border-radius: 2px; */
+}
+.columm4:hover .total-favorito {
+  display: block;
+  transition: 300ms;
+  animation: movercategoria 300ms linear;
   position: absolute;
   top: 70%;
   background: antiquewhite;
   left: 9%;
+  border-radius: 2px;
 }
 .descuento-favorito {
-  margin: 0;
+  display: none;
+  /* margin: 0;
   position: absolute;
-  top: 6%;
-  background: #fdaaaa;
-  left: 24%;
+  top: 4%;
+  background: #cc0021;
+  left: 20%;
   font-weight: 700;
   border-radius: 2px;
-  -webkit-text-stroke-width:10%;
+-webkit-text-stroke-width: 10%;
+  color: white; */
 }
+.columm4:hover .descuento-favorito {
+  display: block;
+  transition: 300ms;
+  animation: movercategoriaizq 300ms linear;
+  margin: 0;
+  position: absolute;
+  top: 4%;
+  background: #cc0021;
+  left: 20%;
+  font-weight: 700;
+  border-radius: 2px;
+-webkit-text-stroke-width: 10%;
+  color: white;
+}
+@keyframes movercategoria {
+  from {
+    transform: translateY(-200%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+@keyframes movercategoriaizq {
+  from {
+    transform: translateX(-200%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+
+
 
 
 .contendor-ningun-articulo{

@@ -9,10 +9,14 @@ body {
 }
 a {
   text-decoration: none;
-  color: rgb(71, 71, 71);
+  color:#000;
+    font-weight: 600;
+
 }
 a:hover{
-  color: #000;
+  color: rgb(20, 20, 20);
+
+  ;
 }
 p {
   color: #555;
@@ -37,11 +41,14 @@ nav ul {
 }
 nav ul li {
   display: inline-block;
-  margin-right: 20px;
+
   /* border: 1px solid black; */
 }
 nav ul li a:hover{
-  border-bottom:2px solid black;
+  border-bottom:3px solid black;
+  transition: 100ms;
+  background-color: rgba(128, 128, 128, 0.13);
+  border-radius: 4px;
 }
 .contenedor {
   max-width: 1300px;

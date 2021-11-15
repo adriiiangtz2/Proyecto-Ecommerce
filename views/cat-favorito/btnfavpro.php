@@ -16,7 +16,7 @@ $es = $estado == 1;
     <?= Html::button(' ', [
         'id' => 'icon-fav' . $productos->pro_id . '',
         'onclick' => 'favoritoIcon(' . $productos->pro_id . ',' . $estado . ')',
-        'style' => 'font-size:19px; color:#ca2020;',
+        'style' => 'font-size:19px; color:black;',
         'class' => 'botonfavorito ' . ($es ? 'fas fa-heart' : 'far fa-heart'),
     ]) ?>
     <?php ActiveForm::end(); ?>
