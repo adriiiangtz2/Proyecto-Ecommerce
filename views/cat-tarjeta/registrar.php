@@ -1,5 +1,5 @@
+// ! Vista para agregar tarjetas de usuario, datos llegan por controlador
 <?php
-
 use app\models\Usuario;
 use yii\bootstrap4\Html;
 use app\models\CatFavorito;
@@ -8,16 +8,7 @@ use kartik\widgets\Select2;
 use yii\bootstrap4\ActiveForm;
 // hola
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Formulario de Tarjeta de Crédito Dinámico</title>
-	<link href="https://fonts.googleapis.com/css?family=Lato|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="css/estilos.css">
-</head>
+
 <body class="body-tarjeta">
 	<div class="contenedor-tarjeta">
 		<div class="tarjet">
@@ -125,6 +116,7 @@ use yii\bootstrap4\ActiveForm;
 									<!-- <button type="submit" class="btn-enviar">Enviar</button> -->
 									<div class="row justify-content-center">
 										<div class="form-group">
+											//! Funcion qu guarda la infor de las tarjetas 
 											<?= Html::button('Guardar', ['class' => 'btntarjeta2','onclick' => 'recargarTarjeta()',]) ?>
 											<?php ActiveForm::end(); ?>
 										</div>
@@ -138,13 +130,12 @@ use yii\bootstrap4\ActiveForm;
 									
 								</div>
 								<hr>
-								<!-- SE RENDERIZA LA VISTA REGISTRAR -->
 								<div  id="idmostrar" class="contenedor-izq-tarjeta" style="height:376px;overflow-x:hidden;width:106%;padding:18px;">
+							    //! Se renderia la vista mostrar  -->
 								<?= $this->render('mostrar') ?>  
 							</div> 
 							
 						</div>
 						<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 					</body>
-					</html>
-
+				

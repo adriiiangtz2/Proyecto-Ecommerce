@@ -1,14 +1,16 @@
+//! Abrir el modal vista usuario/info-datos
 function modalusu(id){
     // console.log(id);
     $('#ventana-modalusu'+id).modal();
   }
-  
+//! Abrir el modal vista usuario/info-acceso
 function modalacceso(id){
     // console.log(id);
     $('#ventana-modalacceso'+id).modal();
   }
   
-//FUNCIONAMIENTO EDITAR
+//* ########## FUNCIONAMIENTO EDITAR DE DOS CONTENEDORES #########3
+//! cambia la info de contenedor funcion union
 function editardatos(id)
 {
   let nombre = $("#usu-nombre").val();
@@ -28,11 +30,9 @@ function editardatos(id)
       } 
     });
 }
-
-//FUNCIONAMIENTO EDITAR
+//! cambia la info de contenedor funcion union
 function editardatos2(id)
 {
-  
   //manda el controler
   $.post('/usuario/dato2',{id:id}, function (data){
     console.log("hola"+data.html);
@@ -42,12 +42,16 @@ function editardatos2(id)
     } 
   });
 }
+//! Se ejecutan las dos funciones anteriores vista usuario/editardatos y titulo
 function editarUnion(id)
 {
   editardatos(id);
   editardatos2(id);
 }
+//* ########## TERMINA FUNCIONAMIENTO EDITAR DE DOS CONTENEDORES #########3
 
+
+//! Funcion que edita la info de acceso vista usuario/editaracceso
 function editaracceso(id)
 {
   let username = $("#user-username").val();
@@ -66,7 +70,7 @@ function editaracceso(id)
     } 
   });
 }
-
+//! Funcion que se usa en usuario/informacion
 function eliminarcuenta(id){
   console.log(id);
   $.post('/usuario/estatus',{id:id}, function (data){

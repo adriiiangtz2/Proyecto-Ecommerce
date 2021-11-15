@@ -1,3 +1,4 @@
+// ! Vista Modal bootstrap4 Se renderiza en informacion
 <?php 
 use kartik\widgets\DatePicker;
 use yii\bootstrap4\ActiveForm;
@@ -20,9 +21,11 @@ use yii\bootstrap4\ActiveForm;
       <div class="row" style="">
     
       <div class="col-md-3 ">
+      // * se les asigna una id a cada input para editar
        <p><b> <?= $form->field($user, 'username')->textInput(['maxlength' => 255, 'autocomplete'=>'off','id' => 'user-username']) ?>   </b></p>
       </div>
       <div class="col-md-3">
+        // TODO solo la contra no trae datos para mostrar en input pero si para agregar y editar
       <p><b> <?= $form->field($user, 'password')->passwordInput(['maxlength' => 255, 'autocomplete'=>'off','id' => 'user-password']) ?>  </b></p>
       </div>
       <div class="col-md-3">
@@ -36,6 +39,7 @@ use yii\bootstrap4\ActiveForm;
   </div>
   <div class="modal-footer">
     <button type="button" class="editar-btn-tarjeta" data-dismiss="modal">Cerrar <i class="fas fa-window-close"></i></button>
+    // * Se anda el id para proceso de editadon
     <button type="button" class="eliminar-btn-tarjeta" onclick="editaracceso(<?=$user->id ?>)">Guardar <i class="far fa-save"></i></button>
   </div>
 </div>

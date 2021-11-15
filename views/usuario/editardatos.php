@@ -1,3 +1,4 @@
+// ! Vista Modal bootstrap4 Se renderiza en informacion
 <?php 
 use kartik\widgets\DatePicker;
 use yii\bootstrap4\ActiveForm;
@@ -19,6 +20,8 @@ use yii\bootstrap4\ActiveForm;
       <?php $form = ActiveForm::begin(); ?>
       <div class="row">  
       <div class="col-md-3">
+        // ! Datos llegan por compact 
+        // * se les asigna una id a cada input para editar
             <p><b> <?= $form->field($usuario, 'usu_nombre')->textInput(['maxlength' => true, 'id' => 'usu-nombre']) ?></b></p>
           </div>
          <div class="col-md-3">
@@ -33,6 +36,7 @@ use yii\bootstrap4\ActiveForm;
   </div>
   <div class="modal-footer">
     <button type="button" class="editar-btn-tarjeta" data-dismiss="modal">Cerrar <i class="fas fa-window-close"></i></button>
+    // * Se anda el id para proceso de editadon
     <button type="button" class="eliminar-btn-tarjeta" onclick="editarUnion(<?= $usuario->usu_id ?>)">Guardar <i class="far fa-save"></i></button>
   </div>
 </div>

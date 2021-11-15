@@ -1,9 +1,9 @@
+// ! Vista para registrar a un usuario no logeado
+// ! Se utiliza en layout y se trae desde el widget Nav
 <?php
-
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 ?>
-<!-- creamos esta vista una vez mandada en render -->
 <div>
     <?php $form = ActiveForm::begin(); ?>
     <div class="account-page" >
@@ -18,8 +18,8 @@ use yii\bootstrap4\ActiveForm;
                             <h3>Registrate</h3>
                         </div>
                         <div class="row">
-                            <!-- INICIO  DE LOS FORMULARIOS -->
-                            <!-- se cambian las varianles user y usuario-->
+                            //*  INICIO  DE LOS FORMULARIOS -->
+                            // ! se cambian las varianles user y usuario que llegan del controler-->
                             <div class="col-md-6 ">
                                 <?= $form->field($user, 'username')->textInput(['maxlength' => 255, 'autocomplete'=>'off']) ?>   
                             </div>
@@ -46,7 +46,7 @@ use yii\bootstrap4\ActiveForm;
                             <div class="col-md-4">
                                 <?= $form->field($usuario, 'usu_materno')->textInput(['maxlength' => true]) ?>
                             </div>
-                            <!-- FIN  DE LOS FORMULARIOS -->
+                            // *  FIN  DE LOS FORMULARIOS -->
                         </div>
                         <div class="row justify-content-center">
                             <div>

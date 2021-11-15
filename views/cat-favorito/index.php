@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Cat Favorito', ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Vista Favorito', ['cat-favorito/favorito'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('Vista Boton', ['cat-favorito/boton'], ['class' => 'btn btn-success']) ?>       
+        <?= Html::a('Vista Boton', ['cat-favorito/boton'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

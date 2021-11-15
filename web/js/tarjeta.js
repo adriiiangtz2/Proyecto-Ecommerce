@@ -1,3 +1,4 @@
+//* ###### EMPIEZAN FUNCIONES VISTA TARJETA/REGISTRAR
 const tarjeta = document.querySelector("#tarjeta"),
 btnAbrirFormulario = document.querySelector("#btn-abrir-formulario"),
 btnAbrirTarjeta = document.querySelector("#desplegar-tarjeta-info"),
@@ -79,7 +80,7 @@ $("#cattarjeta-tar_expiracion").on("change", function (e) {
   mesExpiracion.textContent = $("#cattarjeta-tar_expiracion").val();
 });
 
-// -------------------------CAMBIAR LAS CLASES DE MOSTRAR------------------------
+// TODO  -------------------------CAMBIAR LAS CLASES DE MOSTRAR------------------------
 //para que se le asigne un id a cada vez que realice el ciclo la vista mostrar
 //se le cambia las clases para mostrar y no mostrar el contenedor de info
 function desplegar(id){
@@ -91,7 +92,10 @@ function desplegar(id){
     $(`#mostrar${id}`).removeClass("mostrar2").addClass("mostrar");
   }
 };
-//DESPLEGAR DE VISTA MOSTRAR
+//* ###### TERMINA FUNCIONES VISTA TARJETA/REGISTRAR
+
+
+//! Se utiliza en cat-tarjeta/registrar guarda la info del form
 function recargarTarjeta() {
   let numero = $("#inputNumero").val();
   let nombre = $('#inputNombre').val();
@@ -108,7 +112,7 @@ function recargarTarjeta() {
   });
 }
 
-//funcion eliminar Vista mostrar 
+//! funcion eliminar Vista cat-registrar/mostrar 
 function eliminar(id) {
   console.log('imprime el id :');
   console.log({id});
@@ -119,16 +123,10 @@ function eliminar(id) {
     }
   });
 }
-
-//MOSTRAR LA VISTA MODAL DEPENDIENDO DEL ID DE VISTA EDITAR 
-function modal(id){
-  // console.log(id);
-  $('#ventana-modal'+id).modal();
-}
-
-//FUNCIONAMIENTO EDITAR
+//! funcion editar Vista cat-registrar/mostrar 
 function editarTarjeta(id)
 {
+
   console.log(id);
   let nombre = $("#inputNom_"+id).val();
   let expiracion = $("#expiracion_"+id).val();
@@ -137,16 +135,18 @@ function editarTarjeta(id)
   //manda el controler
     $.post('/cat-tarjeta/editar', {id:id,nombre:nombre,expiracion:expiracion}, function (data){
       if (data) {
-        console.log('hola');
           $('#mostrar'+id).html(data.html);
-          console.log('#mostrar ------'+id);
+          $('#ventana-modal'+id).modal('hide');
+         
       } 
     });
 }
-  
 
-
-
+//! Funcion para abir el modal de cat-tarjeta/editar
+function modal(id){
+  // console.log(id);
+  $('#ventana-modal'+id).modal();
+}
 
 // function modal(id){
 //   $.get('cat-tarjeta/editar',{id:id}).done(function (d){

@@ -1,3 +1,4 @@
+//! Vista carruses se usa en vista Layout/carrusel
 window.addEventListener('load', function(){
 	new Glider(document.querySelector('.carousel__lista'), {
 		slidesToShow: 1,

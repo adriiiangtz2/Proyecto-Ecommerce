@@ -1,7 +1,8 @@
+//! MODAL para editar las tarjetas, los datos lleagn por compact
+//! Se renderiza en mostrar
 <?php 
 use kartik\widgets\DatePicker;
 use yii\bootstrap4\ActiveForm;
-
 ?>
 <!-- MODEL EMERGENTE BOOSTRAP -->
 <div id="ventana-modal<?= $tarjeta->tar_id ?>" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
