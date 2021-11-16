@@ -1,12 +1,7 @@
 <?php
 
-use yii\bootstrap4\Html;
-use yii\widgets\ListView;
-use yii\bootstrap4\ActiveForm;
-
 ?>
 <!-- tittle -->
-<?= $this->render('/layouts/usuario/header') ?>
 <div class="small-container">
 
     <div class="row row-2">
@@ -16,10 +11,9 @@ use yii\bootstrap4\ActiveForm;
         <h1>Productos</h1>
 
         <div class="produc-form product">
-            <?php $form = ActiveForm::begin(); ?>
 
             <div id="accordion">
-                <div class="card">
+                <div>
                     <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
                             <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -35,7 +29,7 @@ use yii\bootstrap4\ActiveForm;
                             <div class="col">
                                 <div class="collapse multi-collapse" id="multiCollapseExample1">
                                     <div class="card card-body">
-                                        <?= Html::a("De menor a mayor precio", ['/site/producto', 'num' => '1']) ?>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -43,27 +37,11 @@ use yii\bootstrap4\ActiveForm;
                     </div>
                 </div>
             </div>
-            <?php ActiveForm::end(); ?>
         </div>
 
         <div class="small-container">
             <div class="filas">
-                <?=
-                ListView::widget([
-                    'dataProvider' => $dataProvider,
-                    'options' => [
-                        'tag' => 'div',
-                        'class' => 'row',
-                        'id' => 'list-wrapper',
-                    ],
-                    'itemView' => 'productoitem',
-                    'itemOptions' => [
-                        'tag' => false,
-                    ],
-                    'layout' => "<div class='col-md-12'>{summary}</div>{items}<div class='col-md-12'>{pager}</div>",
-                ]);
-                ?>
-
+                <?= $this->render('listView',compact('searchModel','dataProvider')); ?>
             </div>
         </div>
     </div>

@@ -11,14 +11,14 @@ use yii\widgets\ActiveForm;
 <div class="producto-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        'action' => ['producto/productos'],
         'method' => 'get',
     ]); ?>
 
     <?php // $form->field($model, 'pro_id') 
     ?>
 
-    <?php // $form->field($model, 'pro_nombre') 
+    <?= $form->field($model, 'pro_nombre')
     ?>
 
     <?php // $form->field($model, 'pro_precio') 
@@ -39,7 +39,7 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'pro_estatus') 
     ?>
 
-    <?php // echo $form->field($model, 'pro_color') 
+    <?= $form->field($model, 'pro_color')
     ?>
 
     <?php // echo $form->field($model, 'pro_fktipo') 
@@ -59,11 +59,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'menorPrecio') ?>
 
+    <?= $form->field($model, 'mayorPrecio') ?>
+
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Limpiar', ['productos','orden' => '0','producto' => '0'] , ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
+    <?= Html::a('Combinado', ['productos', 'orden'                 => '0']) ?>
+    <?= Html::a('Ascendente', ['productos', 'orden'                 => '1']) ?>
+    <?= Html::a('Descendente', ['productos', 'orden'               => '2']) ?>
+    <?= Html::a('Todos los Precios', ['productos', 'producto'      => '0']) ?>
+    <?php // Html::a('Hasta 500', ['productos', 'producto'         => '3']) ?>
+    <?= Html::a('Más de 1000', ['productos', 'producto'            => '4']) ?>
 </div>

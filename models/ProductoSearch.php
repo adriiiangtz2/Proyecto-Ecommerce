@@ -12,6 +12,8 @@ use app\models\Producto;
 class ProductoSearch extends Producto
 {
     public $marca;
+    public $menorPrecio;
+    public $mayorPrecio;
     /**
      * {@inheritdoc}
      */
@@ -19,8 +21,8 @@ class ProductoSearch extends Producto
     {
         return [
             [['pro_id', 'pro_fktipo', 'pro_fkmarca', 'pro_fktienda'], 'integer'],
-            [['pro_nombre', 'pro_fecha', 'pro_descripcion', 'pro_dimensiones', 'pro_imagen', 'pro_estatus', 'pro_color', 'marca', 'tipo', 'tienda', 'menorPrecio'], 'safe'],
-            [['pro_precio','pro_descuento'], 'number'],
+            [['pro_nombre', 'pro_fecha', 'pro_descripcion', 'pro_dimensiones', 'pro_imagen', 'pro_estatus', 'pro_color', 'marca', 'tipo', 'tienda', 'menorPrecio', 'mayorPrecio'], 'safe'],
+            [['pro_precio', 'pro_descuento'], 'number'],
         ];
     }
 
@@ -40,12 +42,56 @@ class ProductoSearch extends Producto
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $producto = null, $orden = null)
     {
         $query = Producto::find();
 
         // add conditions that should always apply here
         $query->joinWith('proFkmarca');
+
+        // if(isset($params['ProductoSearch']['menorPrecio']) && $params['ProductoSearch']['menorPrecio'] !=""){
+        //     $query->andWhere('>','pro_precio', $params['ProductoSearch']['menorPrecio']);
+        // }
+        // if (isset($params['ProductoSearch']['mayorPrecio']) && $params['ProductoSearch']['mayorPrecio'] != "") {
+        //     $query->andWhere('<', 'pro_precio', $params['ProductoSearch']['mayorPrecio']);
+        // }
+        if (isset($params['ProductoSearch']['menorPrecio']) && $params['ProductoSearch']['menorPrecio'] != '') {
+            $query->andwhere(['>', 'pro_precio', $params['ProductoSearch']['menorPrecio']]);
+        }
+        if (isset($params['ProductoSearch']['mayorPrecio']) && $params['ProductoSearch']['mayorPrecio'] != '') {
+            $query->andwhere(['<', 'pro_precio', $params['ProductoSearch']['mayorPrecio']]);
+        }
+
+        if (isset($producto) && $producto == 0) {
+            unset($_SESSION['producto']);
+        }
+        if (isset($orden) && $orden == 0) {
+            unset($_SESSION['orden']);
+        }
+        if (!isset($producto) && isset($_SESSION['producto'])) {
+            $producto = $_SESSION['producto'];
+        }
+        if (isset($producto)) {
+            $_SESSION['producto'] = $producto;
+            if ($producto == 3) {
+                $query->andwhere(['<', 'pro_precio', 500]);
+            } elseif ($producto == 4) {
+                $query->andwhere(['>', 'pro_precio', 1000]);
+            }
+        }
+
+        if (!isset($orden)) {
+            $orden = $_SESSION['orden'];
+        }
+        if (isset($orden)) {
+            $_SESSION['orden'] = $orden;
+            if ($orden == 1) {
+                $query->orderBy(['pro_precio' => SORT_ASC]);
+            } elseif ($orden == 2) {
+                $query->orderBy(['pro_precio' => SORT_DESC]);
+            }
+        }
+        $query->all();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -98,7 +144,7 @@ class ProductoSearch extends Producto
             ->andFilterWhere(['like', 'pro_estatus', $this->pro_estatus])
             ->andFilterWhere(['like', 'pro_color', $this->pro_color])
             ->andFilterWhere(['like', 'pro_fkmarca', $this->marca]);
-            
+
         return $dataProvider;
     }
 }

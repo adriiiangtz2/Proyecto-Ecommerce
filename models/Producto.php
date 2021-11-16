@@ -37,6 +37,7 @@ class Producto extends \yii\db\ActiveRecord
     public $tipo;
     public $tienda;
     public $menorPrecio;
+    public $mayorPrecio;
     public $descuentoCompra;
     /**
      * {@inheritdoc}
@@ -96,7 +97,8 @@ class Producto extends \yii\db\ActiveRecord
             'marca'           => 'Marca',
             'tipo'            => 'Tipo',
             'tienda'          => 'Tienda',
-            'menorPrecio'     => 'Menor precio',
+            'menorPrecio'     => 'Precio Mínimo de Producto',
+            'mayorPrecio'     => 'Precio Mayor de Producto',
         ];
     }
 
