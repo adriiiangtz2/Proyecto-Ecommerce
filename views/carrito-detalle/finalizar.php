@@ -24,7 +24,7 @@ endforeach;
         <div class="col-md-8">
             <p>Productos:</p>
             <p>Impuestos:</p>
-            <p>Envio:</p>
+            <p>Envío:</p>
         </div>
         <div class="col-md-4 text-right">
             <p>$<?= $total ?></p>

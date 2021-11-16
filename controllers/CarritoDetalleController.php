@@ -123,6 +123,10 @@ class CarritoDetalleController extends Controller
     {
         return $this->render('carrito');
     }
+    public function actionPedidos()
+    {
+        return $this->render('pedidos');
+    }
     /* Registra un carro nuevo en caso de no haber uno ya, de lo contrario solo añade el producto al carro */
     public function actionAgregarProducto()
     {

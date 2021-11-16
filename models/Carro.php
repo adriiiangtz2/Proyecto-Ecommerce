@@ -157,4 +157,8 @@ class Carro extends \yii\db\ActiveRecord
     {
         return self::find()->where(['and',['car_fkusuario' => Usuario::usuario()->usu_id], ['car_estatus' => 'Apartado']])->one();
     }
+    public static function carroPagado()
+    {
+        return self::find()->where(['and',['car_fkusuario' => Usuario::usuario()->usu_id], ['car_estatus' => 'Pagado']])->all();
+    }
 }

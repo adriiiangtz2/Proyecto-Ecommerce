@@ -105,7 +105,7 @@ echo Nav::widget([
                     'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
                 ],
 
-                ['label' => '<i class="fas fa-boxes"></i>' . ' MIS PEDIDOS', 'url' => '#'],
+                ['label' => '<i class="fas fa-boxes"></i>' . ' MIS PEDIDOS', 'url' => '/carrito-detalle/pedidos'],
             ],
         ],
 

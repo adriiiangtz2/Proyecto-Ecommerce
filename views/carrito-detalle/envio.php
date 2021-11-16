@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header" style="background-color:#9da2cc3b;">
-                <h5 class="modal-title" id="exampleModalLongTitle"><b>METODO DE ENVIO</b></h5>
+                <h5 class="modal-title" id="exampleModalLongTitle"><b>METODO DE ENVÍO</b></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

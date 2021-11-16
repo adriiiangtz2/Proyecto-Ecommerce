@@ -2,7 +2,7 @@
 <!-- Consulta el metodo de envio actualmente en el carro -->
 <?php $envio = \app\models\CarritoDetalle::envioCheck(); ?>
 <div class="nombreCheck">
-    <h6><b>3 - ENVIO</b></h6>
+    <h6><b>3 - ENVÍO</b></h6>
 </div>
 <div class="div-vista-checkout">
     <div>

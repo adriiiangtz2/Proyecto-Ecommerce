@@ -2,7 +2,7 @@
 <!-- Consulta la tarjeta que esta registrado actualmente en el carro -->
 <?php $tarjeta = \app\models\CarritoDetalle::tarjetaCheck(); ?>
 <div class="nombreCheck">
-    <h6><b>2 - METODO DE PAGO</b></h6>
+    <h6><b>2 - MÉTODO DE PAGO</b></h6>
 </div>
 <div class="div-vista-checkout">
     <div>
