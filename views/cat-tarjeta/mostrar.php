@@ -8,7 +8,7 @@ use yii\bootstrap4\Html; ?>
 		<div class="tarjetas-guardadas">
 			<div class="infos-tarjetas" id="infos-tarjetas<?= $tarjeta->tar_id ?>">
 			<!-- acorta una cadena de caracteres a una parte en espesifico -->
-			<p><b><?= $tarjeta->tar_financiera ?></b>   con terminacion: <b><?php echo substr($tarjeta->tar_numtarjeta,12,16); ?></b></p>
+			<p><b><?= $tarjeta->tar_financiera ?></b>   con terminación: <b><?php echo substr($tarjeta->tar_numtarjeta,12,16); ?></b></p>
 			<p class="expira-fin"><b><?= $tarjeta->tar_expiracion ?></b></p>
 			<div>
 				<!-- // TODO  Funcion que cambie de clases a contenedor oculto -- -->

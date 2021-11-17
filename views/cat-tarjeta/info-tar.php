@@ -7,10 +7,10 @@
         <p><b>Nombre en la tarjeta:</b> <br> <?= $tarjeta->tar_nombre ?></p>
         <p><b>Tipo:</b> <br> <?= $tarjeta->tar_tipo ?></p>
         <p><b>Entidad F. :</b> <br> <?= $tarjeta->tar_financiera ?></p>
-        <p><b>Expiracion:</b> <br> <?= $tarjeta->tar_expiracion ?></p>
+        <p><b>Expiración:</b> <br> <?= $tarjeta->tar_expiracion ?></p>
     </div>
     <div style="display:flex;flex-direction: column;justify-content: space-between;">
-    <p><b>Direccion de facturacion:</b></p>
+    <p><b>Dirección de facturacion:</b></p>
     <p>Traer datos de la tabla domicilio</p>
     <!-- VENTANA EMERGENTE MODAL EL ID BTN SOLO DIFERENCIA LOS BOTONES, LA FUNCION SI SE USA EN JS -->
     <div class="d-flex align-items-baseline" style="justify-content: space-around;">

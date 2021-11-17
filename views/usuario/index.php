@@ -15,8 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Registrar Usuario', ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('Registrar Usuario 2', ['usuario/registrar-usuario'], ['class' => 'btn btn-success']) ?>
+        <?php /*Html::a('Registrar Usuario', ['create'], ['class' => 'btn btn-success'])*/ ?>
+        <?= Html::a('Registrar Usuario', ['usuario/registrar-usuario'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Registrar Administrador', ['usuario/registraradmin'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

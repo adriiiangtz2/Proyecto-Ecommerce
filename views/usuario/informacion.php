@@ -36,7 +36,7 @@ $user = $usuario->usuFkuser;
         <div><h3><b>CERRAR SESIÓN EN TODOS LOS NAVEGADORES</b></h3></div>
         <p>Al elegir esta opción, se cerrará tu sesión en todos los navegadores web que hayas utilizado para acceder a la página web de adidas. Para volver a iniciar sesión, tendrás que ingresar tus credenciales.</p>
   <!--       // ? en proceso -->
-        <button class="botonCambiar-usuario">Cerrar sesion</button><br><br>
+        <button class="botonCambiar-usuario">Cerrar sesión</button><br><br>
         <p><b>GESTIONAR CUENTA</b></p><br>
       <!--  // ?  falta mandar una alerta al momento de eliminar la cuenta  -- -->
      <!--   // * Usuario/estatus es el nombre del action del controlador -->

@@ -12,8 +12,8 @@ use yii\bootstrap4\ActiveForm;
 <body class="body-tarjeta">
 	<div class="contenedor-tarjeta">
 		<div class="tarjet">
-			<h3><b>TUS METODOS DE PAGO GUARDADOS</b></h3>
-			<P>MUESTRA MIS METODOS DE PAGOS GUARDADOS EN EL PASO DEL PAGO</P>
+			<h3><b>TUS MÉTODOS DE PAGO GUARDADOS</b></h3>
+			<P>MUESTRA MIS MÉTODOS DE PAGOS GUARDADOS EN EL PASO DEL PAGO</P>
 			<!-- Tarjeta -->
 			<section class="tarjeta" id="tarjeta">
 				<div class="delantera">

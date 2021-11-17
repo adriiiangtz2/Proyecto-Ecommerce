@@ -12,7 +12,7 @@ $favo= \app\models\CatFavorito::favorito();
 <div id="identificador">
     <h3><b>MI LISTA DE DESEOS</b></h3>
     <!-- // TODO contador de las consultas  -->
-    <p><?=count($favo)?> ARTICULOS</p>
+    <p><?=count($favo)?> ARTÍCULOS</p>
     <div class="small-container">
         <div class="filas">
       <!--   //TODO ------------Inicial el condicional principal ----------------------------->

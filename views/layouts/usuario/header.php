@@ -5,6 +5,7 @@ use app\models\Usuario;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use app\models\CarritoDetalle;
+use webvimark\modules\UserManagement\models\User;
 use webvimark\modules\UserManagement\UserManagementModule;
 ?>
 <div class="menu-negro">
@@ -26,14 +27,14 @@ echo Nav::widget([
         [
             'label' => 'ADMINISTRADOR',
             'items' => UserManagementModule::menuItems(),
-            'visible' => Yii::$app->user->isSuperAdmin,
+            'visible' => Yii::$app->user->isSuperAdmin /* || User::hasRole('Administrador2') */,
             //visible solo para el admin
         ],
 
         [
             'label' => 'MENU',
             'url' => ['/site/menu'],
-            'visible' => Yii::$app->user->isSuperAdmin,
+            'visible' => Yii::$app->user->isSuperAdmin || User::hasRole('Administrador2'),
         ],
 
     ],
@@ -47,7 +48,7 @@ echo Nav::widget([
         [
             'label' => '<i class="fas fa-tshirt"></i>' . ' PRODUCTOS',
             'url' => ['/producto/productos'],
-            'visible' => !Yii::$app->user->isSuperAdmin,
+            'visible' => !Yii::$app->user->isSuperAdmin && !User::hasRole('Administrador2'),
             // se declara en el controlador como free para que tengan acceso sin estar logeado
         ],
 
@@ -55,7 +56,7 @@ echo Nav::widget([
             'label' => '<i class="fas fa-heart"></i>',
             'url' => ['/cat-favorito/favorito'], //no se delcara en controlador por que aparece cuando se registre //se niega ! por que aparecera cuando se registre // isGuest es para cuando no se ha registrado es cliente
             'visible' =>
-            !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
+            !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin && !User::hasRole('Administrador2'),
             // para que no aparezca cuando esta en admin y usuario no registrado
         ],
 
@@ -63,7 +64,7 @@ echo Nav::widget([
             'label' => '<i class="fas fa-shopping-cart"></i> <label id="contador">'.CarritoDetalle::carritoContador().'</label>',
             'url' => ['/carrito-detalle/carrito'],
             'visible' =>
-            !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
+            !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin && !User::hasRole('Administrador2'),
             // para que no aparezca cuando esta en admin y usuario no registrado
         ],
 
@@ -78,7 +79,7 @@ echo Nav::widget([
             'label' => 'REGISTRAR',
             'url' => ['/usuario/registrar-usuario'], //se delcara en el controllador usuario por que aparecera la vista directamente // como no tiene el negado , desaparecera cuando se registre
             'visible' =>
-            Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
+            Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin && !User::hasRole('Administrador2'),
         ],
 
         // [
@@ -91,9 +92,9 @@ echo Nav::widget([
         // MENU DESPLEGABLE PARA EL USUARIO INFO
         [
             'label' => '<i class="fas fa-sort-amount-down"></i>' . ' CUENTAS Y LISTAS', 'url' => ['/usuario/botonera'],
-            'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
+            'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin && !User::hasRole('Administrador2'),
             'items' => [
-                ['label' => '<i class="fas fa-user"></i> ' . ' Mi Cuenta', 'url' => '/usuario/botonera'],
+                ['label' => '<i class="fas fa-user"></i> ' . ' MI CUENTA', 'url' => '/usuario/botonera'],
 
                 [
                     'label' => '<i class="fas fa-credit-card"></i>' . ' MIS TARJETAS', 'url' => ['/cat-tarjeta/registrar'],
@@ -111,10 +112,10 @@ echo Nav::widget([
 
         //BOTON INICIO DE SESION
         Yii::$app->user->isGuest ? [
-            'label' => 'INICIAR SESION',
+            'label' => 'INICIAR SESIÓN',
             'url' => ['/user-management/auth/login'],
         ] : [
-            'label' => 'CERRAR SESION',
+            'label' => 'CERRAR SESIÓN',
             'url' => ['/user-management/auth/logout'],
         ] /* '<li>'
                     . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])

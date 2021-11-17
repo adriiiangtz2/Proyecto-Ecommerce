@@ -155,6 +155,27 @@ class UsuarioController extends Controller
         // direcciona a esta vista con render
         return $this->render('registrar', compact('usuario','user'));
     }
+    public function actionRegistraradmin(){
+        //todo lo del modelo se guarda (datos)en esas variables
+        $usuario = new Usuario();
+        $user    = new User();
+        //para guardar, cargar usuario y user al modelo, esto se toma de la funcion update
+        if ($this->request->isPost && $usuario->load($this->request->post()) && $user->load($this->request->post())) {
+            //copia codigo de wevimark/migrations/insert
+            $user->status = User::STATUS_ACTIVE;
+            //guarda y al mismo tiempo le asigna el rol
+            if($user->save()){
+                User::assignRole($user->id, 'Administrador2');
+            }
+            //me hacen falta llenar datos en tabla  usuario la id de user
+            $usuario->usu_fkuser = $user->id;   
+            $usuario->save();    
+            // Aqui se redirecciona una vez que guarde el usuario 
+            // return $this->redirect(['/', 'id' => $usuario->usu_id]);
+        }
+        // direcciona a esta vista con render
+        return $this->render('registraradmin', compact('usuario','user'));
+    }
 
     public function actionBotonera()
     {
