@@ -149,14 +149,13 @@ class DomicilioController extends Controller
     public function actionRegistrar()
     {
         $domicilio = new Domicilio();
-
-
         if ($this->request->isPost && $domicilio->load($this->request->post())) {
 
             $domicilio->dom_fkusuario = Usuario::usuario()->usu_id;
-            $domicilio->save();
+            if ($domicilio->save()) {
+                return $this->redirect('mostrar');
+            }
         }
-
         return $this->render('registro', compact('domicilio'));
     }
     public function actionCp()

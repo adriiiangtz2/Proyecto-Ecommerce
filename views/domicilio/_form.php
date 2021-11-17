@@ -17,21 +17,16 @@ use yii\bootstrap4\ActiveForm;
 <section id="contact-form-section">
 
     <div>
-        <h3><b> EDITAR DIRECCION </b></h3>
+        <h3><b> EDITAR DIRECCIÓN </b></h3>
     </div>
 
     <div class="row">
-        <div class="col-md-5 " style="border: 1px solid ;   background-color: #007185; border-right: 2px solid white;">
-            <div style="FONT-SIZE: 294px;
-    text-align: center;
-    color: white;">
+        <div class="editar_form col-md-5 ">
+            <div class="editar_logo">
                 <i class="fas fa-address-book"></i>
-
             </div>
-            <div class="" style="text-align: center;
-    color: white;">
-                <h1>INFORMACION DE DIRECCIONES</h1> <br>
-                <p style="color: white;">Aqui se puede editar la direccion</p>
+            <div class="registro_infor">
+                <h1>INFORMACIÓN DE DIRECCIONES</h1> <br>
             </div>
         </div>
         <div class="col-md-7" style="border: 1px solid; padding: 37px; border-left: 2px solid white;">

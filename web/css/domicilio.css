@@ -54,3 +54,17 @@
   background-color: rgb(219, 130, 130);
   border: none;
 }
+.editar_form {
+  border: 1px solid;
+  background-color: #007185;
+  border-right: 2px solid white;
+}
+.editar_logo {
+  font-size: 294px;
+  text-align: center;
+  color: white;
+}
+.registro_infor {
+  text-align: center;
+  color: white;
+}
