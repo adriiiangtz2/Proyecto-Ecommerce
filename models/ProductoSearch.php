@@ -77,6 +77,14 @@ class ProductoSearch extends Producto
                 $query->andwhere(['<', 'pro_precio', 500]);
             } elseif ($producto == 4) {
                 $query->andwhere(['>', 'pro_precio', 1000]);
+            } elseif ($producto == 5){
+                $query->andwhere(['=', 'pro_color', 'Blanco']);
+            } elseif ($producto == 6){
+                $query->andwhere(['=', 'pro_color', 'Negro']);
+            }elseif ($producto == 7){
+                $query->andwhere(['=', 'pro_color', 'Gris']);
+            }elseif ($producto == 8){
+                $query->andwhere(['=', 'pro_color', 'Rojo']);
             }
         }
 
@@ -95,7 +103,7 @@ class ProductoSearch extends Producto
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination' => ['pageSize' => 3]
+            'pagination' => ['pageSize' => 20]
         ]);
 
         $dataProvider->setSort([

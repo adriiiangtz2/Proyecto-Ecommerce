@@ -2,7 +2,7 @@
 
 use yii\bootstrap4\Html;
 ?>
-<div class='col-md-4'>
+<div class='col-md-3'>
     <?= Html::a(Html::img("/img/producto/{$model->pro_imagen}", ['class' => 'logo', 'style' => 'width: 100%;']), ['']) ?>
     <h4><?= Html::encode("{$model->pro_nombre}")  ?></h4>
     <?= $this->render('star', (['producto' => $model])) ?>

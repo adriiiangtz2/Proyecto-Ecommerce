@@ -1,0 +1,52 @@
+.mostrar-filtro {
+    display: none;
+}
+
+.mostrar-filtro2 {
+    display: block;
+    justify-content: center;
+    text-align: center;
+    background: #f5f5ff;
+    padding: 3px;
+}
+
+.desplegar-producto-filtro {
+    border: none;
+    background: transparent;
+    transition: step-end;
+}
+
+.desplegar-producto-filtro.active {
+    transform: rotate(90deg);
+}
+
+.contenedor-filtro {
+    background: #e5e5e5;
+    padding: 3px;
+}
+
+.input-filtros {
+    margin: 0;
+    background: #f7f7f7;
+    width: 80%;
+    height: 28px;
+}
+
+.input-filtro-colores {
+    border: 1px solid;
+    padding: 3px;
+    margin-right: 2px;
+}
+
+.contenedor-filtro-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 11%;
+}
+
+.contenedor-izq-producto {
+    border: 6px dashed #d1d1d1;
+    padding: 15px;
+    background: #f8f9fb;
+    height: fit-content;
+}
