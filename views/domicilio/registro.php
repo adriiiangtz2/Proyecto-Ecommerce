@@ -11,21 +11,18 @@ use yii\bootstrap4\ActiveForm;
 <section id="contact-form-section">
 
     <div>
-        <h3><b> AGREGAR UNA NUEVA DIRECCION </b></h3>
-        <p style="color: white">Aqui se puede agregar la direccion</p>
+        <h3><b> AGREGAR UNA NUEVA DIRECCIÓN </b></h3>
+        <p style="color: white">Aquí se puede agregar la dirección</p>
 
     </div>
 
     <div class="row">
-        <div class="col-md-5 " style="border: 1px solid ;   background-color:  #007185; border-right: 2px solid white;">
-            <div style="FONT-SIZE: 294px;
-    text-align: center;
-    color: white;">
+        <div class="editar_form col-md-5 ">
+            <div class="editar_logo">
                 <i class="fas fa-map-marked-alt"></i>
             </div>
-            <div class="" style="text-align: center;
-    color: white;">
-                <h1>INFORMACION DE DIRECCIONES</h1>
+            <div class="registro_infor">
+                <h1>INFORMACIÓN DE DIRECCIONES</h1>
             </div>
         </div>
         <div class="col-md-7" style="border: 1px solid; padding: 37px; border-left: 2px solid white;">
@@ -65,8 +62,7 @@ use yii\bootstrap4\ActiveForm;
                 <div class="col-md-12" style="display: flex; justify-content: center;">
 
                     <?= Html::submitButton('guardar', ['class' => '', 'style' => 'padding: 10px; border: 1px solid grey; border-radius: 14px;']) ?>
-                    <a href="mostrar">
-                    </a>
+
                 </div>
 
             </div>
