@@ -72,7 +72,7 @@
                                 'confirm' => '¿Estas seguro que quieres eliminar este domicilio?',
                                 'method' => 'post',
                             ],
-                        ]) : ' ' ?>
+                        ]) : Html::label('No se puede eliminar esta dirección porque está en uso', ['class' => 'btn btn-danger']); ?>
                    </div>
                </div>
 
