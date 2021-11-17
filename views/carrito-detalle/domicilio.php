@@ -7,7 +7,7 @@ use yii\bootstrap4\ActiveForm;
 ?>
 <!-- Modal para editar el domicilio en la base de datos de carro -->
 <!-- id para identificar el modal en el javaScript que se va a mostrar -->
-<div id="ventana-modaldomicilio<?= $domicilio->dom_id ?>" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div id="ventana-modaldomicilio<?= $dompre->dom_id ?>" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header" style="background-color:#9da2cc3b;">

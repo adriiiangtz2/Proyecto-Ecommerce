@@ -178,10 +178,4 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     {
         return CarritoDetalle::find()->andWhere(['cardet_fkproducto' => $id])->andWhere(['cardet_fkcarro' => Carro::carro()->car_id])->one();
     }
-    public static function productosPedidos()
-    {
-        /*  Se compara que el registro de carro corresponde al usuario logueado, que este tenga el estatus de 
-        'Pagado' y que los datos de carrito_detalle asociados al carro tengan estatus de 1 */
-        return self::find()->innerJoin('carro', 'car_id = cardet_fkcarro and car_fkusuario = ' . Usuario::usuario()->usu_id . ' and car_estatus = "Pagado" and cardet_estatus = 1')->all();
-    }
 }

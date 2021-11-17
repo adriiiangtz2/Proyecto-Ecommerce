@@ -1,16 +1,19 @@
 <div class="small-container-checkout card-page">
     <!-- Los productos se muestran en una tabla -->
-   
-        <!-- foreach que manda a llamar los datos del carro activo y los productos activos. $carritoDe es una variable que contiene
-    la consulta -->
-        <?php foreach (\app\models\Carro::carroPagado() as $a) : ?>
-             <table class="tabla">
-        <tr>
-            <th class="tha">Producto</th>
-            <th class="tha">Cantidad</th>
-            <th class="tha">SubTotal</th>
-        </tr>
-            <?php foreach (\app\models\CarritoDetalle::productosPedidos() as $pedido) : ?>
+
+    <?php /* foreach que manda a llamar todos los carros que fueron pagados por el usuario logueado */
+    foreach (\app\models\Carro::carroPagado() as $a) :
+    ?>
+        <table class="tabla">
+            <tr>
+                <th class="tha">Producto</th>
+                <th class="tha">Cantidad</th>
+                <th class="tha">SubTotal</th>
+            </tr>
+            <?php /* Con cada carro de la consulta anterior hay un foreach para que se muestren todos los productos en el carro si esto
+            es necesario */
+            foreach ($a->productosPagados() as $pedido) :
+            ?>
                 <tr>
                     <td>
                         <div class="card-info">
@@ -35,5 +38,5 @@
                 </tr>
             <?php endforeach; ?>
         <?php endforeach; ?>
-    </table>
+        </table>
 </div>

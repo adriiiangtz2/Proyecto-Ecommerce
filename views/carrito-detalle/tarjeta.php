@@ -4,7 +4,7 @@ use app\models\CatTarjeta;
 ?>
 <!-- Modal para editar la tarjeta en la base de datos de carro -->
 <!-- id para identificar el modal en el javaScript que se va a mostrar -->
-<div id="ventana-modaltarjeta<?= $tarjeta->tar_id ?>" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div id="ventana-modaltarjeta<?= $tarpre->tar_id ?>" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header" style="background-color:#9da2cc3b;">
@@ -36,7 +36,7 @@ use app\models\CatTarjeta;
                         <div class="d-flex input-tarjeta modaltarjeta">
                             <div class="d-flex">
                                 <div class="modalinput">
-                                     <!-- El input radio para identificar la tarjeta seleccionada. El id esta concatenado para que se junten
+                                    <!-- El input radio para identificar la tarjeta seleccionada. El id esta concatenado para que se junten
                                 los inputs del foreach. Se le da un valor con el id para saber cual tarjeta se selecciono -->
                                     <input class="input-tarjeta" type="radio" id="informacion<?= $tarjeta->tar_id ?>" name="tarjcolor" value="<?= $tarjeta->tar_id ?>">
                                 </div>

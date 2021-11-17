@@ -22,7 +22,7 @@
                             <br>
                             <!-- Se llama la funcion eliminarProducto al boton para eliminar el producto del carrito. El 1
                             concatenado es para diferenciar con la tabla de la vista carrito -->
-                            <a onclick="eliminarProducto(<?= $carritoDe->cardet_id ?>, 1)" href="">Elminar</a>
+                            <button class="botonCambiar" onclick="eliminarProducto(<?= $carritoDe->cardet_id ?>, 1)">Elminar</button>
                         </div>
                     </div>
                 </td>
