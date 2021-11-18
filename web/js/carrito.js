@@ -49,17 +49,21 @@ function guardarMetodo() {
 }
 /* Funcion para el boton Eliminar en carrito y carrito-final. Elimina el producto seleccionado del carrito */
 function eliminarProducto(id, num = null) {
-    /* Se lleva el dato salido del onclick al actionEliminar en el controller */
+  /* Se lleva el dato salido del onclick al actionEliminar en el controller */
   $.post('/carrito-detalle/eliminar', { id: id }, function (data) {
     if (data) {
       /* Se hace un if para comparar si el input-cant viene de la vista carrito o de carrito-final para el checkout */
       if (num != null) {
-         /* Si es num lo manda a carrito-final */
+        /* Si es num lo manda a carrito-final */
         $('#cardet').html(data.carfinal);
       } else {
         /* Si no encuentra un num lo manda a la vista carrito */
         $('#cardet').html(data.html);
       }
+      /* Se hace el cambio en el contador al eliminar un producto */
+      $('#contador').html(data.contador);
+      /* Se hace el cambio en el resumen de compra al eliminar producto */
+      $('#contenedor-carrito-final').html(data.importefinal);
     }
   });
 }
@@ -94,7 +98,7 @@ function registrarDomicilio() {
 }
 /* Funcion para guardar el cambio hecho en el modal de Tarjeta en el checkout */
 function registrarTarjeta() {
-   /* Mete en una variable la id del dato que se haya checado con el input radio */
+  /* Mete en una variable la id del dato que se haya checado con el input radio */
   let id = $('input[name=tarjcolor]:checked', '#modal-body-tarjeta').val();
   /* Se manda el dato a la funcion actionEditarTarjeta en el controller */
   $.post('/carrito-detalle/editar-tarjeta', { id: id }, function (data) {
@@ -125,20 +129,55 @@ function finalizarPago() {
   /* Variables que guardan los datos correspondientes del importe total y el iva */
   let total = $('#total-carro').val();
   let iva = $('#iva-carro').val();
+  let dom = $('#dom-existente').val();
+  let tar = $('#tar-existente').val();
   console.log(total);
-  /* Se llevan los datos al actionFinalizarPago en el controller */
-  $.post('/carrito-detalle/finalizar-pago', { total: total, iva: iva }, function (data) {
-    if (data) {
+  console.log(dom);
+  console.log(tar);
+  /* if para comparar si los datos de metodo de pago y domicilio estan presentes en carro. Si lo esta, este cierra el carrito correctamente */
+  if (dom != "" && tar != "") {
+    /* Se llevan los datos al actionFinalizarPago en el controller */
+    $.post('/carrito-detalle/finalizar-pago', { total: total, iva: iva }, function (data) {
+      if (data) {
 
-    } else {
-      /* El swal para dar una confirmacion que el pedido se ha completado */
-      Swal.fire(
-        'Su pedido se ha realizado correctamente.',
-        'Seras redireccionado.',
-        'success'
-      ).then(function () {
-        window.location = '/';
-      });
-    }
-  });
+      } else {
+        /* El swal para dar una confirmacion que el pedido se ha completado */
+        Swal.fire(
+          'Su pedido se ha realizado correctamente.',
+          'Seras redireccionado.',
+          'success'
+        ).then(function () {
+          window.location = '/';
+        });
+      }
+    }); /* Los siguientes else son para comparar si los datos son null */
+  } else if (dom == "" && tar == "") {
+    /* Si no hay domicilio ni metodo de pago se le va a pedir al usuario que agregue estos */
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Se requiere un domicilio y un método de pago para continuar ',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  } else if (dom != "" && tar == "") {
+    /* Si no hay metodo de pago se le va a pedir al usuario que agregue este dato */
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Se requiere un método de pago para continuar ',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  } else if (dom == "" && tar != "") {
+    /* Si no hay domicilio se le va a pedir al usuario que agregue este dato */
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Se requiere un domicilio para continuar ',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+
 }

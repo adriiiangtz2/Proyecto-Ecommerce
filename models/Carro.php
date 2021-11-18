@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\CatTarjeta;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -39,7 +40,7 @@ class Carro extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['car_iva', 'car_fecha', 'car_estatus', 'car_fkusuario', 'car_fkmetodo', 'car_fkdomicilio', 'car_fkenvio'], 'required'],
+            [['car_iva', 'car_fecha', 'car_estatus', 'car_fkusuario', 'car_fkmetodo', 'car_fkenvio'], 'required'],
             [['car_iva'], 'number'],
             [['car_fecha'], 'safe'],
             [['car_total'], 'number'],
@@ -136,7 +137,8 @@ class Carro extends \yii\db\ActiveRecord
         return $this->carFkusuario->usu_materno;
     }
     /*Concatenacion*/
-    public function getNombreCompleto(){ 
+    public function getNombreCompleto()
+    {
         return $this->usuarioNombre . ' ' . $this->usuarioPaterno . ' ' . $this->usuarioMaterno;
     }
 
@@ -155,10 +157,22 @@ class Carro extends \yii\db\ActiveRecord
     /* Funcion que trae el carro activo del usuario logueado */
     public static function carro()
     {
-        return self::find()->where(['and',['car_fkusuario' => Usuario::usuario()->usu_id], ['car_estatus' => 'Apartado']])->one();
+        return self::find()->where(['and', ['car_fkusuario' => Usuario::usuario()->usu_id], ['car_estatus' => 'Apartado']])->one();
     }
+    /* Funcion que trae todos los carros que fueron pagados del usuario logueado. Usado para la lista de pedidos */
     public static function carroPagado()
     {
-        return self::find()->where(['and',['car_fkusuario' => Usuario::usuario()->usu_id], ['car_estatus' => 'Pagado']])->all();
+        return self::find()->where(['and', ['car_fkusuario' => Usuario::usuario()->usu_id], ['car_estatus' => 'Pagado']])->all();
+    }
+    public function productosPagados()
+    {
+        /*  Se compara que el registro de carro corresponde al usuario logueado, que este tenga el estatus de 
+        'Pagado' y que los datos de carrito_detalle asociados al carro tengan estatus de 1 */
+        return CarritoDetalle::find()->innerJoin('carro', '' . $this->car_id . ' = cardet_fkcarro and car_fkusuario = ' . Usuario::usuario()->usu_id . ' and car_estatus = "Pagado" and cardet_estatus = 1')->all();
+    }
+    /* Funcion para traer consulta de cat_tarjeta */
+    public function getTarjetaCarro()
+    {
+        return CatTarjeta::find()->where(['tar_id' => $this->car_fktarjeta])->one();
     }
 }

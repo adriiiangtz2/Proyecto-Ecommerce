@@ -24,7 +24,7 @@ $total = 0;
                     <tr>
                         <td>
                             <div class="card-info">
-                                 <!-- Se llama la imagen del producto en cuestion con funcion getUrl -->
+                                <!-- Se llama la imagen del producto en cuestion con funcion getUrl -->
                                 <img src=<?= $carritoDe->cardetFkproducto->getUrl() ?>>
                                 <div>
                                     <!-- Nombre viene de la consulta -->
@@ -33,7 +33,7 @@ $total = 0;
                                     <small>Precio: $<?= $carritoDe->productoPrecio ?></small>
                                     <br>
                                     <!-- Se llama la funcion eliminarProducto al boton para eliminar el producto del carrito -->
-                                    <a onclick="eliminarProducto(<?= $carritoDe->cardet_id ?>)" href="">Elminar</a>
+                                    <button class="botonCambiar" onclick="eliminarProducto(<?= $carritoDe->cardet_id ?>)">Eliminar</button>
                                 </div>
                             </div>
                         </td>
@@ -51,41 +51,6 @@ $total = 0;
                         ?>
                     </tr>
                 <?php endforeach; ?>
-
-                <!-- </tr>
-        <tr>
-            <td>
-                <div class="card-info">
-                    <img src="images/buy-2.jpg">
-                    <div>
-                        <p>red printed t-shirt</p>
-                        <small>Price: $50.00 </small>
-                        <br>
-                        <a href="">Remove</a>
-                    </div>
-                </div>
-            </td>
-            <td><input type="number" value="1"></td>
-            <td>$80.00</td>
-        </tr>
-
-        </tr>
-        <tr>
-            <td>
-                <div class="card-info">
-                    <img src="images/buy-3.jpg">
-                    <div>
-                        <p>red printed t-shirt</p>
-                        <small>Price: $50.00 </small>
-                        <br>
-                        <a href="">Remove</a>
-                    </div>
-                </div>
-            </td>
-            <td><input type="number" value="1"></td>
-            <td>$70.00</td>
-        </tr> -->
-
             </table>
             <!-- Se muestra un resumen de los datos de precio antes de ir al checkout -->
             <div class="total-price">
@@ -112,7 +77,7 @@ $total = 0;
             </div>
             <!-- Boton para ir al checkout -->
             <?= Html::a('Proceder al pago', ['carrito-detalle/checkout'], ['class' => 'btn btn-warning']) ?>
-        <?php else : /* Si no hay nada en la consulta */?>
+        <?php else : /* Si no hay nada en la consulta */ ?>
             <div class="contendor-ningun-producto">
                 <!-- Esto es lo que se mostrara si no hay nada en la consulta del carrito -->
                 <div>

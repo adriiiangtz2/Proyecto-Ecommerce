@@ -132,6 +132,8 @@ class CarritoDetalleController extends Controller
     {
         $id = $this->request->post('id');
         $producto = Producto::findOne(['pro_id' => $id]);
+        $pretarjeta = CarritoDetalle::tarjetaPredeterminado();
+        $predomicilio = CarritoDetalle::domicilioPredeterminado();
         /* Condicion que compara si existe ya un carro contenedor activo creado en la base de datos */
         if (empty(Carro::carro())) {
             /* Datos que se llenan en la tabla carro al momento de crear el carro */
@@ -141,9 +143,13 @@ class CarritoDetalleController extends Controller
             $carro->car_estatus = 'Apartado';
             $carro->car_fkusuario = Usuario::usuario()->usu_id;
             $carro->car_fkmetodo = 2;
-            $carro->car_fkdomicilio = CarritoDetalle::domicilioPredeterminado()->dom_id;
+            /* Se compara si existen datos de domicilio en el usuario logueado, si no existen se inserta null, si existen se
+            inserta un predeterminado */
+            $carro->car_fkdomicilio = $predomicilio == null ? null : $predomicilio->dom_id;
             $carro->car_fkenvio = Envio::find()->one()->env_id;
-            $carro->car_fktarjeta = CarritoDetalle::tarjetaPredeterminado()->tar_id;
+            /* Se compara si existen datos de metodo de pago en el usuario logueado, si no existen se inserta null, si existen se
+            inserta un predeterminado */
+            $carro->car_fktarjeta = $pretarjeta == null ? null : $pretarjeta->tar_id;
             $carro->save();
             /*Datos que se llenan en la tabla carrito_detalle al momento de crear el carro */
             $carrito = new CarritoDetalle();
@@ -241,9 +247,13 @@ class CarritoDetalleController extends Controller
         /* El dato de cantidad cambia a 0 para evitar que vuelva a tener la misma cantidad en caso de volver a añadir el producto*/
         $carDetalle->cardet_cantidad = 0;
         $carDetalle->save();
+        if(empty(CarritoDetalle::productosCarrito())){
+            return $this->redirect('/carrito-detalle/carrito');
+        }
         $response = Yii::$app->response;
         $response->format = Response::FORMAT_JSON;
-        $response->data = ['html' => $this->renderPartial('carrito'), 'carfinal' => $this->renderPartial('carrito-final')];
+        /* Se hacen los cambios en tiempo real en el contador, el carrito y el resumen de compra */
+        $response->data = ['html' => $this->renderPartial('carrito'), 'contador' => CarritoDetalle::carritoContador(), 'carfinal' => $this->renderPartial('carrito-final'), 'importefinal' => $this->renderPartial('finalizar')];
         return $response;
     }
     /* Funcion para guardar el domicilio elegido en el checkout */

@@ -15,6 +15,9 @@ $total = 0;
 $domicilio = \app\models\CarritoDetalle::domicilioCheck();
 $tarjeta = \app\models\CarritoDetalle::tarjetaCheck();
 $envio = \app\models\CarritoDetalle::envioCheck();
+
+$tarpre = \app\models\CarritoDetalle::tarjetaPredeterminado();
+$dompre = \app\models\CarritoDetalle::domicilioPredeterminado();
 ?>
 <!-- Contenedores que muestran partes del checkout -->
 <div class="content-check d-flex">
@@ -27,15 +30,22 @@ $envio = \app\models\CarritoDetalle::envioCheck();
                         <div class="d-flex" id="domi-info">
                             <!-- Se llama la vista con un render. domusu es donde se encuentra la vista -->
                             <?= $this->render('domusu') ?>
+                            <!-- Input con value para saber si hay domicilio en la tabla carro -->
+                            <input class="d-none" id="dom-existente" value="<?=$domicilio->dom_id?>"></input>
                         </div>
                         <div class="contenedor-cambiar">
                             <!-- Boton para llevar a la vista modal para elegir un domicilio de la lista. La vista del modal
                         se encuentra en domicilio.php -->
-                            <button class="botonCambiar" onclick="modaldomicilio(<?= $domicilio->dom_id ?>)">Cambiar</button>
+                            <?php /* If para que se compare si hay datos de domicilio en la base de datos. Si no existen se esconde 
+                            el boton Cambiar */
+                            if ($dompre != null) : 
+                            ?>
+                                <button class="botonCambiar" onclick="modaldomicilio(<?= $dompre->dom_id ?>)">Cambiar</button>
+                            <?php endif ?>
                         </div>
                     </div>
                     <!-- Donde se va a renderizar el cambio hecho en el modal -->
-                    <?= $this->render('domicilio', compact('domicilio')) ?>
+                    <?= $this->render('domicilio', compact('dompre')) ?>
                 </div>
                 <hr>
                 <div class="row">
@@ -44,16 +54,22 @@ $envio = \app\models\CarritoDetalle::envioCheck();
                         <div class="d-flex" id="tarje-info">
                             <!-- Se llama la vista con un render. tarusu es donde se encuentra la vista -->
                             <?= $this->render('tarusu') ?>
+                            <!-- Input con value para saber si hay un metodo de pago en la tabla carro -->
+                            <input class="d-none" id="tar-existente" value="<?=$tarjeta->tar_id?>"></input>
                         </div>
                         <div class="contenedor-cambiar">
                             <!-- Boton para llevar a la vista modal para elegir una tarjeta de la lista. La vista del modal
                         se encuentra en tarjeta.php -->
-                            <button class="botonCambiar" onclick="modaltarjeta(<?= $tarjeta->tar_id ?>)">Cambiar</button>
-
+                            <?php /* If para que se compare si hay datos de domicilio en la base de datos. Si no existen se esconde 
+                            el boton Cambiar */
+                            if ($tarpre != null) : 
+                            ?>
+                                <button class="botonCambiar" onclick="modaltarjeta(<?= $tarpre->tar_id ?>)">Cambiar</button>
+                            <?php endif ?>
                         </div>
                     </div>
                     <!-- Donde se va a renderizar el cambio hecho en el modal -->
-                    <?= $this->render('tarjeta', compact('tarjeta')) ?>
+                    <?= $this->render('tarjeta', compact('tarpre')) ?>
                 </div>
                 <hr>
                 <div class="row">
