@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\CatTarjeta;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -168,5 +169,10 @@ class Carro extends \yii\db\ActiveRecord
         /*  Se compara que el registro de carro corresponde al usuario logueado, que este tenga el estatus de 
         'Pagado' y que los datos de carrito_detalle asociados al carro tengan estatus de 1 */
         return CarritoDetalle::find()->innerJoin('carro', '' . $this->car_id . ' = cardet_fkcarro and car_fkusuario = ' . Usuario::usuario()->usu_id . ' and car_estatus = "Pagado" and cardet_estatus = 1')->all();
+    }
+    /* Funcion para traer consulta de cat_tarjeta */
+    public function getTarjetaCarro()
+    {
+        return CatTarjeta::find()->where(['tar_id' => $this->car_fktarjeta])->one();
     }
 }

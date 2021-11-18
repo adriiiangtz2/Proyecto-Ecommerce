@@ -36,7 +36,7 @@ use app\models\CatTarjeta;
                         <div class="d-flex input-tarjeta modaltarjeta">
                             <div class="d-flex">
                                 <div class="modalinput">
-                                    <!-- El input radio para identificar la tarjeta seleccionada. El id esta concatenado para que se junten
+                                     <!-- El input radio para identificar la tarjeta seleccionada. El id esta concatenado para que se junten
                                 los inputs del foreach. Se le da un valor con el id para saber cual tarjeta se selecciono -->
                                     <input class="input-tarjeta" type="radio" id="informacion<?= $tarjeta->tar_id ?>" name="tarjcolor" value="<?= $tarjeta->tar_id ?>">
                                 </div>
