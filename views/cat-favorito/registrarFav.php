@@ -7,9 +7,11 @@ use app\models\CatFavorito;
 $total = 0;
 /* // ? viene del modelo, funcion trae los datos con estatus 1 */
 $favo= \app\models\CatFavorito::favorito();
+$producto= \app\models\CatFavorito::producto();
 ?>
-<!-- // * ########## Inicia contenedor principal ######### -->
-<div id="identificador">
+<div class="row">
+    <div class="col-md-10">
+    <div id="identificador">
     <h3><b>MI LISTA DE DESEOS</b></h3>
     <!-- // TODO contador de las consultas  -->
     <p><?=count($favo)?> ARTÍCULOS</p>
@@ -65,3 +67,31 @@ $favo= \app\models\CatFavorito::favorito();
                 </div>
                 <!-- // * ##### Termina contenedor principal ######  -->
             </div>
+            </div>
+            <!-- ----------------------------------------------------------- -->
+           
+</div>
+<div class="col-md-2"style="border: 4px dashed #d1d1d1;    border-radius: 20px;
+    padding: 15px;">
+   <a href=""> <p><b>¿NECESITAS AYUDA?</b></p></a>
+    <a href=""> <p>Productos</br></a>
+    <a href=""> Pedidos y formas de pago</br></a>
+    <a href=""> Entrega</br></a>
+    <a href=""> Promociones y códigos descuento</br></a>
+    <a href=""> Devoluciones y reembolsos</br></a>
+    <a href=""> Cuentas y suscripciones</br></a>
+    <a href=""> Información de la empresa</p></a>
+</div>
+</div>
+
+
+
+<!-- // * ########## Inicia contenedor principal ######### -->
+<!-- --------------------------------------------------------------------- -->
+
+           
+           
+           
+           <div>
+           <?= $this->render('prodescuento', compact('producto')) ?> 
+           </div>

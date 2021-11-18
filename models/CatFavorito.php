@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use app\models\Usuario;
+use app\models\CatTarjeta;
 /* hola */
 /**
  * This is the model class for table "cat_favorito".
@@ -126,5 +127,9 @@ class CatFavorito extends \yii\db\ActiveRecord
             else{
                 return $es = 0;
             }
+        }
+
+        public static function Producto() { 
+            return Producto::find()->where(['pro_descuento'=>30] )->all();
         }
 }

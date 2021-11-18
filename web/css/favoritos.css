@@ -12,8 +12,8 @@
 
 .colum-4:hover {
   transition: 300ms;
-  transform: translateY(-15px);
-  box-shadow: 50px 20px 66px #b8b8b8, -20px -20px 66px #ffffff;
+  /* transform: translateY(-15px); */
+  /* box-shadow: 50px 20px 66px #b8b8b8, -20px -20px 66px #ffffff; */
  
 }
 .columm4:hover .contenedor-card-foter{

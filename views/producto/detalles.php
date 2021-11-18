@@ -2,6 +2,7 @@
 $total=0;
 $descuento =$productos->pro_descuento;
 $precio =$productos->pro_precio;
+$producto= \app\models\CatFavorito::producto();
 ?>
 
 <h3><b>DETALLES DEL PRODUCTO</b></h3>
@@ -72,90 +73,11 @@ $precio =$productos->pro_precio;
         </div>
     </div>
 
-    <!-- tittle -->
-    <div class="small-container ">
-        <div class="filas filas-2">
-            <h2>Related Products</h2>
-        </div>
-        </div>
+    
+           <div>
+           <?= $this->render('/cat-favorito/prodescuento', compact('producto')) ?> 
+           </div>
 
-        </div>
-        <hr>
-        <hr>
-    <!-- products    -->
-    <div class="small-container ">
-
-        <!-- INICIO ATEST PRODUCTS -->
-        <div class="filas">
-            <div class="colum-4">
-                <img src="/plantilla/images/product-9.jpg" alt="">
-                <h4>red Printed T-shirt</h4>
-                <div class="rating">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half" aria-hidden="true"></i>
-                    <!-- <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                    <i class="fa fa-address-book" aria-hidden="true"></i> -->
-
-                </div>
-                <p>$50.00</p>
-
-            </div>
-            <div class="colum-4">
-                <img src="/plantilla/images/product-10.jpg" alt="">
-                <h4>red Printed T-shirt</h4>
-                <div class="rating">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <!-- <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                    <i class="fa fa-address-book" aria-hidden="true"></i> -->
-
-                </div>
-                <p>$50.00</p>
-
-            </div>
-            <div class="colum-4">
-                <img src="/plantilla/images/product-11.jpg" alt="">
-                <h4>red Printed T-shirt</h4>
-                <div class="rating">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                    <!-- <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                    <i class="fa fa-address-book" aria-hidden="true"></i> -->
-
-                </div>
-                <p>$50.00</p>
-
-            </div>
-            <div class="colum-4">
-                <img src="/plantilla/images/product-12.jpg" alt="">
-                <h4>red Printed T-shirt</h4>
-                <div class="rating">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half" aria-hidden="true"></i>
-
-                    <!-- <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                    <i class="fa fa-address-book" aria-hidden="true"></i> -->
-
-                </div>
-                <p>$50.00</p>
-
-            </div>
-        </div>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
