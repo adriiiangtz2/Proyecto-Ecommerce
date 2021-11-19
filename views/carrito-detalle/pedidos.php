@@ -25,7 +25,7 @@ $carr = \app\models\Carro::carroPagado();
                     <!-- Se trae dato de la tarjeta de cat_tarjeta -->
                     <p><b><?= $a->tarjetaCarro->tar_financiera ?></b> con terminación: <b><?php echo substr($a->tarjetaCarro->tar_numtarjeta, 12, 16); ?></b></p>
                 </div>
-                <div class="col-md-2 contenedordatos-header">
+                <div class="col-md-2 contenedordatos-header pedido">
                     <p><b>Pedido No. <?= $a->car_id ?></b></p>
                 </div>
 

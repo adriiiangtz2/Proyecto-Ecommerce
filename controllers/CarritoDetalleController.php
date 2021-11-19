@@ -154,7 +154,13 @@ class CarritoDetalleController extends Controller
             /*Datos que se llenan en la tabla carrito_detalle al momento de crear el carro */
             $carrito = new CarritoDetalle();
             $carrito->cardet_cantidad = 1;
-            $carrito->cardet_precio = $producto->pro_precio;
+            /* Condicion para detectar si el producto tiene un descuento para aplicarlo */
+            if ($producto->pro_descuento != 0 || $producto->pro_descuento != null) {
+                $descuento =  $producto->pro_descuento;
+                $carrito->cardet_precio =  $producto->pro_precio - ($producto->pro_precio * ($descuento / 100));
+            } else { /* Si no hay descuento se pone el precio regular de la tabla producto */
+                $carrito->cardet_precio =  $producto->pro_precio;
+            }
             $carrito->cardet_fkproducto = $id;
             $carrito->cardet_fkcarro = $carro->car_id;
             $carrito->cardet_estatus = 1;
@@ -163,7 +169,13 @@ class CarritoDetalleController extends Controller
             if (empty(CarritoDetalle::productoRepetido($id))) /* Inicia otra condicion para comparar si un producto 
             ya fue añadido al carrito, si no esta aun mete solo 1 dato, caso contrario suma 1 al dato cantidad del producto en el carrito*/ {
                 $carrito = new CarritoDetalle();
-                $carrito->cardet_precio = $producto->pro_precio;
+                /* Condicion para detectar si el producto tiene un descuento para aplicarlo */
+                if ($producto->pro_descuento != 0 || $producto->pro_descuento != null) {
+                    $descuento =  $producto->pro_descuento;
+                    $carrito->cardet_precio =  $producto->pro_precio - ($producto->pro_precio * ($descuento / 100));
+                } else { /* Si no hay descuento se pone el precio regular de la tabla producto */
+                    $carrito->cardet_precio =  $producto->pro_precio;
+                }
                 $carrito->cardet_fkproducto = $id;
                 $carrito->cardet_fkcarro = Carro::carro()->car_id;
                 $carrito->cardet_estatus = 1;
@@ -172,7 +184,13 @@ class CarritoDetalleController extends Controller
             } else /* Suma a cantidad si ya existe el producto en el carrito */ {
                 $carritoRep = CarritoDetalle::productoRepetido($id);
                 $carritoRep->cardet_cantidad = $carritoRep->cardet_cantidad + 1;
-                $carritoRep->cardet_precio = $carritoRep->cardet_cantidad * $producto->pro_precio;
+                /* Condicion para detectar si el producto tiene un descuento para aplicarlo */
+                if ($producto->pro_descuento != 0 || $producto->pro_descuento != null) {
+                    $descuento =  $producto->pro_descuento; /* Se toma en cuenta la suma de cantidad al meter un producto que ya esta en el carro */
+                    $carritoRep->cardet_precio =  $carritoRep->cardet_cantidad * ($producto->pro_precio - ($producto->pro_precio * ($descuento / 100)));
+                } else { /* Si no hay descuento se pone el precio regular de la tabla producto */
+                    $carritoRep->cardet_precio =  $carritoRep->cardet_cantidad * $producto->pro_producto;
+                }
                 $carritoRep->cardet_estatus = 1;
                 $carritoRep->save();
             }
@@ -226,7 +244,14 @@ class CarritoDetalleController extends Controller
         /* Datos de las vistas que se van a actualizar */
         $id = $this->request->post('id');
         $carDetalle = CarritoDetalle::find()->where(['cardet_id' => $id])->one();
-        $precio = Producto::find()->where(['pro_id' => $carDetalle->cardet_fkproducto])->one()->pro_precio;
+        $producto = Producto::find()->where(['pro_id' => $carDetalle->cardet_fkproducto])->one();
+        /* Condicion para detectar si el producto tiene un descuento para aplicarlo en la funcion de cambio de cantidad*/
+        if ($producto->pro_descuento != 0 || $producto->pro_descuento != null) {
+            $descuento =  $producto->pro_descuento;
+            $precio =  $producto->pro_precio - ($producto->pro_precio * ($descuento / 100));
+        } else { /* Si no hay descuento se pone el precio regular de la tabla producto */
+            $precio =  $producto->pro_precio;
+        }
         $carDetalle->cardet_cantidad = $this->request->post('cantidad');
         $total = $precio * $carDetalle->cardet_cantidad;
         $carDetalle->cardet_precio = $total;
@@ -247,7 +272,7 @@ class CarritoDetalleController extends Controller
         /* El dato de cantidad cambia a 0 para evitar que vuelva a tener la misma cantidad en caso de volver a añadir el producto*/
         $carDetalle->cardet_cantidad = 0;
         $carDetalle->save();
-        if(empty(CarritoDetalle::productosCarrito())){
+        if (empty(CarritoDetalle::productosCarrito())) {
             return $this->redirect('/carrito-detalle/carrito');
         }
         $response = Yii::$app->response;

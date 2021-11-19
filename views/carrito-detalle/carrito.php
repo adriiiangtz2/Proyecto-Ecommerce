@@ -42,8 +42,8 @@ $total = 0;
                         <td>$<?= $carritoDe->cardet_precio ?></td>
                         <?php
                         /* Datos que se mostraran en la vista */
-                        /* Se calcula el precio total de los productos en el carrito */
-                        $total = $total + $carritoDe->cardet_precio;
+                        /* Se calcula el precio total de los productos en el carrito. Se toma en cuenta si hay descuento. */
+                        $total = $total + ($carritoDe->productoPrecio*$carritoDe->cardet_cantidad);
                         /* Se calcula el IVA total */
                         $iva = $total * 0.16;
                         /* El importe total con IVA */

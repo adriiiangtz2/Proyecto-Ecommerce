@@ -137,7 +137,16 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     /* Funcion para traer el precio del producto seleccionado */
     public function getProductoPrecio()
     {
-        return $this->cardetFkproducto->pro_precio;
+        $producto = $this->cardetFkproducto;
+        $precio=0;
+        /* Condicion para detectar si el producto tiene un descuento para aplicarlo en la vista de carrito */
+        if ($producto->pro_descuento != 0 || $producto->pro_descuento != null) {
+            $descuento =  $producto->pro_descuento;
+            $precio=($producto->pro_precio - ($producto->pro_precio * ($descuento / 100)));
+        } else {  /* Si no hay descuento se muestra el precio regular de la tabla producto */
+            $precio = $producto ->pro_precio;
+        }
+        return $precio;
     }
     public static function domicilio()
     {
