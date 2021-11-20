@@ -46,6 +46,27 @@ echo Nav::widget([
     'encodeLabels' => false,
     'items' => [
         [
+            'label' => '<i class="fas fa-store-alt"></i>' . 'Tiendas', 'url' => ['/tienda/tiendaVis'],
+            'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin && !User::hasRole('Administrador2'),
+            'items' => [
+                ['label' => '<i class="fas fa-store-alt"></i> ' . 'Tienda 1', 'url' => '/tienda/tiendaVis'],
+
+                [
+                    'label' => '<i class="fas fa-store-alt"></i>' . ' Tienda 2', 'url' => ['/tienda/registrar'],
+                    'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
+                ],
+
+                [
+                    'label' => '<i class="fas fa-store-alt"></i>' . ' Tienda 3', 'url' => ['/tienda/mostrar'],
+                    'visible' => !Yii::$app->user->isGuest && !Yii::$app->user->isSuperAdmin,
+                ],
+
+                ['label' => '<i class="fas fa-store-alt"></i>' . ' Tienda 4', 'url' => '/tienda/pedidos'],
+            ],
+        ],
+
+
+        [
             'label' => '<i class="fas fa-tshirt"></i>' . ' PRODUCTOS',
             'url' => ['/producto/productos'],
             'visible' => !Yii::$app->user->isSuperAdmin && !User::hasRole('Administrador2'),

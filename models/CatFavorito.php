@@ -130,6 +130,9 @@ class CatFavorito extends \yii\db\ActiveRecord
         }
 
         public static function Producto() { 
-            return Producto::find()->where(['pro_descuento'=>30] )->all();
+            $entrada = array(20,30,40);
+            $azar=rand(0,2);
+            $valor = $entrada[$azar];
+            return Producto::find()->where(['pro_descuento'=>$valor] )->all();
         }
 }
