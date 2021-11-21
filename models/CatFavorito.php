@@ -128,11 +128,15 @@ class CatFavorito extends \yii\db\ActiveRecord
                 return $es = 0;
             }
         }
-
+ 
+        //funcion que trar productos con descuento , un limite de 4 y de manera desordenada
         public static function Producto() { 
+            //array de descuentos
             $entrada = array(20,30,40);
+            //numero random para la posicion del arreglo
             $azar=rand(0,2);
             $valor = $entrada[$azar];
-            return Producto::find()->where(['pro_descuento'=>$valor] )->all();
+           
+            return Producto::find()->where(['pro_descuento'=>$valor] )->orderBy(['rand()' => SORT_DESC])->limit(4)->all();
         }
 }
