@@ -133,6 +133,7 @@ use kartik\number\NumberControl;
                     'allowedFileExtensions'  => ['jpg', 'gif', 'png'],
                     'initialPreview'         => [$model->url],
                     'initialPreviewAsData'   => true,
+                    'maxFileCount' => '5',
                 ],
             ]); ?>
         </div>
