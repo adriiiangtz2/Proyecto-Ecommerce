@@ -162,7 +162,7 @@ class Carro extends \yii\db\ActiveRecord
     /* Funcion que trae todos los carros que fueron pagados del usuario logueado. Usado para la lista de pedidos */
     public static function carroPagado()
     {
-        return self::find()->where(['and', ['car_fkusuario' => Usuario::usuario()->usu_id], ['car_estatus' => 'Pagado']])->all();
+        return self::find()->where(['and', ['car_fkusuario' => Usuario::usuario()->usu_id], ['car_estatus' => 'Pagado']])->orderBy(['car_id' => SORT_DESC])->all();
     }
     public function productosPagados()
     {

@@ -127,6 +127,14 @@ class CarritoDetalleController extends Controller
     {
         return $this->render('pedidos');
     }
+    public function actionValoracion($id)
+    {   /* Llamar el id del producto en el carrito pedido */
+        $producto = $this->findModel($id);
+        if ($this->request->isPost && $producto->load($this->request->post()) && $producto->save()) {
+            return $this->redirect(['/carrito-detalle/pedidos']);
+        }
+        return $this->render('valoracion', compact('producto'));
+    }
     /* Registra un carro nuevo en caso de no haber uno ya, de lo contrario solo añade el producto al carro */
     public function actionAgregarProducto()
     {
