@@ -41,7 +41,7 @@ $carr = \app\models\Carro::carroPagado();
                     </div>
                     <div class="col-md-6 producto-nombre">
                         <!-- Nombre viene de la consulta -->
-                        <p class="producto-p"><?= $pedido->productoNombre ?></p>
+                        <?= Html::a($pedido->productoNombre , ['/producto/detalles', 'id' => $pedido->cardet_fkproducto], ['class' => 'producto-p']) ?>
                     </div>
                     <div class="col-md-4 producto-rating">
                         <!-- Boton para ir a la vista de rating -->
