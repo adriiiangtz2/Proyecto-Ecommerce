@@ -1,7 +1,7 @@
 <!-- // ! Botonera creada para ver apartados para el usuario -->
 <?php
 use yii\bootstrap4\Html;
-?>            
+?>
 <?php
 /* // TODO se crean objetos los cuales tendran 3 parametros ,Nombre,Url,Img,Info, se usa en ciclo de line 18 */
 $card = [
@@ -12,23 +12,23 @@ $card = [
 ];
 ?>
 <h3><b>MI CUENTA</b></h3>
-            <!--     // *  INICIA CONTENEDOR GENERAL -- -->
-                <div class="row">
-                 <!--    // TODO ##### inicia el ciclo #######-- -->
-                    <?php foreach ($card as $cards) { ?>
-                        <div class="col-md-4"> 
-                            <div class="d-flex contenedor-cards-boto-usu">
-                                <div class="contenedor-icono-usuario-botonera">
-                                <?= Html::img("/img/botonerausu/{$cards->img}.png", ['class' => 'botonera-usuario'],["{$cards->url}"]) ?>
-                            </div>
-                            <div class="contenedor-cat-des-boto">
-                            <?= Html::a("{$cards->nombre}", ["{$cards->url}"],['style'=>'font-weight: 400;font-size: 20px;']) ?>
-                                <p><b><?=$cards->info?></b></p>
-                            </div>
-                                  
-                                </div>
-                                </div> 
-                           <!--  // TODO -- ##### Termina el ciclo #######-- -->
-                    <?php } ?>
-                   <!--  //* TERMINA CONTENEDOR GENERAL -- -->
-                </div>
+<!--     // *  INICIA CONTENEDOR GENERAL -- -->
+<div class="row">
+    <!--    // TODO ##### inicia el ciclo #######-- -->
+    <?php foreach ($card as $cards) { ?>
+    <div class="col-md-4">
+        <div class="d-flex contenedor-cards-boto-usu">
+            <div class="contenedor-icono-usuario-botonera">
+                <?= Html::img("/img/botonerausu/{$cards->img}.png", ['class' => 'botonera-usuario'],["{$cards->url}"]) ?>
+            </div>
+            <div class="contenedor-cat-des-boto">
+                <?= Html::a("{$cards->nombre}", ["{$cards->url}"],['style'=>'font-weight: 400;font-size: 20px;']) ?>
+                <p><b><?=$cards->info?></b></p>
+            </div>
+
+        </div>
+    </div>
+    <!--  // TODO -- ##### Termina el ciclo #######-- -->
+    <?php } ?>
+    <!--  //* TERMINA CONTENEDOR GENERAL -- -->
+</div>

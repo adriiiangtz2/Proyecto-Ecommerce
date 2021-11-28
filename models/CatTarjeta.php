@@ -39,7 +39,7 @@ class CatTarjeta extends \yii\db\ActiveRecord
             [['tar_financiera', 'tar_tipo'], 'string'],
             [['tar_fkusuario'], 'integer'],
             [['tar_nombre'], 'safe'],
-            [['tar_numtarjeta'], 'string', 'max' => 16],
+            [['tar_numtarjeta'], 'string', 'max' => 20],
             [['tar_expiracion'], 'string', 'max' => 5],
             [['tar_fkusuario'], 'exist', 'skipOnError' => true, 'targetClass' => Usuario::className(), 'targetAttribute' => ['tar_fkusuario' => 'usu_id']],
         ];

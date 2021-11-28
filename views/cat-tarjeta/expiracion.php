@@ -1,0 +1,1 @@
+<p class="expira-fin"><b><?= $tarjeta->tar_expiracion ?></b></p>

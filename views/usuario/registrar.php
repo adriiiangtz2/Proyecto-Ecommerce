@@ -2,11 +2,12 @@
 <!-- // ! Se utiliza en layout y se trae desde el widget Nav -->
 <?php
 use yii\helpers\Html;
+use yii\widgets\MaskedInput;
 use yii\bootstrap4\ActiveForm;
 ?>
 <div>
     <?php $form = ActiveForm::begin(); ?>
-    <div class="account-page" >
+    <div class="account-page">
         <div class="contenedor-usu">
             <div class="filas">
                 <div class="colum-2-usu">
@@ -21,17 +22,22 @@ use yii\bootstrap4\ActiveForm;
                             <!-- //*  INICIO  DE LOS FORMULARIOS -- -->
                             <!-- // ! se cambian las varianles user y usuario que llegan del controler-- -->
                             <div class="col-md-6 ">
-                                <?= $form->field($user, 'username')->textInput(['maxlength' => 255, 'autocomplete'=>'off']) ?>   
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <?= $form->field($user, 'password')->passwordInput(['maxlength' => 255, 'autocomplete'=>'off']) ?> 
+                                <?= $form->field($user, 'username')->textInput(['maxlength' => 255, 'autocomplete'=>'off']) ?>
                             </div>
 
                             <div class="col-md-6">
-                                <?= $form->field($user, 'email')->textInput(['maxlength' => 255]) ?>  
+                                <?= $form->field($user, 'password')->passwordInput(['maxlength' => 255, 'autocomplete'=>'off']) ?>
                             </div>
-                            
+
+                            <div class="col-md-6">
+                                <?= $form->field($user, 'email')->widget(MaskedInput::classname(), [
+                                'clientOptions' => [
+                                'alias' =>  'email'
+                            ],
+				])
+                            ?>
+                            </div>
+
                             <div class="col-md-6">
                                 <?= $form->field($user, 'repeat_password')->passwordInput(['maxlength' => 255, 'autocomplete'=>'off']) ?>
                             </div>
@@ -39,19 +45,19 @@ use yii\bootstrap4\ActiveForm;
                             <div class="col-md-4">
                                 <?= $form->field($usuario, 'usu_nombre')->textInput(['maxlength' => true]) ?>
                             </div>
-                            
+
                             <div class="col-md-4">
                                 <?= $form->field($usuario, 'usu_paterno')->textInput(['maxlength' => true]) ?>
                             </div>
                             <div class="col-md-4">
                                 <?= $form->field($usuario, 'usu_materno')->textInput(['maxlength' => true]) ?>
                             </div>
-                           <!--  // *  FIN  DE LOS FORMULARIOS -- -->
+                            <!--  // *  FIN  DE LOS FORMULARIOS -- -->
                         </div>
                         <div class="row justify-content-center">
                             <div>
                                 <?= Html::submitButton('Guardar', ['class' => 'btnn']) ?>
-                            </div>       
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -59,7 +65,3 @@ use yii\bootstrap4\ActiveForm;
         </div>
     </div>
     <?php ActiveForm::end(); ?>
-    
-
-
-

@@ -11,33 +11,33 @@ use yii\bootstrap4\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <div>
-<div class="usuario-form">
-    <?php $form = ActiveForm::begin(); ?>
-    
-<div class="row offer ">
+    <div class="usuario-form">
+        <?php $form = ActiveForm::begin(); ?>
 
-        <div class="col-md-4">
-        <?= $form->field($model, 'usu_nombre')->textInput(['maxlength' => true]) ?>
+        <div class="row offer ">
+
+            <div class="col-md-4">
+                <?= $form->field($model, 'usu_nombre')->textInput(['maxlength' => true]) ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'usu_paterno')->textInput(['maxlength' => true]) ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'usu_materno')->textInput(['maxlength' => true]) ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'usu_fkuser')->textInput() ?>
+            </div>
         </div>
-        <div class="col-md-4">
-        <?= $form->field($model, 'usu_paterno')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-md-4">
-        <?= $form->field($model, 'usu_materno')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-md-4">
-        <?= $form->field($model, 'usu_fkuser')->textInput() ?>
-      </div>
-      </div>
         <div class="row justify-content-center">
             <div class="form-group ">
                 <?= Html::submitButton('Guardar', ['class' => 'btnn']) ?>
             </div>
 
         </div>
-        
 
-    <?php ActiveForm::end(); ?>
 
-</div>
+        <?php ActiveForm::end(); ?>
+
+    </div>
 </div>

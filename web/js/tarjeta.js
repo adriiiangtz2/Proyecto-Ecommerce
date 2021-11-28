@@ -127,7 +127,7 @@ function eliminar(id) {
 function editarTarjeta(id)
 {
 
-  console.log(id);
+  // console.log(id);
   let nombre = $("#inputNom_"+id).val();
   let expiracion = $("#expiracion_"+id).val();
   console.log(nombre);
@@ -141,6 +141,30 @@ function editarTarjeta(id)
       } 
     });
 }
+/* //* ########## FUNCIONAMIENTO EDITAR DE DOS CONTENEDORES #########3 */
+
+/* //! cambia la info de contenedor funcion union */
+function editarTarjeta2(id)
+{
+  console.log(id);
+  let expiracion = $("#expiracion_"+id).val();
+  //manda el controler
+  $.post('/cat-tarjeta/editar2',{id:id,expiracion:expiracion}, function (data){
+    console.log("siiiiii  hola"+data.html);
+    if (data) {
+      console.log('si paseee');
+      $('#expiracion-tar'+id).html(data.html);
+    } 
+  });
+}
+/* //! Se ejecutan las dos funciones anteriores vista usuario/editardatos y titulo */
+function editarUniontarjeta(id)
+{
+  editarTarjeta(id);
+  editarTarjeta2(id);
+}
+/* //* ########## TERMINA FUNCIONAMIENTO EDITAR DE DOS CONTENEDORES #########3 */
+
 
 /* //! Funcion para abir el modal de cat-tarjeta/editar */
 function modal(id){
