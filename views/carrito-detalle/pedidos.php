@@ -1,4 +1,6 @@
 <?php
+
+use yii\bootstrap4\Html;
 $carr = \app\models\Carro::carroPagado();
 ?>
 <h3><b>MIS PEDIDOS</b></h3>
@@ -9,7 +11,7 @@ $carr = \app\models\Carro::carroPagado();
 
     <div class="segundo-contenedor-principal">
         <?php /* foreach que manda a llamar todos los carros que fueron pagados por el usuario logueado y se guarda en variable*/
-        foreach (\app\models\Carro::carroPagado() as $a) :
+        foreach ($carr as $a) :
         ?>
             <div class="row tercer-contenedor-principal">
                 <div class="col-md-3 contenedordatos-header fecha">
@@ -39,11 +41,11 @@ $carr = \app\models\Carro::carroPagado();
                     </div>
                     <div class="col-md-6 producto-nombre">
                         <!-- Nombre viene de la consulta -->
-                        <p class="producto-p"><?= $pedido->productoNombre ?> <?= $pedido->cardet_fkcarro ?></p>
+                        <?= Html::a($pedido->productoNombre , ['/producto/detalles', 'id' => $pedido->cardet_fkproducto], ['class' => 'producto-p']) ?>
                     </div>
                     <div class="col-md-4 producto-rating">
                         <!-- Boton para ir a la vista de rating -->
-                        <button class="btn btn-light producto-boton">Escribir una opinión sobre el producto</button>
+                        <?= Html::a('Escribir una opinión sobre el producto', ['/carrito-detalle/valoracion', 'id' => $pedido->cardet_id], ['class' => 'btn btn-light producto-boton']) ?>
                     </div>
                 <?php endforeach; ?>
             </div>

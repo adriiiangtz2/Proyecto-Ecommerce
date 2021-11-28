@@ -3,6 +3,7 @@
 use yii\bootstrap4\Html;
 
 $total = 0;
+$cardet= \app\models\CarritoDetalle::cuentas();
 ?>
 <!-- card items details -->
 <div id="cardet">
@@ -30,7 +31,7 @@ $total = 0;
                                     <!-- Nombre viene de la consulta -->
                                     <p><?= $carritoDe->productoNombre ?></p>
                                     <!-- Precio viene de la consulta de la tabla producto -->
-                                    <small>Precio: $<?= $carritoDe->productoPrecio ?></small>
+                                    <small>Precio: $<?= number_format($carritoDe->productoPrecio , 2,'.', ',');?></small>
                                     <br>
                                     <!-- Se llama la funcion eliminarProducto al boton para eliminar el producto del carrito -->
                                     <button class="botonCambiar" onclick="eliminarProducto(<?= $carritoDe->cardet_id ?>)">Eliminar</button>
@@ -39,15 +40,15 @@ $total = 0;
                         </td>
                         <!-- Se llama la funcion registrarCantidad al input de cantidad para registrar los cambios a la bd y a la vista. -->
                         <td><input id="input-cant<?= $carritoDe->cardet_id ?>" type="number" onclick="registrarCantidad(<?= $carritoDe->cardet_id ?>)" value=<?= $carritoDe->cardet_cantidad ?>></td>
-                        <td>$<?= $carritoDe->cardet_precio ?></td>
+                        <td>$<?=number_format($carritoDe->cardet_precio , 2,'.', ','); ?></td>
                         <?php
                         /* Datos que se mostraran en la vista */
                         /* Se calcula el precio total de los productos en el carrito. Se toma en cuenta si hay descuento. */
-                        $total = $total + ($carritoDe->productoPrecio*$carritoDe->cardet_cantidad);
+                        //$total = $total + ($carritoDe->productoPrecio*$carritoDe->cardet_cantidad);
                         /* Se calcula el IVA total */
-                        $iva = $total * 0.16;
+                        //$iva = $total * 0.16;
                         /* El importe total con IVA */
-                        $importe = $total + $iva;
+                        //$importe = $total + $iva;
                         ?>
                     </tr>
                 <?php endforeach; ?>
@@ -56,20 +57,20 @@ $total = 0;
             <div class="total-price">
                 <table>
                     <tr>
-                        <td>SubTotal</td>
-                        <td>$<?= $total ?></td>
+                        <td>SubTotal:</td>
+                        <td>$<?= number_format($cardet->total , 2,'.', ','); ?></td>
 
                     </tr>
 
                     <tr>
-                        <td>Impuestos</td>
-                        <td>$<?= $iva ?></td>
+                        <td>Impuestos:</td>
+                        <td>$<?= number_format($cardet->iva , 2,'.', ',');?></td>
 
                     </tr>
 
                     <tr>
-                        <td>Total</td>
-                        <td>$<?= $importe ?></td>
+                        <td>Total:</td>
+                        <td>$<?= number_format($cardet->importe, 2,'.', ',');  ?></td>
 
                     </tr>
                 </table>

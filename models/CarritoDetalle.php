@@ -26,6 +26,11 @@ use yii\helpers\ArrayHelper;
  */
 class CarritoDetalle extends \yii\db\ActiveRecord
 {
+    public $total = 0;
+    public $iva = 0;
+    public $importe = 0;
+    public $importefinal = 0;
+    public $envio =0 ;
     /**
      * {@inheritdoc}
      */
@@ -186,5 +191,22 @@ class CarritoDetalle extends \yii\db\ActiveRecord
     public static function productoRepetido($id)
     {
         return CarritoDetalle::find()->andWhere(['cardet_fkproducto' => $id])->andWhere(['cardet_fkcarro' => Carro::carro()->car_id])->one();
+    }
+    /* Cuentas en vistas de carrito y el resumen de compra final */
+    public static function cuentas(){
+        $envio = self::envioCheck()->env_costo;
+        $cardet= new CarritoDetalle();
+        $productos= self::productosCarrito();
+        foreach ($productos as $carritoDe ){
+            $cardet->total = $cardet->total + ($carritoDe->productoPrecio*$carritoDe->cardet_cantidad);
+            /* Se calcula el IVA total */
+            $cardet->iva = $cardet->total * 0.16;   
+            /* El importe total con IVA */
+            $cardet->importe = $cardet->total + $cardet->iva;
+        }
+        $cardet->envio= $envio;
+        $cardet->importefinal=$cardet->importe + $cardet->envio;
+
+        return $cardet; 
     }
 }

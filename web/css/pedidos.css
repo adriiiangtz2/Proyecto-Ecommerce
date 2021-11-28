@@ -41,6 +41,8 @@
 .producto-p
 {
     color: #007185;
+    letter-spacing: 0px;
+    font-size: 15px;
 }
 .producto-rating
 {
@@ -50,4 +52,9 @@
 {
     font-size: 13px; 
     border-color: #D5D9D9;
+    letter-spacing: 0px;
+}
+.producto-pedido
+{
+    width: 10%
 }

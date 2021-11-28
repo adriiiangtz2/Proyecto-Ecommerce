@@ -18,7 +18,7 @@
                             <!-- Nombre viene de la consulta -->
                             <p><?= $carritoDe->productoNombre ?></p>
                             <!-- Precio viene de la consulta de la tabla producto -->
-                            <small>Precio: $<?= $carritoDe->productoPrecio ?></small>
+                            <small>Precio: $<?=number_format( $carritoDe->productoPrecio, 2,'.', ','); ?></small>
                             <br>
                             <!-- Se llama la funcion eliminarProducto al boton para eliminar el producto del carrito. El 1
                             concatenado es para diferenciar con la tabla de la vista carrito -->

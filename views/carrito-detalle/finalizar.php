@@ -1,13 +1,8 @@
 <?php
 /* Variable que guarda la consulta del metodo de envio del carrito para mostrar */
-$envio = \app\models\CarritoDetalle::envioCheck();
+
+$cardet= \app\models\CarritoDetalle::cuentas();
 /* foreach que trae la consulta del carrito para hacer los calculos de costo final */
-foreach (\app\models\CarritoDetalle::productosCarrito() as $carritoDe) :
-    $total = $total + $carritoDe->cardet_precio;
-    $iva = $total * 0.16;
-    $envio_costo = $envio->env_costo;
-    $importe = $total + $iva + $envio_costo;
-endforeach;
 ?>
 <div id="finalizarbotondiv" class="finalizar-divs">
     <!-- Boton con funcion finalizarPago que hace los ultimos cambios a la bd y cierra el carro -->
@@ -27,19 +22,19 @@ endforeach;
             <p>Envío:</p>
         </div>
         <div class="col-md-4 text-right">
-            <p>$<?= $total ?></p>
-            <p>$<?= $iva ?></p>
-            <p>$<?= $envio_costo ?></p>
+            <p>$<?=number_format($cardet->total , 2,'.', ','); ?></p>
+            <p>$<?=number_format($cardet->iva , 2,'.', ','); ?></p>
+            <p>$<?=number_format($cardet->envio , 2,'.', ','); ?></p>
         </div>
     </div>
 </div>
 <div class="finalizar-divs">
     <!-- Precio final -->
     <p class="color-total-finalizar"><b>Total (IVA incluido, si aplica), <br>
-            $<?= $importe ?></b></p>
+            $<?=number_format($cardet->importefinal , 2,'.', ','); ?></b></p>
     <!-- Los input sirven como contenedor para los datos de importe total y el iva -->
-    <input id="total-carro" class="d-none" type="text" value="<?= $importe ?>"></input>
-    <input id="iva-carro" class="d-none" type="text" value="<?= $iva ?>"></input>
+    <input id="total-carro" class="d-none" type="text" value="<?= $cardet->importefinal ?>"></input>
+    <input id="iva-carro" class="d-none" type="text" value="<?= $cardet->iva ?>"></input>
 </div>
 <div class="envio-informacion">
     <p class="color-envio-informacion">¿Cómo se calculan los gastos de envío?</p>

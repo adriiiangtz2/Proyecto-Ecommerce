@@ -1,7 +1,3 @@
-<?php
-
-use app\models\CatTarjeta;
-?>
 <!-- Modal para editar la tarjeta en la base de datos de carro -->
 <!-- id para identificar el modal en el javaScript que se va a mostrar -->
 <div id="ventana-modaltarjeta<?= $tarpre->tar_id ?>" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
