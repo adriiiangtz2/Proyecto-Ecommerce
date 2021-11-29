@@ -33,7 +33,7 @@ use yii\bootstrap4\Html;
                 </td>
                 <!-- Se llama la funcion registrarCantidad al input de cantidad para registrar los cambios a la bd y a la vista. El 1
                             concatenado es para diferenciar con la tabla de la vista carrito -->
-                <td><input id="input-cant<?= $carritoDe->cardet_id ?>" type="number" onclick="registrarCantidad(<?= $carritoDe->cardet_id ?>, 1)" value=<?= $carritoDe->cardet_cantidad ?>></td>
+                <td><input id="input-cant<?= $carritoDe->cardet_id ?>" min="1" type="number" onclick="registrarCantidad(<?= $carritoDe->cardet_id ?>, 1)" value=<?= $carritoDe->cardet_cantidad ?>></td>
                 <td>$<?= $carritoDe->cardet_precio ?></td>
             </tr>
         <?php endforeach; ?>
