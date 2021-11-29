@@ -1,3 +1,6 @@
+<?php
+use yii\bootstrap4\Html;
+?>
 <div class="small-container-checkout card-page">
     <!-- Los productos se muestran en una tabla -->
     <table class="tabla">
@@ -16,9 +19,11 @@
                         <img src=<?= $carritoDe->cardetFkproducto->getUrl() ?>>
                         <div>
                             <!-- Nombre viene de la consulta -->
-                            <p><?= $carritoDe->productoNombre ?></p>
+                            <?= Html::a($carritoDe->productoNombre, ['/producto/detalles', 'id' => $carritoDe->cardet_fkproducto], ['class' => 'producto-carrito']) ?>
+                            <br>
+                            <br>
                             <!-- Precio viene de la consulta de la tabla producto -->
-                            <small>Precio: $<?=number_format( $carritoDe->productoPrecio, 2,'.', ','); ?></small>
+                            <small>Precio: $<?= number_format($carritoDe->productoPrecio, 2, '.', ','); ?></small>
                             <br>
                             <!-- Se llama la funcion eliminarProducto al boton para eliminar el producto del carrito. El 1
                             concatenado es para diferenciar con la tabla de la vista carrito -->

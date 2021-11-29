@@ -29,7 +29,9 @@ $cardet= \app\models\CarritoDetalle::cuentas();
                                 <img src=<?= $carritoDe->cardetFkproducto->getUrl() ?>>
                                 <div>
                                     <!-- Nombre viene de la consulta -->
-                                    <p><?= $carritoDe->productoNombre ?></p>
+                                    <?= Html::a($carritoDe->productoNombre , ['/producto/detalles', 'id' => $carritoDe->cardet_fkproducto], ['class' => 'producto-carrito']) ?>
+                                    <br>
+                                    <br>
                                     <!-- Precio viene de la consulta de la tabla producto -->
                                     <small>Precio: $<?= number_format($carritoDe->productoPrecio , 2,'.', ',');?></small>
                                     <br>
