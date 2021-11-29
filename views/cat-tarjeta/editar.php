@@ -16,18 +16,18 @@ use yii\bootstrap4\ActiveForm;
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" id="modal-body-editar" style="border:1px dashed;">
+            <div class="modal-body" id="modal-body-editar<?= $tarjeta->tar_id ?>" style="border:1px dashed;">
                 <!-- CONTENIDO PRINCIPAL -->
                 <div class="row" style="height:200px">
-                    <div class="col-md-4">
+                    <div class="col-md-4 color-blanco">
                         <p><b>Metodo de pago:</b><br>
                         <p><b><?= $tarjeta->tar_financiera ?></b> con terminacion:
-                            <b><?php echo substr($tarjeta->tar_numtarjeta,12,16); ?></b>
+                            <b><?php echo substr($tarjeta->tar_numtarjeta,15,20); ?></b>
                         </p>
                     </div>
 
                     <?php $form = ActiveForm::begin(); ?>
-                    <div class="row">
+                    <div class="row color-blanco">
                         <div class="col-md-6">
                             <b><?= $form->field($tarjeta, 'tar_nombre')->textInput(['maxlength' => true ,'id' => "inputNom_{$tarjeta->tar_id}"]) ?></b>
                         </div>
@@ -47,6 +47,7 @@ JAVASCRIPT;
 						'mask' => 'm/j',
                         'options' => [
                             'id'=>"expiracion_{$tarjeta->tar_id}",
+                            
                         ],
 						'definitions' => [
 							'm' => [

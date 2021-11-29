@@ -56,7 +56,7 @@ $producto= \app\models\CatFavorito::producto();
                         <div class="contenedor-card-foter">
                             <p style="margin:0;"> <?=$favoritos->favFkproducto->pro_nombre?></p>
                             <p style="margin:0;"> <?=$favoritos->favFkproducto->pro_color?> </p>
-                            <?= Html::a('Vér mas <i class="fas fa-caret-down"></i>', ['/producto/detalles', 'id' => $favoritos->fav_fkproducto], ['class' => 'profile-link']) ?>
+                            <?= Html::a('Ver más <i class="fas fa-caret-down"></i>', ['/producto/detalles', 'id' => $favoritos->fav_fkproducto], ['class' => 'profile-link']) ?>
                         </div>
                         <!--  //* -#### Termina contenedor de los productos #####--  -->
                     </div>

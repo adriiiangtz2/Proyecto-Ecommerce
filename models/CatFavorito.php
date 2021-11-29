@@ -111,7 +111,7 @@ class CatFavorito extends \yii\db\ActiveRecord
     //funcion que trae el usuario que inicia sesion 
     //esta funcion se manda al controlador
     public static function favorito() { 
-        return CatFavorito::find()->where(['fav_fkusuario'=> Usuario::usuario()->usu_id,'fav_estado'=>1] )->all();
+        return CatFavorito::find()->where(['fav_fkusuario'=> Usuario::usuario()->usu_id,'fav_estado'=>1] )->orderBy(['fav_id'=>SORT_DESC])->all();
     }
     
     // consulta como tiene el estatus

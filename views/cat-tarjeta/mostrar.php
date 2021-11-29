@@ -2,14 +2,19 @@
 <!-- //! S renderiza a registrae -->
 <?php
 use yii\bootstrap4\Html; ?>
+
+
+
 <div class="" id="idtarjeta">
     <!-- //TODO -------- Empieza el ciclo , contiene las tajetas del usuario ------- -->
-    <?php foreach (\app\models\CatTarjeta::tarjeta() as $tarjeta): ?>
-    <div class="tarjetas-guardadas">
-        <div class="infos-tarjetas" id="infos-tarjetas<?= $tarjeta->tar_id ?>">
+    <?php foreach (\app\models\CatTarjeta::tarjeta() as $tarjeta):   ?>
+    <div onmouseover="estilosTarjeta('<?= $tarjeta->tar_id?>','<?= $tarjeta->tar_financiera ?>')"
+        class="tarjetas-guardadas" id="estilos-tarjetas-<?= $tarjeta->tar_id ?>">
+        <div class="infos-tarjetas" id="infos-tarjetas<?= $tarjeta->tar_id ?>" style="">
             <!-- acorta una cadena de caracteres a una parte en espesifico -->
-            <p><b><?= $tarjeta->tar_financiera ?></b> con terminación:
-                <b><?php echo substr($tarjeta->tar_numtarjeta,12,16); ?></b>
+            <p><b id="tarjeta-financiera<?= $tarjeta->tar_id?>"
+                    value="<?= $tarjeta->tar_financiera ?>"><?= $tarjeta->tar_financiera ?></b> con terminación:
+                <b><?php echo substr($tarjeta->tar_numtarjeta,15,20); ?></b>
             </p>
             <div id="expiracion-tar<?= $tarjeta->tar_id ?>">
                 <?= $this->render('expiracion', compact('tarjeta')) ?>
@@ -24,7 +29,6 @@ use yii\bootstrap4\Html; ?>
             </div>
         </div>
     </div>
-
     <div class="mostrar" id="mostrar<?= $tarjeta->tar_id ?>">
         <!-- //! Se renderia la vista de informacion de la tarjeta -->
         <?= $this->render('info-tar', compact('tarjeta')) ?>
@@ -35,4 +39,3 @@ use yii\bootstrap4\Html; ?>
     <?php endforeach; ?>
     <!-- //TODO -------- Termina el ciclo -->
 </div>
-<script src="js/tarjeta.js"></script>

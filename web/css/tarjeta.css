@@ -49,9 +49,40 @@
 	background: url(../img/tarjeta/bg-tarjeta/bg-tarjeta-01.jpg);
 	background-size: cover;
 }
-
+.tarjeta .delantera2 {
+	width: 100% !important;
+	background: url(../img/tarjeta/bg-tarjeta/bg-tarjeta-04.jpg) !important;
+	background-size: cover !important;
+}
+.tarjeta .delantera3 {
+	width: 100% !important;
+	background: url(../img/tarjeta/bg-tarjeta/bg-tarjeta-05.jpg) !important;
+	background-size: cover !important;
+}
+.img-logo-financiera{
+	background-image: url(/img/tarjeta/logos/visa.png);
+	background-size: cover;
+	height: 40px;
+	width: 60px;
+	
+}
+.img-logo-financiera2{
+	background-image: url(/img/tarjeta/logos/mastercard.png)!important;
+	background-size: cover !important;
+	height: 40px !important;
+	width: 60px !important;
+	
+}
+.img-logo-financiera3{
+	background-image: url(/img/tarjeta/logos/american.jpg) !important;
+	background-size: cover !important;
+	height: 40px !important;
+	width: 60px !important;
+	
+}
 .delantera .logo-marca {
-	text-align: right;
+    display: flex;
+	flex-direction: row-reverse;
 	min-height: 50px;
 }
 
@@ -359,7 +390,7 @@ border: 1px dashed black;
 /* ------------VISTAS MOTRAR--------------- */
 .tarjetas-guardadas{
 	display: flex;
-	height: 55px;
+	height: 64px;
 	width: 100%;
 	/* margin:5px; */
 	/* border: 1px solid rgba(0, 0, 0, 0.157); */
@@ -383,7 +414,7 @@ border: 1px dashed black;
 
 
 .infos-tarjetas > p {
-	color: rgb(51, 50, 50);
+	color: rgb(0, 0, 0);
 	justify-items: center;
 }
 .expira-fin{
@@ -448,14 +479,16 @@ border: 1px dashed black;
 .eliminar-btn-tarjeta{
 	display: flex;
     align-items: center;
-    background-color: rgb(255 0 0 / 23%);
+    background-color: rgb(255 0 0);
     border: none;
     padding: 3px;
     padding-right: 7px;
     font-weight: bold;
     /* position: absolute; */
+	color: white;
     bottom: 4%;
     right: 4%;
+	border-radius: 6px
 }
 .eliminar-btn-tarjeta i{
 	margin-left: 5px;
@@ -469,7 +502,8 @@ border: 1px dashed black;
 .editar-btn-tarjeta{
 	display: flex;
     align-items: center;
-    background-color: rgb(23 0 251 / 23%);
+    background-color: rgb(23 0 251);
+    color: white;
     border: none;
     padding: 3px;
     padding-right: 7px;
@@ -477,8 +511,74 @@ border: 1px dashed black;
     /* position: absolute; */
     bottom: 4%;
     right: 26%;
+    border-radius: 6px
 }
 .editar-btn-tarjeta i{
 	margin-left: 5px;
 }
 /* ------------   TERMINA VISTAS REGISTRAR             ADRIAN              --------------- */
+.estilos-visa1,
+.estilos-mastercard2,
+.estilos-american3{
+	
+}
+.estilos-visa1:hover{
+	background: url(/img/tarjeta/bg-tarjeta/bg-tarjeta-01.jpg);
+    background-position: 100% 46%;
+	transition: 3000ms;
+}
+.estilos-visa2{
+	background: url(/img/tarjeta/bg-tarjeta/bg-tarjeta-01.jpg);
+	background-size: cover;
+
+}
+.estilos-mastercard1:hover{
+	background: url(/img/tarjeta/bg-tarjeta/bg-tarjeta-04.jpg);
+    background-position: 50% 70%;
+	transition: 3000ms;
+	
+}
+.estilos-mastercard2{
+	background: url(/img/tarjeta/bg-tarjeta/bg-tarjeta-04.jpg);
+	background-size: cover;
+
+}
+
+.estilos-american1:hover{
+	background: url(/img/tarjeta/bg-tarjeta/bg-tarjeta-05.jpg);
+	background-position: 82% 105%;
+	transition: 3000ms;
+}
+.estilos-american2{
+	background: url(/img/tarjeta/bg-tarjeta/bg-tarjeta-05.jpg);
+	background-size: cover;
+
+}
+
+.estilos-visa1:hover > p,
+.estilos-mastercard1:hover > p,
+.estilos-american1:hover > p{
+	color: white;
+}
+.estilos-visa1:hover > div > p,
+.estilos-mastercard1:hover > div > p,
+.estilos-american1:hover > div > p{
+	color: white;
+}
+.estilos-visa1:hover > div > button,
+.estilos-mastercard1:hover > div > button,
+.estilos-american1:hover > div > button{
+	color: white;
+}
+.infor-desplagado div > p{
+	color: rgb(197, 197, 197);
+}
+.color-blanco p > b{
+	color: white;
+}
+.color-blanco p{
+	color: white;
+}
+.color-blanco div > b{
+	color: white;
+}

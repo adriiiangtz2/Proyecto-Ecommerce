@@ -88,6 +88,6 @@ class CatTarjeta extends \yii\db\ActiveRecord
     }
 
     public static function tarjeta() { 
-        return CatTarjeta::find()->where(['tar_fkusuario'=> Usuario::usuario()->usu_id] )->all();
+        return CatTarjeta::find()->where(['tar_fkusuario'=> Usuario::usuario()->usu_id] )->orderBy(['tar_id'=>SORT_DESC])->all();
     }
 }

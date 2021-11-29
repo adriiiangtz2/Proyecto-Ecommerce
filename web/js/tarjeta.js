@@ -102,6 +102,8 @@ function recargarTarjeta() {
   let financiera = $("#cattarjeta-tar_financiera").val();
   let tipo = $("#cattarjeta-tar_tipo").val();
   let expiracion = $("#cattarjeta-tar_expiracion").val();
+
+  console.log(financiera);
   // guarda los datos que contenga este id
   // let nav = $("#icon-fav"+id).val();
   $.post("/cat-tarjeta/registrartarjeta", {numtarjeta:numero,financiera:financiera,tipo:tipo,expiracion:expiracion,nombre:nombre}, function (data) {
@@ -182,3 +184,38 @@ function modal(id){
 //   }).fail(function(f){console.log(f.responseText);});
 // }
 
+function estilosTarjeta(id,financiera){
+
+if(financiera =="Visa"){
+  $("#infos-tarjetas"+id).addClass("estilos-visa1");
+  $("#mostrar"+id).addClass("estilos-visa2");
+  $("#modal-body-editar"+id).addClass("estilos-visa2");
+  
+}else if(financiera == "Mastercard"){
+  $("#infos-tarjetas"+id).addClass("estilos-mastercard1");
+  $("#mostrar"+id).addClass("estilos-mastercard2");
+  $("#modal-body-editar"+id).addClass("estilos-mastercard2");
+}else if(financiera == "American Express"){
+
+  $("#infos-tarjetas"+id).addClass("estilos-american1");
+  $("#mostrar"+id).addClass("estilos-american2");
+  $("#modal-body-editar"+id).addClass("estilos-american2");
+}
+}
+
+
+function seleccionarTarjeta(){
+  let EnFinanciera = $("#cattarjeta-tar_financiera").val();
+  console.log(EnFinanciera);
+  if(EnFinanciera =="Visa"){
+    $("#fondo-delantera-tar").removeClass("delantera2 delantera3").addClass("delantera");
+    $("#logo-financiera").removeClass("img-logo-financiera2 img-logo-financiera3 ").addClass("img-logo-financiera");
+  }else if(EnFinanciera == "Mastercard"){
+    $("#fondo-delantera-tar").removeClass("delantera3").addClass("delantera2");
+    $("#logo-financiera").removeClass("img-logo-financiera2 img-logo-financiera3").addClass("img-logo-financiera2");
+  }else if(EnFinanciera == "American Express"){
+    $("#fondo-delantera-tar").removeClass(" delantera2").addClass("delantera3");
+    $("#logo-financiera").removeClass("img-logo-financiera2 img-logo-financiera").addClass("img-logo-financiera3");
+  }
+  
+}

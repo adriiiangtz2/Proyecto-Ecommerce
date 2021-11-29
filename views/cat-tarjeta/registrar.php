@@ -8,6 +8,7 @@ use kartik\widgets\Select2;
 use yii\widgets\MaskedInput;
 use yii\bootstrap4\ActiveForm;
 // hola
+$producto= \app\models\CatFavorito::producto();
 ?>
 
 <body class="body-tarjeta">
@@ -17,9 +18,11 @@ use yii\bootstrap4\ActiveForm;
             <P>MUESTRA MIS MÉTODOS DE PAGOS GUARDADOS EN EL PASO DEL PAGO</P>
             <!-- Tarjeta -->
             <section class="tarjeta" id="tarjeta">
-                <div class="delantera">
+                <div class="delantera" id="fondo-delantera-tar">
                     <div class="logo-marca" id="logo-marca">
-                        <?= Html::img('/img/tarjeta/logos/visa.png') ?>
+                        <div class="img-logo-financiera" id="logo-financiera">
+
+                        </div>
                     </div>
                     <img src="/img/tarjeta/chip-tarjeta.png" class="chip" alt="">
                     <div class="datos">
@@ -92,7 +95,10 @@ use yii\bootstrap4\ActiveForm;
 						'Visa' => 'Visa',
 						'American Express' => 'American Express',
 					],
-					['prompt' => '']
+					['prompt' => '',
+                    'onclick'=>'seleccionarTarjeta()'
+                 
+                    ]
 					) ?>
                 </div>
 
@@ -104,7 +110,8 @@ use yii\bootstrap4\ActiveForm;
 								'Credito' => 'Credito',
 								'Monedero' => 'Monedero',
 							],
-							['prompt' => '']
+							['prompt' => ''],
+                            
 							) ?>
                 </div>
 
@@ -174,7 +181,14 @@ JAVASCRIPT;
                 <!--  //! Se renderia la vista mostrar  -- -->
                 <?= $this->render('mostrar') ?>
             </div>
-
+            <br>
+            <br>
+            <div>
+                <?= $this->render('/cat-favorito/prodescuento', compact('producto')) ?>
+            </div>
         </div>
-        <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+
+    </div>
+
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
