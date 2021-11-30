@@ -35,7 +35,7 @@ use yii\bootstrap4\ActiveForm;
 
             <div class="col-md-6">
                 <p><b>
-                        <?= $form->field($user, 'repeat_password')->passwordInput(['maxlength' => 255, 'autocomplete'=>'off','class'=>'color-texto-blanco']) ?></b>
+                        <?= $form->field($user, 'repeat_password')->passwordInput(['maxlength' => 255, 'autocomplete'=>'off']) ?></b>
                 <p>
             </div>
             <!-- se toma del la vista fomulario.php y arriba de wevimark  -->
