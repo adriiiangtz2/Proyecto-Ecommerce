@@ -76,7 +76,8 @@ $producto= \app\models\CatFavorito::producto();
             <!-- ----------------------------------------------------------- -->
 
         </div>
-        <div class="col-md-2" style="border: 4px dashed #d1d1d1;border-radius: 20px;padding: 15px;">
+        <div class="col-md-2"
+            style="border: 4px dashed #d1d1d1;border-radius: 20px;padding: 15px;background: #0000004f;">
             <a href="">
                 <p><b>¿NECESITAS AYUDA?</b></p>
             </a>

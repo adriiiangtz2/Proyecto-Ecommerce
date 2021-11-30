@@ -100,18 +100,20 @@
   justify-content: center;
   display: flex;
   height: 600px;
-  
   align-content: center;
-  background: url(/img/usuario/fondo-registrar.jpg);
+  background-image: linear-gradient(
+    rgba(87, 21, 21, 0.561),
+  rgba(51, 40, 40, 0.5)), url(/img/usuario/fondo-registrar.jpg);
 	background-size: cover;
   background-attachment: fixed;
   overflow: hidden;
   
+  
 }
 .contenedor-central-registrar{
-
-background: url(/img/usuario/fondo-registrar.jpg);
-	background-size: cover;
+  background-image: url(/img/usuario/fondo-registrar.jpg);
+  background-size: cover;
+  border-radius: 15px;
 }
 .texto-central-registrar > div {
 color: white;
@@ -127,4 +129,13 @@ color: white;
   font-size: 19px;
   width: 351px;
   border-radius: 10px 10px 0px 0px;
+}
+
+.contenedor-producto-descuentos{
+  background-image: linear-gradient(
+    rgba(87, 21, 21, 0.561),
+  rgba(51, 40, 40, 0.5)), url(/img/usuario/fondo-descuento.jpg);
+ 
+  border-radius: 15px;
+  background-size: cover;
 }

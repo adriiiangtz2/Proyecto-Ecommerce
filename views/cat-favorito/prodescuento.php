@@ -5,7 +5,7 @@ use yii\bootstrap4\Html;
 ?>
 <!-- ----------------------------------------------------------- -->
 <h3><b>TAMBIÉN PODRÍA INTERESARTE</b></h3>
-<div class="small-container" style="background: #2a2a2a;border-radius: 23px;">
+<div class="small-container contenedor-producto-descuentos">
     <div class="filas">
         <?php foreach($producto as $pro):
                       $descuento= $pro->pro_descuento;
