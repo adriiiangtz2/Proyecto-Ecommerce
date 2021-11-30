@@ -62,22 +62,22 @@
 .img-logo-financiera{
 	background-image: url(/img/tarjeta/logos/visa.png);
 	background-size: cover;
-	height: 40px;
-	width: 60px;
+    height: 56px;
+    width: 100px;
 	
 }
 .img-logo-financiera2{
 	background-image: url(/img/tarjeta/logos/mastercard.png)!important;
 	background-size: cover !important;
-	height: 40px !important;
-	width: 60px !important;
+    height: 56px !important;
+    width: 100px !important;
 	
 }
 .img-logo-financiera3{
 	background-image: url(/img/tarjeta/logos/american.jpg) !important;
 	background-size: cover !important;
-	height: 40px !important;
-	width: 60px !important;
+	height: 56px !important;
+    width: 100px !important;
 	
 }
 .delantera .logo-marca {

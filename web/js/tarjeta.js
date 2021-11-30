@@ -190,16 +190,19 @@ if(financiera =="Visa"){
   $("#infos-tarjetas"+id).addClass("estilos-visa1");
   $("#mostrar"+id).addClass("estilos-visa2");
   $("#modal-body-editar"+id).addClass("estilos-visa2");
+  $("#logo-contenedor-info-tar"+id).addClass("img-logo-financiera");
   
 }else if(financiera == "Mastercard"){
   $("#infos-tarjetas"+id).addClass("estilos-mastercard1");
   $("#mostrar"+id).addClass("estilos-mastercard2");
   $("#modal-body-editar"+id).addClass("estilos-mastercard2");
+  $("#logo-contenedor-info-tar"+id).addClass("img-logo-financiera2");
 }else if(financiera == "American Express"){
 
   $("#infos-tarjetas"+id).addClass("estilos-american1");
   $("#mostrar"+id).addClass("estilos-american2");
   $("#modal-body-editar"+id).addClass("estilos-american2");
+  $("#logo-contenedor-info-tar"+id).addClass("img-logo-financiera3");
 }
 }
 

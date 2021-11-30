@@ -9,6 +9,9 @@
             <p><b>Entidad F. :</b> <br> <?= $tarjeta->tar_financiera ?></p>
             <p><b>Expiración:</b> <br> <?= $tarjeta->tar_expiracion ?></p>
         </div>
+        <div id="logo-contenedor-info-tar<?= $tarjeta->tar_id ?>">
+
+        </div>
         <div style="display:flex;flex-direction: column;justify-content: space-between;">
             <p><b>Dirección de facturacion:</b></p>
             <p>Traer datos de la tabla domicilio</p>
