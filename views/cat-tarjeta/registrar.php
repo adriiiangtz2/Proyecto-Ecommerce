@@ -103,8 +103,8 @@ $producto= \app\models\CatFavorito::producto();
                 <div class="grupo">
                     <?= $form->field($model, 'tar_tipo')->dropDownList(
 							[
-								'Debito' => 'Debito',
-								'Credito' => 'Credito',
+								'Debito' => 'Débito',
+								'Credito' => 'Crédito',
 								'Monedero' => 'Monedero',
 							],
 							['prompt' => ''],
