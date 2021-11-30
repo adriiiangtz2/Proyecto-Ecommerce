@@ -10,30 +10,40 @@ use yii\bootstrap4\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="cat-municipios-form">
-    <?php $form = ActiveForm::begin(); ?>
-    <div class="row offer">
-        <div class="col">
-            <?= $form->field($model, 'mun_fkestado')->widget(Select2::classname(), [
-                'data' => CatEstados::getMap4(),
-                'language' => 'es',
-                'options' => ['placeholder' => 'selecciona el estado ...'],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ]); ?>
-        </div>
-        <div class="col">
-            <?= $form->field($model, 'mun_municipio')->textInput(['maxlength' => true]) ?>
+<section id="contact-form-section">
 
+    <div class="row">
+        <div class="editar_form col-md-5 ">
+            <div class="editar_logo">
+                <i class="fas fa-flag-usa"></i>
+            </div>
+            <div class="registro_infor">
+                <h1>Modulo para agregar Municipios</h1>
+            </div>
+        </div>
+        <div class="col-md-7" style="border: 1px solid; padding: 37px; border-left: 2px solid white;">
+
+            <?php $form = ActiveForm::begin(); ?>
+            <div class="row ">
+                <div class="col-md-12">
+                    <?= $form->field($model, 'mun_fkestado')->widget(Select2::classname(), [
+                        'data' => CatEstados::getMap4(),
+                        'language' => 'es',
+                        'options' => ['placeholder' => 'selecciona el estado ...'],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ],
+                    ]); ?>
+                </div>
+                <div class="col-md-12">
+                    <?= $form->field($model, 'mun_municipio')->textInput(['maxlength' => true]) ?>
+
+                </div>
+                <div class="col-md-12" style="display: flex; justify-content: center;">
+                    <?= Html::submitButton('guardar', ['class' => 'btnn']) ?>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="row justify-content-center">
-    </div>
-    <div class="form-group">
-        <?= Html::submitButton('guardar', ['class' => 'btnn']) ?>
-    </div>
-</div>
-<?php ActiveForm::end(); ?>
-</div>
+    <?php ActiveForm::end(); ?>
+</section>

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CatEstados */
 
-$this->title = 'agregar Estados';
+$this->title = 'Agregar Estados';
 $this->params['breadcrumbs'][] = ['label' => ' Estados', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

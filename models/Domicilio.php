@@ -45,7 +45,7 @@ class Domicilio extends \yii\db\ActiveRecord
             [['dom_numExt', 'dom_numInt'], 'string', 'max' => 10],
             [['dom_telefono'], 'string', 'max' => 12],
             [['dom_fkusuario'], 'exist', 'skipOnError' => true, 'targetClass' => Usuario::className(), 'targetAttribute' => ['dom_fkusuario' => 'usu_id']],
-            [['dom_fkcp'], 'exist', 'skipOnError' => true, 'targetClass' => CatCp::className(), 'targetAttribute' => ['dom_fkcp' => 'cp_id']],
+            [['dom_fkcp'], 'exist', 'skipOnError' => true, 'targetClass' => CatCp::className(), 'targetAttribute' => ['dom_fkcp' => 'cp_cp']],
         ];
     }
 
