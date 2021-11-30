@@ -18,6 +18,10 @@ use app\models\CatTarjeta;
  */
 class CatFavorito extends \yii\db\ActiveRecord
 {
+    public $descuento = 0;
+    public $precio = 0;
+    public $opera = 0;
+    public $total = 0;
     /**
      * {@inheritdoc}
      */
@@ -139,4 +143,15 @@ class CatFavorito extends \yii\db\ActiveRecord
            
             return Producto::find()->where(['pro_descuento'=>$valor] )->orderBy(['rand()' => SORT_DESC])->limit(4)->all();
         }
+        public static function Cuentas(){
+            $favo2= self::favorito();
+            $favorito = new CatFavorito();
+            foreach ($favo2 as $favoritos){
+                $favorito->descuento= $favoritos->favFkproducto->pro_descuento;
+                $favorito->precio   = $favoritos->favFkproducto->pro_precio;
+                $favorito->opera    = (($favorito->precio)/100)* $favorito->descuento; 
+                $favorito->total    = $favorito->precio-$favorito->opera;
+            }
+            return $favorito; 
+        }       
 }

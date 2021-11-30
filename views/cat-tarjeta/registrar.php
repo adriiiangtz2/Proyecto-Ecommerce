@@ -95,14 +95,11 @@ $producto= \app\models\CatFavorito::producto();
 						'Visa' => 'Visa',
 						'American Express' => 'American Express',
 					],
-					['prompt' => '',
-                    'onclick'=>'seleccionarTarjeta()'
-                 
+					[   'prompt' => '',
+                        'onclick'=>'seleccionarTarjeta()'
                     ]
 					) ?>
                 </div>
-
-
                 <div class="grupo">
                     <?= $form->field($model, 'tar_tipo')->dropDownList(
 							[
@@ -114,7 +111,6 @@ $producto= \app\models\CatFavorito::producto();
                             
 							) ?>
                 </div>
-
                 <div class="grupo">
                     <?php 
 						$script = <<< JAVASCRIPT
@@ -127,6 +123,8 @@ JAVASCRIPT;
                     <?= $form->field($model, 'tar_expiracion')->widget(MaskedInput::classname(), [
 						// 'mask' => 'md99',
 						// 'mask' => 'm/99',
+                        // 'clientOptions' => ['alias' =>  'date']
+                        // 'clientOptions' => ['alias' =>  'mm/dd/yyyy']
 						'mask' => 'm/j',
 						'definitions' => [
 							'm' => [
@@ -173,7 +171,6 @@ JAVASCRIPT;
         <div class=" tarjet tarjet-mostrar">
             <div class="d-flex" style="justify-content: space-around;align-items: center;">
                 <b><?= Html::a('MIS TARJETAS',['cat-tarjeta/mostrar'],['class' => '']) ?></b>
-
             </div>
             <hr>
             <div id="idmostrar" class="contenedor-izq-tarjeta"
@@ -187,8 +184,6 @@ JAVASCRIPT;
                 <?= $this->render('/cat-favorito/prodescuento', compact('producto')) ?>
             </div>
         </div>
-
     </div>
-
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>

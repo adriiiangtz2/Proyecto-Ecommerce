@@ -95,3 +95,36 @@
     border-bottom: 1px solid #C7511F;
 }
   
+
+.contenedor-registrar{
+  justify-content: center;
+  display: flex;
+  height: 600px;
+  
+  align-content: center;
+  background: url(/img/usuario/fondo-registrar.jpg);
+	background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
+  
+}
+.contenedor-central-registrar{
+
+background: url(/img/usuario/fondo-registrar.jpg);
+	background-size: cover;
+}
+.texto-central-registrar > div {
+color: white;
+}
+.color-texto-blanco{
+ color: white !important;
+}
+.btn-guardar{
+  padding: 2px;
+  border: none;
+  background: black;
+  color: white;
+  font-size: 19px;
+  width: 351px;
+  border-radius: 10px 10px 0px 0px;
+}

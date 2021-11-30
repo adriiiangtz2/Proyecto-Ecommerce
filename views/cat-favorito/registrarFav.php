@@ -7,6 +7,7 @@ use app\models\CatFavorito;
 $total = 0;
 /* // ? viene del modelo, funcion trae los datos con estatus 1 */
 $favo= \app\models\CatFavorito::favorito();
+$favo2= \app\models\CatFavorito::cuentas();
 $producto= \app\models\CatFavorito::producto();
 ?>
 <div id="identificador">
@@ -24,7 +25,7 @@ $producto= \app\models\CatFavorito::producto();
                 /*  // TODO --------- Inicia el ciclo --------------------------------- */
                 foreach ($favo as $favoritos):
                     $descuento= $favoritos->favFkproducto->pro_descuento;
-                    $precio   = $favoritos->favFkproducto->pro_precio;?>
+                    // $precio   = $favoritos->favFkproducto->pro_precio;?>
                     <!-- // *   #### inicia contenedor de los productos #####-- -->
                     <div id="contendor-fav<?=$favoritos->fav_id?>" class="colum-4 columm4">
                         <div id="lds-facebook_<?=$favoritos->fav_id?>" class="">
@@ -40,14 +41,14 @@ $producto= \app\models\CatFavorito::producto();
                         </div>
                         <!--  // TODO  incia la condicional interno ------- -->
                         <?php if(($descuento)>0){
-                            $opera= (($precio)/100)*$descuento; 
-                            $total= $precio-$opera;?>
-                        <p class="precio-favorito"><b>$</b><?= html::encode("{$precio}") ?></p>
-                        <p class="total-favorito"><b>$</b><?= html::encode("{$total}") ?></p>
+                            // $opera= (($precio)/100)*$descuento; 
+                            // $total= $precio-$opera;?>
+                        <p class="precio-favorito"><b>$</b><?= html::encode("{$favo2->precio}") ?></p>
+                        <p class="total-favorito"><b>$</b><?= html::encode("{$favo2->total}") ?></p>
                         <p class="descuento-favorito"> %<?=$descuento?></p>
 
                         <?php  } else {  ?>
-                        <p class="total-favorito"><b>$</b><?= html::encode("{$precio}") ?></p>
+                        <p class="total-favorito"><b>$</b><?= html::encode("{$favo2->precio}") ?></p>
                         <!-- // TODO Termina el condicional interno ------- -->
                         <!--  // ! Inicia renderizado del boton -------------------- -->
                         <?php }?>
@@ -75,8 +76,7 @@ $producto= \app\models\CatFavorito::producto();
             <!-- ----------------------------------------------------------- -->
 
         </div>
-        <div class="col-md-2" style="border: 4px dashed #d1d1d1;    border-radius: 20px;
-    padding: 15px;">
+        <div class="col-md-2" style="border: 4px dashed #d1d1d1;border-radius: 20px;padding: 15px;">
             <a href="">
                 <p><b>¿NECESITAS AYUDA?</b></p>
             </a>

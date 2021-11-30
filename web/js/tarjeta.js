@@ -183,7 +183,7 @@ function modal(id){
 //     });
 //   }).fail(function(f){console.log(f.responseText);});
 // }
-
+/* //* Estilos cuando se poner el cursos y tambien en el modal y mostrar oculto */
 function estilosTarjeta(id,financiera){
 
 if(financiera =="Visa"){
@@ -203,7 +203,7 @@ if(financiera =="Visa"){
 }
 }
 
-
+/* //* cambia el estilo de la entidad financiera dependiendo del select, de vista registrar */
 function seleccionarTarjeta(){
   let EnFinanciera = $("#cattarjeta-tar_financiera").val();
   console.log(EnFinanciera);

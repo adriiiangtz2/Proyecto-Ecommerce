@@ -5,63 +5,60 @@ use yii\helpers\Html;
 use yii\widgets\MaskedInput;
 use yii\bootstrap4\ActiveForm;
 ?>
-<div>
-    <?php $form = ActiveForm::begin(); ?>
-    <div class="account-page">
-        <div class="contenedor-usu">
-            <div class="filas">
-                <div class="colum-2-usu">
-                    <?= Html::img('/plantilla/images/image1.png',['style'=>'']) ?>
-                </div>
-                <div class="colum-3-usu">
-                    <div class="form-container-usu">
-                        <div class="">
-                            <h3>Registrate</h3>
-                        </div>
-                        <div class="row">
-                            <!-- //*  INICIO  DE LOS FORMULARIOS -- -->
-                            <!-- // ! se cambian las varianles user y usuario que llegan del controler-- -->
-                            <div class="col-md-6 ">
-                                <?= $form->field($user, 'username')->textInput(['maxlength' => 255, 'autocomplete'=>'off']) ?>
-                            </div>
 
-                            <div class="col-md-6">
-                                <?= $form->field($user, 'password')->passwordInput(['maxlength' => 255, 'autocomplete'=>'off']) ?>
-                            </div>
+<?php $form = ActiveForm::begin(); ?>
+<div class="row contenedor-registrar">
+    <div class="col-md-5 contenedor-central-registrar">
+        <div class="row texto-central-registrar">
+            <!-- //*  INICIO  DE LOS FORMULARIOS -- -->
+            <!-- // ! se cambian las varianles user y usuario que llegan del controler-- -->
+            <div class="col-md-6">
+                <p><b><?= $form->field($user, 'username')->textInput(['maxlength' => 255, 'autocomplete'=>'off']) ?></b>
+                <p>
+            </div>
 
-                            <div class="col-md-6">
-                                <?= $form->field($user, 'email')->widget(MaskedInput::classname(), [
+            <div class="col-md-6">
+                <p><b>
+                        <?= $form->field($user, 'password')->passwordInput(['maxlength' => 255, 'autocomplete'=>'off']) ?></b>
+                <p>
+            </div>
+
+            <div class="col-md-6">
+                <p><b> <?= $form->field($user, 'email')->widget(MaskedInput::classname(), [
                                 'clientOptions' => [
                                 'alias' =>  'email'
                             ],
 				])
-                            ?>
-                            </div>
+                            ?></b>
+                <p>
+            </div>
 
-                            <div class="col-md-6">
-                                <?= $form->field($user, 'repeat_password')->passwordInput(['maxlength' => 255, 'autocomplete'=>'off']) ?>
-                            </div>
-                            <!-- se toma del la vista fomulario.php y arriba de wevimark  -->
-                            <div class="col-md-4">
-                                <?= $form->field($usuario, 'usu_nombre')->textInput(['maxlength' => true]) ?>
-                            </div>
+            <div class="col-md-6">
+                <p><b>
+                        <?= $form->field($user, 'repeat_password')->passwordInput(['maxlength' => 255, 'autocomplete'=>'off','class'=>'color-texto-blanco']) ?></b>
+                <p>
+            </div>
+            <!-- se toma del la vista fomulario.php y arriba de wevimark  -->
+            <div class="col-md-4">
+                <p><b> <?= $form->field($usuario, 'usu_nombre')->textInput(['maxlength' => true]) ?></b>
+                <p>
+            </div>
 
-                            <div class="col-md-4">
-                                <?= $form->field($usuario, 'usu_paterno')->textInput(['maxlength' => true]) ?>
-                            </div>
-                            <div class="col-md-4">
-                                <?= $form->field($usuario, 'usu_materno')->textInput(['maxlength' => true]) ?>
-                            </div>
-                            <!--  // *  FIN  DE LOS FORMULARIOS -- -->
-                        </div>
-                        <div class="row justify-content-center">
-                            <div>
-                                <?= Html::submitButton('Guardar', ['class' => 'btnn']) ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-4">
+                <p><b> <?= $form->field($usuario, 'usu_paterno')->textInput(['maxlength' => true]) ?></b>
+                <p>
+            </div>
+            <div class="col-md-4">
+                <p><b><?= $form->field($usuario, 'usu_materno')->textInput(['maxlength' => true]) ?><p></b></p>
+            </div>
+            <!--  // *  FIN  DE LOS FORMULARIOS -- -->
+        </div>
+        <div class="row justify-content-center">
+            <div>
+                <?= Html::submitButton('Guardar', ['class' => 'btn-guardar']) ?>
             </div>
         </div>
     </div>
-    <?php ActiveForm::end(); ?>
+
+</div>
+<?php ActiveForm::end(); ?>
