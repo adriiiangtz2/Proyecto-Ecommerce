@@ -10,7 +10,7 @@ use yii\bootstrap4\ActiveForm;
 
 <div class="cat-estados-form">
     <?php $form = ActiveForm::begin(); ?>
-    <div class="row offer">
+    <div class="row ">
         <div class="col">
             <?= $form->field($model, 'est_estado')->textInput(['maxlength' => true]) ?>
         </div>

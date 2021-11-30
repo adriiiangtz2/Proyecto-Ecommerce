@@ -65,21 +65,21 @@
                        </div>
                    </div>
                    <div class="domicilio-botones">
-                       <?= Html::a('Modificar', ['update', 'id' => $domicilio->dom_id], ['class' => 'btn btn-primary']) ?>
+
+                       <?= Html::a('Modificar', ['update', 'id' => $domicilio->dom_id], ['class' => 'editarr-btn-tarjeta', 'style' => 'text-decoration:none; padding: 10px;']) ?>
                        <?= count($domicilio->carros) == 0 ? Html::a('Eliminar', ['delete', 'id' => $domicilio->dom_id], [
-                            'class' => 'btn btn-danger',
+                            'class' => 'eliminarr-btn-tarjeta',
+                            'style' => 'text-decoration:none; padding: 10px;',
                             'data' => [
-                                'confirm' => '¿Estas seguro que quieres eliminar este domicilio?',
+                                'confirm' => '¿Estás seguro que quieres eliminar este domicilio?',
                                 'method' => 'post',
                             ],
-                        ]) : Html::label('No se puede eliminar esta dirección porque está en uso', '', ['class' => 'btn btn-danger']); ?>
+                        ]) : Html::label('No se puede eliminar esta dirección porque está en uso', '', ['class' => 'eliminarr-btn-tarjeta', 'style' => 'text-decoration:none; padding: 10px;',]); ?>
                    </div>
                </div>
 
            <?php endforeach; ?>
        </div>
-
-
    </body>
 
    </html>

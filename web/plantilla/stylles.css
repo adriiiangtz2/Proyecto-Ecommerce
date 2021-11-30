@@ -471,10 +471,7 @@ select:focus {
 .tabla td input:focus {
   outline: none;
 }
-.tabla td a {
-  color: #007185;
-  font-size: 12px;
-}
+
 .tabla td img {
   width: 80px;
   height: 80px;
@@ -604,7 +601,6 @@ form a{
   flex-basis: 50%;
 }
 
-
 .contenedor-pagina-eccomerce{
   box-shadow: rgb(229 229 229) 0px -1px 0px 0px inset;
   background: rgb(255, 255, 255);
@@ -647,7 +643,6 @@ form a{
 .botonera-usuario{
   width: 80px;
 
-  
 }
 @keyframes agrandar{
   from{
@@ -664,8 +659,6 @@ form a{
   animation-timing-function:linear;
   animation-direction:alternate;
 } 
-
-
 
 .contenedor-cards-boto-usu{
   border: 1px solid rgb(190, 188, 188);

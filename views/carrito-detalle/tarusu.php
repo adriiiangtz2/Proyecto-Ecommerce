@@ -17,7 +17,7 @@ $tarjeta = \app\models\CarritoDetalle::tarjetaCheck();
         <div class="d-flex div-vista-tarjeta">
             <?php if (!empty(\app\models\CarritoDetalle::tarjetaCheck())) : ?>
                 <!-- Datos que se muestran en Metodo de envio -->
-                <p><b><?= $tarjeta->tar_financiera ?></b> con terminación: <b><?php echo substr($tarjeta->tar_numtarjeta, 12, 16); ?></b></p>
+                <p><b><?= $tarjeta->tar_financiera ?></b> con terminación: <b><?php echo substr($tarjeta->tar_numtarjeta, 15, 18); ?></b></p>
             <?php else : /* Si no hay nada en la consulta */ ?>
                 <p>Aún no has añadido ningún método de pago</p>
             <?php endif ?>

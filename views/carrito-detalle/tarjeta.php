@@ -40,7 +40,7 @@
                                 <div class="card-info">
                                     <!-- Se llaman los valores que se necesitan de la consulta para mostrar. El echo substr es para
                                 solo mostrar la ultima parte del numero de tarjeta -->
-                                    <p><b><?= $tarjeta->tar_financiera ?></b> con terminación <b><?php echo substr($tarjeta->tar_numtarjeta, 12, 16); ?></b></p>
+                                    <p><b><?= $tarjeta->tar_financiera ?></b> con terminación <b><?php echo substr($tarjeta->tar_numtarjeta, 15, 18); ?></b></p>
                                 </div>
                             </div>
                             <div>

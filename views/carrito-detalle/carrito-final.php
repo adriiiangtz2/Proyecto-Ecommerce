@@ -1,3 +1,6 @@
+<?php
+use yii\bootstrap4\Html;
+?>
 <div class="small-container-checkout card-page">
     <!-- Los productos se muestran en una tabla -->
     <table class="tabla">
@@ -16,9 +19,11 @@
                         <img src=<?= $carritoDe->cardetFkproducto->getUrl() ?>>
                         <div>
                             <!-- Nombre viene de la consulta -->
-                            <p><?= $carritoDe->productoNombre ?></p>
+                            <?= Html::a($carritoDe->productoNombre, ['/producto/detalles', 'id' => $carritoDe->cardet_fkproducto], ['class' => 'producto-carrito']) ?>
+                            <br>
+                            <br>
                             <!-- Precio viene de la consulta de la tabla producto -->
-                            <small>Precio: $<?=number_format( $carritoDe->productoPrecio, 2,'.', ','); ?></small>
+                            <small>Precio: $<?= number_format($carritoDe->productoPrecio, 2, '.', ','); ?></small>
                             <br>
                             <!-- Se llama la funcion eliminarProducto al boton para eliminar el producto del carrito. El 1
                             concatenado es para diferenciar con la tabla de la vista carrito -->
@@ -28,7 +33,7 @@
                 </td>
                 <!-- Se llama la funcion registrarCantidad al input de cantidad para registrar los cambios a la bd y a la vista. El 1
                             concatenado es para diferenciar con la tabla de la vista carrito -->
-                <td><input id="input-cant<?= $carritoDe->cardet_id ?>" type="number" onclick="registrarCantidad(<?= $carritoDe->cardet_id ?>, 1)" value=<?= $carritoDe->cardet_cantidad ?>></td>
+                <td><input id="input-cant<?= $carritoDe->cardet_id ?>" min="1" type="number" onclick="registrarCantidad(<?= $carritoDe->cardet_id ?>, 1)" value=<?= $carritoDe->cardet_cantidad ?>></td>
                 <td>$<?= $carritoDe->cardet_precio ?></td>
             </tr>
         <?php endforeach; ?>

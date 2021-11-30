@@ -14,7 +14,6 @@
   background-color: #f0f2f2;
 }
 .domicilio-botones {
-  border: 1px dashed #b9aeae;
   background: #f0f2f2;
   display: flex;
   justify-content: center;
@@ -67,4 +66,42 @@
 .registro_infor {
   text-align: center;
   color: white;
+}
+.eliminarr-btn-tarjeta {
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  align-items: center;
+  background-color: rgb(255 0 0 / 23%);
+  border: none;
+  padding: 3px;
+  padding-right: 7px;
+  font-weight: bold;
+  /* position: absolute; */
+  bottom: 4%;
+  right: 4%;
+  text-decoration: none;
+}
+.eliminar-btn-tarjeta i {
+  margin-left: 5px;
+}
+/* COLOR ROJO ICONO CORAZON  */
+.color-rojo-btn {
+  color: red;
+}
+
+/* BOTON PARA EDITAR LA TARJETA */
+.editarr-btn-tarjeta {
+  align-items: center;
+  background-color: rgb(23 0 251 / 23%);
+  border: none;
+  padding: 3px;
+  padding-right: 7px;
+  font-weight: bold;
+  /* position: absolute; */
+  bottom: 4%;
+  right: 26%;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
 }
