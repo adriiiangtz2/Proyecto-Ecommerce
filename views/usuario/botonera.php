@@ -5,9 +5,9 @@ use yii\bootstrap4\Html;
 <?php
 /* // TODO se crean objetos los cuales tendran 3 parametros ,Nombre,Url,Img,Info, se usa en ciclo de line 18 */
 $card = [
-    (object)['nombre' => 'USUARIO'    , 'url'  => 'informacion',           'img' => 'usuario', 'info' => 'INFORMACION DEL USUARIO'  ],
-    (object)['nombre' => 'DOMICILIO'  , 'url'  => '/domicilio/mostrar',    'img' => 'domicilio', 'info' => 'EDITA DIRECCIONES PARA PEDIDOS Y REGALOS'  ],
-    (object)['nombre' => 'TARJETAS'   , 'url' => '/cat-tarjeta/registrar', 'img' => 'tarjeta' , 'info' => 'ADMINISTRA CONFIGURACIONES Y METODOS DE PAGO'  ],
+    (object)['nombre' => 'USUARIO'    , 'url'  => 'informacion',           'img' => 'usuario', 'info' => 'INFORMACIÓN DEL USUARIO'  ],
+    (object)['nombre' => 'DOMICILIO'  , 'url'  => '/domicilio/mostrar',    'img' => 'domicilio', 'info' => 'EDITAR DIRECCIONES PARA PEDIDOS Y REGALOS'  ],
+    (object)['nombre' => 'TARJETAS'   , 'url' => '/cat-tarjeta/registrar', 'img' => 'tarjeta' , 'info' => 'ADMINISTRA CONFIGURACIONES Y MÉTODOS DE PAGO'  ],
     (object)['nombre' => 'FAVORTOS'   , 'url' => '/cat-favorito/favorito', 'img' => 'corazon' , 'info' => 'LOS PRODUCTOS QUE AGREGUES A TUS FAVORITOS SE GUARDARÁN AQUÍ.'  ],
 ];
 ?>

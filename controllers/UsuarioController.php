@@ -252,7 +252,7 @@ class UsuarioController extends Controller
         // die;
       
         
-        return $this->redirect(['/']);
+        return $this->redirect(['/usuario/registrar-usuario']);
     }
 
 

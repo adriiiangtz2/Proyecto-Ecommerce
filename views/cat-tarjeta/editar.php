@@ -11,7 +11,7 @@ use yii\bootstrap4\ActiveForm;
     <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header" style="background-color:#9da2cc3b;">
-                <h5 class="modal-title" id="exampleModalLongTitle">Editar metodo de pago</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Editar método de pago</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -20,8 +20,8 @@ use yii\bootstrap4\ActiveForm;
                 <!-- CONTENIDO PRINCIPAL -->
                 <div class="row" style="height:200px">
                     <div class="col-md-4 color-blanco">
-                        <p><b>Metodo de pago:</b><br>
-                        <p><b><?= $tarjeta->tar_financiera ?></b> con terminacion:
+                        <p><b>Método de pago:</b><br>
+                        <p><b><?= $tarjeta->tar_financiera ?></b> con terminación:
                             <b><?php echo substr($tarjeta->tar_numtarjeta,15,20); ?></b>
                         </p>
                     </div>

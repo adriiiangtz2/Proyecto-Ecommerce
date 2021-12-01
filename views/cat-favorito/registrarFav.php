@@ -44,7 +44,7 @@ $producto= \app\models\CatFavorito::producto();
                             // $opera= (($precio)/100)*$descuento; 
                             // $total= $precio-$opera;?>
                         <p class="precio-favorito"><b>$</b><?= html::encode("{$favo2->precio}") ?></p>
-                        <p class="total-favorito"><b>$</b><?= html::encode("{$favo2->total}") ?></p>
+                        <p class="total-favorito"><b>$</b><?= html::encode(number_format($favo2->total, 2, '.', ',')) ?>
                         <p class="descuento-favorito"> %<?=$descuento?></p>
 
                         <?php  } else {  ?>
