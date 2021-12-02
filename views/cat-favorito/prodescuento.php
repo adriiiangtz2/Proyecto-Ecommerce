@@ -20,7 +20,7 @@ use yii\bootstrap4\Html;
                             ?>
             <p class="precio-favorito"><b>$</b><?= html::encode("{$precio}") ?></p>
             <p class="total-favorito"><b>$</b><?= html::encode("{$total}") ?></p>
-            <p class="descuento-favorito"> %<?=$descuento?></p>
+            <p class="descuento-favorito"> %<?= html::encode(number_format($descuento, 2, '.', ',')) ?></p>
             <?php  }  ?>
             <div class="contenedor-card-foter">
                 <p style="margin:0;"> <?=$pro->pro_nombre?></p>
