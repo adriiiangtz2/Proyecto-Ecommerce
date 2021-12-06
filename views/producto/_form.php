@@ -128,7 +128,7 @@ use kartik\number\NumberControl;
 
         <div class="col-md-6">
             <?= $form->field($model, 'img')->widget(FileInput::classname(), [
-                'options'       => ['accept' => 'image/*','multiple' => true],
+                'options'       => ['accept' => 'image/*'],
                 'pluginOptions' => [
                     'allowedFileExtensions'  => ['jpg', 'gif', 'png'],
                     'initialPreview'         => [$model->url],
