@@ -15,29 +15,48 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'pro_id') ?>
+    <div class="row">
+        <div class="col-md-4">
+            <?= $form->field($model, 'pro_id') ?>
+        </div>
 
-    <?= $form->field($model, 'pro_nombre') ?>
+        <div class="col-md-4">
+            <?= $form->field($model, 'pro_nombre') ?>
+        </div>
 
-    <?= $form->field($model, 'pro_precio') ?>
+        <div class="col-md-4">
+            <?= $form->field($model, 'pro_precio') ?>
+        </div>
 
-    <?= $form->field($model, 'pro_fecha') ?>
+        <div class="col-md-4">
+            <?= $form->field($model, 'pro_fecha') ?>
+        </div>
 
-    <?= $form->field($model, 'pro_descripcion') ?>
+        <div class="col-md-4">
+            <?= $form->field($model, 'pro_descripcion') ?>
+        </div>
+    </div>
 
-    <?php // echo $form->field($model, 'pro_dimensiones') ?>
+    <?php // echo $form->field($model, 'pro_dimensiones') 
+    ?>
 
-    <?php // echo $form->field($model, 'pro_imagen') ?>
+    <?php // echo $form->field($model, 'pro_imagen') 
+    ?>
 
-    <?php // echo $form->field($model, 'pro_estatus') ?>
+    <?php // echo $form->field($model, 'pro_estatus') 
+    ?>
 
-    <?php // echo $form->field($model, 'pro_color') ?>
+    <?php // echo $form->field($model, 'pro_color') 
+    ?>
 
-    <?php // echo $form->field($model, 'pro_fktipo') ?>
+    <?php // echo $form->field($model, 'pro_fktipo') 
+    ?>
 
-    <?php // echo $form->field($model, 'pro_fkmarca') ?>
+    <?php // echo $form->field($model, 'pro_fkmarca') 
+    ?>
 
-    <?php // echo $form->field($model, 'pro_fktienda') ?>
+    <?php // echo $form->field($model, 'pro_fktienda') 
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

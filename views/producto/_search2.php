@@ -11,8 +11,8 @@ use yii\widgets\ActiveForm;
 <?php
 /* // TODO se crean objetos los cuales tendran 3 parametros ,Nombre,Url,Img,Info, se usa en ciclo de line 18 */
 $fil = [
-    (object)['nombre'  => 'NOMBRE',    'idbtn'  =>   'btn-filro-4', 'idjs'   =>  '4',   'idfil'   => 'filtros-4', 'nomfil'  => 'pro_nombre', 'holder'        => 'Escribe el Nombre',],
-    (object)['nombre'  => 'MARCA',     'idbtn'  =>   'btn-filro-5', 'idjs'   =>  '5',   'idfil'   => 'filtros-5', 'nomfil'  => 'marca',      'holder'        => 'Escribe la Marcas',],
+    (object)['nombre'  => 'NOMBRE',    'idbtn'  =>   'btn-filro-4', 'idjs'   =>  '4',   'idfil'   => 'filtros-4', 'nomfil'  => 'pro_nombre', 'holder'        => 'Escribre el Nombre',],
+    // (object)['nombre'  => 'MARCA',     'idbtn'  =>   'btn-filro-5', 'idjs'   =>  '5',   'idfil'   => 'filtros-5', 'nomfil'  => 'marca',      'holder'        => 'Escribe la Marcas',],
     //(object)['nombre'  => 'TIPO',   'idbtn'     =>   'btn-filro-6', 'idjs'   =>  '6',   'idfil'   => 'filtros-6', 'nomfil'  => 'tipo',       'holder'      => 'Escribe el Tipo',  ],
     //(object)['nombre'  => 'TIENDA',   'idbtn'   =>   'btn-filro-3', 'idjs'   =>  '3',   'idfil'   => 'filtros-3', 'nomfil'  => 'tienda',     'holder'      => 'Escribe la Tienda',],
 ];

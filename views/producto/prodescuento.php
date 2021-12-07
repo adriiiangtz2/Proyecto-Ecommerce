@@ -25,8 +25,7 @@ use yii\bootstrap4\Html;
                 <div class="contenedor-card-foter">
                     <p style="margin:0;"> <?= Html::encode("{$model->pro_nombre}")  ?></p>
                     <p style="margin:0;"> <?= Html::encode("{$model->pro_color}")   ?></p>
-                    <?= Html::a('Ver más <i class="fas fa-caret-down"></i>', ['/producto/detalles', 'id' => $pro->pro_id], ['class' => 'profile-link']) ?>
-                    <?= Html::a('Ver más <i class="fas fa-caret-down"></i>', ['Detalles/', 'id' => $productos->pro_id], ['class' => 'profile-link']) ?>
+                    <?= Html::a('Ver más <i class="fas fa-caret-down"></i>', ['/producto/detalles', 'id' => $model->pro_id], ['class' => 'profile-link']) ?>
                 </div>
             </div>
         <?php endforeach ?>

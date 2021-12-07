@@ -1,12 +1,7 @@
 <?php
 
-
-
 ?>
 <!-- tittle -->
-<div>
-    <h3><b>PRODUCTOS</b></h3>
-</div>
 <div class="row d-flex">
 
     <!-- filtros -->
