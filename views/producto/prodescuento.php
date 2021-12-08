@@ -19,13 +19,13 @@ use yii\bootstrap4\Html;
                     $total = $precio - $opera;
                 ?>
                     <p class="precio-favorito"><b>$</b><?= html::encode("{$precio}") ?></p>
-                    <p class="total-favorito"><b>$</b><?= html::encode("{$total}") ?></p>
+                    <p class="total-favorito"><b>$</b><?= html::encode(number_format($total, 2, '.', ',')) ?></p>
                     <p class="descuento-favorito"> %<?= $descuento ?></p>
                 <?php  }  ?>
                 <div class="contenedor-card-foter">
-                    <p style="margin:0;"> <?= Html::encode("{$model->pro_nombre}")  ?></p>
-                    <p style="margin:0;"> <?= Html::encode("{$model->pro_color}")   ?></p>
-                    <?= Html::a('Ver más <i class="fas fa-caret-down"></i>', ['/producto/detalles', 'id' => $model->pro_id], ['class' => 'profile-link']) ?>
+                    <p style="margin:0;"> <?= $pro->pro_nombre ?></p>
+                    <p style="margin:0;"> <?= $pro->pro_color ?> </p>
+                    <?= Html::a('Ver más <i class="fas fa-caret-down"></i>', ['/producto/detalles', 'id' => $pro->pro_id], ['class' => 'profile-link']) ?>
                 </div>
             </div>
         <?php endforeach ?>

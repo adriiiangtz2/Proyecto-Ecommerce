@@ -3,6 +3,17 @@
 use yii\helpers\Html;
 
 $total = 0;
+$prod = \app\models\Producto::producto();
+// $prod2 = \app\models\Producto::cuentas();
+$producto = \app\models\Producto::producto();
+$model->cuentas;
+// echo '<pre>';
+// var_dump($model->descuento);
+// var_dump($model->precio);
+// var_dump($model->opera);
+// var_dump($model);
+// echo '</pre>';
+// die;
 ?>
 
 <div id="contendor-fav<?= $productos->pro_id ?>" class="colum-4 columm4">
@@ -12,16 +23,17 @@ $total = 0;
     <!-- //!BOTON QUE MANDA A VISTA DE PRODUCTOS/DETALLES -->
     <!-- //TODO ESTRUCTURA DE ETIQUETA (a) y dentro etiqueta (img) -->
 
-    <!-- // TODO INICIA LA CONDICIONAL INTERNO -->
+    <!--  // TODO  incia la condicional interno ------- -->
+    <?php if (($model->descuento) > 0) {
+        // $opera= (($precio)/100)*$descuento; 
+        // $total= $precio-$opera;
+    ?>
+        <p class="precio-favorito"><b>$</b><?= html::encode("{$model->precio}") ?></p>
+        <p class="total-favorito"><b>$</b><?= html::encode(number_format($model->total, 2, '.', ',')) ?>
+        <p class="descuento-favorito"> %<?= $model->descuento ?></p>
 
-    <?php if (($descuento) > 0) {
-        $opera = (($precio) / 100) * $descuento;
-        $total = $precio - $opera; ?>
-        <p class="precio-favorito"><b>$</b><?= html::encode("{$precio}") ?></p>
-        <p class="total-favorito"><b>$</b><?= html::encode("{$total}") ?></p>
-        <p class="descuento-favorito"> %<?= $descuento ?></p>
-    <?php } else { ?>
-        <p class="total-favorito"><b>$</b><?= html::encode("{$precio}") ?></p>
+    <?php  } else {  ?>
+        <p class="total-favorito"><b>$</b><?= html::encode("{$model->total}") ?></p>
     <?php } ?>
 
     <!-- // TODO TERMINA EL CONDICIONAL INTERNO -->

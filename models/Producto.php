@@ -39,6 +39,10 @@ class Producto extends \yii\db\ActiveRecord
     public $menorPrecio;
     public $mayorPrecio;
     public $descuentoCompra;
+    public $descuento = 0;
+    public $precio = 0;
+    public $opera = 0;
+    public $total = 0;
     /**
      * {@inheritdoc}
      */
@@ -194,4 +198,37 @@ class Producto extends \yii\db\ActiveRecord
         }
         return $promedio/ ($contador == 0 ? 1 : count($this->carritoDetalles));
     }
+
+    public static function Producto()
+    {
+        //array de descuentos
+        $entrada = array(20, 30, 40);
+        //numero random para la posicion del arreglo
+        $azar = rand(0, 2);
+        $valor = $entrada[$azar];
+
+        return Producto::find()->where(['pro_descuento' => $valor])->orderBy(['rand()' => SORT_DESC])->limit(4)->all();
+    }
+    public function getCuentas()
+    {
+            $this->descuento = $this->pro_descuento;
+            $this->precio   = $this->pro_precio;
+            $this->opera    = $this->precio * $this->descuento / 100;
+            $this->total    = $this->precio - $this->opera;
+    }
+
+    public static function Cuentas2()
+    {
+        $productos = self::producto();
+        $producto = [];
+        foreach ($productos as $prod) {
+            $pro = new Producto();
+            $pro->descuento = $prod->pro_descuento;
+            $pro->precio   = $prod->pro_precio;
+            $pro->opera    = $pro->precio * $pro->descuento / 100;
+            $pro->total    = $pro->precio - $pro->opera;
+            $producto[] = $pro;
+        }
+        return $producto;
+    } 
 }
